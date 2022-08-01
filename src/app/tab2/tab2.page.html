@@ -1,10 +1,11 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 2
+      Map/State Info
     </ion-title>
   </ion-toolbar>
 </ion-header>
+
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
@@ -12,6 +13,37 @@
       <ion-title size="large">Tab 2</ion-title>
     </ion-toolbar>
   </ion-header>
+  <div class="scorebox">
+  <h1 class="center"><span class="blue">{{decidedBlue}}</span> | <span class="lightblue">{{leanBlue}}</span> | {{tossUp}} | <span class="lightred">{{leanRed}}</span> | <span class="red">{{decidedRed}}</span></h1>
+  </div>
+  <ion-button (click)="updateL()">Move Left</ion-button><br>
+  <ion-button (click)="updateR()">Move Right</ion-button><br>
+  <!--   decidedStates: State[];
+  rightLeanStates: State[];
+  leftLeanStates: State[];
+  tossUpStatesLeft: State[]; -->
+  <ion-button (click)="updateStateLists()">Update</ion-button><br>
+  <h1>Decided States:</h1>
+  <h2>Rep: {{decidedRed}} votes   Dem: {{decidedBlue}} votes</h2>
+  <ul>
+    <li class='blue' *ngFor="let state of decidedStatesLeft">{{state.abbreviation}} ({{state.college}} votes)</li>
+    <li class='red' *ngFor="let state of decidedStatesRight">{{state.abbreviation}} ({{state.college}} votes)</li>
+  </ul>
+  <h1>Lean Left States: ({{leanBlue}} votes)</h1>
+  <ul>
+    <li *ngFor="let state of leftLeanStates">{{state.abbreviation}} ({{state.college}} votes): +{{state.leansDem}} to the left</li>
+  </ul>
+  <h1>Lean Right States: ({{leanRed}} votes)</h1>
+  <ul>
+    <li *ngFor="let state of rightLeanStates">{{state.abbreviation}} ({{state.college}} votes): +{{state.leansRep}} to the right</li>
+  </ul>
+  <h1>Toss Up States: ({{tossUp}} votes)</h1>
+  <ul>
+    <li *ngFor="let state of tossUpStatesLeft">{{state.abbreviation}} ({{state.college}} votes): +{{state.leansDem}} to the left</li>
+    <li *ngFor="let state of tossUpStates">{{state.abbreviation}} ({{state.college}} votes): +/-0</li>
+    <li *ngFor="let state of tossUpStatesRight">{{state.abbreviation}} ({{state.college}} votes): +{{state.leansRep}} to the right</li>
+  </ul>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <img src="assets/map.png">
+  <p>interactive map coming soon!</p>
 </ion-content>
