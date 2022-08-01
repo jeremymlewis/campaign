@@ -15,6 +15,6 @@ import { DiceComponent } from '../dice/dice.component';
     FormsModule,
     TabsPageRoutingModule
   ],
-  declarations: [TabsPage, DiceComponent]
+  declarations: [TabsPage]
 })
 export class TabsPageModule {}
