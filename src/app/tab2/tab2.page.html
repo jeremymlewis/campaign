@@ -16,13 +16,10 @@
   <div class="scorebox">
   <h1 class="center"><span class="blue">{{decidedBlue}}</span> | <span class="lightblue">{{leanBlue}}</span> | {{tossUp}} | <span class="lightred">{{leanRed}}</span> | <span class="red">{{decidedRed}}</span></h1>
   </div>
+  <h3>National Climate Leans {{national}}</h3>
   <ion-button (click)="updateL()">Move Left</ion-button><br>
   <ion-button (click)="updateR()">Move Right</ion-button><br>
-  <!--   decidedStates: State[];
-  rightLeanStates: State[];
-  leftLeanStates: State[];
-  tossUpStatesLeft: State[]; -->
-  <ion-button (click)="updateStateLists()">Update</ion-button><br>
+  <p>These buttons allow us to test the national climate feature</p>
   <h1>Decided States:</h1>
   <h2>Rep: {{decidedRed}} votes   Dem: {{decidedBlue}} votes</h2>
   <ul>

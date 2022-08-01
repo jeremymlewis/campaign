@@ -16,36 +16,27 @@ export class Tab2Page {
   tossUpStatesLeft: State[]= [];
   tossUpStatesRight: State[]= [];
   tossUpStates: State[]= [];
-  decidedRed: number = 0;
-  decidedBlue: number = 0;
-  leanRed: number = 0;
-  leanBlue: number = 0;
-  tossUp: number = 0;
+  decidedRed = 0;
+  decidedBlue = 0;
+  leanRed = 0;
+  leanBlue = 0;
+  tossUp = 0;
+  national = 0;
 
   constructor(public store: VotesStore) {
     this.updateStateLists();
   }
 
-  updateL() {
-    this.store.changeStateClimate('UT', 0, -5)
-    this.store.changeStateClimate('CA', 0, -5)
-    this.store.changeStateClimate('VA', 0, -5)
-    this.store.changeStateClimate('PA', 0, -5)
-    this.store.changeStateClimate('FL', 0, -5)
-    this.store.changeStateClimate('OH', 0, -5)
+  updateR() {
+    this.store.changeNationalClimate(-5, 0);
+    this.national = this.store.NationalClimate;
     this.updateStateLists();
   }
 
-  updateR() {
-    this.store.changeStateClimate('UT', 0, 5)
-    this.store.changeStateClimate('CA', 0, 5)
-    this.store.changeStateClimate('VA', 0, 5)
-    this.store.changeStateClimate('PA', 0, 5)
-    this.store.changeStateClimate('FL', 0, 5)
-    this.store.changeStateClimate('OH', 0, 5)
-
+  updateL() {
+    this.store.changeNationalClimate(5, 0);
+    this.national = this.store.NationalClimate;
     this.updateStateLists();
-
   }
 
   updateStateLists() {

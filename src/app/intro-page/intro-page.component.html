@@ -5,6 +5,12 @@
     <h1 class="game-title">Campaign Game!</h1>
     <div class="container">
       <div class="center">
+        <form>
+          <ion-item lines="full">
+            <ion-label position="floating">Password</ion-label>
+            <ion-input type="text" name='passcode' [(ngModel)]="passcode" required></ion-input>
+          </ion-item>
+        </form>
         <ion-button (click)="toTabs()">Start 1 player</ion-button>
         <br>
         <ion-button (click)="toTabs()">Start 2 player</ion-button>

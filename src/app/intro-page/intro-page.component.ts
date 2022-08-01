@@ -2,16 +2,18 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'intro-page',
+  selector: 'app-intro-page',
   templateUrl: 'intro-page.component.html',
   styleUrls: ['intro-page.component.css']
 })
 export class IntroPage {
-
+  passcode = '';
   constructor(private route: Router) {}
 
   toTabs() {
-    this.route.navigateByUrl('/tabs');
+    if(this.passcode === 'jonaslinde') {
+      this.route.navigateByUrl('/options');
+    }
   }
 
 }
