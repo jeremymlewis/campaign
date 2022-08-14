@@ -1,4 +1,5 @@
-import { Component, Injectable } from '@angular/core';
+import { Component, EventEmitter, Injectable, Output } from '@angular/core';
+import { CalculationService } from '../services/calculations.service';
 
 @Component({
   selector: 'app-dice',
@@ -10,6 +11,8 @@ import { Component, Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class DiceComponent {
+  @Output() diceRolled = new EventEmitter<number>();
+  canClick = true;
   value = 1;
   imageValue = 'dice1';
   image1 = 'dice1';
@@ -18,6 +21,10 @@ export class DiceComponent {
   image4 = 'dice4';
   image5 = 'dice5';
   image6 = 'dice6';
+
+  constructor(private calculationService: CalculationService ) {}
+
+
 
   setImage(num: number) {
     if (num <2) {
@@ -41,6 +48,7 @@ export class DiceComponent {
   }
 
   async animatedDiceRoll() {
+    this.canClick = false;
     this.rollDice();
     await new Promise(f => setTimeout(f, 120));
     this.rollDice();
@@ -54,6 +62,9 @@ export class DiceComponent {
     this.rollDice();
     await new Promise(f => setTimeout(f, 120));
     this.rollDice();
+    this.diceRolled.emit(this.value);
+    await new Promise(f => setTimeout(f, 4000));
+    this.canClick = true;
   }
 
 }

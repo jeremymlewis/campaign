@@ -8,6 +8,11 @@ import { State } from './State';
 
 @Injectable({providedIn: 'root'})
 export class VotesStore {
+  isDemocrat = true;
+  public funds = 0;
+  public round = 10;
+  public turn = 0;
+
   Alabama: State = new State('AL',9, 32,49,true);
   Alaska: State = new State('AK',3,33,48);
   Arizona: State = new State('AZ',11,40,41);
@@ -117,6 +122,13 @@ export class VotesStore {
     ];
   }
 
+  getUserIsDem() {
+    return this.isDemocrat;
+  }
+
+  setUserIsDem(isDem: boolean) {
+    this.isDemocrat = isDem;
+  }
 
   getAllStates() {
     return this.states;
@@ -202,6 +214,14 @@ export class VotesStore {
         state.leansDem = state.demPercent-state.repPercent;
         state.leansRep = state.repPercent-state.demPercent;      }
     }
+  }
+
+  getFinalRed() {
+    return 270;
+  }
+
+  getFinalBlue() {
+    return 270;
   }
 
 

@@ -1,0 +1,17 @@
+.option {
+  height: 100px;
+  position: relative;
+  left: 10%;
+  width: 80%;
+  right: 10%;
+}
+
+.bg-image {
+  background-color: red!important;
+}
+
+.header-icon {
+  position: fixed;
+  right: 10px;
+  max-height: 30px;
+}

@@ -1,3 +1,5 @@
+<ion-grid>
 <h1>Choose your party!</h1>
-<ion-button (click)="continue()">Republican</ion-button>
-<ion-button (click)="continue()">Democrat</ion-button>
+<ion-button class="party-button" (click)="continue(false)"><img src="../../assets/images/republicanIcon.png"><br>Republican</ion-button>
+<ion-button  class="party-button" (click)="continue(true)"><img src="../../assets/images/democratIcon.png"><br>Democrat</ion-button>
+</ion-grid>

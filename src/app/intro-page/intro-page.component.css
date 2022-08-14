@@ -17,3 +17,10 @@
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
+
+.bg-image {
+    background: url("../../assets/images/background.png")!important;
+    background-size: cover!important;
+    background-repeat: no-repeat;
+    height: 95%;
+}

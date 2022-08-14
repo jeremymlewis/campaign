@@ -4,11 +4,11 @@ label {
   padding:3px;
   border:1px solid #e0e0e0;
   border-radius:3px;
-  background-color:blueviolet;
+  background-color:rgb(22, 13, 31);
   width:10em;
   text-align:center;
 }
-input[type='radio'][name='buttonGroup']:checked + label { background-color:#a0a0a0; }
+input[type='radio'][name='buttonGroup']:checked + label { background-color:#362e2e; }
 
 .column {
   float: left;
@@ -29,4 +29,8 @@ input[type='radio'][name='buttonGroup']:checked + label { background-color:#a0a0
   content: "";
   display: table;
   clear: both;
+}
+
+.state-icon {
+  max-height: 25px;
 }

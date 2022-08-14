@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tabs',
@@ -7,6 +8,14 @@ import { Component } from '@angular/core';
 })
 export class TabsPage {
 
-  constructor() {}
+  constructor(private router: Router) {}
+
+  isTab1(): boolean {
+    if (this.router.url.includes('tab1')) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
 }

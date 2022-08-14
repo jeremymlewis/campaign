@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { State } from '../stores/State';
 import { VotesStore } from '../stores/votes.store';
 
@@ -7,7 +7,8 @@ import { VotesStore } from '../stores/votes.store';
   templateUrl: 'tab2.page.html',
   styleUrls: ['tab2.page.scss']
 })
-export class Tab2Page {
+export class Tab2Page implements OnInit {
+  isDemocrat = true;
   decidedStates: State[] = [];
   decidedStatesRight: State[]= [];
   decidedStatesLeft: State[]= [];
@@ -27,6 +28,10 @@ export class Tab2Page {
     this.updateStateLists();
   }
 
+  ngOnInit(): void {
+    this.isDemocrat = this.store.getUserIsDem();
+  }
+
   updateR() {
     this.store.changeNationalClimate(-5, 0);
     this.national = this.store.NationalClimate;
@@ -34,7 +39,8 @@ export class Tab2Page {
   }
 
   updateL() {
-    this.store.changeNationalClimate(5, 0);
+    // this.store.changeNationalClimate(5, 0);
+    // this.national = this.store.NationalClimate;
     this.national = this.store.NationalClimate;
     this.updateStateLists();
   }

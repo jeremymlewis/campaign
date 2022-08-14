@@ -7,11 +7,12 @@ import { Router } from '@angular/router';
   styleUrls: ['intro-page.component.css']
 })
 export class IntroPage {
+  passwordRequired = false;
   passcode = '';
   constructor(private route: Router) {}
 
   toTabs() {
-    if(this.passcode === 'jonaslinde') {
+    if(!this.passwordRequired || this.passcode === 'jonaslinde') {
       this.route.navigateByUrl('/options');
     }
   }

@@ -4,6 +4,8 @@ import { AdvertisePage } from './advertise/advertise.component';
 import { CampaignPage } from './campaign/campaign.component';
 import { EventPage } from './event/event.component';
 import { FundraisePage } from './fundraise/fundraise.component';
+import { OpponentPage } from './opponent/opponent.component';
+import { ResultsPage } from './results/results.component';
 import { Tab1Page } from './tab1.page';
 
 const routes: Routes = [
@@ -14,6 +16,18 @@ const routes: Routes = [
   {
     path: 'campaign',
     component: CampaignPage,
+  },
+  {
+    path: 'opponent',
+    component: OpponentPage,
+  },
+  {
+    path: 'endResults',
+    component: ResultsPage,
+  },
+  {
+    path: 'debate',
+    component: EventPage,
   },
   {
     path: 'fundraise',

@@ -1,7 +1,7 @@
 import { IonicModule } from '@ionic/angular';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Tab1Page } from './tab1.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 
@@ -11,15 +11,18 @@ import { EventPage } from './event/event.component';
 import { CampaignPage } from './campaign/campaign.component';
 import { AdvertisePage } from './advertise/advertise.component';
 import { DiceComponent } from '../dice/dice.component';
+import { OpponentPage } from './opponent/opponent.component';
+import { ResultsPage } from './results/results.component';
 
 @NgModule({
   imports: [
     IonicModule,
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     ExploreContainerComponentModule,
     Tab1PageRoutingModule
   ],
-  declarations: [Tab1Page, FundraisePage, EventPage, CampaignPage, AdvertisePage, DiceComponent]
+  declarations: [Tab1Page, FundraisePage, EventPage, CampaignPage, AdvertisePage, DiceComponent, OpponentPage, ResultsPage]
 })
 export class Tab1PageModule {}

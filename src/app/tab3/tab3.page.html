@@ -2,6 +2,8 @@
   <ion-toolbar>
     <ion-title>
       Instructions
+      <img class='header-icon' *ngIf="!isDemocrat" src="../../assets/images/republicanIcon.png">
+      <img class='header-icon' *ngIf="isDemocrat" src="../../assets/images/democratIcon.png">
     </ion-title>
   </ion-toolbar>
 </ion-header>

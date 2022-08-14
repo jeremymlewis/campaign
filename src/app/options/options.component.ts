@@ -1,15 +1,17 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { VotesStore } from '../stores/votes.store';
 
 @Component({
   selector: 'app-options-page',
   templateUrl: 'options.component.html',
-  styleUrls: []
+  styleUrls: ['options.component.css']
 })
 export class OptionsPage {
-  constructor(private route: Router) {}
+  constructor(private route: Router, private votes: VotesStore) {}
 
-  continue() {
+  continue(isDem: boolean) {
+      this.votes.setUserIsDem(isDem);
       this.route.navigateByUrl('/tabs');
   }
 

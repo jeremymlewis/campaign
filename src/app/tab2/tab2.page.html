@@ -2,6 +2,8 @@
   <ion-toolbar>
     <ion-title>
       Map/State Info
+      <img class='header-icon' *ngIf="!isDemocrat" src="../../assets/images/republicanIcon.png">
+      <img class='header-icon' *ngIf="isDemocrat" src="../../assets/images/democratIcon.png">
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -17,30 +19,27 @@
   <h1 class="center"><span class="blue">{{decidedBlue}}</span> | <span class="lightblue">{{leanBlue}}</span> | {{tossUp}} | <span class="lightred">{{leanRed}}</span> | <span class="red">{{decidedRed}}</span></h1>
   </div>
   <h3>National Climate Leans {{national}}</h3>
-  <ion-button (click)="updateL()">Move Left</ion-button><br>
-  <ion-button (click)="updateR()">Move Right</ion-button><br>
-  <p>These buttons allow us to test the national climate feature</p>
-  <h1>Decided States:</h1>
-  <h2>Rep: {{decidedRed}} votes   Dem: {{decidedBlue}} votes</h2>
+  <ion-button (click)="updateL()">Update Standings</ion-button><br><p>Coming Soon: auto-updating standings</p>
+  <h1>Toss Up States: ({{tossUp}} votes)</h1>
   <ul>
-    <li class='blue' *ngFor="let state of decidedStatesLeft">{{state.abbreviation}} ({{state.college}} votes)</li>
-    <li class='red' *ngFor="let state of decidedStatesRight">{{state.abbreviation}} ({{state.college}} votes)</li>
+    <li class='lightblue' *ngFor="let state of tossUpStatesLeft">{{state.abbreviation}} ({{state.college}} votes): +{{state.leansDem}} to the left</li>
+    <li *ngFor="let state of tossUpStates">{{state.abbreviation}} ({{state.college}} votes): +/-0</li>
+    <li class='lightred' *ngFor="let state of tossUpStatesRight">{{state.abbreviation}} ({{state.college}} votes): +{{state.leansRep}} to the right</li>
   </ul>
   <h1>Lean Left States: ({{leanBlue}} votes)</h1>
   <ul>
-    <li *ngFor="let state of leftLeanStates">{{state.abbreviation}} ({{state.college}} votes): +{{state.leansDem}} to the left</li>
+    <li class='lightblue' *ngFor="let state of leftLeanStates">{{state.abbreviation}} ({{state.college}} votes): +{{state.leansDem}} to the left</li>
   </ul>
   <h1>Lean Right States: ({{leanRed}} votes)</h1>
   <ul>
-    <li *ngFor="let state of rightLeanStates">{{state.abbreviation}} ({{state.college}} votes): +{{state.leansRep}} to the right</li>
+    <li class='lightred' *ngFor="let state of rightLeanStates">{{state.abbreviation}} ({{state.college}} votes): +{{state.leansRep}} to the right</li>
   </ul>
-  <h1>Toss Up States: ({{tossUp}} votes)</h1>
+  <h1>Decided States:</h1>
+  <h2>Rep: {{decidedRed}} votes   Dem: {{decidedBlue}} votes</h2>
   <ul>
-    <li *ngFor="let state of tossUpStatesLeft">{{state.abbreviation}} ({{state.college}} votes): +{{state.leansDem}} to the left</li>
-    <li *ngFor="let state of tossUpStates">{{state.abbreviation}} ({{state.college}} votes): +/-0</li>
-    <li *ngFor="let state of tossUpStatesRight">{{state.abbreviation}} ({{state.college}} votes): +{{state.leansRep}} to the right</li>
+    <li class='lightblue' *ngFor="let state of decidedStatesLeft">{{state.abbreviation}} ({{state.college}} votes)</li>
+    <li class='lightred' *ngFor="let state of decidedStatesRight">{{state.abbreviation}} ({{state.college}} votes)</li>
   </ul>
 
-  <img src="assets/map.png">
-  <p>interactive map coming soon!</p>
+
 </ion-content>

@@ -1,5 +1,11 @@
-<p>Special Event has been triggered!  This will usually happen before rounds.</p>
+<ion-grid>
+<p>Special Event has been triggered!</p>
 <p>Before rounds 4,7,10 there will be a debate!  It has rolling rules that effect national climate<br></p>
 <p>Gaffes, scandals, media tour, endorsements, SuperPacs will also appear here</p>
-<app-dice></app-dice>
-<p>Press the 'play' tab to return to your options</p>
+
+<h1>Since this feature is unfinished, just roll the dice to effect the national climate.</h1>
+<h3>1,2,3 will move the national climate to the left</h3>
+<h3>4,5,6 will move the national climate to the right</h3>
+
+<app-dice (diceRolled)="handleRoll($event)"></app-dice>
+</ion-grid>

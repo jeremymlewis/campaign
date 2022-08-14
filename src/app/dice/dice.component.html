@@ -1,2 +1,2 @@
 <img class="dice" src='assets/{{imageValue}}.png'>
-<ion-button (click)="animatedDiceRoll()">Roll</ion-button>
+<ion-button [disabled]="!canClick" (click)="animatedDiceRoll()">Roll</ion-button>
