@@ -1,3 +1,5 @@
+<ion-content [fullscreen]="true">
+
 <h1>Advertise</h1>
 <h3>Choose a block of states to advertise to:</h3>
 <!-- Have an icon for each of the state blocks -->
@@ -68,3 +70,4 @@ Rolling a 2,3,4 or 5 will result in a +1<br>
 Rolling a 6 will result in a +2<br></p>
 <app-dice (diceRolled)="handleRoll($event)"></app-dice>
 <ion-button [disabled]="!canBack" (click)="back()">Back To Options</ion-button>
+</ion-content>

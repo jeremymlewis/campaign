@@ -1,5 +1,9 @@
+<ion-content [fullscreen]="true">
+
 <h3>Fundraising</h3>
 
 <p>You can’t win without money. To run ads, you’ll need some money. If you roll a 1-4, you’ll receive one fundraising point. If you roll a 5 or 6, you’ll receive two fundraising points (way to grovel). Two fundraising points are worth 10,000 Stanley nickels.</p>
 <app-dice (diceRolled)="handleRoll($event)"></app-dice>
 <ion-button [disabled]="!canBack" (click)="back()">Back To Options</ion-button>
+
+</ion-content>
