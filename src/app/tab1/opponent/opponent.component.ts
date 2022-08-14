@@ -27,7 +27,7 @@ export class OpponentPage implements OnInit {
   }
 
   goToResults() {
-    this.router.navigateByUrl('/tabs/tabs1/endResults');
+    this.router.navigateByUrl('/tabs/tab1/results');
   }
 
   goToTab1() {
@@ -36,7 +36,6 @@ export class OpponentPage implements OnInit {
 
   goToEvent() {
     this.router.navigateByUrl('/tabs/tab1/event');
-
   }
 
   goToDebate() {
@@ -49,7 +48,6 @@ export class OpponentPage implements OnInit {
     if (this.votes.turn % 2 === 0) {
       this.votes.round++;
       if (this.votes.round > 10) {
-        console.log('should leave');
         this.goToResults();
       } else if (this.votes.round === 4 || this.votes.round === 7 || this.votes.round === 10) {
         this.goToDebate();

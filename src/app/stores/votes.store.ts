@@ -10,7 +10,7 @@ import { State } from './State';
 export class VotesStore {
   isDemocrat = true;
   public funds = 0;
-  public round = 10;
+  public round = 1;
   public turn = 0;
 
   Alabama: State = new State('AL',9, 32,49,true);
@@ -217,11 +217,23 @@ export class VotesStore {
   }
 
   getFinalRed() {
-    return 270;
+    let red = 0;
+    for (const state of this.states) {
+      if (state.repPercent > state.demPercent) {
+        red += state.college;
+      }
+    }
+    return red;
   }
 
   getFinalBlue() {
-    return 270;
+    let blue = 0;
+    for (const state of this.states) {
+      if (state.repPercent <= state.demPercent) {
+        blue += state.college;
+      }
+    }
+    return blue;
   }
 
 

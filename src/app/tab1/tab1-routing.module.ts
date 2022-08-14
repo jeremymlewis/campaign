@@ -22,7 +22,7 @@ const routes: Routes = [
     component: OpponentPage,
   },
   {
-    path: 'endResults',
+    path: 'results',
     component: ResultsPage,
   },
   {
