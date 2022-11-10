@@ -1,3 +1,12 @@
 .dice {
   max-width: 40px;
 }
+
+.center {
+  font-size: large;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 50%
+}

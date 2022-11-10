@@ -1,7 +1,11 @@
 <ion-content [fullscreen]="true">
-
+<div class="center">
 <h1>Advertise</h1>
+</div>
+<div class="center">
 <h3>Choose a block of states to advertise to:</h3>
+</div>
+
 <!-- Have an icon for each of the state blocks -->
 <div class="row">
   <div [formGroup]="myGroup">
@@ -64,10 +68,18 @@
     </div>
   </div>
 </div>
-<p>After choosing which block you will advertise to, click 'roll' to see how well your advertisement landed.<br>
-Rolling a 1 will result in no effect<br>
+<div class="center">
+<p>After choosing which block you will advertise to, click 'roll' to see how the area is affected.</p>
+</div>
+<div class="center">
+<app-dice (diceRolled)="handleRoll($event)"></app-dice>
+</div>
+<div class="center">
+<p>Rolling a 1 will result in no effect<br>
 Rolling a 2,3,4 or 5 will result in a +1<br>
 Rolling a 6 will result in a +2<br></p>
-<app-dice (diceRolled)="handleRoll($event)"></app-dice>
+</div>
+<div class="center">
 <ion-button [disabled]="!canBack" (click)="back()">Back To Options</ion-button>
+</div>
 </ion-content>

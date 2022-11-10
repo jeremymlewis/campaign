@@ -1,7 +1,11 @@
 <ion-content [fullscreen]="true">
-  <ion-grid>
-<h1>THIS IS WHAT YOUR OPPONENT DID:</h1>
-<h2>{{getNextOpponentAction()}}</h2>
-<ion-button (click)="nextEvent()">Continue</ion-button>
-</ion-grid>
+  <div class="center">
+    <h1>THIS IS WHAT YOUR OPPONENT DID:</h1>
+  </div>
+  <div class="center">
+    <h2>{{getNextOpponentAction()}}</h2>
+  </div>
+  <div class="center">
+    <ion-button (click)="nextEvent()">Continue</ion-button>
+  </div>
 </ion-content>

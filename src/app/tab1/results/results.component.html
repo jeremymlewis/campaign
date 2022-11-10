@@ -1,12 +1,23 @@
 <ion-content [fullscreen]="true">
 
-  <ion-grid>
-<h1>GAME OVER</h1>
-<p>final score:</p>
-<p>Republican: {{votes.getFinalRed()}}</p>
-<p>Democrat: {{votes.getFinalBlue()}}</p>
+<div class="center">
+<h1><strong>GAME OVER</strong></h1>
+</div>
+<div class="center">
+<p>Final Score:</p>
+</div>
+<div class="center">
+  <p>Republican: {{votes.getFinalRed()}}</p>
+</div>
+  <div class="center">
+    <p>Democrat: {{votes.getFinalBlue()}}</p>
+ </div>
+<div class="center">
 <p>See the stats tab for more info!</p>
-<ion-button (click)="mainMenu()">Return to main menu</ion-button>
-</ion-grid>
+</div>
+<div class="center">
+<p>Return to Main Menu/Play Again</p>
+<ion-button (click)="mainMenu()">Four more years!</ion-button>
+</div>
 
 </ion-content>

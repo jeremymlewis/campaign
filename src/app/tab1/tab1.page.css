@@ -6,12 +6,22 @@
   right: 10%;
 }
 
-.bg-image {
-  background-color: red!important;
+
+ion-content{
+  --background: #fff url("../../assets/images/boardroom.png") no-repeat center center / cover;
 }
 
 .header-icon {
   position: fixed;
   right: 10px;
   max-height: 30px;
+}
+
+.center {
+  font-size: large;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 50%
 }

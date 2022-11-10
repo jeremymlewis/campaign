@@ -8,7 +8,7 @@ import { VotesStore } from 'src/app/stores/votes.store';
 @Component({
   selector: 'app-opponent',
   templateUrl: 'opponent.component.html',
-  styleUrls: []
+  styleUrls: ['opponent.component.css']
 })
 export class OpponentPage implements OnInit {
   allActions: string[];

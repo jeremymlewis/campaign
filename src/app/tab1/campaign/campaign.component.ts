@@ -6,7 +6,7 @@ import { VotesStore } from '../../stores/votes.store';
 @Component({
   selector: 'app-campaign',
   templateUrl: 'campaign.component.html',
-  styleUrls: []
+  styleUrls: ['campaign.component.css']
 })
 export class CampaignPage implements OnInit {
   chosenState: string;

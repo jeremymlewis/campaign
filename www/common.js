@@ -1,6 +1,80 @@
 "use strict";
 (self["webpackChunkapp"] = self["webpackChunkapp"] || []).push([["common"],{
 
+/***/ 6425:
+/*!*******************************************!*\
+  !*** ./src/app/services/audio.service.ts ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "AudioService": () => (/* binding */ AudioService)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ionic/angular */ 3819);
+/* harmony import */ var _awesome_cordova_plugins_native_audio_ngx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @awesome-cordova-plugins/native-audio/ngx */ 4206);
+
+
+
+
+let AudioService = class AudioService {
+    constructor(platform, nativeAudio) {
+        this.platform = platform;
+        this.nativeAudio = nativeAudio;
+        this.sounds = [];
+        this.audioPlayer = new Audio();
+        this.forceWebAudio = true;
+    }
+    preload(key, asset) {
+        if (this.platform.is('cordova') && !this.forceWebAudio) {
+            this.nativeAudio.preloadSimple(key, asset);
+            this.sounds.push({
+                key,
+                asset,
+                isNative: true
+            });
+        }
+        else {
+            const audio = new Audio();
+            audio.src = asset;
+            this.sounds.push({
+                key,
+                asset,
+                isNative: false
+            });
+        }
+    }
+    play(key) {
+        const soundToPlay = this.sounds.find((sound) => sound.key === key);
+        if (soundToPlay.isNative) {
+            this.nativeAudio.play(soundToPlay.asset).then((res) => {
+                console.log(res);
+            }, (err) => {
+                console.log(err);
+            });
+        }
+        else {
+            this.audioPlayer.src = soundToPlay.asset;
+            this.audioPlayer.play();
+        }
+    }
+};
+AudioService.ctorParameters = () => [
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_1__.Platform },
+    { type: _awesome_cordova_plugins_native_audio_ngx__WEBPACK_IMPORTED_MODULE_0__.NativeAudio }
+];
+AudioService = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_3__.Injectable)({
+        providedIn: 'root'
+    })
+], AudioService);
+
+
+
+/***/ }),
+
 /***/ 3696:
 /*!*********************************************************************!*\
   !*** ./node_modules/@ionic/core/dist/esm/button-active-8937ead0.js ***!

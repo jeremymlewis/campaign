@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 import { Injectable } from '@angular/core';
+import { Event } from '../stores/State';
 
 
 @Injectable({providedIn: 'root'})
@@ -20,6 +21,66 @@ export class TextService {
 
   public getDebateResults(): string[] {
     const results = [];
+    return results;
+  }
+
+  public getEvents(): Event[] {
+    const results: Event[] = [
+      {
+        title:'Gaffes',
+        description:'',
+        rollMap:[-1,-1,-2,-2,-3,-3],
+        imageSrc:''
+      },
+      {
+        title:'Media Tour',
+        description:'',
+        rollMap:[-1,-1,1,1,2,2],
+        imageSrc:''
+      },
+      {
+        title:'SuperPac',
+        description:'',
+        rollMap:[-3,-2,-1,1,2,3],
+        imageSrc:''
+      },
+      {
+        title:'Scandal',
+        description:'',
+        rollMap:[-1,-2,-3,-4,-5,-6],
+        imageSrc:''
+      },
+      {
+        title:'Endorsement',
+        description:'',
+        rollMap:[1,1,2,2,3,3],
+        imageSrc:''
+      },
+      {
+        title:'Hot Button Issue',
+        description:'',
+        rollMap:[-1,-1,-1,1,1,1],
+        imageSrc:''
+      },
+      {
+        title:'Debate 1',
+        description:'',
+        rollMap:[],
+        imageSrc:''
+      },
+      {
+        title:'Debate 2',
+        description:'',
+        rollMap:[],
+        imageSrc:''
+      },
+      {
+        title:'Debate 3',
+        description:'',
+        rollMap:[],
+        imageSrc:''
+      },
+    ];
     return results;
   }
 

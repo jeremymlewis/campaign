@@ -1,4 +1,11 @@
 export class State {
+  abbreviation: string;
+  college: number;
+  demPercent: number;
+  repPercent: number;
+  leansDem: number;
+  leansRep: number;
+  decided: boolean;
   constructor(abbreviation: string, electoralVotes: number, demPercentage: number, repPercentage: number, decided?: boolean) {
     this.abbreviation = abbreviation;
     this.college = electoralVotes;
@@ -8,11 +15,11 @@ export class State {
     this.leansRep = repPercentage-demPercentage;
     this.decided = decided || false;
   }
-  abbreviation: string;
-  college: number;
-  demPercent: number;
-  repPercent: number;
-  leansDem: number;
-  leansRep: number;
-  decided: boolean;
+}
+
+export class Event {
+  title: string;
+  description: string;
+  rollMap: number[];
+  imageSrc: string;
 }

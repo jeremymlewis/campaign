@@ -29,7 +29,7 @@ export class VotesStore {
   Illinois: State = new State('IL',20,48,34);
   Indiana: State = new State('IN',4,30,51,true);
   Iowa: State = new State('IA',6,39,43);
-  Kansas: State = new State('KA',6,32,49,true);
+  Kansas: State = new State('KS',6,32,49,true);
   Kentucky: State = new State('KY',8,30,51,true);
   Louisiana: State = new State('LA',8,32,49);
   Maine: State = new State('ME',4,43,39);
@@ -236,6 +236,119 @@ export class VotesStore {
     return blue;
   }
 
+  reset() {
+    this.isDemocrat = true;
+    this.funds = 0;
+    this.round = 1;
+    this.turn = 0;
+    this.NationalClimate = 0;
+
+    this.Alabama = new State('AL',9, 32,49,true);
+    this.Alaska = new State('AK',3,33,48);
+    this.Arizona = new State('AZ',11,40,41);
+    this.Arkansas = new State('AR',6,32,49);
+    this.California = new State('CA',55,52,30);
+    this.Colorado = new State('CO',9,42,39);
+    this.Connecticut = new State('CT',7,46,35,true);
+    this.Delaware = new State('DE',3,45,35,true);
+    this.DC = new State('DC',3, 75, 7, true);
+    this.Florida = new State('FL',29,39,41);
+    this.Georgia = new State('GA',16,39,42);
+    this.Hawaii = new State('HI',4,53,28);
+    this.Idaho = new State('ID',4,30,51,true);
+    this.Illinois = new State('IL',20,48,34);
+    this.Indiana = new State('IN',4,30,51,true);
+    this.Iowa = new State('IA',6,39,43);
+    this.Kansas = new State('KS',6,32,49,true);
+    this.Kentucky = new State('KY',8,30,51,true);
+    this.Louisiana = new State('LA',8,32,49);
+    this.Maine = new State('ME',4,43,39);
+    this.Maryland = new State('MD',10,51,31,true);
+    this.Massachusetts = new State('MA',11,52,30,true);
+    this.Michigan = new State('MI',16,42,39);
+    this.Minnesota = new State('MN',10,44,39);
+    this.Mississippi = new State('MS',6,34,48);
+    this.Missouri = new State('MO',10,34,46);
+    this.Montana = new State('MT',3,34,47);
+    this.Nebraska = new State('NE',5,32,49,true);
+    this.Nevada = new State('NV',6,41,40);
+    this.NewHampshire = new State('NH',4,42,39);
+    this.NewJersey = new State('NJ',14,48,34,true);
+    this.NewMexico = new State('NM',5,44,37);
+    this.NewYork = new State('NY',29,52,30,true);
+    this.NorthCarolina = new State('NC',15,40,42);
+    this.NorthDakota = new State('ND',3,31,51,true);
+    this.Ohio = new State('OH',18,38,43);
+    this.Oklahoma = new State('OK',7,30,51,true);
+    this.Oregon = new State('OR',7,45,37);
+    this.Pennsylvania = new State('PA',20,42,40);
+    this.RhodeIsland = new State('RI',4,50,32,true);
+    this.SouthCarolina = new State('SC',9,35,46);
+    this.SouthDakota = new State('SD',3,31,51,true);
+    this.Tennessee = new State('TN',11,32,49,true);
+    this.Texas = new State('TX',38,37,44);
+    this.Utah = new State('UT',6,32,49);
+    this.Vermont = new State('VT',3,52,30,true);
+    this.Virginia = new State('VA',13,42,39);
+    this.Washington = new State('WA',12,46,35);
+    this.WestVirginia = new State('WV',5,30,51,true);
+    this.Wisconsin = new State('WI',10,41,39);
+    this.Wyoming = new State('WY',3,29,53,true);
+    this.states = [];
+    this.states = [
+      this.Alabama,
+      this.Alaska,
+      this.Arizona,
+      this.Arkansas,
+      this.California,
+      this.Colorado,
+      this.Connecticut,
+      this.Delaware,
+      this.DC,
+      this.Florida,
+      this.Georgia,
+      this.Hawaii,
+      this.Idaho,
+      this.Illinois,
+      this.Indiana,
+      this.Iowa,
+      this.Kansas,
+      this.Kentucky,
+      this.Louisiana,
+      this.Maine,
+      this.Maryland,
+      this.Massachusetts,
+      this.Michigan,
+      this.Minnesota,
+      this.Mississippi,
+      this.Missouri,
+      this.Montana,
+      this.Nebraska,
+      this.Nevada,
+      this.NewHampshire,
+      this.NewJersey,
+      this.NewMexico,
+      this.NewYork,
+      this.NorthCarolina,
+      this.NorthDakota,
+      this.Ohio,
+      this.Oklahoma,
+      this.Oregon,
+      this.Pennsylvania,
+      this.RhodeIsland,
+      this.SouthCarolina,
+      this.SouthDakota,
+      this.Tennessee,
+      this.Texas,
+      this.Utah,
+      this.Vermont,
+      this.Virginia,
+      this.Washington,
+      this.WestVirginia,
+      this.Wisconsin,
+      this.Wyoming
+    ];
+  }
 
 
 

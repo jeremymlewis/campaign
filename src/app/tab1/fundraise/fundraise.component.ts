@@ -6,7 +6,7 @@ import { VotesStore } from 'src/app/stores/votes.store';
 @Component({
   selector: 'app-fundraise',
   templateUrl: 'fundraise.component.html',
-  styleUrls: []
+  styleUrls: ['fundraise.component.css']
 })
 export class FundraisePage {
   canBack = true;

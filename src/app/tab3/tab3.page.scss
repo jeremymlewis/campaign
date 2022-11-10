@@ -15,3 +15,12 @@ h3 {
   right: 10px;
   max-height: 30px;
 }
+
+.center {
+  text-align: center;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 50%
+}

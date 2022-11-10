@@ -1,74 +1,82 @@
 <ion-content [fullscreen]="true">
-<ion-grid>
-<h1>Campaign in a specific state</h1>
-<h3>Look at the stats page to decide which state you want to focus your campaign on!</h3>
-<p>Your roll decides how much of an impact you wil have in a state, BUT...</p>
-<p>Your campaigning is less effective the further the state is from your political stances.</p>
-<p>Example:</p>
-<p>A republican campaigning in a (+2 Dem) will subtract 2 from their roll.</p>
-<p>A democrat campaigning in a (+2 Dem) will add 2 to their roll.</p>
+  <div class="center">
+  <h1>Campaign in a specific state</h1>
+  </div>
+  <div class="center">
+  <h3>Look at the stats page to decide which state you want to focus your campaign on!</h3>
+  </div>
+  <div class="center">
+  <p><strong>Your campaigning is less effective the further the state is from your political stances</strong></p>
+  </div>
+  <div class="center">
+  <p>Example:</p>
+  <p>A republican campaigning in a (+2 Dem) will subtract 2 from their roll.</p>
+  <p>A democrat campaigning in a (+2 Dem) will add 2 to their roll.</p>
+  </div>
 
 
-<ion-list>
-  <ion-item>
-    <ion-select [(ngModel)]="chosenState" placeholder="Choose a state:">
-      <ion-select-option value="AL">Alabama (+2 Rep)</ion-select-option>
-      <ion-select-option value="AK">Alaska (+1 Rep)</ion-select-option>
-      <ion-select-option value="AZ">Arizona</ion-select-option>
-      <ion-select-option value="AR">Arkansas (+2 Rep)</ion-select-option>
-      <ion-select-option value="CA">California (+1 Dem)</ion-select-option>
-      <ion-select-option value="CO">Colorado</ion-select-option>
-      <ion-select-option value="CT">Connecticut (+2 Dem)</ion-select-option>
-      <ion-select-option value="DE">Delaware (+2 Dem)</ion-select-option>
-      <ion-select-option value="DC">D.C. (+2 Dem)</ion-select-option>
-      <ion-select-option value="FL">Florida</ion-select-option>
-      <ion-select-option value="GA">Georgia</ion-select-option>
-      <ion-select-option value="HI">Hawaii (+1 Dem)</ion-select-option>
-      <ion-select-option value="ID">Idaho (+2 Rep)</ion-select-option>
-      <ion-select-option value="IL">Illinois (+1 Dem)</ion-select-option>
-      <ion-select-option value="IN">Indiana (+1 Rep)</ion-select-option>
-      <ion-select-option value="IA">Iowa</ion-select-option>
-      <ion-select-option value="KS">Kansas (+2 Rep)</ion-select-option>
-      <ion-select-option value="KY">Kentucky (+2 Rep)</ion-select-option>
-      <ion-select-option value="LA">Louisiana (+1 Rep)</ion-select-option>
-      <ion-select-option value="ME">Maine</ion-select-option>
-      <ion-select-option value="MD">Maryland (+2 Dem)</ion-select-option>
-      <ion-select-option value="MA">Massachusetts (+2 Dem)</ion-select-option>
-      <ion-select-option value="MI">Michigan</ion-select-option>
-      <ion-select-option value="MN">Minnesota (+1 Dem)</ion-select-option>
-      <ion-select-option value="MS">Mississippi (+1 Rep)</ion-select-option>
-      <ion-select-option value="MO">Missouri (+1 Rep)</ion-select-option>
-      <ion-select-option value="MT">Montana (+1 Rep)</ion-select-option>
-      <ion-select-option value="NE">Nebraska (+2 Rep)</ion-select-option>
-      <ion-select-option value="NV">Nevada</ion-select-option>
-      <ion-select-option value="NH">New Hampshire</ion-select-option>
-      <ion-select-option value="NJ">New Jersey (+2 Dem)</ion-select-option>
-      <ion-select-option value="NM">New Mexico</ion-select-option>
-      <ion-select-option value="NY">New York (+2 Dem)</ion-select-option>
-      <ion-select-option value="NC">North Carolina</ion-select-option>
-      <ion-select-option value="ND">North Dakota (+2 Rep)</ion-select-option>
-      <ion-select-option value="OH">Ohio</ion-select-option>
-      <ion-select-option value="OK">Oklahoma (+2 Rep)</ion-select-option>
-      <ion-select-option value="OR">Oregon (+1 Dem)</ion-select-option>
-      <ion-select-option value="PA">Pennsylvania</ion-select-option>
-      <ion-select-option value="RI">Rhode Island (+2 Dem)</ion-select-option>
-      <ion-select-option value="SC">South Carolina (+1 Rep)</ion-select-option>
-      <ion-select-option value="SD">South Dakota (+2 Rep)</ion-select-option>
-      <ion-select-option value="TN">Tennessee (+2 Rep)</ion-select-option>
-      <ion-select-option value="TX">Texas (+1 Rep)</ion-select-option>
-      <ion-select-option value="UT">Utah (+2 Rep)</ion-select-option>
-      <ion-select-option value="VT">Vermont (+2 Dem)</ion-select-option>
-      <ion-select-option value="VI">Virginia</ion-select-option>
-      <ion-select-option value="WA">Washington (+1 Dem)</ion-select-option>
-      <ion-select-option value="WV">West Virginia (+2 Rep)</ion-select-option>
-      <ion-select-option value="WI">Wisconsin</ion-select-option>
-      <ion-select-option value="WY">Wyoming (+2 Rep)</ion-select-option>
-    </ion-select>
-  </ion-item>
-</ion-list>
-<br>
-<app-dice (diceRolled)="handleRoll($event)"></app-dice>
-</ion-grid>
+  <ion-list>
+    <ion-item>
+      <ion-select [(ngModel)]="chosenState" placeholder="Choose a state:">
+        <ion-select-option value="AL">Alabama (+2 Rep)</ion-select-option>
+        <ion-select-option value="AK">Alaska (+1 Rep)</ion-select-option>
+        <ion-select-option value="AZ">Arizona</ion-select-option>
+        <ion-select-option value="AR">Arkansas (+2 Rep)</ion-select-option>
+        <ion-select-option value="CA">California (+1 Dem)</ion-select-option>
+        <ion-select-option value="CO">Colorado</ion-select-option>
+        <ion-select-option value="CT">Connecticut (+2 Dem)</ion-select-option>
+        <ion-select-option value="DE">Delaware (+2 Dem)</ion-select-option>
+        <ion-select-option value="DC">D.C. (+2 Dem)</ion-select-option>
+        <ion-select-option value="FL">Florida</ion-select-option>
+        <ion-select-option value="GA">Georgia</ion-select-option>
+        <ion-select-option value="HI">Hawaii (+1 Dem)</ion-select-option>
+        <ion-select-option value="ID">Idaho (+2 Rep)</ion-select-option>
+        <ion-select-option value="IL">Illinois (+1 Dem)</ion-select-option>
+        <ion-select-option value="IN">Indiana (+1 Rep)</ion-select-option>
+        <ion-select-option value="IA">Iowa</ion-select-option>
+        <ion-select-option value="KS">Kansas (+2 Rep)</ion-select-option>
+        <ion-select-option value="KY">Kentucky (+2 Rep)</ion-select-option>
+        <ion-select-option value="LA">Louisiana (+1 Rep)</ion-select-option>
+        <ion-select-option value="ME">Maine</ion-select-option>
+        <ion-select-option value="MD">Maryland (+2 Dem)</ion-select-option>
+        <ion-select-option value="MA">Massachusetts (+2 Dem)</ion-select-option>
+        <ion-select-option value="MI">Michigan</ion-select-option>
+        <ion-select-option value="MN">Minnesota (+1 Dem)</ion-select-option>
+        <ion-select-option value="MS">Mississippi (+1 Rep)</ion-select-option>
+        <ion-select-option value="MO">Missouri (+1 Rep)</ion-select-option>
+        <ion-select-option value="MT">Montana (+1 Rep)</ion-select-option>
+        <ion-select-option value="NE">Nebraska (+2 Rep)</ion-select-option>
+        <ion-select-option value="NV">Nevada</ion-select-option>
+        <ion-select-option value="NH">New Hampshire</ion-select-option>
+        <ion-select-option value="NJ">New Jersey (+2 Dem)</ion-select-option>
+        <ion-select-option value="NM">New Mexico</ion-select-option>
+        <ion-select-option value="NY">New York (+2 Dem)</ion-select-option>
+        <ion-select-option value="NC">North Carolina</ion-select-option>
+        <ion-select-option value="ND">North Dakota (+2 Rep)</ion-select-option>
+        <ion-select-option value="OH">Ohio</ion-select-option>
+        <ion-select-option value="OK">Oklahoma (+2 Rep)</ion-select-option>
+        <ion-select-option value="OR">Oregon (+1 Dem)</ion-select-option>
+        <ion-select-option value="PA">Pennsylvania</ion-select-option>
+        <ion-select-option value="RI">Rhode Island (+2 Dem)</ion-select-option>
+        <ion-select-option value="SC">South Carolina (+1 Rep)</ion-select-option>
+        <ion-select-option value="SD">South Dakota (+2 Rep)</ion-select-option>
+        <ion-select-option value="TN">Tennessee (+2 Rep)</ion-select-option>
+        <ion-select-option value="TX">Texas (+1 Rep)</ion-select-option>
+        <ion-select-option value="UT">Utah (+2 Rep)</ion-select-option>
+        <ion-select-option value="VT">Vermont (+2 Dem)</ion-select-option>
+        <ion-select-option value="VI">Virginia</ion-select-option>
+        <ion-select-option value="WA">Washington (+1 Dem)</ion-select-option>
+        <ion-select-option value="WV">West Virginia (+2 Rep)</ion-select-option>
+        <ion-select-option value="WI">Wisconsin</ion-select-option>
+        <ion-select-option value="WY">Wyoming (+2 Rep)</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <div class="center">
+    <app-dice (diceRolled)="handleRoll($event)"></app-dice>
+  </div>
+  <div class="center">
 
-<ion-button [disabled]="!canBack"(click)="back()">Back To Options</ion-button>
+  <ion-button [disabled]="!canBack"(click)="back()">Back To Options</ion-button>
+  </div>
 </ion-content>

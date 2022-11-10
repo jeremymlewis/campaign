@@ -190,6 +190,65 @@ let TextService = class TextService {
         const results = [];
         return results;
     }
+    getEvents() {
+        const results = [
+            {
+                title: 'Gaffes',
+                description: '',
+                rollMap: [-1, -1, -2, -2, -3, -3],
+                imageSrc: ''
+            },
+            {
+                title: 'Media Tour',
+                description: '',
+                rollMap: [-1, -1, 1, 1, 2, 2],
+                imageSrc: ''
+            },
+            {
+                title: 'SuperPac',
+                description: '',
+                rollMap: [-3, -2, -1, 1, 2, 3],
+                imageSrc: ''
+            },
+            {
+                title: 'Scandal',
+                description: '',
+                rollMap: [-1, -2, -3, -4, -5, -6],
+                imageSrc: ''
+            },
+            {
+                title: 'Endorsement',
+                description: '',
+                rollMap: [1, 1, 2, 2, 3, 3],
+                imageSrc: ''
+            },
+            {
+                title: 'Hot Button Issue',
+                description: '',
+                rollMap: [-1, -1, -1, 1, 1, 1],
+                imageSrc: ''
+            },
+            {
+                title: 'Debate 1',
+                description: '',
+                rollMap: [],
+                imageSrc: ''
+            },
+            {
+                title: 'Debate 2',
+                description: '',
+                rollMap: [],
+                imageSrc: ''
+            },
+            {
+                title: 'Debate 3',
+                description: '',
+                rollMap: [],
+                imageSrc: ''
+            },
+        ];
+        return results;
+    }
     getAdvertisingResults() {
         const results = [
             '1',
@@ -428,12 +487,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "CampaignPage": () => (/* binding */ CampaignPage)
 /* harmony export */ });
 /* harmony import */ var C_Users_Jeremy_SideProjects_campaign_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tslib */ 4929);
 /* harmony import */ var _campaign_component_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./campaign.component.html?ngResource */ 1027);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ 124);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ 3819);
-/* harmony import */ var _stores_votes_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../stores/votes.store */ 2049);
+/* harmony import */ var _campaign_component_css_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./campaign.component.css?ngResource */ 3579);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ 124);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ 3819);
+/* harmony import */ var _stores_votes_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../stores/votes.store */ 2049);
+
 
 
 
@@ -506,16 +567,17 @@ let CampaignPage = class CampaignPage {
 };
 
 CampaignPage.ctorParameters = () => [{
-  type: _angular_router__WEBPACK_IMPORTED_MODULE_3__.Router
+  type: _angular_router__WEBPACK_IMPORTED_MODULE_4__.Router
 }, {
-  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__.ToastController
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__.ToastController
 }, {
-  type: _stores_votes_store__WEBPACK_IMPORTED_MODULE_2__.VotesStore
+  type: _stores_votes_store__WEBPACK_IMPORTED_MODULE_3__.VotesStore
 }];
 
-CampaignPage = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_6__.Component)({
+CampaignPage = (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_7__.Component)({
   selector: 'app-campaign',
-  template: _campaign_component_html_ngResource__WEBPACK_IMPORTED_MODULE_1__
+  template: _campaign_component_html_ngResource__WEBPACK_IMPORTED_MODULE_1__,
+  styles: [_campaign_component_css_ngResource__WEBPACK_IMPORTED_MODULE_2__]
 })], CampaignPage);
 
 
@@ -532,13 +594,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "EventPage": () => (/* binding */ EventPage)
 /* harmony export */ });
 /* harmony import */ var C_Users_Jeremy_SideProjects_campaign_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! tslib */ 4929);
 /* harmony import */ var _event_component_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./event.component.html?ngResource */ 835);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ 124);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ 3819);
-/* harmony import */ var src_app_stores_votes_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/stores/votes.store */ 2049);
+/* harmony import */ var _event_component_css_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./event.component.css?ngResource */ 7683);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ 124);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ 3819);
+/* harmony import */ var src_app_services_text_services__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/text.services */ 764);
+/* harmony import */ var src_app_stores_votes_store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/stores/votes.store */ 2049);
 
+
+
+
+/* eslint-disable max-len */
 
 
 
@@ -546,13 +614,22 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let EventPage = class EventPage {
-  constructor(router, votes, toastController) {
+  constructor(router, votes, toastController, textService) {
     this.router = router;
     this.votes = votes;
     this.toastController = toastController;
+    this.textService = textService;
   } // back() {
   // }
 
+
+  setNewEvent(debate) {
+    this.textService.getEvents();
+
+    if (debate) {//setNew Event to be a debate...
+    } else {//pick an event at random... need some input as to how to choose which event we want next.
+    }
+  }
 
   handleRoll(roll) {
     var _this = this;
@@ -596,16 +673,19 @@ let EventPage = class EventPage {
 };
 
 EventPage.ctorParameters = () => [{
-  type: _angular_router__WEBPACK_IMPORTED_MODULE_3__.Router
+  type: _angular_router__WEBPACK_IMPORTED_MODULE_5__.Router
 }, {
-  type: src_app_stores_votes_store__WEBPACK_IMPORTED_MODULE_2__.VotesStore
+  type: src_app_stores_votes_store__WEBPACK_IMPORTED_MODULE_4__.VotesStore
 }, {
-  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__.ToastController
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__.ToastController
+}, {
+  type: src_app_services_text_services__WEBPACK_IMPORTED_MODULE_3__.TextService
 }];
 
-EventPage = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_6__.Component)({
+EventPage = (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_8__.Component)({
   selector: 'app-event',
-  template: _event_component_html_ngResource__WEBPACK_IMPORTED_MODULE_1__
+  template: _event_component_html_ngResource__WEBPACK_IMPORTED_MODULE_1__,
+  styles: [_event_component_css_ngResource__WEBPACK_IMPORTED_MODULE_2__]
 })], EventPage);
 
 
@@ -622,12 +702,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "FundraisePage": () => (/* binding */ FundraisePage)
 /* harmony export */ });
 /* harmony import */ var C_Users_Jeremy_SideProjects_campaign_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tslib */ 4929);
 /* harmony import */ var _fundraise_component_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./fundraise.component.html?ngResource */ 1304);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ 124);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ 3819);
-/* harmony import */ var src_app_stores_votes_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/stores/votes.store */ 2049);
+/* harmony import */ var _fundraise_component_css_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./fundraise.component.css?ngResource */ 3899);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ 124);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ 3819);
+/* harmony import */ var src_app_stores_votes_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/stores/votes.store */ 2049);
+
 
 
 
@@ -691,16 +773,17 @@ let FundraisePage = class FundraisePage {
 };
 
 FundraisePage.ctorParameters = () => [{
-  type: _angular_router__WEBPACK_IMPORTED_MODULE_3__.Router
+  type: _angular_router__WEBPACK_IMPORTED_MODULE_4__.Router
 }, {
-  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__.ToastController
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__.ToastController
 }, {
-  type: src_app_stores_votes_store__WEBPACK_IMPORTED_MODULE_2__.VotesStore
+  type: src_app_stores_votes_store__WEBPACK_IMPORTED_MODULE_3__.VotesStore
 }];
 
-FundraisePage = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_6__.Component)({
+FundraisePage = (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_7__.Component)({
   selector: 'app-fundraise',
-  template: _fundraise_component_html_ngResource__WEBPACK_IMPORTED_MODULE_1__
+  template: _fundraise_component_html_ngResource__WEBPACK_IMPORTED_MODULE_1__,
+  styles: [_fundraise_component_css_ngResource__WEBPACK_IMPORTED_MODULE_2__]
 })], FundraisePage);
 
 
@@ -716,13 +799,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "OpponentPage": () => (/* binding */ OpponentPage)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tslib */ 4929);
 /* harmony import */ var _opponent_component_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./opponent.component.html?ngResource */ 3409);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ 124);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ 3819);
-/* harmony import */ var src_app_services_text_services__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/app/services/text.services */ 764);
-/* harmony import */ var src_app_stores_votes_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/stores/votes.store */ 2049);
+/* harmony import */ var _opponent_component_css_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./opponent.component.css?ngResource */ 3142);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ 124);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ 3819);
+/* harmony import */ var src_app_services_text_services__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/text.services */ 764);
+/* harmony import */ var src_app_stores_votes_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/stores/votes.store */ 2049);
+
 
 
 /* eslint-disable max-len */
@@ -883,15 +968,16 @@ let OpponentPage = class OpponentPage {
     }
 };
 OpponentPage.ctorParameters = () => [
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__.Router },
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__.ToastController },
-    { type: src_app_stores_votes_store__WEBPACK_IMPORTED_MODULE_2__.VotesStore },
-    { type: src_app_services_text_services__WEBPACK_IMPORTED_MODULE_1__.TextService }
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__.Router },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__.ToastController },
+    { type: src_app_stores_votes_store__WEBPACK_IMPORTED_MODULE_3__.VotesStore },
+    { type: src_app_services_text_services__WEBPACK_IMPORTED_MODULE_2__.TextService }
 ];
-OpponentPage = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_6__.Component)({
+OpponentPage = (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_7__.Component)({
         selector: 'app-opponent',
-        template: _opponent_component_html_ngResource__WEBPACK_IMPORTED_MODULE_0__
+        template: _opponent_component_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
+        styles: [_opponent_component_css_ngResource__WEBPACK_IMPORTED_MODULE_1__]
     })
 ], OpponentPage);
 
@@ -909,13 +995,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "ResultsPage": () => (/* binding */ ResultsPage)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tslib */ 4929);
 /* harmony import */ var _results_component_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./results.component.html?ngResource */ 9186);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ 124);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ 3819);
-/* harmony import */ var src_app_services_text_services__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/app/services/text.services */ 764);
-/* harmony import */ var src_app_stores_votes_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/stores/votes.store */ 2049);
+/* harmony import */ var _results_component_css_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./results.component.css?ngResource */ 6176);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ 124);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ 3819);
+/* harmony import */ var src_app_services_text_services__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/text.services */ 764);
+/* harmony import */ var src_app_stores_votes_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/stores/votes.store */ 2049);
+
 
 
 /* eslint-disable max-len */
@@ -936,15 +1024,16 @@ let ResultsPage = class ResultsPage {
     }
 };
 ResultsPage.ctorParameters = () => [
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__.Router },
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__.ToastController },
-    { type: src_app_stores_votes_store__WEBPACK_IMPORTED_MODULE_2__.VotesStore },
-    { type: src_app_services_text_services__WEBPACK_IMPORTED_MODULE_1__.TextService }
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__.Router },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__.ToastController },
+    { type: src_app_stores_votes_store__WEBPACK_IMPORTED_MODULE_3__.VotesStore },
+    { type: src_app_services_text_services__WEBPACK_IMPORTED_MODULE_2__.TextService }
 ];
-ResultsPage = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_6__.Component)({
+ResultsPage = (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_7__.Component)({
         selector: 'app-results',
-        template: _results_component_html_ngResource__WEBPACK_IMPORTED_MODULE_0__
+        template: _results_component_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
+        styles: [_results_component_css_ngResource__WEBPACK_IMPORTED_MODULE_1__]
     })
 ], ResultsPage);
 
@@ -952,7 +1041,7 @@ ResultsPage = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([
 
 /***/ }),
 
-/***/ 2580:
+/***/ 8271:
 /*!*********************************************!*\
   !*** ./src/app/tab1/tab1-routing.module.ts ***!
   \*********************************************/
@@ -1046,7 +1135,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @angular/forms */ 2508);
 /* harmony import */ var _tab1_page__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./tab1.page */ 6923);
 /* harmony import */ var _explore_container_explore_container_module__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../explore-container/explore-container.module */ 581);
-/* harmony import */ var _tab1_routing_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./tab1-routing.module */ 2580);
+/* harmony import */ var _tab1_routing_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./tab1-routing.module */ 8271);
 /* harmony import */ var _fundraise_fundraise_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./fundraise/fundraise.component */ 3067);
 /* harmony import */ var _event_event_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./event/event.component */ 3121);
 /* harmony import */ var _campaign_campaign_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./campaign/campaign.component */ 8082);
@@ -1100,14 +1189,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "Tab1Page": () => (/* binding */ Tab1Page)
 /* harmony export */ });
 /* harmony import */ var C_Users_Jeremy_SideProjects_campaign_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! tslib */ 4929);
 /* harmony import */ var _tab1_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./tab1.page.html?ngResource */ 3852);
 /* harmony import */ var _tab1_page_css_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./tab1.page.css?ngResource */ 4223);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ 124);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ 124);
 /* harmony import */ var _services_text_services__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/text.services */ 764);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ 3819);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic/angular */ 3819);
 /* harmony import */ var _stores_votes_store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../stores/votes.store */ 2049);
+/* harmony import */ var _services_audio_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../services/audio.service */ 6425);
+
 
 
 
@@ -1118,7 +1209,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let Tab1Page = class Tab1Page {
-  constructor(route, textService, toastController, votes) {
+  constructor(audio, route, textService, toastController, votes) {
+    this.audio = audio;
     this.route = route;
     this.textService = textService;
     this.toastController = toastController;
@@ -1134,21 +1226,37 @@ let Tab1Page = class Tab1Page {
     this.isDemocrat = this.votes.getUserIsDem();
   }
 
+  ngAfterViewInit() {
+    this.audio.preload('a3', 'assets/audio/vote.mp3');
+    this.audio.preload('a5', 'assets/audio/thats-america.mp3');
+    this.audio.preload('a6', 'assets/audio/dont-boo-vote.mp3');
+    this.audio.preload('a8', 'assets/audio/america.mp3');
+    this.audio.preload('a2', 'assets/audio/i-said-no.mp3');
+    this.audio.preload('a0', 'assets/audio/thank-you-and-good-evening.mp3');
+    this.audio.preload('a1', 'assets/audio/bad-news.mp3');
+    this.audio.preload('a4', 'assets/audio/come-on-man.mp3');
+    this.audio.preload('a7', 'assets/audio/congratulations.mp3');
+  }
+
   getCurrentTurn() {
     return this.turns[this.votes.turn];
   }
 
   fundraise() {
+    this.audio.play('a8');
     this.takeTurn();
     this.route.navigateByUrl('tabs/tab1/fundraise');
   }
 
   campaign() {
+    this.audio.play('a3');
     this.takeTurn();
     this.route.navigateByUrl('tabs/tab1/campaign');
   }
 
   advertising() {
+    this.audio.play('a5');
+
     if (this.votes.funds > 0) {
       this.votes.funds--;
       this.takeTurn();
@@ -1158,12 +1266,16 @@ let Tab1Page = class Tab1Page {
     }
   }
 
-  takeTurn() {}
+  takeTurn() {// const i = Math.floor(Math.random() * 9);
+    // this.audio.play('a'+i);
+  }
 
   presentToast(message, duration, color = 'primary') {
     var _this = this;
 
     return (0,C_Users_Jeremy_SideProjects_campaign_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+      _this.audio.play('a1');
+
       const toast = yield _this.toastController.create({
         message,
         duration,
@@ -1178,16 +1290,18 @@ let Tab1Page = class Tab1Page {
 };
 
 Tab1Page.ctorParameters = () => [{
-  type: _angular_router__WEBPACK_IMPORTED_MODULE_5__.Router
+  type: _services_audio_service__WEBPACK_IMPORTED_MODULE_5__.AudioService
+}, {
+  type: _angular_router__WEBPACK_IMPORTED_MODULE_6__.Router
 }, {
   type: _services_text_services__WEBPACK_IMPORTED_MODULE_3__.TextService
 }, {
-  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__.ToastController
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_7__.ToastController
 }, {
   type: _stores_votes_store__WEBPACK_IMPORTED_MODULE_4__.VotesStore
 }];
 
-Tab1Page = (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_8__.Component)({
+Tab1Page = (0,tslib__WEBPACK_IMPORTED_MODULE_8__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_9__.Component)({
   selector: 'app-tab1',
   template: _tab1_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__,
   styles: [_tab1_page_css_ngResource__WEBPACK_IMPORTED_MODULE_2__]
@@ -1202,7 +1316,7 @@ Tab1Page = (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__decorate)([(0,_angular_core__
   \****************************************************/
 /***/ ((module) => {
 
-module.exports = ".dice {\r\n  max-width: 40px;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImRpY2UuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGVBQWU7QUFDakIiLCJmaWxlIjoiZGljZS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmRpY2Uge1xyXG4gIG1heC13aWR0aDogNDBweDtcclxufVxyXG4iXX0= */";
+module.exports = ".dice {\r\n  max-width: 40px;\r\n}\r\n\r\n.center {\r\n  font-size: large;\r\n  text-align: center;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  left: 50%\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImRpY2UuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGVBQWU7QUFDakI7O0FBRUE7RUFDRSxnQkFBZ0I7RUFDaEIsa0JBQWtCO0VBQ2xCLGFBQWE7RUFDYix1QkFBdUI7RUFDdkIsbUJBQW1CO0VBQ25CO0FBQ0YiLCJmaWxlIjoiZGljZS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmRpY2Uge1xyXG4gIG1heC13aWR0aDogNDBweDtcclxufVxyXG5cclxuLmNlbnRlciB7XHJcbiAgZm9udC1zaXplOiBsYXJnZTtcclxuICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgZGlzcGxheTogZmxleDtcclxuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcclxuICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG4gIGxlZnQ6IDUwJVxyXG59XHJcbiJdfQ== */";
 
 /***/ }),
 
@@ -1212,7 +1326,57 @@ module.exports = ".dice {\r\n  max-width: 40px;\r\n}\r\n\r\n/*# sourceMappingURL
   \*******************************************************************/
 /***/ ((module) => {
 
-module.exports = "input[type='radio'][name='buttonGroup'] { display:none; }\r\nlabel {\r\n  display:inline-block;\r\n  padding:3px;\r\n  border:1px solid #e0e0e0;\r\n  border-radius:3px;\r\n  background-color:rgb(22, 13, 31);\r\n  width:10em;\r\n  text-align:center;\r\n}\r\ninput[type='radio'][name='buttonGroup']:checked + label { background-color:#362e2e; }\r\n.column {\r\n  float: left;\r\n  padding: 10px;\r\n  height: 300px; /* Should be removed. Only for demonstration */\r\n}\r\n.left {\r\n  width: 50%;\r\n}\r\n.right {\r\n  width: 50%;\r\n}\r\n/* Clear floats after the columns */\r\n.row:after {\r\n  content: \"\";\r\n  display: table;\r\n  clear: both;\r\n}\r\n.state-icon {\r\n  max-height: 25px;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFkdmVydGlzZS5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLDBDQUEwQyxZQUFZLEVBQUU7QUFDeEQ7RUFDRSxvQkFBb0I7RUFDcEIsV0FBVztFQUNYLHdCQUF3QjtFQUN4QixpQkFBaUI7RUFDakIsZ0NBQWdDO0VBQ2hDLFVBQVU7RUFDVixpQkFBaUI7QUFDbkI7QUFDQSwwREFBMEQsd0JBQXdCLEVBQUU7QUFFcEY7RUFDRSxXQUFXO0VBQ1gsYUFBYTtFQUNiLGFBQWEsRUFBRSw4Q0FBOEM7QUFDL0Q7QUFFQTtFQUNFLFVBQVU7QUFDWjtBQUVBO0VBQ0UsVUFBVTtBQUNaO0FBRUEsbUNBQW1DO0FBQ25DO0VBQ0UsV0FBVztFQUNYLGNBQWM7RUFDZCxXQUFXO0FBQ2I7QUFFQTtFQUNFLGdCQUFnQjtBQUNsQiIsImZpbGUiOiJhZHZlcnRpc2UuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbImlucHV0W3R5cGU9J3JhZGlvJ11bbmFtZT0nYnV0dG9uR3JvdXAnXSB7IGRpc3BsYXk6bm9uZTsgfVxyXG5sYWJlbCB7XHJcbiAgZGlzcGxheTppbmxpbmUtYmxvY2s7XHJcbiAgcGFkZGluZzozcHg7XHJcbiAgYm9yZGVyOjFweCBzb2xpZCAjZTBlMGUwO1xyXG4gIGJvcmRlci1yYWRpdXM6M3B4O1xyXG4gIGJhY2tncm91bmQtY29sb3I6cmdiKDIyLCAxMywgMzEpO1xyXG4gIHdpZHRoOjEwZW07XHJcbiAgdGV4dC1hbGlnbjpjZW50ZXI7XHJcbn1cclxuaW5wdXRbdHlwZT0ncmFkaW8nXVtuYW1lPSdidXR0b25Hcm91cCddOmNoZWNrZWQgKyBsYWJlbCB7IGJhY2tncm91bmQtY29sb3I6IzM2MmUyZTsgfVxyXG5cclxuLmNvbHVtbiB7XHJcbiAgZmxvYXQ6IGxlZnQ7XHJcbiAgcGFkZGluZzogMTBweDtcclxuICBoZWlnaHQ6IDMwMHB4OyAvKiBTaG91bGQgYmUgcmVtb3ZlZC4gT25seSBmb3IgZGVtb25zdHJhdGlvbiAqL1xyXG59XHJcblxyXG4ubGVmdCB7XHJcbiAgd2lkdGg6IDUwJTtcclxufVxyXG5cclxuLnJpZ2h0IHtcclxuICB3aWR0aDogNTAlO1xyXG59XHJcblxyXG4vKiBDbGVhciBmbG9hdHMgYWZ0ZXIgdGhlIGNvbHVtbnMgKi9cclxuLnJvdzphZnRlciB7XHJcbiAgY29udGVudDogXCJcIjtcclxuICBkaXNwbGF5OiB0YWJsZTtcclxuICBjbGVhcjogYm90aDtcclxufVxyXG5cclxuLnN0YXRlLWljb24ge1xyXG4gIG1heC1oZWlnaHQ6IDI1cHg7XHJcbn1cclxuIl19 */";
+module.exports = "input[type='radio'][name='buttonGroup'] { display:none; }\r\nlabel {\r\n  display:inline-block;\r\n  padding:3px;\r\n  border:1px solid #000000;\r\n  border-radius:3px;\r\n  background-color:rgb(245, 245, 245);\r\n  width:10em;\r\n  text-align:center;\r\n}\r\ninput[type='radio'][name='buttonGroup']:checked + label { background-color:#bbbbbb; }\r\n.column {\r\n  float: left;\r\n  padding: 10px;\r\n  height: 300px; /* Should be removed. Only for demonstration */\r\n}\r\n.left {\r\n  width: 50%;\r\n}\r\n.right {\r\n  width: 50%;\r\n}\r\n/* Clear floats after the columns */\r\n.row:after {\r\n  content: \"\";\r\n  display: table;\r\n  clear: both;\r\n}\r\n.state-icon {\r\n  max-height: 25px;\r\n}\r\nion-content{\r\n  --background: #fff url('advertise.png') no-repeat center center / cover;\r\n}\r\n.center {\r\n  font-size: large;\r\n  text-align: center;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  left: 50%\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFkdmVydGlzZS5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLDBDQUEwQyxZQUFZLEVBQUU7QUFDeEQ7RUFDRSxvQkFBb0I7RUFDcEIsV0FBVztFQUNYLHdCQUF3QjtFQUN4QixpQkFBaUI7RUFDakIsbUNBQW1DO0VBQ25DLFVBQVU7RUFDVixpQkFBaUI7QUFDbkI7QUFDQSwwREFBMEQsd0JBQXdCLEVBQUU7QUFFcEY7RUFDRSxXQUFXO0VBQ1gsYUFBYTtFQUNiLGFBQWEsRUFBRSw4Q0FBOEM7QUFDL0Q7QUFFQTtFQUNFLFVBQVU7QUFDWjtBQUVBO0VBQ0UsVUFBVTtBQUNaO0FBRUEsbUNBQW1DO0FBQ25DO0VBQ0UsV0FBVztFQUNYLGNBQWM7RUFDZCxXQUFXO0FBQ2I7QUFFQTtFQUNFLGdCQUFnQjtBQUNsQjtBQUVBO0VBQ0UsdUVBQThGO0FBQ2hHO0FBRUE7RUFDRSxnQkFBZ0I7RUFDaEIsa0JBQWtCO0VBQ2xCLGFBQWE7RUFDYix1QkFBdUI7RUFDdkIsbUJBQW1CO0VBQ25CO0FBQ0YiLCJmaWxlIjoiYWR2ZXJ0aXNlLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpbnB1dFt0eXBlPSdyYWRpbyddW25hbWU9J2J1dHRvbkdyb3VwJ10geyBkaXNwbGF5Om5vbmU7IH1cclxubGFiZWwge1xyXG4gIGRpc3BsYXk6aW5saW5lLWJsb2NrO1xyXG4gIHBhZGRpbmc6M3B4O1xyXG4gIGJvcmRlcjoxcHggc29saWQgIzAwMDAwMDtcclxuICBib3JkZXItcmFkaXVzOjNweDtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOnJnYigyNDUsIDI0NSwgMjQ1KTtcclxuICB3aWR0aDoxMGVtO1xyXG4gIHRleHQtYWxpZ246Y2VudGVyO1xyXG59XHJcbmlucHV0W3R5cGU9J3JhZGlvJ11bbmFtZT0nYnV0dG9uR3JvdXAnXTpjaGVja2VkICsgbGFiZWwgeyBiYWNrZ3JvdW5kLWNvbG9yOiNiYmJiYmI7IH1cclxuXHJcbi5jb2x1bW4ge1xyXG4gIGZsb2F0OiBsZWZ0O1xyXG4gIHBhZGRpbmc6IDEwcHg7XHJcbiAgaGVpZ2h0OiAzMDBweDsgLyogU2hvdWxkIGJlIHJlbW92ZWQuIE9ubHkgZm9yIGRlbW9uc3RyYXRpb24gKi9cclxufVxyXG5cclxuLmxlZnQge1xyXG4gIHdpZHRoOiA1MCU7XHJcbn1cclxuXHJcbi5yaWdodCB7XHJcbiAgd2lkdGg6IDUwJTtcclxufVxyXG5cclxuLyogQ2xlYXIgZmxvYXRzIGFmdGVyIHRoZSBjb2x1bW5zICovXHJcbi5yb3c6YWZ0ZXIge1xyXG4gIGNvbnRlbnQ6IFwiXCI7XHJcbiAgZGlzcGxheTogdGFibGU7XHJcbiAgY2xlYXI6IGJvdGg7XHJcbn1cclxuXHJcbi5zdGF0ZS1pY29uIHtcclxuICBtYXgtaGVpZ2h0OiAyNXB4O1xyXG59XHJcblxyXG5pb24tY29udGVudHtcclxuICAtLWJhY2tncm91bmQ6ICNmZmYgdXJsKFwiLi4vLi4vLi4vYXNzZXRzL2ltYWdlcy9hZHZlcnRpc2UucG5nXCIpIG5vLXJlcGVhdCBjZW50ZXIgY2VudGVyIC8gY292ZXI7XHJcbn1cclxuXHJcbi5jZW50ZXIge1xyXG4gIGZvbnQtc2l6ZTogbGFyZ2U7XHJcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gIGRpc3BsYXk6IGZsZXg7XHJcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XHJcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuICBsZWZ0OiA1MCVcclxufVxyXG4iXX0= */";
+
+/***/ }),
+
+/***/ 3579:
+/*!*****************************************************************!*\
+  !*** ./src/app/tab1/campaign/campaign.component.css?ngResource ***!
+  \*****************************************************************/
+/***/ ((module) => {
+
+module.exports = "ion-content{\r\n  --background: #fff url('rally.png') no-repeat center center / cover;\r\n}\r\n/*\r\np {\r\n  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;\r\n  color: #000;\r\n} */\r\n/* h1 {\r\n  color: #000;\r\n  text-shadow: 1px 0 0 #fff, 0 -1px 0 #fff, 0 1px 0 #fff, -1px 0 0 #fff;\r\n}\r\n\r\nh3 {\r\n  color: #000;\r\n  text-shadow: 1px 0 0 #fff, 0 -1px 0 #fff, 0 1px 0 #fff, -1px 0 0 #fff;\r\n} */\r\n.center {\r\n  font-size: large;\r\n  text-align: center;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  left: 50%\r\n}\r\n\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNhbXBhaWduLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxtRUFBMEY7QUFDNUY7QUFDQTs7OztHQUlHO0FBRUg7Ozs7Ozs7O0dBUUc7QUFFSDtFQUNFLGdCQUFnQjtFQUNoQixrQkFBa0I7RUFDbEIsYUFBYTtFQUNiLHVCQUF1QjtFQUN2QixtQkFBbUI7RUFDbkI7QUFDRiIsImZpbGUiOiJjYW1wYWlnbi5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLWNvbnRlbnR7XHJcbiAgLS1iYWNrZ3JvdW5kOiAjZmZmIHVybChcIi4uLy4uLy4uL2Fzc2V0cy9pbWFnZXMvcmFsbHkucG5nXCIpIG5vLXJlcGVhdCBjZW50ZXIgY2VudGVyIC8gY292ZXI7XHJcbn1cclxuLypcclxucCB7XHJcbiAgZm9udC1mYW1pbHk6ICdGcmFua2xpbiBHb3RoaWMgTWVkaXVtJywgJ0FyaWFsIE5hcnJvdycsIEFyaWFsLCBzYW5zLXNlcmlmO1xyXG4gIGNvbG9yOiAjMDAwO1xyXG59ICovXHJcblxyXG4vKiBoMSB7XHJcbiAgY29sb3I6ICMwMDA7XHJcbiAgdGV4dC1zaGFkb3c6IDFweCAwIDAgI2ZmZiwgMCAtMXB4IDAgI2ZmZiwgMCAxcHggMCAjZmZmLCAtMXB4IDAgMCAjZmZmO1xyXG59XHJcblxyXG5oMyB7XHJcbiAgY29sb3I6ICMwMDA7XHJcbiAgdGV4dC1zaGFkb3c6IDFweCAwIDAgI2ZmZiwgMCAtMXB4IDAgI2ZmZiwgMCAxcHggMCAjZmZmLCAtMXB4IDAgMCAjZmZmO1xyXG59ICovXHJcblxyXG4uY2VudGVyIHtcclxuICBmb250LXNpemU6IGxhcmdlO1xyXG4gIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICBkaXNwbGF5OiBmbGV4O1xyXG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xyXG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbiAgbGVmdDogNTAlXHJcbn1cclxuXHJcbiJdfQ== */";
+
+/***/ }),
+
+/***/ 7683:
+/*!***********************************************************!*\
+  !*** ./src/app/tab1/event/event.component.css?ngResource ***!
+  \***********************************************************/
+/***/ ((module) => {
+
+module.exports = "ion-content{\r\n  --background: #fff url('debate.png') no-repeat center center / cover;\r\n}\r\n\r\n.center {\r\n  font-size: large;\r\n  text-align: center;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  left: 50%\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImV2ZW50LmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxvRUFBMkY7QUFDN0Y7O0FBRUE7RUFDRSxnQkFBZ0I7RUFDaEIsa0JBQWtCO0VBQ2xCLGFBQWE7RUFDYix1QkFBdUI7RUFDdkIsbUJBQW1CO0VBQ25CO0FBQ0YiLCJmaWxlIjoiZXZlbnQuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi1jb250ZW50e1xyXG4gIC0tYmFja2dyb3VuZDogI2ZmZiB1cmwoXCIuLi8uLi8uLi9hc3NldHMvaW1hZ2VzL2RlYmF0ZS5wbmdcIikgbm8tcmVwZWF0IGNlbnRlciBjZW50ZXIgLyBjb3ZlcjtcclxufVxyXG5cclxuLmNlbnRlciB7XHJcbiAgZm9udC1zaXplOiBsYXJnZTtcclxuICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgZGlzcGxheTogZmxleDtcclxuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcclxuICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG4gIGxlZnQ6IDUwJVxyXG59XHJcbiJdfQ== */";
+
+/***/ }),
+
+/***/ 3899:
+/*!*******************************************************************!*\
+  !*** ./src/app/tab1/fundraise/fundraise.component.css?ngResource ***!
+  \*******************************************************************/
+/***/ ((module) => {
+
+module.exports = "ion-content{\r\n  --background: #fff url('fundraise.png') no-repeat center center / cover;\r\n}\r\n\r\n.center {\r\n  font-size: large;\r\n  text-align: center;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  left: 50%\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImZ1bmRyYWlzZS5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsdUVBQThGO0FBQ2hHOztBQUVBO0VBQ0UsZ0JBQWdCO0VBQ2hCLGtCQUFrQjtFQUNsQixhQUFhO0VBQ2IsdUJBQXVCO0VBQ3ZCLG1CQUFtQjtFQUNuQjtBQUNGIiwiZmlsZSI6ImZ1bmRyYWlzZS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLWNvbnRlbnR7XHJcbiAgLS1iYWNrZ3JvdW5kOiAjZmZmIHVybChcIi4uLy4uLy4uL2Fzc2V0cy9pbWFnZXMvZnVuZHJhaXNlLnBuZ1wiKSBuby1yZXBlYXQgY2VudGVyIGNlbnRlciAvIGNvdmVyO1xyXG59XHJcblxyXG4uY2VudGVyIHtcclxuICBmb250LXNpemU6IGxhcmdlO1xyXG4gIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICBkaXNwbGF5OiBmbGV4O1xyXG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xyXG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbiAgbGVmdDogNTAlXHJcbn1cclxuIl19 */";
+
+/***/ }),
+
+/***/ 3142:
+/*!*****************************************************************!*\
+  !*** ./src/app/tab1/opponent/opponent.component.css?ngResource ***!
+  \*****************************************************************/
+/***/ ((module) => {
+
+module.exports = "ion-content{\r\n  --background: #fff url('opponent.png') no-repeat center center / cover;\r\n}\r\n\r\n\r\n.center {\r\n  font-size: large;\r\n  text-align: center;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  left: 50%\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm9wcG9uZW50LmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxzRUFBNkY7QUFDL0Y7OztBQUdBO0VBQ0UsZ0JBQWdCO0VBQ2hCLGtCQUFrQjtFQUNsQixhQUFhO0VBQ2IsdUJBQXVCO0VBQ3ZCLG1CQUFtQjtFQUNuQjtBQUNGIiwiZmlsZSI6Im9wcG9uZW50LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpb24tY29udGVudHtcclxuICAtLWJhY2tncm91bmQ6ICNmZmYgdXJsKFwiLi4vLi4vLi4vYXNzZXRzL2ltYWdlcy9vcHBvbmVudC5wbmdcIikgbm8tcmVwZWF0IGNlbnRlciBjZW50ZXIgLyBjb3ZlcjtcclxufVxyXG5cclxuXHJcbi5jZW50ZXIge1xyXG4gIGZvbnQtc2l6ZTogbGFyZ2U7XHJcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gIGRpc3BsYXk6IGZsZXg7XHJcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XHJcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuICBsZWZ0OiA1MCVcclxufVxyXG4iXX0= */";
+
+/***/ }),
+
+/***/ 6176:
+/*!***************************************************************!*\
+  !*** ./src/app/tab1/results/results.component.css?ngResource ***!
+  \***************************************************************/
+/***/ ((module) => {
+
+module.exports = "ion-content{\r\n  --background: #fff url('results.png') no-repeat center center / cover;\r\n}\r\n\r\n.center {\r\n  font-size: large;\r\n  text-align: center;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  left: 50%\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInJlc3VsdHMuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLHFFQUE0RjtBQUM5Rjs7QUFFQTtFQUNFLGdCQUFnQjtFQUNoQixrQkFBa0I7RUFDbEIsYUFBYTtFQUNiLHVCQUF1QjtFQUN2QixtQkFBbUI7RUFDbkI7QUFDRiIsImZpbGUiOiJyZXN1bHRzLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpb24tY29udGVudHtcclxuICAtLWJhY2tncm91bmQ6ICNmZmYgdXJsKFwiLi4vLi4vLi4vYXNzZXRzL2ltYWdlcy9yZXN1bHRzLnBuZ1wiKSBuby1yZXBlYXQgY2VudGVyIGNlbnRlciAvIGNvdmVyO1xyXG59XHJcblxyXG4uY2VudGVyIHtcclxuICBmb250LXNpemU6IGxhcmdlO1xyXG4gIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICBkaXNwbGF5OiBmbGV4O1xyXG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xyXG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbiAgbGVmdDogNTAlXHJcbn1cclxuIl19 */";
 
 /***/ }),
 
@@ -1222,7 +1386,7 @@ module.exports = "input[type='radio'][name='buttonGroup'] { display:none; }\r\nl
   \***********************************************/
 /***/ ((module) => {
 
-module.exports = ".option {\r\n  height: 100px;\r\n  position: relative;\r\n  left: 10%;\r\n  width: 80%;\r\n  right: 10%;\r\n}\r\n\r\n.bg-image {\r\n  background-color: red!important;\r\n}\r\n\r\n.header-icon {\r\n  position: fixed;\r\n  right: 10px;\r\n  max-height: 30px;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRhYjEucGFnZS5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxhQUFhO0VBQ2Isa0JBQWtCO0VBQ2xCLFNBQVM7RUFDVCxVQUFVO0VBQ1YsVUFBVTtBQUNaOztBQUVBO0VBQ0UsK0JBQStCO0FBQ2pDOztBQUVBO0VBQ0UsZUFBZTtFQUNmLFdBQVc7RUFDWCxnQkFBZ0I7QUFDbEIiLCJmaWxlIjoidGFiMS5wYWdlLmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5vcHRpb24ge1xyXG4gIGhlaWdodDogMTAwcHg7XHJcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG4gIGxlZnQ6IDEwJTtcclxuICB3aWR0aDogODAlO1xyXG4gIHJpZ2h0OiAxMCU7XHJcbn1cclxuXHJcbi5iZy1pbWFnZSB7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogcmVkIWltcG9ydGFudDtcclxufVxyXG5cclxuLmhlYWRlci1pY29uIHtcclxuICBwb3NpdGlvbjogZml4ZWQ7XHJcbiAgcmlnaHQ6IDEwcHg7XHJcbiAgbWF4LWhlaWdodDogMzBweDtcclxufVxyXG4iXX0= */";
+module.exports = ".option {\r\n  height: 100px;\r\n  position: relative;\r\n  left: 10%;\r\n  width: 80%;\r\n  right: 10%;\r\n}\r\n\r\n\r\nion-content{\r\n  --background: #fff url('boardroom.png') no-repeat center center / cover;\r\n}\r\n\r\n\r\n.header-icon {\r\n  position: fixed;\r\n  right: 10px;\r\n  max-height: 30px;\r\n}\r\n\r\n\r\n.center {\r\n  font-size: large;\r\n  text-align: center;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  left: 50%\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRhYjEucGFnZS5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxhQUFhO0VBQ2Isa0JBQWtCO0VBQ2xCLFNBQVM7RUFDVCxVQUFVO0VBQ1YsVUFBVTtBQUNaOzs7QUFHQTtFQUNFLHVFQUEyRjtBQUM3Rjs7O0FBRUE7RUFDRSxlQUFlO0VBQ2YsV0FBVztFQUNYLGdCQUFnQjtBQUNsQjs7O0FBRUE7RUFDRSxnQkFBZ0I7RUFDaEIsa0JBQWtCO0VBQ2xCLGFBQWE7RUFDYix1QkFBdUI7RUFDdkIsbUJBQW1CO0VBQ25CO0FBQ0YiLCJmaWxlIjoidGFiMS5wYWdlLmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5vcHRpb24ge1xyXG4gIGhlaWdodDogMTAwcHg7XHJcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG4gIGxlZnQ6IDEwJTtcclxuICB3aWR0aDogODAlO1xyXG4gIHJpZ2h0OiAxMCU7XHJcbn1cclxuXHJcblxyXG5pb24tY29udGVudHtcclxuICAtLWJhY2tncm91bmQ6ICNmZmYgdXJsKFwiLi4vLi4vYXNzZXRzL2ltYWdlcy9ib2FyZHJvb20ucG5nXCIpIG5vLXJlcGVhdCBjZW50ZXIgY2VudGVyIC8gY292ZXI7XHJcbn1cclxuXHJcbi5oZWFkZXItaWNvbiB7XHJcbiAgcG9zaXRpb246IGZpeGVkO1xyXG4gIHJpZ2h0OiAxMHB4O1xyXG4gIG1heC1oZWlnaHQ6IDMwcHg7XHJcbn1cclxuXHJcbi5jZW50ZXIge1xyXG4gIGZvbnQtc2l6ZTogbGFyZ2U7XHJcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gIGRpc3BsYXk6IGZsZXg7XHJcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XHJcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuICBsZWZ0OiA1MCVcclxufVxyXG4iXX0= */";
 
 /***/ }),
 
@@ -1232,7 +1396,7 @@ module.exports = ".option {\r\n  height: 100px;\r\n  position: relative;\r\n  le
   \*****************************************************/
 /***/ ((module) => {
 
-module.exports = "<img class=\"dice\" src='assets/{{imageValue}}.png'>\r\n<ion-button [disabled]=\"!canClick\" (click)=\"animatedDiceRoll()\">Roll</ion-button>\r\n";
+module.exports = "<div class=\"center\">\r\n  <img class=\"dice\" src='assets/{{imageValue}}.png'>\r\n  <ion-button [disabled]=\"!canClick\" (click)=\"animatedDiceRoll()\">Roll</ion-button>\r\n</div>\r\n";
 
 /***/ }),
 
@@ -1242,7 +1406,7 @@ module.exports = "<img class=\"dice\" src='assets/{{imageValue}}.png'>\r\n<ion-b
   \********************************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-content [fullscreen]=\"true\">\r\n\r\n<h1>Advertise</h1>\r\n<h3>Choose a block of states to advertise to:</h3>\r\n<!-- Have an icon for each of the state blocks -->\r\n<div class=\"row\">\r\n  <div [formGroup]=\"myGroup\">\r\n    <div class=\"column left\">\r\n    <input type=\"radio\" name=\"buttonGroup\" formControlName=\"buttonGroup\" value=\"one\" id=\"one\"><label for=\"one\">\r\n      <img class=\"state-icon\" src=\"../../../assets/images/states/HI-Hawaii.png\">\r\n      <img class=\"state-icon\" src=\"../../../assets/images/states/CA-California.png\">\r\n      <img class=\"state-icon\" src=\"../../../assets/images/states/WA-Washington.png\">\r\n      <img class=\"state-icon\" src=\"../../../assets/images/states/OR-Oregon.png\">\r\n      <br>\r\n      Block 1 (HI, CA, WA, OR)</label>\r\n    <input type=\"radio\" name=\"buttonGroup\" formControlName=\"buttonGroup\" value=\"two\" id=\"two\"><label for=\"two\">\r\n      <img class=\"state-icon\" src=\"../../../assets/images/states/IL-Illinois.png\">\r\n      <img class=\"state-icon\" src=\"../../../assets/images/states/MN-Minnesota.png\">\r\n      <br>\r\n      Block 2 (IL, MN)</label>\r\n    <input type=\"radio\" name=\"buttonGroup\" formControlName=\"buttonGroup\" value=\"three\" id=\"three\"><label for=\"three\">\r\n      <img class=\"state-icon\" src=\"../../../assets/images/states/NM-New-Mexico.png\">\r\n      <img class=\"state-icon\" src=\"../../../assets/images/states/CO-Colorado.png\">\r\n      <img class=\"state-icon\" src=\"../../../assets/images/states/NV-Nevada.png\">\r\n      <img class=\"state-icon\" src=\"../../../assets/images/states/AZ-Arizona.png\">\r\n      <br>\r\n      Block 3 (NM, CO, NV, AZ)</label>\r\n    <input type=\"radio\" name=\"buttonGroup\" formControlName=\"buttonGroup\" value=\"four\" id=\"four\"><label for=\"four\">\r\n      <img class=\"state-icon\" src=\"../../../assets/images/states/ME-Maine.png\">\r\n      <img class=\"state-icon\" src=\"../../../assets/images/states/NH-New-Hampshire.png\">\r\n      <img class=\"state-icon\" src=\"../../../assets/images/states/VA-Virginia.png\">\r\n      <img class=\"state-icon\" src=\"../../../assets/images/states/PA-Pennsylvania.png\">\r\n      <br>\r\n      Block 4 (ME, NH, VA, PA)</label>\r\n  </div>\r\n  <div class=\"column right\">\r\n    <input type=\"radio\" name=\"buttonGroup\" formControlName=\"buttonGroup\" value=\"five\" id=\"five\"><label for=\"five\">\r\n      <img class=\"state-icon\" src=\"../../../assets/images/states/WI-Wisconsin.png\">\r\n      <img class=\"state-icon\" src=\"../../../assets/images/states/IA-Iowa.png\">\r\n      <img class=\"state-icon\" src=\"../../../assets/images/states/MI-Michigan.png\">\r\n      <img class=\"state-icon\" src=\"../../../assets/images/states/OH-Ohio.png\">\r\n      <br>\r\n      Block 5 (WI, IA, MI, OH)</label>\r\n    <input type=\"radio\" name=\"buttonGroup\" formControlName=\"buttonGroup\" value=\"six\" id=\"six\"><label for=\"six\">\r\n      <img class=\"state-icon\" src=\"../../../assets/images/states/FL-Florida.png\">\r\n      <img class=\"state-icon\" src=\"../../../assets/images/states/NC-North-Carolina.png\">\r\n      <img class=\"state-icon\" src=\"../../../assets/images/states/GA-Georgia.png\">\r\n      <br>\r\n      Block 6 (FL, NC, GA)</label>\r\n    <input type=\"radio\" name=\"buttonGroup\" formControlName=\"buttonGroup\" value=\"seven\" id=\"seven\"><label for=\"seven\">\r\n      <img class=\"state-icon\" src=\"../../../assets/images/states/TX-Texas.png\">\r\n      <br>\r\n      Block 7 (TX)</label>\r\n    <input type=\"radio\" name=\"buttonGroup\" formControlName=\"buttonGroup\" value=\"eight\" id=\"eight\"><label for=\"eight\">\r\n      <img class=\"state-icon\" src=\"../../../assets/images/states/SC-South-Carolina.png\">\r\n      <img class=\"state-icon\" src=\"../../../assets/images/states/MO-Missouri.png\">\r\n      <img class=\"state-icon\" src=\"../../../assets/images/states/IN-Indiana.png\">\r\n      <img class=\"state-icon\" src=\"../../../assets/images/states/MT-Montana.png\">\r\n      <img class=\"state-icon\" src=\"../../../assets/images/states/MS-Mississippi.png\">\r\n      <img class=\"state-icon\" src=\"../../../assets/images/states/AK-Alaska.png\">\r\n      <img class=\"state-icon\" src=\"../../../assets/images/states/LA-Louisiana.png\">\r\n      <br>\r\n      Block 8 (SC, MO, IN, MT, MS, AK, LA)</label>\r\n    </div>\r\n  </div>\r\n</div>\r\n<p>After choosing which block you will advertise to, click 'roll' to see how well your advertisement landed.<br>\r\nRolling a 1 will result in no effect<br>\r\nRolling a 2,3,4 or 5 will result in a +1<br>\r\nRolling a 6 will result in a +2<br></p>\r\n<app-dice (diceRolled)=\"handleRoll($event)\"></app-dice>\r\n<ion-button [disabled]=\"!canBack\" (click)=\"back()\">Back To Options</ion-button>\r\n</ion-content>\r\n";
+module.exports = "<ion-content [fullscreen]=\"true\">\r\n<div class=\"center\">\r\n<h1>Advertise</h1>\r\n</div>\r\n<div class=\"center\">\r\n<h3>Choose a block of states to advertise to:</h3>\r\n</div>\r\n\r\n<!-- Have an icon for each of the state blocks -->\r\n<div class=\"row\">\r\n  <div [formGroup]=\"myGroup\">\r\n    <div class=\"column left\">\r\n    <input type=\"radio\" name=\"buttonGroup\" formControlName=\"buttonGroup\" value=\"one\" id=\"one\"><label for=\"one\">\r\n      <img class=\"state-icon\" src=\"../../../assets/images/states/HI-Hawaii.png\">\r\n      <img class=\"state-icon\" src=\"../../../assets/images/states/CA-California.png\">\r\n      <img class=\"state-icon\" src=\"../../../assets/images/states/WA-Washington.png\">\r\n      <img class=\"state-icon\" src=\"../../../assets/images/states/OR-Oregon.png\">\r\n      <br>\r\n      Block 1 (HI, CA, WA, OR)</label>\r\n    <input type=\"radio\" name=\"buttonGroup\" formControlName=\"buttonGroup\" value=\"two\" id=\"two\"><label for=\"two\">\r\n      <img class=\"state-icon\" src=\"../../../assets/images/states/IL-Illinois.png\">\r\n      <img class=\"state-icon\" src=\"../../../assets/images/states/MN-Minnesota.png\">\r\n      <br>\r\n      Block 2 (IL, MN)</label>\r\n    <input type=\"radio\" name=\"buttonGroup\" formControlName=\"buttonGroup\" value=\"three\" id=\"three\"><label for=\"three\">\r\n      <img class=\"state-icon\" src=\"../../../assets/images/states/NM-New-Mexico.png\">\r\n      <img class=\"state-icon\" src=\"../../../assets/images/states/CO-Colorado.png\">\r\n      <img class=\"state-icon\" src=\"../../../assets/images/states/NV-Nevada.png\">\r\n      <img class=\"state-icon\" src=\"../../../assets/images/states/AZ-Arizona.png\">\r\n      <br>\r\n      Block 3 (NM, CO, NV, AZ)</label>\r\n    <input type=\"radio\" name=\"buttonGroup\" formControlName=\"buttonGroup\" value=\"four\" id=\"four\"><label for=\"four\">\r\n      <img class=\"state-icon\" src=\"../../../assets/images/states/ME-Maine.png\">\r\n      <img class=\"state-icon\" src=\"../../../assets/images/states/NH-New-Hampshire.png\">\r\n      <img class=\"state-icon\" src=\"../../../assets/images/states/VA-Virginia.png\">\r\n      <img class=\"state-icon\" src=\"../../../assets/images/states/PA-Pennsylvania.png\">\r\n      <br>\r\n      Block 4 (ME, NH, VA, PA)</label>\r\n  </div>\r\n  <div class=\"column right\">\r\n    <input type=\"radio\" name=\"buttonGroup\" formControlName=\"buttonGroup\" value=\"five\" id=\"five\"><label for=\"five\">\r\n      <img class=\"state-icon\" src=\"../../../assets/images/states/WI-Wisconsin.png\">\r\n      <img class=\"state-icon\" src=\"../../../assets/images/states/IA-Iowa.png\">\r\n      <img class=\"state-icon\" src=\"../../../assets/images/states/MI-Michigan.png\">\r\n      <img class=\"state-icon\" src=\"../../../assets/images/states/OH-Ohio.png\">\r\n      <br>\r\n      Block 5 (WI, IA, MI, OH)</label>\r\n    <input type=\"radio\" name=\"buttonGroup\" formControlName=\"buttonGroup\" value=\"six\" id=\"six\"><label for=\"six\">\r\n      <img class=\"state-icon\" src=\"../../../assets/images/states/FL-Florida.png\">\r\n      <img class=\"state-icon\" src=\"../../../assets/images/states/NC-North-Carolina.png\">\r\n      <img class=\"state-icon\" src=\"../../../assets/images/states/GA-Georgia.png\">\r\n      <br>\r\n      Block 6 (FL, NC, GA)</label>\r\n    <input type=\"radio\" name=\"buttonGroup\" formControlName=\"buttonGroup\" value=\"seven\" id=\"seven\"><label for=\"seven\">\r\n      <img class=\"state-icon\" src=\"../../../assets/images/states/TX-Texas.png\">\r\n      <br>\r\n      Block 7 (TX)</label>\r\n    <input type=\"radio\" name=\"buttonGroup\" formControlName=\"buttonGroup\" value=\"eight\" id=\"eight\"><label for=\"eight\">\r\n      <img class=\"state-icon\" src=\"../../../assets/images/states/SC-South-Carolina.png\">\r\n      <img class=\"state-icon\" src=\"../../../assets/images/states/MO-Missouri.png\">\r\n      <img class=\"state-icon\" src=\"../../../assets/images/states/IN-Indiana.png\">\r\n      <img class=\"state-icon\" src=\"../../../assets/images/states/MT-Montana.png\">\r\n      <img class=\"state-icon\" src=\"../../../assets/images/states/MS-Mississippi.png\">\r\n      <img class=\"state-icon\" src=\"../../../assets/images/states/AK-Alaska.png\">\r\n      <img class=\"state-icon\" src=\"../../../assets/images/states/LA-Louisiana.png\">\r\n      <br>\r\n      Block 8 (SC, MO, IN, MT, MS, AK, LA)</label>\r\n    </div>\r\n  </div>\r\n</div>\r\n<div class=\"center\">\r\n<p>After choosing which block you will advertise to, click 'roll' to see how the area is affected.</p>\r\n</div>\r\n<div class=\"center\">\r\n<app-dice (diceRolled)=\"handleRoll($event)\"></app-dice>\r\n</div>\r\n<div class=\"center\">\r\n<p>Rolling a 1 will result in no effect<br>\r\nRolling a 2,3,4 or 5 will result in a +1<br>\r\nRolling a 6 will result in a +2<br></p>\r\n</div>\r\n<div class=\"center\">\r\n<ion-button [disabled]=\"!canBack\" (click)=\"back()\">Back To Options</ion-button>\r\n</div>\r\n</ion-content>\r\n";
 
 /***/ }),
 
@@ -1252,7 +1416,7 @@ module.exports = "<ion-content [fullscreen]=\"true\">\r\n\r\n<h1>Advertise</h1>\
   \******************************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-content [fullscreen]=\"true\">\r\n<ion-grid>\r\n<h1>Campaign in a specific state</h1>\r\n<h3>Look at the stats page to decide which state you want to focus your campaign on!</h3>\r\n<p>Your roll decides how much of an impact you wil have in a state, BUT...</p>\r\n<p>Your campaigning is less effective the further the state is from your political stances.</p>\r\n<p>Example:</p>\r\n<p>A republican campaigning in a (+2 Dem) will subtract 2 from their roll.</p>\r\n<p>A democrat campaigning in a (+2 Dem) will add 2 to their roll.</p>\r\n\r\n\r\n<ion-list>\r\n  <ion-item>\r\n    <ion-select [(ngModel)]=\"chosenState\" placeholder=\"Choose a state:\">\r\n      <ion-select-option value=\"AL\">Alabama (+2 Rep)</ion-select-option>\r\n      <ion-select-option value=\"AK\">Alaska (+1 Rep)</ion-select-option>\r\n      <ion-select-option value=\"AZ\">Arizona</ion-select-option>\r\n      <ion-select-option value=\"AR\">Arkansas (+2 Rep)</ion-select-option>\r\n      <ion-select-option value=\"CA\">California (+1 Dem)</ion-select-option>\r\n      <ion-select-option value=\"CO\">Colorado</ion-select-option>\r\n      <ion-select-option value=\"CT\">Connecticut (+2 Dem)</ion-select-option>\r\n      <ion-select-option value=\"DE\">Delaware (+2 Dem)</ion-select-option>\r\n      <ion-select-option value=\"DC\">D.C. (+2 Dem)</ion-select-option>\r\n      <ion-select-option value=\"FL\">Florida</ion-select-option>\r\n      <ion-select-option value=\"GA\">Georgia</ion-select-option>\r\n      <ion-select-option value=\"HI\">Hawaii (+1 Dem)</ion-select-option>\r\n      <ion-select-option value=\"ID\">Idaho (+2 Rep)</ion-select-option>\r\n      <ion-select-option value=\"IL\">Illinois (+1 Dem)</ion-select-option>\r\n      <ion-select-option value=\"IN\">Indiana (+1 Rep)</ion-select-option>\r\n      <ion-select-option value=\"IA\">Iowa</ion-select-option>\r\n      <ion-select-option value=\"KS\">Kansas (+2 Rep)</ion-select-option>\r\n      <ion-select-option value=\"KY\">Kentucky (+2 Rep)</ion-select-option>\r\n      <ion-select-option value=\"LA\">Louisiana (+1 Rep)</ion-select-option>\r\n      <ion-select-option value=\"ME\">Maine</ion-select-option>\r\n      <ion-select-option value=\"MD\">Maryland (+2 Dem)</ion-select-option>\r\n      <ion-select-option value=\"MA\">Massachusetts (+2 Dem)</ion-select-option>\r\n      <ion-select-option value=\"MI\">Michigan</ion-select-option>\r\n      <ion-select-option value=\"MN\">Minnesota (+1 Dem)</ion-select-option>\r\n      <ion-select-option value=\"MS\">Mississippi (+1 Rep)</ion-select-option>\r\n      <ion-select-option value=\"MO\">Missouri (+1 Rep)</ion-select-option>\r\n      <ion-select-option value=\"MT\">Montana (+1 Rep)</ion-select-option>\r\n      <ion-select-option value=\"NE\">Nebraska (+2 Rep)</ion-select-option>\r\n      <ion-select-option value=\"NV\">Nevada</ion-select-option>\r\n      <ion-select-option value=\"NH\">New Hampshire</ion-select-option>\r\n      <ion-select-option value=\"NJ\">New Jersey (+2 Dem)</ion-select-option>\r\n      <ion-select-option value=\"NM\">New Mexico</ion-select-option>\r\n      <ion-select-option value=\"NY\">New York (+2 Dem)</ion-select-option>\r\n      <ion-select-option value=\"NC\">North Carolina</ion-select-option>\r\n      <ion-select-option value=\"ND\">North Dakota (+2 Rep)</ion-select-option>\r\n      <ion-select-option value=\"OH\">Ohio</ion-select-option>\r\n      <ion-select-option value=\"OK\">Oklahoma (+2 Rep)</ion-select-option>\r\n      <ion-select-option value=\"OR\">Oregon (+1 Dem)</ion-select-option>\r\n      <ion-select-option value=\"PA\">Pennsylvania</ion-select-option>\r\n      <ion-select-option value=\"RI\">Rhode Island (+2 Dem)</ion-select-option>\r\n      <ion-select-option value=\"SC\">South Carolina (+1 Rep)</ion-select-option>\r\n      <ion-select-option value=\"SD\">South Dakota (+2 Rep)</ion-select-option>\r\n      <ion-select-option value=\"TN\">Tennessee (+2 Rep)</ion-select-option>\r\n      <ion-select-option value=\"TX\">Texas (+1 Rep)</ion-select-option>\r\n      <ion-select-option value=\"UT\">Utah (+2 Rep)</ion-select-option>\r\n      <ion-select-option value=\"VT\">Vermont (+2 Dem)</ion-select-option>\r\n      <ion-select-option value=\"VI\">Virginia</ion-select-option>\r\n      <ion-select-option value=\"WA\">Washington (+1 Dem)</ion-select-option>\r\n      <ion-select-option value=\"WV\">West Virginia (+2 Rep)</ion-select-option>\r\n      <ion-select-option value=\"WI\">Wisconsin</ion-select-option>\r\n      <ion-select-option value=\"WY\">Wyoming (+2 Rep)</ion-select-option>\r\n    </ion-select>\r\n  </ion-item>\r\n</ion-list>\r\n<br>\r\n<app-dice (diceRolled)=\"handleRoll($event)\"></app-dice>\r\n</ion-grid>\r\n\r\n<ion-button [disabled]=\"!canBack\"(click)=\"back()\">Back To Options</ion-button>\r\n</ion-content>\r\n";
+module.exports = "<ion-content [fullscreen]=\"true\">\r\n  <div class=\"center\">\r\n  <h1>Campaign in a specific state</h1>\r\n  </div>\r\n  <div class=\"center\">\r\n  <h3>Look at the stats page to decide which state you want to focus your campaign on!</h3>\r\n  </div>\r\n  <div class=\"center\">\r\n  <p><strong>Your campaigning is less effective the further the state is from your political stances</strong></p>\r\n  </div>\r\n  <div class=\"center\">\r\n  <p>Example:</p>\r\n  <p>A republican campaigning in a (+2 Dem) will subtract 2 from their roll.</p>\r\n  <p>A democrat campaigning in a (+2 Dem) will add 2 to their roll.</p>\r\n  </div>\r\n\r\n\r\n  <ion-list>\r\n    <ion-item>\r\n      <ion-select [(ngModel)]=\"chosenState\" placeholder=\"Choose a state:\">\r\n        <ion-select-option value=\"AL\">Alabama (+2 Rep)</ion-select-option>\r\n        <ion-select-option value=\"AK\">Alaska (+1 Rep)</ion-select-option>\r\n        <ion-select-option value=\"AZ\">Arizona</ion-select-option>\r\n        <ion-select-option value=\"AR\">Arkansas (+2 Rep)</ion-select-option>\r\n        <ion-select-option value=\"CA\">California (+1 Dem)</ion-select-option>\r\n        <ion-select-option value=\"CO\">Colorado</ion-select-option>\r\n        <ion-select-option value=\"CT\">Connecticut (+2 Dem)</ion-select-option>\r\n        <ion-select-option value=\"DE\">Delaware (+2 Dem)</ion-select-option>\r\n        <ion-select-option value=\"DC\">D.C. (+2 Dem)</ion-select-option>\r\n        <ion-select-option value=\"FL\">Florida</ion-select-option>\r\n        <ion-select-option value=\"GA\">Georgia</ion-select-option>\r\n        <ion-select-option value=\"HI\">Hawaii (+1 Dem)</ion-select-option>\r\n        <ion-select-option value=\"ID\">Idaho (+2 Rep)</ion-select-option>\r\n        <ion-select-option value=\"IL\">Illinois (+1 Dem)</ion-select-option>\r\n        <ion-select-option value=\"IN\">Indiana (+1 Rep)</ion-select-option>\r\n        <ion-select-option value=\"IA\">Iowa</ion-select-option>\r\n        <ion-select-option value=\"KS\">Kansas (+2 Rep)</ion-select-option>\r\n        <ion-select-option value=\"KY\">Kentucky (+2 Rep)</ion-select-option>\r\n        <ion-select-option value=\"LA\">Louisiana (+1 Rep)</ion-select-option>\r\n        <ion-select-option value=\"ME\">Maine</ion-select-option>\r\n        <ion-select-option value=\"MD\">Maryland (+2 Dem)</ion-select-option>\r\n        <ion-select-option value=\"MA\">Massachusetts (+2 Dem)</ion-select-option>\r\n        <ion-select-option value=\"MI\">Michigan</ion-select-option>\r\n        <ion-select-option value=\"MN\">Minnesota (+1 Dem)</ion-select-option>\r\n        <ion-select-option value=\"MS\">Mississippi (+1 Rep)</ion-select-option>\r\n        <ion-select-option value=\"MO\">Missouri (+1 Rep)</ion-select-option>\r\n        <ion-select-option value=\"MT\">Montana (+1 Rep)</ion-select-option>\r\n        <ion-select-option value=\"NE\">Nebraska (+2 Rep)</ion-select-option>\r\n        <ion-select-option value=\"NV\">Nevada</ion-select-option>\r\n        <ion-select-option value=\"NH\">New Hampshire</ion-select-option>\r\n        <ion-select-option value=\"NJ\">New Jersey (+2 Dem)</ion-select-option>\r\n        <ion-select-option value=\"NM\">New Mexico</ion-select-option>\r\n        <ion-select-option value=\"NY\">New York (+2 Dem)</ion-select-option>\r\n        <ion-select-option value=\"NC\">North Carolina</ion-select-option>\r\n        <ion-select-option value=\"ND\">North Dakota (+2 Rep)</ion-select-option>\r\n        <ion-select-option value=\"OH\">Ohio</ion-select-option>\r\n        <ion-select-option value=\"OK\">Oklahoma (+2 Rep)</ion-select-option>\r\n        <ion-select-option value=\"OR\">Oregon (+1 Dem)</ion-select-option>\r\n        <ion-select-option value=\"PA\">Pennsylvania</ion-select-option>\r\n        <ion-select-option value=\"RI\">Rhode Island (+2 Dem)</ion-select-option>\r\n        <ion-select-option value=\"SC\">South Carolina (+1 Rep)</ion-select-option>\r\n        <ion-select-option value=\"SD\">South Dakota (+2 Rep)</ion-select-option>\r\n        <ion-select-option value=\"TN\">Tennessee (+2 Rep)</ion-select-option>\r\n        <ion-select-option value=\"TX\">Texas (+1 Rep)</ion-select-option>\r\n        <ion-select-option value=\"UT\">Utah (+2 Rep)</ion-select-option>\r\n        <ion-select-option value=\"VT\">Vermont (+2 Dem)</ion-select-option>\r\n        <ion-select-option value=\"VI\">Virginia</ion-select-option>\r\n        <ion-select-option value=\"WA\">Washington (+1 Dem)</ion-select-option>\r\n        <ion-select-option value=\"WV\">West Virginia (+2 Rep)</ion-select-option>\r\n        <ion-select-option value=\"WI\">Wisconsin</ion-select-option>\r\n        <ion-select-option value=\"WY\">Wyoming (+2 Rep)</ion-select-option>\r\n      </ion-select>\r\n    </ion-item>\r\n  </ion-list>\r\n  <div class=\"center\">\r\n    <app-dice (diceRolled)=\"handleRoll($event)\"></app-dice>\r\n  </div>\r\n  <div class=\"center\">\r\n\r\n  <ion-button [disabled]=\"!canBack\"(click)=\"back()\">Back To Options</ion-button>\r\n  </div>\r\n</ion-content>\r\n";
 
 /***/ }),
 
@@ -1262,7 +1426,7 @@ module.exports = "<ion-content [fullscreen]=\"true\">\r\n<ion-grid>\r\n<h1>Campa
   \************************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-content [fullscreen]=\"true\">\r\n\r\n<ion-grid>\r\n<p>Special Event has been triggered!</p>\r\n<p>Before rounds 4,7,10 there will be a debate!  It has rolling rules that effect national climate<br></p>\r\n<p>Gaffes, scandals, media tour, endorsements, SuperPacs will also appear here</p>\r\n\r\n<h1>Since this feature is unfinished, just roll the dice to effect the national climate.</h1>\r\n<h3>1,2,3 will move the national climate to the left</h3>\r\n<h3>4,5,6 will move the national climate to the right</h3>\r\n\r\n<app-dice (diceRolled)=\"handleRoll($event)\"></app-dice>\r\n</ion-grid>\r\n</ion-content>\r\n";
+module.exports = "<ion-content [fullscreen]=\"true\">\r\n\r\n\r\n<div class=\"center\">\r\n<h1>Special Event has been triggered!</h1>\r\n</div>\r\n<div class=\"center\">\r\n<!-- <p>Before rounds 4,7,10 there will be a debate!  It has rolling rules that effect national climate<br></p> -->\r\n<p>Debates, Gaffes, scandals, media tour, endorsements, SuperPacs will appear here</p>\r\n</div>\r\n<div class=\"center\">\r\n<h1>Since this feature is unfinished, just roll the dice to effect the national climate.</h1>\r\n</div>\r\n<div class=\"center\">\r\n<p>1,2,3 will move the national climate to the left</p>\r\n<p>4,5,6 will move the national climate to the right</p>\r\n</div>\r\n<div class=\"center\">\r\n\r\n<app-dice (diceRolled)=\"handleRoll($event)\"></app-dice>\r\n</div>\r\n</ion-content>\r\n";
 
 /***/ }),
 
@@ -1272,7 +1436,7 @@ module.exports = "<ion-content [fullscreen]=\"true\">\r\n\r\n<ion-grid>\r\n<p>Sp
   \********************************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-content [fullscreen]=\"true\">\r\n\r\n<h3>Fundraising</h3>\r\n\r\n<p>You can’t win without money. To run ads, you’ll need some money. If you roll a 1-4, you’ll receive one fundraising point. If you roll a 5 or 6, you’ll receive two fundraising points (way to grovel). Two fundraising points are worth 10,000 Stanley nickels.</p>\r\n<app-dice (diceRolled)=\"handleRoll($event)\"></app-dice>\r\n<ion-button [disabled]=\"!canBack\" (click)=\"back()\">Back To Options</ion-button>\r\n\r\n</ion-content>\r\n";
+module.exports = "<ion-content [fullscreen]=\"true\">\r\n\r\n<div class=\"center\">\r\n  <h3>Fundraising</h3>\r\n</div>\r\n<div class=\"center\">\r\n<p>You can’t win without money. To run ads, you’ll need some money. If you roll a 1-4, you’ll receive one fundraising point. If you roll a 5 or 6, you’ll receive two fundraising points (way to grovel). Two fundraising points are worth 10,000 Stanley nickels.</p>\r\n</div>\r\n<div class=\"center\">\r\n<app-dice (diceRolled)=\"handleRoll($event)\"></app-dice>\r\n</div>\r\n<div class=\"center\">\r\n<ion-button [disabled]=\"!canBack\" (click)=\"back()\">Back To Options</ion-button>\r\n</div>\r\n</ion-content>\r\n";
 
 /***/ }),
 
@@ -1282,7 +1446,7 @@ module.exports = "<ion-content [fullscreen]=\"true\">\r\n\r\n<h3>Fundraising</h3
   \******************************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-content [fullscreen]=\"true\">\r\n  <ion-grid>\r\n<h1>THIS IS WHAT YOUR OPPONENT DID:</h1>\r\n<h2>{{getNextOpponentAction()}}</h2>\r\n<ion-button (click)=\"nextEvent()\">Continue</ion-button>\r\n</ion-grid>\r\n</ion-content>\r\n";
+module.exports = "<ion-content [fullscreen]=\"true\">\r\n  <div class=\"center\">\r\n    <h1>THIS IS WHAT YOUR OPPONENT DID:</h1>\r\n  </div>\r\n  <div class=\"center\">\r\n    <h2>{{getNextOpponentAction()}}</h2>\r\n  </div>\r\n  <div class=\"center\">\r\n    <ion-button (click)=\"nextEvent()\">Continue</ion-button>\r\n  </div>\r\n</ion-content>\r\n";
 
 /***/ }),
 
@@ -1292,7 +1456,7 @@ module.exports = "<ion-content [fullscreen]=\"true\">\r\n  <ion-grid>\r\n<h1>THI
   \****************************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-content [fullscreen]=\"true\">\r\n\r\n  <ion-grid>\r\n<h1>GAME OVER</h1>\r\n<p>final score:</p>\r\n<p>Republican: {{votes.getFinalRed()}}</p>\r\n<p>Democrat: {{votes.getFinalBlue()}}</p>\r\n<p>See the stats tab for more info!</p>\r\n<ion-button (click)=\"mainMenu()\">Return to main menu</ion-button>\r\n</ion-grid>\r\n\r\n</ion-content>\r\n";
+module.exports = "<ion-content [fullscreen]=\"true\">\r\n\r\n<div class=\"center\">\r\n<h1><strong>GAME OVER</strong></h1>\r\n</div>\r\n<div class=\"center\">\r\n<p>Final Score:</p>\r\n<p>Republican: {{votes.getFinalRed()}}</p>\r\n<p>Democrat: {{votes.getFinalBlue()}}</p>\r\n</div>\r\n<div class=\"center\">\r\n<p>See the stats tab for more info!</p>\r\n</div>\r\n<div class=\"center\">\r\n<ion-button (click)=\"mainMenu()\">Return to main menu</ion-button>\r\n</div>\r\n\r\n</ion-content>\r\n";
 
 /***/ }),
 
@@ -1302,7 +1466,7 @@ module.exports = "<ion-content [fullscreen]=\"true\">\r\n\r\n  <ion-grid>\r\n<h1
   \************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-header [translucent]=\"true\">\n  <ion-toolbar>\n    <ion-title>\n      Round {{votes.round}} out of 10\n      <img class='header-icon' *ngIf=\"!isDemocrat\" src=\"../../assets/images/republicanIcon.png\">\n      <img class='header-icon' *ngIf=\"isDemocrat\" src=\"../../assets/images/democratIcon.png\">\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content [fullscreen]=\"true\" class=\"bg-image\">\n  <ion-grid>\n    <ion-col>Turn {{(votes.turn%2)+1}} of 2</ion-col>\n    ||\n    <ion-col>Funds: ${{votes.funds}}</ion-col>\n  </ion-grid>\n  <p>{{getCurrentTurn()}}</p>\n  <ion-button class=\"option\" (click)=\"fundraise()\"><img src=\"../../assets/images/funds.png\">Fundraise!</ion-button>\n  <ion-button class=\"option\" (click)=\"campaign()\"><img src=\"../../assets/images/campaign.png\">Campaign!</ion-button>\n  <ion-button class=\"option\" (click)=\"advertising()\"><img src=\"../../assets/images/ads.png\">Run Advertising!</ion-button>\n\n  <h1>{{text}}</h1>\n</ion-content>\n";
+module.exports = "<ion-header [translucent]=\"true\">\n  <ion-toolbar>\n    <ion-title>\n      Round {{votes.round}} out of 10\n      <img class='header-icon' *ngIf=\"!isDemocrat\" src=\"../../assets/images/republicanIcon.png\">\n      <img class='header-icon' *ngIf=\"isDemocrat\" src=\"../../assets/images/democratIcon.png\">\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content [fullscreen]=\"true\" >\n  <div class=\"center\">\n    <p><strong>Turn:</strong> {{(votes.turn%2)+1}} of 2 <strong>Funds:</strong> ${{votes.funds}}</p>\n  </div>\n  <div class=\"center\">\n    <p>{{getCurrentTurn()}}</p>\n  </div>\n  <ion-button class=\"option\" (click)=\"fundraise()\"><img src=\"../../assets/images/funds.png\">Fundraise!</ion-button>\n  <ion-button class=\"option\" (click)=\"campaign()\"><img src=\"../../assets/images/campaign.png\">Campaign!</ion-button>\n  <ion-button class=\"option\" (click)=\"advertising()\"><img src=\"../../assets/images/ads.png\">Run Advertising!</ion-button>\n</ion-content>\n";
 
 /***/ })
 

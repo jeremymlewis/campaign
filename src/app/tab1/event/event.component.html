@@ -1,14 +1,22 @@
 <ion-content [fullscreen]="true">
 
-<ion-grid>
-<p>Special Event has been triggered!</p>
-<p>Before rounds 4,7,10 there will be a debate!  It has rolling rules that effect national climate<br></p>
-<p>Gaffes, scandals, media tour, endorsements, SuperPacs will also appear here</p>
 
+<div class="center">
+<h1>Special Event has been triggered!</h1>
+</div>
+<div class="center">
+<!-- <p>Before rounds 4,7,10 there will be a debate!  It has rolling rules that effect national climate<br></p> -->
+<p>Debates, Gaffes, scandals, media tour, endorsements, SuperPacs will appear here</p>
+</div>
+<div class="center">
 <h1>Since this feature is unfinished, just roll the dice to effect the national climate.</h1>
-<h3>1,2,3 will move the national climate to the left</h3>
-<h3>4,5,6 will move the national climate to the right</h3>
+</div>
+<div class="center">
+<p>1,2,3 will move the national climate to the left</p>
+<p>4,5,6 will move the national climate to the right</p>
+</div>
+<div class="center">
 
 <app-dice (diceRolled)="handleRoll($event)"></app-dice>
-</ion-grid>
+</div>
 </ion-content>

@@ -17,13 +17,53 @@
 
 .center {
   text-align: center;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 50%
+}
+
+.center-border {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 50%;
+}
+
+ul {
+  margin: 0;
+  text-align: center;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+li {
+  list-style-type: none;
+}
+
+.svg-container {
+  width: 325px;
+  height: 225px;
+  overflow: visible;
+ }
+
+ svg {
+  width: 100%;
+  height: 100%;
+ }
+
+.land {
+  fill: #CCCCCC;
+  fill-opacity: 1;
+  stroke:white;
+  stroke-opacity: 1;
+  stroke-width:0.5;
 }
 
 .scorebox {
-  border-radius: 2px;
-  border-color: white;
-  border-style: solid;
-  background-color: rgb(66, 66, 66);
+  background-color: rgb(255, 255, 255);
 }
 
 .header-icon {
@@ -31,3 +71,53 @@
   right: 10px;
   max-height: 30px;
 }
+
+#bluebar {
+  height:10px;
+  width:25%;
+  fill: rgb(2, 2, 124);
+  background-color: rgb(2, 2, 124);
+}
+
+#lightbluebar {
+  height:10px;
+  width:15%;
+  fill: rgb(6, 99, 238);
+  background-color: rgb(6, 99, 238);
+}
+
+#pinkbar {
+  height:10px;
+  width:15%;
+  fill: pink;
+  background-color: pink;
+}
+
+#skybar {
+  height:10px;
+  width:15%;
+  fill: lightblue;
+  background-color: lightblue;
+}
+
+#greybar{
+  height:10px;
+  width:15%;
+  fill: gray;
+  background-color: gray;
+}
+
+#redbar {
+  height:10px;
+  width:15%;
+  fill: rgb(122, 2, 2);
+  background-color: rgb(122, 2, 2);
+}
+
+#lightredbar {
+  height:10px;
+  width:15%;
+  fill: rgb(228, 15, 50);
+  background-color: rgb(228, 15, 50);
+}
+

@@ -83,6 +83,7 @@ ExploreContainerComponentModule = (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__decora
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Event": () => (/* binding */ Event),
 /* harmony export */   "State": () => (/* binding */ State)
 /* harmony export */ });
 class State {
@@ -95,6 +96,8 @@ class State {
         this.leansRep = repPercentage - demPercentage;
         this.decided = decided || false;
     }
+}
+class Event {
 }
 
 
@@ -140,7 +143,7 @@ let VotesStore = class VotesStore {
         this.Illinois = new _State__WEBPACK_IMPORTED_MODULE_0__.State('IL', 20, 48, 34);
         this.Indiana = new _State__WEBPACK_IMPORTED_MODULE_0__.State('IN', 4, 30, 51, true);
         this.Iowa = new _State__WEBPACK_IMPORTED_MODULE_0__.State('IA', 6, 39, 43);
-        this.Kansas = new _State__WEBPACK_IMPORTED_MODULE_0__.State('KA', 6, 32, 49, true);
+        this.Kansas = new _State__WEBPACK_IMPORTED_MODULE_0__.State('KS', 6, 32, 49, true);
         this.Kentucky = new _State__WEBPACK_IMPORTED_MODULE_0__.State('KY', 8, 30, 51, true);
         this.Louisiana = new _State__WEBPACK_IMPORTED_MODULE_0__.State('LA', 8, 32, 49);
         this.Maine = new _State__WEBPACK_IMPORTED_MODULE_0__.State('ME', 4, 43, 39);
