@@ -8,6 +8,7 @@ import { ExploreContainerComponentModule } from '../explore-container/explore-co
 import { Tab1PageRoutingModule } from './tab1-routing.module';
 import { FundraisePage } from './fundraise/fundraise.component';
 import { EventPage } from './event/event.component';
+import { EventWelcomePage } from './event/event.welcome';
 import { CampaignPage } from './campaign/campaign.component';
 import { AdvertisePage } from './advertise/advertise.component';
 import { DiceComponent } from '../dice/dice.component';
@@ -23,6 +24,16 @@ import { ResultsPage } from './results/results.component';
     ExploreContainerComponentModule,
     Tab1PageRoutingModule
   ],
-  declarations: [Tab1Page, FundraisePage, EventPage, CampaignPage, AdvertisePage, DiceComponent, OpponentPage, ResultsPage]
+  declarations: [
+    Tab1Page,
+    FundraisePage,
+    EventPage,
+    EventWelcomePage,
+    CampaignPage,
+    AdvertisePage,
+    DiceComponent,
+    OpponentPage,
+    ResultsPage
+  ]
 })
 export class Tab1PageModule {}

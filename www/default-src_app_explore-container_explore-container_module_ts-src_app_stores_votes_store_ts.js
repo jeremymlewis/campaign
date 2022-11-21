@@ -141,7 +141,7 @@ let VotesStore = class VotesStore {
         this.Hawaii = new _State__WEBPACK_IMPORTED_MODULE_0__.State('HI', 4, 53, 28);
         this.Idaho = new _State__WEBPACK_IMPORTED_MODULE_0__.State('ID', 4, 30, 51, true);
         this.Illinois = new _State__WEBPACK_IMPORTED_MODULE_0__.State('IL', 20, 48, 34);
-        this.Indiana = new _State__WEBPACK_IMPORTED_MODULE_0__.State('IN', 4, 30, 51, true);
+        this.Indiana = new _State__WEBPACK_IMPORTED_MODULE_0__.State('IN', 11, 30, 51, true);
         this.Iowa = new _State__WEBPACK_IMPORTED_MODULE_0__.State('IA', 6, 39, 43);
         this.Kansas = new _State__WEBPACK_IMPORTED_MODULE_0__.State('KS', 6, 32, 49, true);
         this.Kentucky = new _State__WEBPACK_IMPORTED_MODULE_0__.State('KY', 8, 30, 51, true);
@@ -273,7 +273,7 @@ let VotesStore = class VotesStore {
     getTossUpsLeft() {
         const undecidedStates = [];
         for (const state of this.states) {
-            if (state.leansDem > 0 && state.leansDem < 5) {
+            if (state.leansDem > 0 && state.leansDem < 5 && !state.decided) {
                 undecidedStates.push(state);
             }
         }
@@ -282,7 +282,7 @@ let VotesStore = class VotesStore {
     getTossUps() {
         const undecidedStates = [];
         for (const state of this.states) {
-            if (state.leansDem === 0) {
+            if (state.leansDem === 0 && !state.decided) {
                 undecidedStates.push(state);
             }
         }
@@ -291,7 +291,7 @@ let VotesStore = class VotesStore {
     getTossUpsRight() {
         const undecidedStates = [];
         for (const state of this.states) {
-            if (state.leansRep > 0 && state.leansRep < 5) {
+            if (state.leansRep > 0 && state.leansRep < 5 && !state.decided) {
                 undecidedStates.push(state);
             }
         }
@@ -322,6 +322,11 @@ let VotesStore = class VotesStore {
         for (const state of this.states) {
             if (state.repPercent > state.demPercent) {
                 red += state.college;
+                state.decided = true;
+            }
+            if (state.repPercent === state.demPercent && this.NationalClimate >= 0) {
+                red += state.college;
+                state.decided = true;
             }
         }
         return red;
@@ -329,11 +334,142 @@ let VotesStore = class VotesStore {
     getFinalBlue() {
         let blue = 0;
         for (const state of this.states) {
-            if (state.repPercent <= state.demPercent) {
+            if (state.repPercent < state.demPercent) {
                 blue += state.college;
+                state.decided = true;
+            }
+            if (state.repPercent === state.demPercent && this.NationalClimate < 0) {
+                blue += state.college;
+                state.decided = true;
             }
         }
         return blue;
+    }
+    getUserWon() {
+        if (this.getFinalBlue() > 269 && this.isDemocrat) {
+            return true;
+        }
+        else if (this.getFinalBlue() > 269 && !this.isDemocrat) {
+            return false;
+        }
+        if (this.getFinalRed() > 269 && !this.isDemocrat) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    reset() {
+        this.isDemocrat = true;
+        this.funds = 0;
+        this.round = 1;
+        this.turn = 0;
+        this.NationalClimate = 0;
+        this.Alabama = new _State__WEBPACK_IMPORTED_MODULE_0__.State('AL', 9, 32, 49, true);
+        this.Alaska = new _State__WEBPACK_IMPORTED_MODULE_0__.State('AK', 3, 33, 48);
+        this.Arizona = new _State__WEBPACK_IMPORTED_MODULE_0__.State('AZ', 11, 40, 41);
+        this.Arkansas = new _State__WEBPACK_IMPORTED_MODULE_0__.State('AR', 6, 32, 49);
+        this.California = new _State__WEBPACK_IMPORTED_MODULE_0__.State('CA', 55, 52, 30);
+        this.Colorado = new _State__WEBPACK_IMPORTED_MODULE_0__.State('CO', 9, 42, 39);
+        this.Connecticut = new _State__WEBPACK_IMPORTED_MODULE_0__.State('CT', 7, 46, 35, true);
+        this.Delaware = new _State__WEBPACK_IMPORTED_MODULE_0__.State('DE', 3, 45, 35, true);
+        this.DC = new _State__WEBPACK_IMPORTED_MODULE_0__.State('DC', 3, 75, 7, true);
+        this.Florida = new _State__WEBPACK_IMPORTED_MODULE_0__.State('FL', 29, 39, 41);
+        this.Georgia = new _State__WEBPACK_IMPORTED_MODULE_0__.State('GA', 16, 39, 42);
+        this.Hawaii = new _State__WEBPACK_IMPORTED_MODULE_0__.State('HI', 4, 53, 28);
+        this.Idaho = new _State__WEBPACK_IMPORTED_MODULE_0__.State('ID', 4, 30, 51, true);
+        this.Illinois = new _State__WEBPACK_IMPORTED_MODULE_0__.State('IL', 20, 48, 34);
+        this.Indiana = new _State__WEBPACK_IMPORTED_MODULE_0__.State('IN', 11, 30, 51, true);
+        this.Iowa = new _State__WEBPACK_IMPORTED_MODULE_0__.State('IA', 6, 39, 43);
+        this.Kansas = new _State__WEBPACK_IMPORTED_MODULE_0__.State('KS', 6, 32, 49, true);
+        this.Kentucky = new _State__WEBPACK_IMPORTED_MODULE_0__.State('KY', 8, 30, 51, true);
+        this.Louisiana = new _State__WEBPACK_IMPORTED_MODULE_0__.State('LA', 8, 32, 49);
+        this.Maine = new _State__WEBPACK_IMPORTED_MODULE_0__.State('ME', 4, 43, 39);
+        this.Maryland = new _State__WEBPACK_IMPORTED_MODULE_0__.State('MD', 10, 51, 31, true);
+        this.Massachusetts = new _State__WEBPACK_IMPORTED_MODULE_0__.State('MA', 11, 52, 30, true);
+        this.Michigan = new _State__WEBPACK_IMPORTED_MODULE_0__.State('MI', 16, 42, 39);
+        this.Minnesota = new _State__WEBPACK_IMPORTED_MODULE_0__.State('MN', 10, 44, 39);
+        this.Mississippi = new _State__WEBPACK_IMPORTED_MODULE_0__.State('MS', 6, 34, 48);
+        this.Missouri = new _State__WEBPACK_IMPORTED_MODULE_0__.State('MO', 10, 34, 46);
+        this.Montana = new _State__WEBPACK_IMPORTED_MODULE_0__.State('MT', 3, 34, 47);
+        this.Nebraska = new _State__WEBPACK_IMPORTED_MODULE_0__.State('NE', 5, 32, 49, true);
+        this.Nevada = new _State__WEBPACK_IMPORTED_MODULE_0__.State('NV', 6, 41, 40);
+        this.NewHampshire = new _State__WEBPACK_IMPORTED_MODULE_0__.State('NH', 4, 42, 39);
+        this.NewJersey = new _State__WEBPACK_IMPORTED_MODULE_0__.State('NJ', 14, 48, 34, true);
+        this.NewMexico = new _State__WEBPACK_IMPORTED_MODULE_0__.State('NM', 5, 44, 37);
+        this.NewYork = new _State__WEBPACK_IMPORTED_MODULE_0__.State('NY', 29, 52, 30, true);
+        this.NorthCarolina = new _State__WEBPACK_IMPORTED_MODULE_0__.State('NC', 15, 40, 42);
+        this.NorthDakota = new _State__WEBPACK_IMPORTED_MODULE_0__.State('ND', 3, 31, 51, true);
+        this.Ohio = new _State__WEBPACK_IMPORTED_MODULE_0__.State('OH', 18, 38, 43);
+        this.Oklahoma = new _State__WEBPACK_IMPORTED_MODULE_0__.State('OK', 7, 30, 51, true);
+        this.Oregon = new _State__WEBPACK_IMPORTED_MODULE_0__.State('OR', 7, 45, 37);
+        this.Pennsylvania = new _State__WEBPACK_IMPORTED_MODULE_0__.State('PA', 20, 42, 40);
+        this.RhodeIsland = new _State__WEBPACK_IMPORTED_MODULE_0__.State('RI', 4, 50, 32, true);
+        this.SouthCarolina = new _State__WEBPACK_IMPORTED_MODULE_0__.State('SC', 9, 35, 46);
+        this.SouthDakota = new _State__WEBPACK_IMPORTED_MODULE_0__.State('SD', 3, 31, 51, true);
+        this.Tennessee = new _State__WEBPACK_IMPORTED_MODULE_0__.State('TN', 11, 32, 49, true);
+        this.Texas = new _State__WEBPACK_IMPORTED_MODULE_0__.State('TX', 38, 37, 44);
+        this.Utah = new _State__WEBPACK_IMPORTED_MODULE_0__.State('UT', 6, 32, 49);
+        this.Vermont = new _State__WEBPACK_IMPORTED_MODULE_0__.State('VT', 3, 52, 30, true);
+        this.Virginia = new _State__WEBPACK_IMPORTED_MODULE_0__.State('VA', 13, 42, 39);
+        this.Washington = new _State__WEBPACK_IMPORTED_MODULE_0__.State('WA', 12, 46, 35);
+        this.WestVirginia = new _State__WEBPACK_IMPORTED_MODULE_0__.State('WV', 5, 30, 51, true);
+        this.Wisconsin = new _State__WEBPACK_IMPORTED_MODULE_0__.State('WI', 10, 41, 39);
+        this.Wyoming = new _State__WEBPACK_IMPORTED_MODULE_0__.State('WY', 3, 29, 53, true);
+        this.states = [];
+        this.states = [
+            this.Alabama,
+            this.Alaska,
+            this.Arizona,
+            this.Arkansas,
+            this.California,
+            this.Colorado,
+            this.Connecticut,
+            this.Delaware,
+            this.DC,
+            this.Florida,
+            this.Georgia,
+            this.Hawaii,
+            this.Idaho,
+            this.Illinois,
+            this.Indiana,
+            this.Iowa,
+            this.Kansas,
+            this.Kentucky,
+            this.Louisiana,
+            this.Maine,
+            this.Maryland,
+            this.Massachusetts,
+            this.Michigan,
+            this.Minnesota,
+            this.Mississippi,
+            this.Missouri,
+            this.Montana,
+            this.Nebraska,
+            this.Nevada,
+            this.NewHampshire,
+            this.NewJersey,
+            this.NewMexico,
+            this.NewYork,
+            this.NorthCarolina,
+            this.NorthDakota,
+            this.Ohio,
+            this.Oklahoma,
+            this.Oregon,
+            this.Pennsylvania,
+            this.RhodeIsland,
+            this.SouthCarolina,
+            this.SouthDakota,
+            this.Tennessee,
+            this.Texas,
+            this.Utah,
+            this.Vermont,
+            this.Virginia,
+            this.Washington,
+            this.WestVirginia,
+            this.Wisconsin,
+            this.Wyoming
+        ];
     }
 };
 VotesStore.ctorParameters = () => [];

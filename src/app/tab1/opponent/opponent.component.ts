@@ -38,8 +38,8 @@ export class OpponentPage implements OnInit {
     this.router.navigateByUrl('/tabs/tab1/event');
   }
 
-  goToDebate() {
-    this.router.navigateByUrl('/tabs/tab1/debate');
+  goToFirstEvent() {
+    this.router.navigateByUrl('/tabs/tab1/firstevent');
   }
 
   nextEvent() {
@@ -49,8 +49,9 @@ export class OpponentPage implements OnInit {
       this.votes.round++;
       if (this.votes.round > 10) {
         this.goToResults();
-      } else if (this.votes.round === 4 || this.votes.round === 7 || this.votes.round === 10) {
-        this.goToDebate();
+      } else if (this.votes.round === 2) {
+        this.goToFirstEvent();
+        console.log('firstEvent');
       } else {
         this.goToEvent();
       }

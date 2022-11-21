@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdvertisePage } from './advertise/advertise.component';
 import { CampaignPage } from './campaign/campaign.component';
 import { EventPage } from './event/event.component';
+import { EventWelcomePage } from './event/event.welcome';
 import { FundraisePage } from './fundraise/fundraise.component';
 import { OpponentPage } from './opponent/opponent.component';
 import { ResultsPage } from './results/results.component';
@@ -26,8 +27,8 @@ const routes: Routes = [
     component: ResultsPage,
   },
   {
-    path: 'debate',
-    component: EventPage,
+    path: 'firstevent',
+    component: EventWelcomePage,
   },
   {
     path: 'fundraise',

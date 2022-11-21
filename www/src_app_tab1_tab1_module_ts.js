@@ -193,61 +193,86 @@ let TextService = class TextService {
     getEvents() {
         const results = [
             {
-                title: 'Gaffes',
-                description: '',
-                rollMap: [-1, -1, -2, -2, -3, -3],
-                imageSrc: ''
-            },
-            {
-                title: 'Media Tour',
-                description: '',
-                rollMap: [-1, -1, 1, 1, 2, 2],
-                imageSrc: ''
-            },
-            {
-                title: 'SuperPac',
-                description: '',
-                rollMap: [-3, -2, -1, 1, 2, 3],
-                imageSrc: ''
-            },
-            {
-                title: 'Scandal',
-                description: '',
-                rollMap: [-1, -2, -3, -4, -5, -6],
-                imageSrc: ''
-            },
-            {
                 title: 'Endorsement',
-                description: '',
+                description: 'You just received an endorsement from a popular governor. This will turn the National Climate in your favor! Roll to see how many points the National Climate will move.',
                 rollMap: [1, 1, 2, 2, 3, 3],
-                imageSrc: ''
+                imageSrc: '',
+                rollMapDescription1: '1 or 2 will move polls +1, 3 or 4 will move polls +2',
+                rollMapDescription2: 'Rolling 5 or 6 will move the polls +3 points'
             },
             {
                 title: 'Hot Button Issue',
-                description: '',
+                description: 'You and your opponent are asked to weigh in on a Hot Button Issue. How you respond will decide if the National Climate moves in your favor, or whether your opponent will benefit.',
                 rollMap: [-1, -1, -1, 1, 1, 1],
-                imageSrc: ''
+                imageSrc: '',
+                rollMapDescription1: '1, 2, 3 will move polls -1 point',
+                rollMapDescription2: '4, 5, 6 will move polls +1 point'
+            },
+            {
+                title: 'Media Tour',
+                description: 'Is all press good press? A top media outlet is talking about you. Roll to decide if this press helps you, or hurts you in the National Climate.',
+                rollMap: [-1, -1, 1, 1, 2, 2],
+                imageSrc: '',
+                rollMapDescription1: 'Rolling 1 or 2 will move the polls -1 point',
+                rollMapDescription2: '3 or 4 will move polls +1, 5 or 6 will move polls +2'
             },
             {
                 title: 'Debate 1',
-                description: '',
-                rollMap: [],
-                imageSrc: ''
+                description: 'Hosted by Fox at a University in your opponent\'s home state.  All eyes are on you! Roll to see how your performance affects the national polls.',
+                rollMap: [-1, -1, -1, 1, 1, 1],
+                imageSrc: '',
+                rollMapDescription1: '1, 2, 3 will move polls -1 point',
+                rollMapDescription2: '4, 5, 6 will move polls +1 point'
+            },
+            {
+                title: 'SuperPac',
+                description: 'Money, Money, Money. Special interest groups are pouring money into the race. Roll to see if this hurts your campaign, or gives you the boost you need.',
+                rollMap: [-3, -2, -1, 1, 2, 3],
+                imageSrc: '',
+                rollMapDescription1: 'Lower rolls hurt you up to -3 points',
+                rollMapDescription2: 'Higher rolls benefit you up to +3 points'
+            },
+            {
+                title: 'Scandal',
+                description: 'Uh Oh! You were caught doing some not very presidential things... This could really hurt you in the polls... Roll to see how bad the damage is.',
+                rollMap: [-1, -1, -2, -2, -3, -3],
+                imageSrc: '',
+                rollMapDescription1: '1 or 2 will move polls -1, 3 or 4 will move polls -2',
+                rollMapDescription2: 'Rolling 5 or 6 will move the polls -3 points'
             },
             {
                 title: 'Debate 2',
-                description: '',
-                rollMap: [],
-                imageSrc: ''
+                description: 'Hosted by ABC at a University in the important swing state of Nevada. All eyes are on you! Roll to see how your performance affects the national polls.',
+                rollMap: [-1, -1, -1, 1, 1, 1],
+                imageSrc: '',
+                rollMapDescription1: '1, 2, 3 will move polls -1 point',
+                rollMapDescription2: '4, 5, 6 will move polls +1 point'
+            },
+            {
+                title: 'Endorsement',
+                description: 'You just received an endorsement from a former president. This will turn the National Climate in your favor! Roll to see how many points the National Climate will move.',
+                rollMap: [1, 1, 2, 2, 3, 3],
+                imageSrc: '',
+                rollMapDescription1: '1 or 2 will move polls +1, 3 or 4 will move polls +2',
+                rollMapDescription2: 'Rolling 5 or 6 will move the polls +3 points'
             },
             {
                 title: 'Debate 3',
-                description: '',
-                rollMap: [],
-                imageSrc: ''
+                description: 'Hosted by CNN. Many of tonights questions are taken from local concerned citizens. All eyes are on you! Roll to see how your performance affects the national polls.',
+                rollMap: [-1, -1, -1, 1, 1, 1],
+                imageSrc: '',
+                rollMapDescription1: '1, 2, 3 will move polls -1 point',
+                rollMapDescription2: '4, 5, 6 will move polls +1 point'
             },
         ];
         return results;
+        /*     {
+          title:'Gaffes',
+          description:'',
+          rollMap:[-1,-1,-2,-2,-3,-3],
+          imageSrc:''
+        },
+        */
     }
     getAdvertisingResults() {
         const results = [
@@ -518,19 +543,42 @@ let CampaignPage = class CampaignPage {
     var _this = this;
 
     return (0,C_Users_Jeremy_SideProjects_campaign_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
-      _this.canBack = false;
+      _this.canBack = false; //
+
+      const stateId = _this.chosenState.split(',')[0];
+
+      const stateModifier = _this.chosenState.split(',')[1];
+
+      const originalRoll = roll;
 
       if (_this.chosenState) {
         if (_this.isDemocrat) {
-          //TODO for now, we just take the full roll value...
-          _this.votes.changeStateClimate(_this.chosenState, roll, 0);
+          if (stateModifier === '1') {
+            roll -= 1;
+          } else if (stateModifier === '2') {
+            roll -= 2;
+          }
+
+          if (roll < 0) {
+            roll = 0;
+          }
+
+          _this.votes.changeStateClimate(stateId, roll, 0);
         } else {
-          //TODO for now, we just take the full roll value...
-          _this.votes.changeStateClimate(_this.chosenState, 0, roll);
+          if (stateModifier === '3') {
+            roll -= 1;
+          } else if (stateModifier === '4') {
+            roll -= 2;
+          }
+
+          if (roll < 0) {
+            roll = 0;
+          }
+
+          _this.votes.changeStateClimate(stateId, 0, roll);
         }
 
-        _this.presentToast('You rolled a ' + roll + ', making a difference of ' + roll + ' in ' + _this.chosenState, 3000); //TODO for now, we just take the full roll value...
-
+        _this.presentToast('You rolled a ' + originalRoll + ', making a difference of ' + roll + ' in ' + stateId, 3000);
 
         yield new Promise(f => setTimeout(f, 3200));
 
@@ -619,30 +667,143 @@ let EventPage = class EventPage {
     this.votes = votes;
     this.toastController = toastController;
     this.textService = textService;
-  } // back() {
-  // }
+  }
 
-
-  setNewEvent(debate) {
-    this.textService.getEvents();
-
-    if (debate) {//setNew Event to be a debate...
-    } else {//pick an event at random... need some input as to how to choose which event we want next.
-    }
+  ngAfterViewInit() {
+    this.isDemocrat = this.votes.isDemocrat;
+    this.allEvents = this.textService.getEvents();
+    this.currentEvent = this.allEvents[0];
+    this.currentIndex = 0;
+    this.eventTitle = this.currentEvent.title;
+    this.eventDescription = this.currentEvent.description;
+    this.eventRollsL = this.currentEvent.rollMapDescription1;
+    this.eventRollsR = this.currentEvent.rollMapDescription2;
   }
 
   handleRoll(roll) {
     var _this = this;
 
     return (0,C_Users_Jeremy_SideProjects_campaign_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
-      if (roll <= 3) {
-        _this.votes.changeNationalClimate(roll / 2, -roll / 2);
+      if (roll === 1) {
+        if (_this.currentEvent.rollMap[0] > 0 && _this.isDemocrat) {
+          _this.votes.changeNationalClimate(_this.currentEvent.rollMap[0] / 2, -_this.currentEvent.rollMap[0] / 2);
 
-        _this.presentToast('National Climate moved ' + roll + ' to the left', 2000);
-      } else {
-        _this.votes.changeNationalClimate(-(roll - 3) / 2, (roll - 3) / 2);
+          _this.presentToast('National Climate moved ' + _this.currentEvent.rollMap[0] + ' to the left', 2000);
+        } else if (_this.currentEvent.rollMap[0] < 0 && _this.isDemocrat) {
+          _this.votes.changeNationalClimate(_this.currentEvent.rollMap[0] / 2, -_this.currentEvent.rollMap[0] / 2);
 
-        _this.presentToast('National Climate moved ' + (roll - 3) + ' to the right', 2000);
+          _this.presentToast('National Climate moved ' + -1 * _this.currentEvent.rollMap[0] + ' to the right', 2000);
+        } else if (_this.currentEvent.rollMap[0] > 0 && !_this.isDemocrat) {
+          _this.votes.changeNationalClimate(-_this.currentEvent.rollMap[0] / 2, _this.currentEvent.rollMap[0] / 2);
+
+          _this.presentToast('National Climate moved ' + _this.currentEvent.rollMap[0] + ' to the right', 2000);
+        }
+
+        if (_this.currentEvent.rollMap[0] < 0 && !_this.isDemocrat) {
+          _this.votes.changeNationalClimate(-_this.currentEvent.rollMap[0] / 2, _this.currentEvent.rollMap[0] / 2);
+
+          _this.presentToast('National Climate moved ' + -1 * _this.currentEvent.rollMap[0] + ' to the left', 2000);
+        }
+      }
+
+      if (roll === 2) {
+        if (_this.currentEvent.rollMap[1] > 0 && _this.isDemocrat) {
+          _this.votes.changeNationalClimate(_this.currentEvent.rollMap[0] / 2, -_this.currentEvent.rollMap[0] / 2);
+
+          _this.presentToast('National Climate moved ' + _this.currentEvent.rollMap[0] + ' to the left', 2000);
+        } else if (_this.currentEvent.rollMap[1] > 0 && !_this.isDemocrat) {
+          _this.votes.changeNationalClimate(-_this.currentEvent.rollMap[0] / 2, _this.currentEvent.rollMap[0] / 2);
+
+          _this.presentToast('National Climate moved ' + _this.currentEvent.rollMap[0] + ' to the right', 2000);
+        } else if (_this.currentEvent.rollMap[1] < 0 && _this.isDemocrat) {
+          _this.votes.changeNationalClimate(_this.currentEvent.rollMap[0] / 2, -_this.currentEvent.rollMap[0] / 2);
+
+          _this.presentToast('National Climate moved ' + -1 * _this.currentEvent.rollMap[0] + ' to the right', 2000);
+        } else if (_this.currentEvent.rollMap[1] < 0 && !_this.isDemocrat) {
+          _this.votes.changeNationalClimate(-_this.currentEvent.rollMap[0] / 2, _this.currentEvent.rollMap[0] / 2);
+
+          _this.presentToast('National Climate moved ' + -1 * _this.currentEvent.rollMap[0] + ' to the left', 2000);
+        }
+      }
+
+      if (roll === 3) {
+        if (_this.currentEvent.rollMap[2] > 0 && _this.isDemocrat) {
+          _this.votes.changeNationalClimate(_this.currentEvent.rollMap[0] / 2, -_this.currentEvent.rollMap[0] / 2);
+
+          _this.presentToast('National Climate moved ' + _this.currentEvent.rollMap[0] + ' to the left', 2000);
+        } else if (_this.currentEvent.rollMap[2] > 0 && !_this.isDemocrat) {
+          _this.votes.changeNationalClimate(-_this.currentEvent.rollMap[0] / 2, _this.currentEvent.rollMap[0] / 2);
+
+          _this.presentToast('National Climate moved ' + _this.currentEvent.rollMap[0] + ' to the right', 2000);
+        } else if (_this.currentEvent.rollMap[2] < 0 && _this.isDemocrat) {
+          _this.votes.changeNationalClimate(_this.currentEvent.rollMap[0] / 2, -_this.currentEvent.rollMap[0] / 2);
+
+          _this.presentToast('National Climate moved ' + -1 * _this.currentEvent.rollMap[0] + ' to the right', 2000);
+        } else if (_this.currentEvent.rollMap[2] < 0 && !_this.isDemocrat) {
+          _this.votes.changeNationalClimate(-_this.currentEvent.rollMap[0] / 2, _this.currentEvent.rollMap[0] / 2);
+
+          _this.presentToast('National Climate moved ' + -1 * _this.currentEvent.rollMap[0] + ' to the left', 2000);
+        }
+      }
+
+      if (roll === 4) {
+        if (_this.currentEvent.rollMap[3] > 0 && _this.isDemocrat) {
+          _this.votes.changeNationalClimate(_this.currentEvent.rollMap[0] / 2, -_this.currentEvent.rollMap[0] / 2);
+
+          _this.presentToast('National Climate moved ' + _this.currentEvent.rollMap[0] + ' to the left', 2000);
+        } else if (_this.currentEvent.rollMap[3] > 0 && !_this.isDemocrat) {
+          _this.votes.changeNationalClimate(-_this.currentEvent.rollMap[0] / 2, _this.currentEvent.rollMap[0] / 2);
+
+          _this.presentToast('National Climate moved ' + _this.currentEvent.rollMap[0] + ' to the right', 2000);
+        } else if (_this.currentEvent.rollMap[3] < 0 && _this.isDemocrat) {
+          _this.votes.changeNationalClimate(_this.currentEvent.rollMap[0] / 2, -_this.currentEvent.rollMap[0] / 2);
+
+          _this.presentToast('National Climate moved ' + -1 * _this.currentEvent.rollMap[0] + ' to the right', 2000);
+        } else if (_this.currentEvent.rollMap[3] < 0 && !_this.isDemocrat) {
+          _this.votes.changeNationalClimate(-_this.currentEvent.rollMap[0] / 2, _this.currentEvent.rollMap[0] / 2);
+
+          _this.presentToast('National Climate moved ' + -1 * _this.currentEvent.rollMap[0] + ' to the left', 2000);
+        }
+      }
+
+      if (roll === 5) {
+        if (_this.currentEvent.rollMap[4] > 0 && _this.isDemocrat) {
+          _this.votes.changeNationalClimate(_this.currentEvent.rollMap[0] / 2, -_this.currentEvent.rollMap[0] / 2);
+
+          _this.presentToast('National Climate moved ' + _this.currentEvent.rollMap[0] + ' to the left', 2000);
+        } else if (_this.currentEvent.rollMap[4] > 0 && !_this.isDemocrat) {
+          _this.votes.changeNationalClimate(-_this.currentEvent.rollMap[0] / 2, _this.currentEvent.rollMap[0] / 2);
+
+          _this.presentToast('National Climate moved ' + _this.currentEvent.rollMap[0] + ' to the right', 2000);
+        } else if (_this.currentEvent.rollMap[4] < 0 && _this.isDemocrat) {
+          _this.votes.changeNationalClimate(_this.currentEvent.rollMap[0] / 2, -_this.currentEvent.rollMap[0] / 2);
+
+          _this.presentToast('National Climate moved ' + -1 * _this.currentEvent.rollMap[0] + ' to the right', 2000);
+        } else if (_this.currentEvent.rollMap[4] < 0 && !_this.isDemocrat) {
+          _this.votes.changeNationalClimate(-_this.currentEvent.rollMap[0] / 2, _this.currentEvent.rollMap[0] / 2);
+
+          _this.presentToast('National Climate moved ' + -1 * _this.currentEvent.rollMap[0] + ' to the left', 2000);
+        }
+      }
+
+      if (roll === 6) {
+        if (_this.currentEvent.rollMap[5] > 0 && _this.isDemocrat) {
+          _this.votes.changeNationalClimate(_this.currentEvent.rollMap[0] / 2, -_this.currentEvent.rollMap[0] / 2);
+
+          _this.presentToast('National Climate moved ' + _this.currentEvent.rollMap[0] + ' to the left', 2000);
+        } else if (_this.currentEvent.rollMap[5] > 0 && !_this.isDemocrat) {
+          _this.votes.changeNationalClimate(-_this.currentEvent.rollMap[0] / 2, _this.currentEvent.rollMap[0] / 2);
+
+          _this.presentToast('National Climate moved ' + _this.currentEvent.rollMap[0] + ' to the right', 2000);
+        } else if (_this.currentEvent.rollMap[5] < 0 && _this.isDemocrat) {
+          _this.votes.changeNationalClimate(_this.currentEvent.rollMap[0] / 2, -_this.currentEvent.rollMap[0] / 2);
+
+          _this.presentToast('National Climate moved ' + -1 * _this.currentEvent.rollMap[0] + ' to the right', 2000);
+        } else if (_this.currentEvent.rollMap[5] < 0 && !_this.isDemocrat) {
+          _this.votes.changeNationalClimate(-_this.currentEvent.rollMap[0] / 2, _this.currentEvent.rollMap[0] / 2);
+
+          _this.presentToast('National Climate moved ' + -1 * _this.currentEvent.rollMap[0] + ' to the left', 2000);
+        }
       }
 
       yield new Promise(f => setTimeout(f, 2200));
@@ -667,6 +828,16 @@ let EventPage = class EventPage {
   }
 
   endEvent() {
+    this.currentIndex++;
+
+    if (this.currentIndex < 10) {
+      this.currentEvent = this.allEvents[this.currentIndex];
+    }
+
+    this.eventTitle = this.currentEvent.title;
+    this.eventDescription = this.currentEvent.description;
+    this.eventRollsL = this.currentEvent.rollMapDescription1;
+    this.eventRollsR = this.currentEvent.rollMapDescription2;
     this.router.navigateByUrl('/tabs/tab1');
   }
 
@@ -1020,6 +1191,7 @@ let ResultsPage = class ResultsPage {
         this.textService = textService;
     }
     mainMenu() {
+        this.votes.reset();
         this.router.navigateByUrl('/');
     }
 };
@@ -1416,7 +1588,7 @@ module.exports = "<ion-content [fullscreen]=\"true\">\r\n<div class=\"center\">\
   \******************************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-content [fullscreen]=\"true\">\r\n  <div class=\"center\">\r\n  <h1>Campaign in a specific state</h1>\r\n  </div>\r\n  <div class=\"center\">\r\n  <h3>Look at the stats page to decide which state you want to focus your campaign on!</h3>\r\n  </div>\r\n  <div class=\"center\">\r\n  <p><strong>Your campaigning is less effective the further the state is from your political stances</strong></p>\r\n  </div>\r\n  <div class=\"center\">\r\n  <p>Example:</p>\r\n  <p>A republican campaigning in a (+2 Dem) will subtract 2 from their roll.</p>\r\n  <p>A democrat campaigning in a (+2 Dem) will add 2 to their roll.</p>\r\n  </div>\r\n\r\n\r\n  <ion-list>\r\n    <ion-item>\r\n      <ion-select [(ngModel)]=\"chosenState\" placeholder=\"Choose a state:\">\r\n        <ion-select-option value=\"AL\">Alabama (+2 Rep)</ion-select-option>\r\n        <ion-select-option value=\"AK\">Alaska (+1 Rep)</ion-select-option>\r\n        <ion-select-option value=\"AZ\">Arizona</ion-select-option>\r\n        <ion-select-option value=\"AR\">Arkansas (+2 Rep)</ion-select-option>\r\n        <ion-select-option value=\"CA\">California (+1 Dem)</ion-select-option>\r\n        <ion-select-option value=\"CO\">Colorado</ion-select-option>\r\n        <ion-select-option value=\"CT\">Connecticut (+2 Dem)</ion-select-option>\r\n        <ion-select-option value=\"DE\">Delaware (+2 Dem)</ion-select-option>\r\n        <ion-select-option value=\"DC\">D.C. (+2 Dem)</ion-select-option>\r\n        <ion-select-option value=\"FL\">Florida</ion-select-option>\r\n        <ion-select-option value=\"GA\">Georgia</ion-select-option>\r\n        <ion-select-option value=\"HI\">Hawaii (+1 Dem)</ion-select-option>\r\n        <ion-select-option value=\"ID\">Idaho (+2 Rep)</ion-select-option>\r\n        <ion-select-option value=\"IL\">Illinois (+1 Dem)</ion-select-option>\r\n        <ion-select-option value=\"IN\">Indiana (+1 Rep)</ion-select-option>\r\n        <ion-select-option value=\"IA\">Iowa</ion-select-option>\r\n        <ion-select-option value=\"KS\">Kansas (+2 Rep)</ion-select-option>\r\n        <ion-select-option value=\"KY\">Kentucky (+2 Rep)</ion-select-option>\r\n        <ion-select-option value=\"LA\">Louisiana (+1 Rep)</ion-select-option>\r\n        <ion-select-option value=\"ME\">Maine</ion-select-option>\r\n        <ion-select-option value=\"MD\">Maryland (+2 Dem)</ion-select-option>\r\n        <ion-select-option value=\"MA\">Massachusetts (+2 Dem)</ion-select-option>\r\n        <ion-select-option value=\"MI\">Michigan</ion-select-option>\r\n        <ion-select-option value=\"MN\">Minnesota (+1 Dem)</ion-select-option>\r\n        <ion-select-option value=\"MS\">Mississippi (+1 Rep)</ion-select-option>\r\n        <ion-select-option value=\"MO\">Missouri (+1 Rep)</ion-select-option>\r\n        <ion-select-option value=\"MT\">Montana (+1 Rep)</ion-select-option>\r\n        <ion-select-option value=\"NE\">Nebraska (+2 Rep)</ion-select-option>\r\n        <ion-select-option value=\"NV\">Nevada</ion-select-option>\r\n        <ion-select-option value=\"NH\">New Hampshire</ion-select-option>\r\n        <ion-select-option value=\"NJ\">New Jersey (+2 Dem)</ion-select-option>\r\n        <ion-select-option value=\"NM\">New Mexico</ion-select-option>\r\n        <ion-select-option value=\"NY\">New York (+2 Dem)</ion-select-option>\r\n        <ion-select-option value=\"NC\">North Carolina</ion-select-option>\r\n        <ion-select-option value=\"ND\">North Dakota (+2 Rep)</ion-select-option>\r\n        <ion-select-option value=\"OH\">Ohio</ion-select-option>\r\n        <ion-select-option value=\"OK\">Oklahoma (+2 Rep)</ion-select-option>\r\n        <ion-select-option value=\"OR\">Oregon (+1 Dem)</ion-select-option>\r\n        <ion-select-option value=\"PA\">Pennsylvania</ion-select-option>\r\n        <ion-select-option value=\"RI\">Rhode Island (+2 Dem)</ion-select-option>\r\n        <ion-select-option value=\"SC\">South Carolina (+1 Rep)</ion-select-option>\r\n        <ion-select-option value=\"SD\">South Dakota (+2 Rep)</ion-select-option>\r\n        <ion-select-option value=\"TN\">Tennessee (+2 Rep)</ion-select-option>\r\n        <ion-select-option value=\"TX\">Texas (+1 Rep)</ion-select-option>\r\n        <ion-select-option value=\"UT\">Utah (+2 Rep)</ion-select-option>\r\n        <ion-select-option value=\"VT\">Vermont (+2 Dem)</ion-select-option>\r\n        <ion-select-option value=\"VI\">Virginia</ion-select-option>\r\n        <ion-select-option value=\"WA\">Washington (+1 Dem)</ion-select-option>\r\n        <ion-select-option value=\"WV\">West Virginia (+2 Rep)</ion-select-option>\r\n        <ion-select-option value=\"WI\">Wisconsin</ion-select-option>\r\n        <ion-select-option value=\"WY\">Wyoming (+2 Rep)</ion-select-option>\r\n      </ion-select>\r\n    </ion-item>\r\n  </ion-list>\r\n  <div class=\"center\">\r\n    <app-dice (diceRolled)=\"handleRoll($event)\"></app-dice>\r\n  </div>\r\n  <div class=\"center\">\r\n\r\n  <ion-button [disabled]=\"!canBack\"(click)=\"back()\">Back To Options</ion-button>\r\n  </div>\r\n</ion-content>\r\n";
+module.exports = "<ion-content [fullscreen]=\"true\">\r\n  <div class=\"center\">\r\n  <h1>Campaign in a specific state</h1>\r\n  </div>\r\n  <div class=\"center\">\r\n  <h3>Look at the stats page to decide which state you want to focus your campaign on!</h3>\r\n  </div>\r\n  <div class=\"center\">\r\n  <p><strong>Your campaigning is less effective the further the state is from your political stances</strong></p>\r\n  </div>\r\n  <div class=\"center\">\r\n  <p>Example:</p>\r\n  <p>A republican campaigning in a (+2 Dem) will subtract 2 from their roll.</p>\r\n  <p>A democrat campaigning in a (+2 Dem) will add 2 to their roll.</p>\r\n  </div>\r\n\r\n\r\n  <ion-list>\r\n    <ion-item>\r\n      <ion-select [(ngModel)]=\"chosenState\" placeholder=\"Choose a state:\">\r\n        <ion-select-option value=\"AL,2\">Alabama (+2 Rep)</ion-select-option>\r\n        <ion-select-option value=\"AK,1\">Alaska (+1 Rep)</ion-select-option>\r\n        <ion-select-option value=\"AZ,0\">Arizona</ion-select-option>\r\n        <ion-select-option value=\"AR,2\">Arkansas (+2 Rep)</ion-select-option>\r\n        <ion-select-option value=\"CA,3\">California (+1 Dem)</ion-select-option>\r\n        <ion-select-option value=\"CO,0\">Colorado</ion-select-option>\r\n        <ion-select-option value=\"CT,4\">Connecticut (+2 Dem)</ion-select-option>\r\n        <ion-select-option value=\"DE,4\">Delaware (+2 Dem)</ion-select-option>\r\n        <ion-select-option value=\"DC,4\">D.C. (+2 Dem)</ion-select-option>\r\n        <ion-select-option value=\"FL,0\">Florida</ion-select-option>\r\n        <ion-select-option value=\"GA,0\">Georgia</ion-select-option>\r\n        <ion-select-option value=\"HI,3\">Hawaii (+1 Dem)</ion-select-option>\r\n        <ion-select-option value=\"ID,2\">Idaho (+2 Rep)</ion-select-option>\r\n        <ion-select-option value=\"IL,3\">Illinois (+1 Dem)</ion-select-option>\r\n        <ion-select-option value=\"IN,1\">Indiana (+1 Rep)</ion-select-option>\r\n        <ion-select-option value=\"IA,0\">Iowa</ion-select-option>\r\n        <ion-select-option value=\"KS,2\">Kansas (+2 Rep)</ion-select-option>\r\n        <ion-select-option value=\"KY,2\">Kentucky (+2 Rep)</ion-select-option>\r\n        <ion-select-option value=\"LA,1\">Louisiana (+1 Rep)</ion-select-option>\r\n        <ion-select-option value=\"ME,0\">Maine</ion-select-option>\r\n        <ion-select-option value=\"MD,4\">Maryland (+2 Dem)</ion-select-option>\r\n        <ion-select-option value=\"MA,4\">Massachusetts (+2 Dem)</ion-select-option>\r\n        <ion-select-option value=\"MI,0\">Michigan</ion-select-option>\r\n        <ion-select-option value=\"MN,3\">Minnesota (+1 Dem)</ion-select-option>\r\n        <ion-select-option value=\"MS,1\">Mississippi (+1 Rep)</ion-select-option>\r\n        <ion-select-option value=\"MO,1\">Missouri (+1 Rep)</ion-select-option>\r\n        <ion-select-option value=\"MT,1\">Montana (+1 Rep)</ion-select-option>\r\n        <ion-select-option value=\"NE,2\">Nebraska (+2 Rep)</ion-select-option>\r\n        <ion-select-option value=\"NV,0\">Nevada</ion-select-option>\r\n        <ion-select-option value=\"NH,0\">New Hampshire</ion-select-option>\r\n        <ion-select-option value=\"NJ,4\">New Jersey (+2 Dem)</ion-select-option>\r\n        <ion-select-option value=\"NM,0\">New Mexico</ion-select-option>\r\n        <ion-select-option value=\"NY,4\">New York (+2 Dem)</ion-select-option>\r\n        <ion-select-option value=\"NC,0\">North Carolina</ion-select-option>\r\n        <ion-select-option value=\"ND,2\">North Dakota (+2 Rep)</ion-select-option>\r\n        <ion-select-option value=\"OH,0\">Ohio</ion-select-option>\r\n        <ion-select-option value=\"OK,2\">Oklahoma (+2 Rep)</ion-select-option>\r\n        <ion-select-option value=\"OR,3\">Oregon (+1 Dem)</ion-select-option>\r\n        <ion-select-option value=\"PA,0\">Pennsylvania</ion-select-option>\r\n        <ion-select-option value=\"RI,4\">Rhode Island (+2 Dem)</ion-select-option>\r\n        <ion-select-option value=\"SC,1\">South Carolina (+1 Rep)</ion-select-option>\r\n        <ion-select-option value=\"SD,2\">South Dakota (+2 Rep)</ion-select-option>\r\n        <ion-select-option value=\"TN,2\">Tennessee (+2 Rep)</ion-select-option>\r\n        <ion-select-option value=\"TX,1\">Texas (+1 Rep)</ion-select-option>\r\n        <ion-select-option value=\"UT,2\">Utah (+2 Rep)</ion-select-option>\r\n        <ion-select-option value=\"VT,4\">Vermont (+2 Dem)</ion-select-option>\r\n        <ion-select-option value=\"VI,0\">Virginia</ion-select-option>\r\n        <ion-select-option value=\"WA,3\">Washington (+1 Dem)</ion-select-option>\r\n        <ion-select-option value=\"WV,2\">West Virginia (+2 Rep)</ion-select-option>\r\n        <ion-select-option value=\"WI,0\">Wisconsin</ion-select-option>\r\n        <ion-select-option value=\"WY,2\">Wyoming (+2 Rep)</ion-select-option>\r\n      </ion-select>\r\n    </ion-item>\r\n  </ion-list>\r\n  <div class=\"center\">\r\n    <app-dice (diceRolled)=\"handleRoll($event)\"></app-dice>\r\n  </div>\r\n  <div class=\"center\">\r\n\r\n  <ion-button [disabled]=\"!canBack\"(click)=\"back()\">Back To Options</ion-button>\r\n  </div>\r\n</ion-content>\r\n";
 
 /***/ }),
 
@@ -1426,7 +1598,7 @@ module.exports = "<ion-content [fullscreen]=\"true\">\r\n  <div class=\"center\"
   \************************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-content [fullscreen]=\"true\">\r\n\r\n\r\n<div class=\"center\">\r\n<h1>Special Event has been triggered!</h1>\r\n</div>\r\n<div class=\"center\">\r\n<!-- <p>Before rounds 4,7,10 there will be a debate!  It has rolling rules that effect national climate<br></p> -->\r\n<p>Debates, Gaffes, scandals, media tour, endorsements, SuperPacs will appear here</p>\r\n</div>\r\n<div class=\"center\">\r\n<h1>Since this feature is unfinished, just roll the dice to effect the national climate.</h1>\r\n</div>\r\n<div class=\"center\">\r\n<p>1,2,3 will move the national climate to the left</p>\r\n<p>4,5,6 will move the national climate to the right</p>\r\n</div>\r\n<div class=\"center\">\r\n\r\n<app-dice (diceRolled)=\"handleRoll($event)\"></app-dice>\r\n</div>\r\n</ion-content>\r\n";
+module.exports = "<ion-content [fullscreen]=\"true\">\r\n\r\n\r\n<div class=\"center\">\r\n<p>A Special Event has been triggered!</p>\r\n</div>\r\n<div class=\"center\">\r\n<h1>{{eventTitle}}</h1>\r\n</div>\r\n<div class=\"center\">\r\n<!-- <p>Before rounds 4,7,10 there will be a debate!  It has rolling rules that effect national climate<br></p> -->\r\n<!-- <p>Debates, Gaffes, scandals, media tour, endorsements, SuperPacs will appear here</p> -->\r\n</div>\r\n<div class=\"center\">\r\n<p>{{eventDescription}}</p>\r\n</div>\r\n<div class=\"center\">\r\n<p>{{eventRollsL}}</p>\r\n<p>{{eventRollsR}}</p>\r\n</div>\r\n<div class=\"center\">\r\n\r\n<app-dice (diceRolled)=\"handleRoll($event)\"></app-dice>\r\n</div>\r\n</ion-content>\r\n";
 
 /***/ }),
 
@@ -1456,7 +1628,7 @@ module.exports = "<ion-content [fullscreen]=\"true\">\r\n  <div class=\"center\"
   \****************************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-content [fullscreen]=\"true\">\r\n\r\n<div class=\"center\">\r\n<h1><strong>GAME OVER</strong></h1>\r\n</div>\r\n<div class=\"center\">\r\n<p>Final Score:</p>\r\n<p>Republican: {{votes.getFinalRed()}}</p>\r\n<p>Democrat: {{votes.getFinalBlue()}}</p>\r\n</div>\r\n<div class=\"center\">\r\n<p>See the stats tab for more info!</p>\r\n</div>\r\n<div class=\"center\">\r\n<ion-button (click)=\"mainMenu()\">Return to main menu</ion-button>\r\n</div>\r\n\r\n</ion-content>\r\n";
+module.exports = "<ion-content [fullscreen]=\"true\">\r\n\r\n<div class=\"center\">\r\n<h1><strong>Election Night!</strong></h1>\r\n</div>\r\n<div class=\"center\">\r\n<p>Final Electoral Count:</p>\r\n</div>\r\n<div class=\"center\">\r\n  <p>Republican: {{votes.getFinalRed()}}</p>\r\n</div>\r\n  <div class=\"center\">\r\n    <p>Democrat: {{votes.getFinalBlue()}}</p>\r\n </div>\r\n <div class=\"center\">\r\n    <p *ngIf=\"votes.getUserWon()\">Congratulations! You have been elected president of the United States!</p>\r\n    <p *ngIf=\"!votes.getUserWon()\">Sorry... you lost the election.</p>\r\n  </div>\r\n\r\n<div class=\"center\">\r\n<p>See the stats tab for more info!</p>\r\n</div>\r\n<div class=\"center\">\r\n<p>Return to Main Menu/Play Again</p>\r\n<ion-button (click)=\"mainMenu()\">Four more years!</ion-button>\r\n</div>\r\n\r\n</ion-content>\r\n";
 
 /***/ }),
 
@@ -1466,7 +1638,7 @@ module.exports = "<ion-content [fullscreen]=\"true\">\r\n\r\n<div class=\"center
   \************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-header [translucent]=\"true\">\n  <ion-toolbar>\n    <ion-title>\n      Round {{votes.round}} out of 10\n      <img class='header-icon' *ngIf=\"!isDemocrat\" src=\"../../assets/images/republicanIcon.png\">\n      <img class='header-icon' *ngIf=\"isDemocrat\" src=\"../../assets/images/democratIcon.png\">\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content [fullscreen]=\"true\" >\n  <div class=\"center\">\n    <p><strong>Turn:</strong> {{(votes.turn%2)+1}} of 2 <strong>Funds:</strong> ${{votes.funds}}</p>\n  </div>\n  <div class=\"center\">\n    <p>{{getCurrentTurn()}}</p>\n  </div>\n  <ion-button class=\"option\" (click)=\"fundraise()\"><img src=\"../../assets/images/funds.png\">Fundraise!</ion-button>\n  <ion-button class=\"option\" (click)=\"campaign()\"><img src=\"../../assets/images/campaign.png\">Campaign!</ion-button>\n  <ion-button class=\"option\" (click)=\"advertising()\"><img src=\"../../assets/images/ads.png\">Run Advertising!</ion-button>\n</ion-content>\n";
+module.exports = "<ion-header [translucent]=\"true\">\n  <ion-toolbar>\n    <ion-title>\n      Round {{votes.round}} out of 10\n      <img class='header-icon' *ngIf=\"!isDemocrat\" src=\"../../assets/images/republicanIcon.png\">\n      <img class='header-icon' *ngIf=\"isDemocrat\" src=\"../../assets/images/democratIcon.png\">\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content [fullscreen]=\"true\" >\n  <div class=\"center\">\n    <p><strong>Turn:</strong> {{(votes.turn%2)+1}} of 2 <strong>Funds:</strong> ${{votes.funds}}</p>\n  </div>\n  <div class=\"center\">\n    <p>{{getCurrentTurn()}}</p>\n  </div>\n  <ion-button class=\"option\" (click)=\"fundraise()\"><img src=\"../../assets/images/funds.png\"> Fundraise!</ion-button>\n  <ion-button class=\"option\" (click)=\"campaign()\"><img src=\"../../assets/images/campaign.png\"> Campaign!</ion-button>\n  <ion-button class=\"option\" (click)=\"advertising()\"><img src=\"../../assets/images/ads.png\"> Advertise!</ion-button>\n</ion-content>\n";
 
 /***/ })
 

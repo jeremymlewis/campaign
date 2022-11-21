@@ -10,3 +10,213 @@ ion-content{
   align-items: center;
   left: 50%
 }
+
+.center {
+  font-size: large;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 50%;
+}
+
+p {
+  margin-top: 10px;
+}
+
+#aid {
+  animation: flyaid 15s linear;
+  top: 100vw;
+  left: 0;
+}
+
+#title {
+  animation: flytitle 15s linear;
+  top: 100vw;
+  left: 0;
+}
+
+#info1 {
+  animation: flyinfo1 15s linear;
+  top: 100vw;
+  left: 0;
+}
+
+#info2 {
+  animation: flyinfo2 15s linear;
+  top: 100vw;
+  left: 0;
+}
+
+#info3 {
+  animation: flyinfo3 15s linear;
+  top: 100vw;
+  left: 0;
+}
+
+#info4 {
+  animation: flyinfo4 15s linear;
+  top: 100vw;
+  left: 0;
+}
+
+#info5 {
+  animation: flyinfo5 15s linear;
+  top: 100vw;
+  left: 0;
+}
+
+#info6 {
+  animation: flyinfo6 15s linear;
+  top: 100vw;
+  left: 0;
+}
+
+#ready {
+  animation: flyready 15s linear;
+  top: 100vw;
+  left: 0;
+}
+
+@keyframes flyaid {
+  0%{
+    transform: translate(110vw,-90vw);opacity: .75;
+  }
+  8%{
+    transform: translate(0,-90vw);opacity: .75;
+  }
+
+  15%{
+      transform: translate(0,-90vw);opacity: .75;
+  }
+  17%{
+    transform: translate(0,-75vw);opacity: .75;
+  }
+
+  25%{
+    transform: translate(0,-75vw);opacity: .75;
+  }
+  27%{
+    transform: translate(0,-60vw);opacity: .75;
+  }
+
+
+  40%{
+    transform: translate(0,-60vw);opacity: .75;
+  }
+  42%{
+    transform: translate(0,-42vw);opacity: .75;
+  }
+
+
+  50%{
+    transform: translate(0,-42vw);opacity: .75;
+  }
+  52%{
+    transform: translate(0,-24vw);opacity: .75;
+  }
+
+  70%{
+    transform: translate(0,-24vw);opacity: .75;
+  }
+  72%{
+    transform: translate(0,0);opacity: .75;
+  }
+}
+
+
+@keyframes flytitle {
+  0%{
+    transform: translate(110vw,0);opacity: .75;
+  }
+  10%{
+    transform: translate(110vw,0);opacity: .75;
+  }
+  12%{
+    transform: translate(0,0);opacity: 1;
+  }
+}
+
+@keyframes flyinfo1 {
+  0%{
+    transform: translate(110vw,0);opacity: .75;
+  }
+  15%{
+    transform: translate(110vw,0);opacity: .75;
+  }
+  17%{
+      transform: translate(0,0);opacity: 1;
+  }
+}
+
+@keyframes flyinfo2 {
+  0%{
+    transform: translate(110vw,0);opacity: .75;
+  }
+  25%{
+    transform: translate(110vw,0);opacity: .75;
+  }
+  27%{
+      transform: translate(0,0);opacity: 1;
+  }
+}
+
+@keyframes flyinfo3 {
+  0%{
+    transform: translate(110vw,0);opacity: .75;
+  }
+  40%{
+    transform: translate(110vw,0);opacity: .75;
+  }
+  42%{
+      transform: translate(0,0);opacity: 1;
+  }
+}
+
+@keyframes flyinfo4 {
+  0%{
+    transform: translate(110vw,0);opacity: .75;
+  }
+  50%{
+    transform: translate(110vw,0);opacity: .75;
+  }
+  52%{
+      transform: translate(0,0);opacity: 1;
+  }
+}
+
+@keyframes flyinfo5 {
+  0%{
+    transform: translate(110vw,0);opacity: .75;
+  }
+  70%{
+    transform: translate(110vw,0);opacity: .75;
+  }
+  72%{
+      transform: translate(0,0);opacity: 1;
+  }
+}
+
+@keyframes flyinfo6 {
+  0%{
+    transform: translate(110vw,0);opacity: .75;
+  }
+  85%{
+    transform: translate(110vw,0);opacity: .75;
+  }
+  87%{
+      transform: translate(0,0);opacity: 1;
+  }
+}
+
+@keyframes flyready {
+  0%{
+    transform: translate(110vw,0);opacity: .75;
+  }
+  95%{
+    transform: translate(110vw,0);opacity: .75;
+  }
+  100%{
+      transform: translate(0,0);opacity: 1;
+  }
+}

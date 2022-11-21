@@ -27,7 +27,7 @@ export class VotesStore {
   Hawaii: State = new State('HI',4,53,28);
   Idaho: State = new State('ID',4,30,51,true);
   Illinois: State = new State('IL',20,48,34);
-  Indiana: State = new State('IN',4,30,51,true);
+  Indiana: State = new State('IN',11,30,51,true);
   Iowa: State = new State('IA',6,39,43);
   Kansas: State = new State('KS',6,32,49,true);
   Kentucky: State = new State('KY',8,30,51,true);
@@ -167,7 +167,7 @@ export class VotesStore {
   getTossUpsLeft() {
     const undecidedStates = [];
     for (const state of this.states) {
-      if (state.leansDem > 0 && state.leansDem < 5) {
+      if (state.leansDem > 0 && state.leansDem < 5 && !state.decided) {
         undecidedStates.push(state);
       }
     }
@@ -177,7 +177,7 @@ export class VotesStore {
   getTossUps() {
     const undecidedStates = [];
     for (const state of this.states) {
-      if (state.leansDem === 0) {
+      if (state.leansDem === 0 && !state.decided) {
         undecidedStates.push(state);
       }
     }
@@ -187,7 +187,7 @@ export class VotesStore {
   getTossUpsRight() {
     const undecidedStates = [];
     for (const state of this.states) {
-      if (state.leansRep > 0 && state.leansRep < 5) {
+      if (state.leansRep > 0 && state.leansRep < 5 && !state.decided) {
         undecidedStates.push(state);
       }
     }
@@ -212,7 +212,8 @@ export class VotesStore {
         state.demPercent += changeLeft;
         state.repPercent += changeRight;
         state.leansDem = state.demPercent-state.repPercent;
-        state.leansRep = state.repPercent-state.demPercent;      }
+        state.leansRep = state.repPercent-state.demPercent;
+      }
     }
   }
 
@@ -221,6 +222,11 @@ export class VotesStore {
     for (const state of this.states) {
       if (state.repPercent > state.demPercent) {
         red += state.college;
+        state.decided = true;
+      }
+      if (state.repPercent === state.demPercent && this.NationalClimate >= 0) {
+        red += state.college;
+        state.decided = true;
       }
     }
     return red;
@@ -229,11 +235,30 @@ export class VotesStore {
   getFinalBlue() {
     let blue = 0;
     for (const state of this.states) {
-      if (state.repPercent <= state.demPercent) {
+      if (state.repPercent < state.demPercent) {
         blue += state.college;
+        state.decided = true;
+      }
+      if (state.repPercent === state.demPercent && this.NationalClimate < 0) {
+        blue += state.college;
+        state.decided = true;
       }
     }
     return blue;
+  }
+
+  getUserWon() {
+    if (this.getFinalBlue() > 269 && this.isDemocrat) {
+      return true;
+    } else if (this.getFinalBlue() > 269 && !this.isDemocrat) {
+      return false;
+    }
+    if (this.getFinalRed() > 269 && !this.isDemocrat) {
+      return true;
+    } else {
+      return false;
+    }
+
   }
 
   reset() {
@@ -257,7 +282,7 @@ export class VotesStore {
     this.Hawaii = new State('HI',4,53,28);
     this.Idaho = new State('ID',4,30,51,true);
     this.Illinois = new State('IL',20,48,34);
-    this.Indiana = new State('IN',4,30,51,true);
+    this.Indiana = new State('IN',11,30,51,true);
     this.Iowa = new State('IA',6,39,43);
     this.Kansas = new State('KS',6,32,49,true);
     this.Kentucky = new State('KY',8,30,51,true);

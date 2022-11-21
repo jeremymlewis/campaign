@@ -22,4 +22,6 @@ export class Event {
   description: string;
   rollMap: number[];
   imageSrc: string;
+  rollMapDescription1: string;
+  rollMapDescription2: string;
 }

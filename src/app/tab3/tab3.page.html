@@ -18,12 +18,12 @@
   <p>Hello Senator! How can I help you?</p>
   </div>
   <img id="aid" src="../../../assets/images/aid.png">
-  <ion-button style="padding-left: 20px;">What to do on my turn?</ion-button>
-  <ion-button style="padding-left: 20px;">Info on Advertizing?</ion-button>
-  <ion-button style="padding-left: 20px;">Info on Campaigning?</ion-button>
-  <ion-button style="padding-left: 20px;">Info on Fundraising?</ion-button>
-  <ion-button style="padding-left: 20px;">Info on Debates?</ion-button>
-  <ion-button style="padding-left: 20px;">Info on Special Events?</ion-button>
-  <ion-button style="padding-left: 20px;">How to win?</ion-button>
+  <ion-button (click)='turn()' style="padding-left: 20px;">What to do on my turn?</ion-button>
+  <ion-button (click)='advertise()' style="padding-left: 20px;">Info on Advertizing?</ion-button>
+  <ion-button (click)='campaign()' style="padding-left: 20px;">Info on Campaigning?</ion-button>
+  <ion-button (click)='fundraise()' style="padding-left: 20px;">Info on Fundraising?</ion-button>
+  <ion-button (click)='debate()' style="padding-left: 20px;">Info on Debates?</ion-button>
+  <ion-button (click)='event()' style="padding-left: 20px;">Info on Special Events?</ion-button>
+  <ion-button (click)="reset()" style="padding-left: 20px;" color="danger">Forfeit the race</ion-button>
 
 </ion-content>

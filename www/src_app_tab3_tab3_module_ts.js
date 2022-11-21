@@ -96,29 +96,39 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Tab3Page": () => (/* binding */ Tab3Page)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 4929);
 /* harmony import */ var _tab3_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./tab3.page.html?ngResource */ 9769);
 /* harmony import */ var _tab3_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./tab3.page.scss?ngResource */ 7087);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ 124);
 /* harmony import */ var _stores_votes_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../stores/votes.store */ 2049);
 
 
 
 
 
+
 let Tab3Page = class Tab3Page {
-    constructor(votes) {
+    constructor(votes, router) {
         this.votes = votes;
+        this.router = router;
     }
     ngOnInit() {
         this.isDemocrat = this.votes.getUserIsDem();
     }
+    reset() {
+        if (window.confirm('Do you want to drop out of the race? All progress will be lost')) {
+            this.votes.reset();
+            this.router.navigateByUrl('/');
+        }
+    }
 };
 Tab3Page.ctorParameters = () => [
-    { type: _stores_votes_store__WEBPACK_IMPORTED_MODULE_2__.VotesStore }
+    { type: _stores_votes_store__WEBPACK_IMPORTED_MODULE_2__.VotesStore },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__.Router }
 ];
-Tab3Page = (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_4__.Component)({
+Tab3Page = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_5__.Component)({
         selector: 'app-tab3',
         template: _tab3_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
         styles: [_tab3_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__]
@@ -135,7 +145,7 @@ Tab3Page = (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__decorate)([
   \************************************************/
 /***/ ((module) => {
 
-module.exports = "p {\n  text-align: center;\n}\n\nh1 {\n  text-align: center;\n}\n\nh3 {\n  text-align: center;\n}\n\n.header-icon {\n  position: fixed;\n  right: 10px;\n  max-height: 30px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRhYjMucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0Usa0JBQUE7QUFDRjs7QUFFQTtFQUNFLGtCQUFBO0FBQ0Y7O0FBRUE7RUFDRSxrQkFBQTtBQUNGOztBQUVBO0VBQ0UsZUFBQTtFQUNBLFdBQUE7RUFDQSxnQkFBQTtBQUNGIiwiZmlsZSI6InRhYjMucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsicCB7XHJcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG59O1xyXG5cclxuaDEge1xyXG4gIHRleHQtYWxpZ246IGNlbnRlcjtcclxufTtcclxuXHJcbmgzIHtcclxuICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbn07XHJcblxyXG4uaGVhZGVyLWljb24ge1xyXG4gIHBvc2l0aW9uOiBmaXhlZDtcclxuICByaWdodDogMTBweDtcclxuICBtYXgtaGVpZ2h0OiAzMHB4O1xyXG59XHJcbiJdfQ== */";
+module.exports = "p {\n  text-align: center;\n}\n\nh1 {\n  text-align: center;\n}\n\nh3 {\n  text-align: center;\n}\n\n.header-icon {\n  position: fixed;\n  right: 10px;\n  max-height: 30px;\n}\n\n.center {\n  text-align: center;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  left: 50%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRhYjMucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0Usa0JBQUE7QUFDRjs7QUFFQTtFQUNFLGtCQUFBO0FBQ0Y7O0FBRUE7RUFDRSxrQkFBQTtBQUNGOztBQUVBO0VBQ0UsZUFBQTtFQUNBLFdBQUE7RUFDQSxnQkFBQTtBQUNGOztBQUVBO0VBQ0Usa0JBQUE7RUFFQSxhQUFBO0VBQ0EsdUJBQUE7RUFDQSxtQkFBQTtFQUNBLFNBQUE7QUFBRiIsImZpbGUiOiJ0YWIzLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbInAge1xyXG4gIHRleHQtYWxpZ246IGNlbnRlcjtcclxufTtcclxuXHJcbmgxIHtcclxuICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbn07XHJcblxyXG5oMyB7XHJcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG59O1xyXG5cclxuLmhlYWRlci1pY29uIHtcclxuICBwb3NpdGlvbjogZml4ZWQ7XHJcbiAgcmlnaHQ6IDEwcHg7XHJcbiAgbWF4LWhlaWdodDogMzBweDtcclxufVxyXG5cclxuLmNlbnRlciB7XHJcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG5cclxuICBkaXNwbGF5OiBmbGV4O1xyXG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xyXG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbiAgbGVmdDogNTAlXHJcbn1cclxuIl19 */";
 
 /***/ }),
 
@@ -145,7 +155,7 @@ module.exports = "p {\n  text-align: center;\n}\n\nh1 {\n  text-align: center;\n
   \************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-header [translucent]=\"true\">\n  <ion-toolbar>\n    <ion-title>\n      Instructions\n      <img class='header-icon' *ngIf=\"!isDemocrat\" src=\"../../assets/images/republicanIcon.png\">\n      <img class='header-icon' *ngIf=\"isDemocrat\" src=\"../../assets/images/democratIcon.png\">\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content [fullscreen]=\"true\">\n  <ion-header collapse=\"condense\">\n    <ion-toolbar>\n      <ion-title size=\"large\">Instructions</ion-title>\n    </ion-toolbar>\n  </ion-header>\n  <h1>HOW TO PLAY</h1>\n  <h2 style=\"color: red;\">IN PROGESS.  Not the complete instructions, I just pasted in some of them to test the page.  Also, they won't always be this ugly, formatting needs work</h2>\n  <p>The game has 10 rounds. In each round, a player gets to make two moves. Your moves can be one of three activities: campaigning, fundraising, and running ads.<br></p>\n  <h3>Campaigning:</h3>\n  <p>A player must first select a state to visit and then roll the die. After rolling the die, the player will subtract from his* roll the difference between their political rating and the political rating of the state they visited.<br><br>\n  Ex: The Republican nominee has a “4” political rating and decides to campaign in Florida, a swing state (“3” political rating). If they rolled a 3, they will subtract 1 (the difference between 4 and 3) from their roll and add that to their polling in Florida. This means they gained 2 points in Florida.<br><br>\n  *Yes, HIS. One of 90+ major party nominees has been a woman. Gender inequality is real and using “their” in our instructions won’t make it go away.<br><br>\n  Ex: GA 16   38-44<br><br>\n  The state’s abbreviation, followed by its total electoral votes, followed by the initial vote totals in that state.<br></p>\n<h3>Fundraising: </h3>\n<p>You can’t win without violating your core principles for money. To run ads, you’ll need some money. If you roll a 1-4, you’ll receive one fundraising point. If you roll a 5 or 6, you’ll receive two fundraising points (way to grovel). Two fundraising points are worth 10,000 Stanley nickels.<br></p>\n  <h3>National Climate:</h3>\n    <br>\n  <h3>Running ads:</h3> <p> pick one region to run ads in at a time. You can run up to 5 ads per turn.<br>\nPositive- You’ve been fighting for years to solve all these problems that haven’t been solved and if the voters promote you, then you’re really gonna fight hard and solve them?<br>\n\nNegative- Did your opponent murder a lady? No? Maybe bought a company that subsequently laid off workers that lost health insurance and one of those workers wives’ tragically contracted cancer? Same thing. At least that’s what we’ll tell the voters. Negative ads work. If your followers don’t like you, they should at least loathe your opponent and his supporters.  These ads can backfire, however.<br>\n\n\nMedia Tour: Looking to show your lighter, more human side? Take a seat on a late night TV couch, it’s usually a safe bet. Jimmy will go easy. No, the other Jimmy.<br>\n\n</p>\n</ion-content>\n";
+module.exports = "<ion-header [translucent]=\"true\">\n  <ion-toolbar>\n    <ion-title>\n      Instructions\n      <img class='header-icon' *ngIf=\"!isDemocrat\" src=\"../../assets/images/republicanIcon.png\">\n      <img class='header-icon' *ngIf=\"isDemocrat\" src=\"../../assets/images/democratIcon.png\">\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content [fullscreen]=\"true\">\n  <ion-header collapse=\"condense\">\n    <ion-toolbar>\n      <ion-title size=\"large\">Instructions</ion-title>\n    </ion-toolbar>\n  </ion-header>\n  <div class=\"center\">\n  <p>Hello Senator! How can I help you?</p>\n  </div>\n  <img id=\"aid\" src=\"../../../assets/images/aid.png\">\n  <ion-button style=\"padding-left: 20px;\">What to do on my turn?</ion-button>\n  <ion-button style=\"padding-left: 20px;\">Info on Advertizing?</ion-button>\n  <ion-button style=\"padding-left: 20px;\">Info on Campaigning?</ion-button>\n  <ion-button style=\"padding-left: 20px;\">Info on Fundraising?</ion-button>\n  <ion-button style=\"padding-left: 20px;\">Info on Debates?</ion-button>\n  <ion-button style=\"padding-left: 20px;\">Info on Special Events?</ion-button>\n  <ion-button (click)=\"reset()\"style=\"padding-left: 20px;\">Forfeit the race</ion-button>\n\n</ion-content>\n";
 
 /***/ })
 

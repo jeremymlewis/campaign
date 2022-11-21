@@ -21,16 +21,33 @@ export class CampaignPage implements OnInit {
 
   async handleRoll(roll: number) {
     this.canBack = false;
+    //
+    const stateId = this.chosenState.split(',')[0];
+    const stateModifier = this.chosenState.split(',')[1];
+    const originalRoll = roll;
     if (this.chosenState) {
       if (this.isDemocrat) {
-        //TODO for now, we just take the full roll value...
-        this.votes.changeStateClimate(this.chosenState, roll, 0);
+        if (stateModifier === '1') {
+          roll -= 1;
+        } else if (stateModifier === '2') {
+          roll -= 2;
+        }
+        if (roll < 0) {
+          roll = 0;
+        }
+        this.votes.changeStateClimate(stateId, roll, 0);
       } else {
-        //TODO for now, we just take the full roll value...
-        this.votes.changeStateClimate(this.chosenState, 0, roll);
+        if (stateModifier === '3') {
+          roll -= 1;
+        } else if (stateModifier === '4') {
+          roll -= 2;
+        }
+        if (roll < 0) {
+          roll = 0;
+        }
+        this.votes.changeStateClimate(stateId , 0, roll);
       }
-      this.presentToast('You rolled a ' + roll + ', making a difference of ' + roll + ' in ' + this.chosenState, 3000);
-              //TODO for now, we just take the full roll value...
+      this.presentToast('You rolled a ' + originalRoll + ', making a difference of ' + roll + ' in ' + stateId, 3000);
       await new Promise(f => setTimeout(f, 3200));
       this.toNextTurn();
     } else {
