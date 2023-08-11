@@ -4,7 +4,7 @@
 <div class="center">
 <p>A Special Event has been triggered!</p>
 </div>
-<div class="center">
+<div class="center" style="background-color: rgb(192, 182, 224); border-bottom: 2px black solid; border-top: 2px black solid;">
 <h1>{{eventTitle}}</h1>
 </div>
 <div class="center">
@@ -15,11 +15,30 @@
 <p>{{eventDescription}}</p>
 </div>
 <div class="center">
-<p>{{eventRollsL}}</p>
-<p>{{eventRollsR}}</p>
+<p *ngIf="eventPoints < 0">This moves the National Climate {{eventPoints}} points toward your opponent</p>
+<p *ngIf="eventPoints === 0">The National Climate is unaffected</p>
+<p *ngIf="eventPoints > 0">This moves the National Climate {{eventPoints}} points in your favor</p>
+<!-- Or to the right... calculate that on the ts side of this. -->
 </div>
 <div class="center">
-
-<app-dice (diceRolled)="handleRoll($event)"></app-dice>
+  <ion-button (click)="handleRoll(1)">Next</ion-button>
+<!-- <p>{{eventRollsL}}</p>
+<p>{{eventRollsR}}</p> -->
 </div>
+
+<div id="navcontainer">
+  <ul id="navlist" >
+
+    <li id="active">Fun Fact</li>
+      <div class="funfact">
+        <!-- Put this last part in a toast looking box TODO -->
+        <p style="margin-bottom: 0;">This event happened to {{eventPersonInvolved}} during the election of {{eventYear}}</p>
+        <img [src]="eventIcon" style="border-radius: 50%; border: 2px solid black; width:50px; height:50px; padding-top: 0; margin-bottom: 0;">
+        <p style="margin-top: 0;">{{eventHistory}}</p>
+        <!-- <app-dice (diceRolled)="handleRoll($event)"></app-dice> -->
+      </div>
+    </ul>
+</div>
+
+
 </ion-content>

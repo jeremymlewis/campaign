@@ -20,8 +20,9 @@ export class State {
 export class Event {
   title: string;
   description: string;
-  rollMap: number[];
+  points: number;
   imageSrc: string;
-  rollMapDescription1: string;
-  rollMapDescription2: string;
+  history: string;
+  politicanInvolved: string;
+  yearInvolved: string;
 }

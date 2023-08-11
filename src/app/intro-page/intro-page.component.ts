@@ -19,7 +19,7 @@ export class IntroPage implements AfterViewInit {
   toTabs() {
     this.audio.play('chief');
     if(!this.passwordRequired || this.passcode === 'jonaslinde') {
-      this.route.navigateByUrl('/welcome');
+      this.route.navigateByUrl('/options'); //Jermy TODO was options but I changed it
     }
   }
 

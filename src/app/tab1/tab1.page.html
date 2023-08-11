@@ -15,7 +15,16 @@
   <div class="center">
     <p>{{getCurrentTurn()}}</p>
   </div>
-  <ion-button class="option" (click)="fundraise()"><img src="../../assets/images/funds.png"> Fundraise!</ion-button>
+  <!-- <ion-button class="option" (click)="fundraise()"><img src="../../assets/images/funds.png"> Fundraise!</ion-button>
   <ion-button class="option" (click)="campaign()"><img src="../../assets/images/campaign.png"> Campaign!</ion-button>
-  <ion-button class="option" (click)="advertising()"><img src="../../assets/images/ads.png"> Advertise!</ion-button>
+  <ion-button class="option" (click)="advertising()"><img src="../../assets/images/ads.png"> Advertise!</ion-button> -->
+  <ion-button class="option" (click)="fundraise()">FUNDRAISE</ion-button>
+  <ion-button class="option" (click)="advertising()">
+    <div>
+      <p style="margin-bottom: 1px;">ADVERTISE</p>
+
+      <p style="font-size: medium; margin-top: 0px;">({{votes.funds}} available)</p>
+    </div>
+  </ion-button>
+  <ion-button class="option" (click)="campaign()">CAMPAIGN</ion-button>
 </ion-content>

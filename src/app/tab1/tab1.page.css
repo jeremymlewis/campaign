@@ -1,15 +1,18 @@
 .option {
   height: 100px;
   position: relative;
+  font-size: x-large;
   left: 10%;
   width: 80%;
   right: 10%;
+  white-space: normal;
+  flex-flow: column;
 }
 
 
-ion-content{
+/* ion-content{
   --background: #fff url("../../assets/images/boardroom.png") no-repeat center center / cover;
-}
+} */
 
 .header-icon {
   position: fixed;

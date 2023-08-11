@@ -28,7 +28,7 @@ const routes: Routes = [
   },
   {
     path: 'firstevent',
-    component: EventWelcomePage,
+    component: EventPage, //TODO was EventWelcomePage but removed for testing jermy
   },
   {
     path: 'fundraise',

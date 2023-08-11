@@ -1,6 +1,6 @@
-ion-content{
+/* ion-content{
   --background: #fff url("../../../assets/images/debate.png") no-repeat center center / cover;
-}
+} */
 
 .center {
   font-size: large;
@@ -11,10 +11,45 @@ ion-content{
   left: 50%
 }
 
-.center {
+#navcontainer {
+  position: fixed;
+  bottom: 32px;
+  left: 5%;
+  right:5%;
+  display: block;
+  width:90%;
+}
+
+#navlist {
+  padding: 3px 0;
+  margin-right: 2px;
+}
+
+#navlist li {
+  padding-left: 2px;
+  padding-right: 2px;
+  border-radius:2px 2px 2px 2px;
+  border-bottom: 2px solid rgb(0, 214, 214);
+  background: rgb(0, 214, 214);
+  list-style: none;
+  margin-left: 3px;
+  border-top: 2px solid black;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  left: 5%;
+  display: inline;
+  position:relative;
+  top:1px;
+}
+
+.funfact {
+  background-color: aqua;
+  border-radius: 4px;
+  border: 2px solid black;
+
   font-size: large;
   text-align: center;
-  display: flex;
+  display: block;
   justify-content: center;
   align-items: center;
   left: 50%;

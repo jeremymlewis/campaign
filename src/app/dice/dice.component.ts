@@ -50,17 +50,21 @@ export class DiceComponent {
   async animatedDiceRoll() {
     this.canClick = false;
     this.rollDice();
-    await new Promise(f => setTimeout(f, 120));
+    await new Promise(f => setTimeout(f, 80));
     this.rollDice();
-    await new Promise(f => setTimeout(f, 120));
+    await new Promise(f => setTimeout(f, 80));
     this.rollDice();
-    await new Promise(f => setTimeout(f, 120));
+    await new Promise(f => setTimeout(f, 80));
     this.rollDice();
-    await new Promise(f => setTimeout(f, 120));
+    await new Promise(f => setTimeout(f, 80));
     this.rollDice();
-    await new Promise(f => setTimeout(f, 120));
+    await new Promise(f => setTimeout(f, 80));
     this.rollDice();
-    await new Promise(f => setTimeout(f, 120));
+    await new Promise(f => setTimeout(f, 80));
+    this.rollDice();
+    await new Promise(f => setTimeout(f, 80));
+    this.rollDice();
+    await new Promise(f => setTimeout(f, 80));
     this.rollDice();
     this.diceRolled.emit(this.value);
     await new Promise(f => setTimeout(f, 4000));

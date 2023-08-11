@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { State } from './State';
+import { State } from './state';
 //import { Storage } from '@ionic/storage';
 
 
@@ -132,6 +132,24 @@ export class VotesStore {
 
   getAllStates() {
     return this.states;
+  }
+
+  getCurrentScore() {
+    let demScore = 0;
+    let repScore = 0;
+    for (const state of this.states) {
+      if (state.leansDem) {
+        demScore += state.college;
+      }
+      if (state.leansRep) {
+        repScore += state.college;
+      }
+    }
+    if (this.isDemocrat) {
+      return 270 - repScore;
+    } else {
+      return 270 - demScore;
+    }
   }
 
   getDecidedStates() {
