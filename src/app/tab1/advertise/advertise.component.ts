@@ -12,7 +12,9 @@ import { VotesStore } from '../../stores/votes.store';
 export class AdvertisePage implements OnInit {
   selectedStates: string[];
   isDemocrat: boolean;
+  isThird: boolean;
   choosenGroup: string;
+  diceEnabled = false;
   canBack = true;
   myGroup = new FormGroup({
     buttonGroup: new FormControl()
@@ -21,6 +23,11 @@ export class AdvertisePage implements OnInit {
 
   ngOnInit() {
     this.isDemocrat = this.votes.getUserIsDem();
+    this.isThird = this.votes.getUserIsThird();
+  }
+
+  enableDice() {
+    this.diceEnabled = true;
   }
 
   getGroup() {
@@ -48,7 +55,14 @@ export class AdvertisePage implements OnInit {
   async handleRoll(roll: number) {
     this.canBack = false;
     this.getGroup();
-    console.log(this.selectedStates);
+
+    if (this.isThird) {
+      //TODO3
+      return;
+    }
+
+
+
     if (roll === 1) {
       this.presentToast('You rolled a ' + roll + ', Your advertising made no difference!' , 3000);
       await new Promise(f => setTimeout(f, 3200));

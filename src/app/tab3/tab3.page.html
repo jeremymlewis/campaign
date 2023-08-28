@@ -2,8 +2,9 @@
   <ion-toolbar>
     <ion-title>
       Instructions
-      <img class='header-icon' *ngIf="!isDemocrat" src="../../assets/images/republicanIcon.png">
-      <img class='header-icon' *ngIf="isDemocrat" src="../../assets/images/democratIcon.png">
+      <img class='header-icon' *ngIf="!isDemocrat && !isThird" src="../../assets/images/republicanIcon.png">
+      <img class='header-icon' *ngIf="isDemocrat && !isThird" src="../../assets/images/democratIcon.png">
+      <h1 *ngIf="isThird">{{partyName}}</h1>
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -15,7 +16,7 @@
     </ion-toolbar>
   </ion-header>
   <div class="center">
-  <p>Hello Senator! How can I help you?</p>
+  <p>Hello! How can I help you?</p>
   </div>
   <img id="aid" src="../../../assets/images/aid.png">
   <ion-button (click)='turn()' style="padding-left: 20px;">What to do on my turn?</ion-button>

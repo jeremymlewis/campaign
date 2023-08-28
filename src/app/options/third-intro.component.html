@@ -1,0 +1,36 @@
+
+<ion-content [fullscreen]="true">
+  <ion-grid class="ion-no-padding bg-image">
+  <div class="background">
+    <div class="center">
+      <h1 id="title">You have chosen to run 3rd party</h1>
+    </div>
+    <div class="center">
+      <h2 style="color: darkred">THIS GAME MODE IS NOT FINISHED.</h2>
+    </div>
+    <div class="center">
+      <p id="info1">You will begin the game with only 2% popuarity in each state.</p>
+    </div>
+    <div class="center">
+    <p id="info2">You can go back and select a major party now:</p>
+    </div>
+    <div class="center">
+    <ion-button (click)="goBack()">Go Back</ion-button>
+    </div>
+    <div class="center">
+    <p id="info3">Or chose a name for your new party and continue on to the race:</p>
+    </div>
+    <div class="center">
+
+    <ion-item>
+      <ion-input maxlength="12" [(ngModel)]="partyName" placeholder="Party Name" text-right label="Party Name"></ion-input>
+    </ion-item>
+
+    </div>
+    <div class="center">
+      <ion-button [disabled]="partyName === ''" (click)="submitName()">Start The Race</ion-button>
+
+    </div>
+  </div>
+  </ion-grid>
+</ion-content>

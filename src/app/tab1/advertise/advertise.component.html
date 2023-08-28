@@ -10,52 +10,52 @@
 <div class="row">
   <div [formGroup]="myGroup">
     <div class="column left">
-    <input type="radio" name="buttonGroup" formControlName="buttonGroup" value="one" id="one"><label for="one">
+    <input (click)="enableDice()" type="radio" name="buttonGroup" formControlName="buttonGroup" value="one" id="one"><label for="one">
       <img class="state-icon" src="../../../assets/images/states/HI-Hawaii.png">
       <img class="state-icon" src="../../../assets/images/states/CA-California.png">
       <img class="state-icon" src="../../../assets/images/states/WA-Washington.png">
       <img class="state-icon" src="../../../assets/images/states/OR-Oregon.png">
       <br>
-      Block 1 (HI, CA, WA, OR)</label>
-    <input type="radio" name="buttonGroup" formControlName="buttonGroup" value="two" id="two"><label for="two">
+      HI, CA, WA, OR</label>
+    <input (click)="enableDice()" type="radio" name="buttonGroup" formControlName="buttonGroup" value="two" id="two"><label for="two">
       <img class="state-icon" src="../../../assets/images/states/IL-Illinois.png">
       <img class="state-icon" src="../../../assets/images/states/MN-Minnesota.png">
       <br>
-      Block 2 (IL, MN)</label>
-    <input type="radio" name="buttonGroup" formControlName="buttonGroup" value="three" id="three"><label for="three">
+      IL, MN</label>
+    <input (click)="enableDice()" type="radio" name="buttonGroup" formControlName="buttonGroup" value="three" id="three"><label for="three">
       <img class="state-icon" src="../../../assets/images/states/NM-New-Mexico.png">
       <img class="state-icon" src="../../../assets/images/states/CO-Colorado.png">
       <img class="state-icon" src="../../../assets/images/states/NV-Nevada.png">
       <img class="state-icon" src="../../../assets/images/states/AZ-Arizona.png">
       <br>
-      Block 3 (NM, CO, NV, AZ)</label>
-    <input type="radio" name="buttonGroup" formControlName="buttonGroup" value="four" id="four"><label for="four">
+      NM, CO, NV, AZ</label>
+    <input (click)="enableDice()" type="radio" name="buttonGroup" formControlName="buttonGroup" value="four" id="four"><label for="four">
       <img class="state-icon" src="../../../assets/images/states/ME-Maine.png">
       <img class="state-icon" src="../../../assets/images/states/NH-New-Hampshire.png">
       <img class="state-icon" src="../../../assets/images/states/VA-Virginia.png">
       <img class="state-icon" src="../../../assets/images/states/PA-Pennsylvania.png">
       <br>
-      Block 4 (ME, NH, VA, PA)</label>
+      ME, NH, VA, PA</label>
   </div>
   <div class="column right">
-    <input type="radio" name="buttonGroup" formControlName="buttonGroup" value="five" id="five"><label for="five">
+    <input (click)="enableDice()" type="radio" name="buttonGroup" formControlName="buttonGroup" value="five" id="five"><label for="five">
       <img class="state-icon" src="../../../assets/images/states/WI-Wisconsin.png">
       <img class="state-icon" src="../../../assets/images/states/IA-Iowa.png">
       <img class="state-icon" src="../../../assets/images/states/MI-Michigan.png">
       <img class="state-icon" src="../../../assets/images/states/OH-Ohio.png">
       <br>
-      Block 5 (WI, IA, MI, OH)</label>
-    <input type="radio" name="buttonGroup" formControlName="buttonGroup" value="six" id="six"><label for="six">
+      WI, IA, MI, OH</label>
+    <input (click)="enableDice()" type="radio" name="buttonGroup" formControlName="buttonGroup" value="six" id="six"><label for="six">
       <img class="state-icon" src="../../../assets/images/states/FL-Florida.png">
       <img class="state-icon" src="../../../assets/images/states/NC-North-Carolina.png">
       <img class="state-icon" src="../../../assets/images/states/GA-Georgia.png">
       <br>
-      Block 6 (FL, NC, GA)</label>
-    <input type="radio" name="buttonGroup" formControlName="buttonGroup" value="seven" id="seven"><label for="seven">
+      FL, NC, GA</label>
+    <input (click)="enableDice()" type="radio" name="buttonGroup" formControlName="buttonGroup" value="seven" id="seven"><label for="seven">
       <img class="state-icon" src="../../../assets/images/states/TX-Texas.png">
       <br>
-      Block 7 (TX)</label>
-    <input type="radio" name="buttonGroup" formControlName="buttonGroup" value="eight" id="eight"><label for="eight">
+      TX</label>
+    <input (click)="enableDice()" type="radio" name="buttonGroup" formControlName="buttonGroup" value="eight" id="eight"><label for="eight">
       <img class="state-icon" src="../../../assets/images/states/SC-South-Carolina.png">
       <img class="state-icon" src="../../../assets/images/states/MO-Missouri.png">
       <img class="state-icon" src="../../../assets/images/states/IN-Indiana.png">
@@ -64,7 +64,7 @@
       <img class="state-icon" src="../../../assets/images/states/AK-Alaska.png">
       <img class="state-icon" src="../../../assets/images/states/LA-Louisiana.png">
       <br>
-      Block 8 (SC, MO, IN, MT, MS, AK, LA)</label>
+      SC, MO, IN, MT, MS, AK, LA</label>
     </div>
   </div>
 </div>
@@ -72,7 +72,7 @@
 <p>After choosing which block you will advertise to, click 'roll' to see how the area is affected.</p>
 </div>
 <div class="center">
-<app-dice (diceRolled)="handleRoll($event)"></app-dice>
+<app-dice [canClick]="diceEnabled"  (diceRolled)="handleRoll($event)"></app-dice>
 </div>
 <div class="center">
 <p>Rolling a 1 will result in no effect<br>

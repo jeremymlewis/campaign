@@ -11,6 +11,8 @@ import { VotesStore } from '../stores/votes.store';
 })
 export class Tab2Page implements OnInit, AfterViewInit {
   isDemocrat = true;
+  isThird = false;
+  partyName= '';
   decidedStates: State[] = [];
   decidedStatesRight: State[]= [];
   decidedStatesLeft: State[]= [];
@@ -19,6 +21,7 @@ export class Tab2Page implements OnInit, AfterViewInit {
   tossUpStatesLeft: State[]= [];
   tossUpStatesRight: State[]= [];
   tossUpStates: State[]= [];
+  allStates: State[]= [];
   decidedRed = 0;
   decidedBlue = 0;
   leanRed = 0;
@@ -41,6 +44,9 @@ export class Tab2Page implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.isDemocrat = this.store.getUserIsDem();
+    this.isThird = this.store.getUserIsThird();
+    this.partyName = this.store.thirdPartyName;
+
   }
 
   ngAfterViewInit() {
@@ -68,6 +74,7 @@ export class Tab2Page implements OnInit, AfterViewInit {
     this.tossUpStatesLeft = [];
     this.tossUpStatesRight = [];
     this.tossUpStates = [];
+    this.allStates = [];
     this.decidedRed = 0;
     this.decidedBlue = 0;
     this.leanRed = 0;
@@ -75,6 +82,7 @@ export class Tab2Page implements OnInit, AfterViewInit {
     this.tossUp = 0;
     this.sky = 0;
     this.pink = 0;
+    this.allStates = this.store.getAllStates();
     this.decidedStates = this.store.getDecidedStates();
     this.national = this.store.NationalClimate;
     for (const state of this.decidedStates) {

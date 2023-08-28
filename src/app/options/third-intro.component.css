@@ -1,0 +1,27 @@
+.game-title {
+  padding-top: 40%;
+  text-align: center;
+  font-size: 38px;
+}
+
+.container {
+  height: 200px;
+  position: relative;
+}
+
+
+.center {
+  font-size: large;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 50%
+}
+
+/* .bg-image {
+    background: url("../../assets/images/background.png")!important;
+    background-size: cover!important;
+    background-repeat: no-repeat;
+    height: 95%;
+} */

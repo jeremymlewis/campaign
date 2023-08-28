@@ -16,6 +16,8 @@ export class Tab1Page implements OnInit, AfterViewInit {
   currentTurn: string;
   funds = 0;
   isDemocrat: boolean;
+  isThird: boolean;
+  partyName = '';
   constructor(
     private audio: AudioService,
     private route: Router,
@@ -24,9 +26,12 @@ export class Tab1Page implements OnInit, AfterViewInit {
     public votes: VotesStore) {}
 
   ngOnInit() {
+    this.partyName = this.votes.getThirdPartyName();
     this.turns = this.textService.getTurns();
     this.currentTurn = this.turns[0];//NEEDS TO BE UPDATED
+    this.isThird = this.votes.getUserIsThird();
     this.isDemocrat = this.votes.getUserIsDem();
+    console.log(this.partyName);
   }
 
   ngAfterViewInit() {

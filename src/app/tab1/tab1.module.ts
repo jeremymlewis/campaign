@@ -14,6 +14,7 @@ import { AdvertisePage } from './advertise/advertise.component';
 import { DiceComponent } from '../dice/dice.component';
 import { OpponentPage } from './opponent/opponent.component';
 import { ResultsPage } from './results/results.component';
+import { ScoreDisplayPipe } from '../score-display.pipe';
 
 @NgModule({
   imports: [
@@ -33,7 +34,11 @@ import { ResultsPage } from './results/results.component';
     AdvertisePage,
     DiceComponent,
     OpponentPage,
-    ResultsPage
+    ResultsPage,
+    ScoreDisplayPipe,
+  ],
+  providers: [
+    ScoreDisplayPipe
   ]
 })
 export class Tab1PageModule {}

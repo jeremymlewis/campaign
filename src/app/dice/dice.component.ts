@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Injectable, Output } from '@angular/core';
+import { Component, EventEmitter, Injectable, Input, Output } from '@angular/core';
 import { CalculationService } from '../services/calculations.service';
 
 @Component({
@@ -12,7 +12,7 @@ import { CalculationService } from '../services/calculations.service';
 })
 export class DiceComponent {
   @Output() diceRolled = new EventEmitter<number>();
-  canClick = true;
+  @Input() canClick = true;
   value = 1;
   imageValue = 'dice1';
   image1 = 'dice1';

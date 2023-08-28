@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 import { OptionsPage } from './options.component';
 import { OptionsRoutingModule } from './options-routing.module';
+import { ThirdIntroPage } from './third-intro.component';
 
 @NgModule({
   imports: [
@@ -14,6 +15,6 @@ import { OptionsRoutingModule } from './options-routing.module';
     ExploreContainerComponentModule,
     OptionsRoutingModule
   ],
-  declarations: [OptionsPage]
+  declarations: [OptionsPage, ThirdIntroPage]
 })
 export class OptionsModule {}

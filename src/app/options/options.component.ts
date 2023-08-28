@@ -10,9 +10,18 @@ import { VotesStore } from '../stores/votes.store';
 export class OptionsPage {
   constructor(private route: Router, private votes: VotesStore) {}
 
-  continue(isDem: boolean) {
-      this.votes.setUserIsDem(isDem);
-      this.route.navigateByUrl('/tabs');
+  continue(party: string) {
+      let isDemocrat = false;
+      if (party === 'dem') {
+        isDemocrat = true;
+      }
+      this.votes.setUserIsDem(isDemocrat);
+      if (party === 'three') {
+        this.votes.setUserIsThird(true);
+        this.route.navigateByUrl('/options/third');
+      } else {
+        this.route.navigateByUrl('/tabs');
+      }
   }
 
 }

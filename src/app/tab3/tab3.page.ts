@@ -9,10 +9,14 @@ import { VotesStore } from '../stores/votes.store';
 })
 export class Tab3Page implements OnInit {
   isDemocrat: boolean;
+  isThird: boolean;
+  partyName = '';
   constructor(private votes: VotesStore, private router: Router) {}
 
   ngOnInit() {
     this.isDemocrat = this.votes.getUserIsDem();
+    this.isThird = this.votes.getUserIsThird();
+    this.partyName = this.votes.thirdPartyName;
   }
 
   campaign() {

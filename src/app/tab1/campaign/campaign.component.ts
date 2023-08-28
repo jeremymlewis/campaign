@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { VotesStore } from '../../stores/votes.store';
+import { State } from 'src/app/stores/state';
 
 @Component({
   selector: 'app-campaign',
@@ -9,22 +10,30 @@ import { VotesStore } from '../../stores/votes.store';
   styleUrls: ['campaign.component.css']
 })
 export class CampaignPage implements OnInit {
-  chosenState: string;
+  chosenState = '';
   isDemocrat: boolean;
-  canBack = true;
+  isThird: boolean;
 
-  constructor(private router: Router, private toastController: ToastController, private votes: VotesStore) {}
+  canBack = true;
+  states: State[];
+
+  constructor(private router: Router,
+    private toastController: ToastController,
+    private votes: VotesStore) {}
 
   ngOnInit() {
     this.isDemocrat = this.votes.getUserIsDem();
+    this.isThird = this.votes.getUserIsThird();
+    this.states = this.votes.getSortedStates();
   }
 
   async handleRoll(roll: number) {
     this.canBack = false;
-    //
+    //TODO3
     const stateId = this.chosenState.split(',')[0];
     const stateModifier = this.chosenState.split(',')[1];
     const originalRoll = roll;
+    roll = Math.floor(roll / 2);
     if (this.chosenState) {
       if (this.isDemocrat) {
         if (stateModifier === '1') {
@@ -47,6 +56,7 @@ export class CampaignPage implements OnInit {
         }
         this.votes.changeStateClimate(stateId , 0, roll);
       }
+      //TODO3 this number need
       this.presentToast('You rolled a ' + originalRoll + ', making a difference of ' + roll + ' in ' + stateId, 3000);
       await new Promise(f => setTimeout(f, 3200));
       this.toNextTurn();
