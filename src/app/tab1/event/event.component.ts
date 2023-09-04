@@ -16,8 +16,10 @@ export class EventPage implements OnInit {
   allEvents: Event[];
   scandalEvents: Event[];
   gaffeEvents: Event[];
+  neutralizeEvents: Event[];
   boonEvents: Event[];
   endorsementEvents: Event[];
+  superPacEvents: Event[];
   mediaTourEvents: Event[];
   hotButtonEvents: Event[];
   endingEvents: Event[];
@@ -29,6 +31,8 @@ export class EventPage implements OnInit {
   eventYear: string;
   eventPersonInvolved: string;
   eventPoints: number;
+  statesInvolved: string[];
+  statesInvolvedString: string;
   normalEvent: boolean;
   isDemocrat: boolean;
   constructor(private router: Router, public votes: VotesStore, private toastController: ToastController, public textService: TextService) {}
@@ -40,12 +44,13 @@ export class EventPage implements OnInit {
     this.allEvents = this.textService.getEvents();
     this.scandalEvents = this.textService.getScandalEvents();
     this.gaffeEvents = this.textService.getGaffeEvents();
+    this.neutralizeEvents = this.textService.getNeutralizationEvents();
     this.boonEvents = this.textService.getBoonEvents();
     this.endorsementEvents = this.textService.getEndorsementEvents();
     this.hotButtonEvents = this.textService.getHotButtonEvents();
     this.endingEvents = this.textService.getEndingEvents();
     this.mediaTourEvents = this.textService.getMediaTourEvents();
-
+    this.superPacEvents = this.textService.getSuperPacEvents();
     this.currentEvent = this.getCurrentEvent();
     //this.currentEvent = this.allEvents[this.currentIndex];
     //const isDebate = (this.currentIndex === 3 || this.currentIndex === 6 || this.currentIndex === 8);
@@ -70,6 +75,19 @@ export class EventPage implements OnInit {
     this.eventPersonInvolved = this.currentEvent.politicanInvolved;
     this.eventPoints = this.currentEvent.points;
     this.normalEvent = this.currentEvent.normalEvent;
+    this.statesInvolved = this.currentEvent.statesInvolved;
+    this.statesInvolvedString = '';
+    if (this.statesInvolved.length === 1) {
+      this.statesInvolvedString  = ' ' + this.statesInvolved[0];
+    } else {
+      for (const state of this.statesInvolved) {
+        this.statesInvolvedString += ' ';
+        this.statesInvolvedString += state;
+        this.statesInvolvedString += ',';
+      }
+      this.statesInvolvedString = this.statesInvolvedString.substring(0, this.statesInvolvedString.length - 1);
+      this.statesInvolvedString = this.statesInvolvedString.slice(0, this.statesInvolvedString.length - 3) + ' and' + this.statesInvolvedString.slice(this.statesInvolvedString.length - 3);
+    }
     //console.log(this.currentIndex);
     console.log(this.currentEvent);
   }
@@ -77,29 +95,35 @@ export class EventPage implements OnInit {
   getCurrentEvent(): Event {
    // return this.endorsementEvents[Math.floor(Math.random() * this.endorsementEvents.length)];
     const currentEventType = this.getCurrentEventType();
-    if (currentEventType === 'superPac') {
+    console.log(currentEventType);
+    if (currentEventType === 'superPac' ) {
+      return this.superPacEvents[Math.floor(Math.random() * this.endorsementEvents.length)];
+
       return   {
         title:'Super Pac/Donation',
-        description:'You received a donation from a super pac',
-        points: 1,
+        description:'A super pac ran ads for you in Michigan and Illinois',
+        points: 2,
         imageSrc:'/assets/images/presidents/campaign.png',
         normalEvent: false,
         history: 'Super Pacs affect elections with money',
         politicanInvolved: 'a',
         yearInvolved:'a',
+        statesInvolved: ['MI', 'IL']
       };
     } else if (currentEventType === 'endorsement') {
       return this.endorsementEvents[Math.floor(Math.random() * this.endorsementEvents.length)];
     } else if (currentEventType === 'boon') {
       return this.boonEvents[Math.floor(Math.random() * this.boonEvents.length)];
     } else if (currentEventType === 'mediaTour') {
-      return this.mediaTourEvents[Math.floor(Math.random() * this.endorsementEvents.length)];
+      return this.mediaTourEvents[Math.floor(Math.random() * this.mediaTourEvents.length)];
     } else if (currentEventType === 'hotButton') {
       return this.hotButtonEvents[Math.floor(Math.random() * this.hotButtonEvents.length)];
     }  else if (currentEventType === 'gaffe') {
       return this.gaffeEvents[Math.floor(Math.random() * this.gaffeEvents.length)];
     } else if (currentEventType === 'scandal') {
       return this.scandalEvents[Math.floor(Math.random() * this.scandalEvents.length)];
+    } else if (currentEventType === 'neutralize') {
+      return this.neutralizeEvents[Math.floor(Math.random() * this.neutralizeEvents.length)];
     } else {
       return this.allEvents[0];
     }
@@ -122,33 +146,42 @@ export class EventPage implements OnInit {
       draw *= -1;
     }
     //Current total 120 lol but not finished TODO jermy
-    if (draw > 85) { //Base 15%
+    if (draw > 98) {
+      return 'neutralize';
+    } else if (draw > 85) { //Base 15%
       return 'mediaTour'; //1 or 2 no impact... 3/4 +1 to each state. +2 to each state.
-    }
-    if (draw > 65 && draw < 86) { //Base 20%
+    } else  if (draw > 65) { //Base 20%
       return 'endorsement'; //Big national (that they ran ads in a region)
-    }
-    if (draw > 50 && draw < 64) { //Base 10%
+    } else if (draw > 50) { //Base 10%
       return 'superPac'; //Gain or lose but only in swing states (anything currently within 3 points)
-    }
-    if (draw > 28 && draw < 49) { //Base 15%
+    } else if (draw > 20) { //Base 15%
       return 'hotButton';
       //Specific place, a Bridge collapses and people talk about it... i.e. event draws event to an issue.
       //Free point if you agree, or risk it to see if you lose or not (button to accept or decline) John Kerry
-    }
-    if (draw > 8 && draw < 27) { //Base 11%
+    } else if (draw > 6) { //Base 11%
       return 'gaffe'; //loose a point, 2, or 3
-    }
-    else { //Base 9%
+    } else { //Base 9%
       return 'scandal'; //loose 4-6
     }
   }
 
-  async handleRoll(roll: number) {
-    if (this.isDemocrat) {
-      this.votes.changeNationalClimate(roll/2, -roll/2);
+  async handleRoll(roll: number, states: string[]) {
+    if (roll === 0 && this.currentEvent.title === 'Neutralization') {
+      this.votes.neutralizeStateClimate(states[0]);
+    } else if (states.length === 0) {
+      if (this.isDemocrat) {
+        this.votes.changeNationalClimate(roll/2, -roll/2);
+      } else {
+        this.votes.changeNationalClimate(-roll/2, roll/2);
+      }
     } else {
-      this.votes.changeNationalClimate(-roll/2, roll/2);
+      for (const state of states) {
+        if (this.isDemocrat) {
+          this.votes.changeStateClimate(state,roll/2,-roll/2);
+        } else {
+          this.votes.changeStateClimate(state,-roll/2,roll/2);
+        }
+      }
     }
     // if (roll === 1) {
     //   if (this.currentEvent.rollMap[0] > 0 && this.isDemocrat ) {

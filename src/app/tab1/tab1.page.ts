@@ -31,7 +31,6 @@ export class Tab1Page implements OnInit, AfterViewInit {
     this.currentTurn = this.turns[0];//NEEDS TO BE UPDATED
     this.isThird = this.votes.getUserIsThird();
     this.isDemocrat = this.votes.getUserIsDem();
-    console.log(this.partyName);
   }
 
   ngAfterViewInit() {

@@ -18,9 +18,22 @@
   transform: translate(-50%, -50%);
 }
 
-.bg-image {
-    background: url("../../assets/images/background.png")!important;
-    background-size: cover!important;
-    background-repeat: no-repeat;
-    height: 95%;
+.img-wrapper{
+  position: relative;
+  overflow:hidden;
+  height:100%;
 }
+
+.img-wrapper img{
+  position: absolute;
+  top:-100%; left:0; right: 0; bottom:-100%;
+  margin: auto;
+  width: 100%;
+}
+
+/* .bg-image {
+    background: url("../../assets/images/background.png")!important;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+} */

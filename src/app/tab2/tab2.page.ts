@@ -14,6 +14,9 @@ export class Tab2Page implements OnInit, AfterViewInit {
   isThird = false;
   partyName= '';
   decidedStates: State[] = [];
+  safeStates: State[] = [];
+  safeStatesRight: State[] = [];
+  safeStatesLeft: State[] = [];
   decidedStatesRight: State[]= [];
   decidedStatesLeft: State[]= [];
   rightLeanStates: State[]= [];
@@ -24,6 +27,8 @@ export class Tab2Page implements OnInit, AfterViewInit {
   allStates: State[]= [];
   decidedRed = 0;
   decidedBlue = 0;
+  safeRed = 0;
+  safeBlue = 0;
   leanRed = 0;
   leanBlue = 0;
   tossUp = 0;
@@ -31,6 +36,7 @@ export class Tab2Page implements OnInit, AfterViewInit {
   sky = 0;
   national = 0;
   bluered = true;
+  showFinal = false;
 
   constructor(public store: VotesStore, private router: Router, private audio: AudioService) {
     this.router.events.subscribe((event: Event) => {
@@ -69,12 +75,16 @@ export class Tab2Page implements OnInit, AfterViewInit {
     this.decidedStates = [];
     this.decidedStatesRight = [];
     this.decidedStatesLeft = [];
+    this.safeStatesRight = [];
+    this.safeStatesLeft = [];
     this.rightLeanStates = [];
     this.leftLeanStates = [];
     this.tossUpStatesLeft = [];
     this.tossUpStatesRight = [];
     this.tossUpStates = [];
     this.allStates = [];
+    this.safeBlue = 0;
+    this.safeRed = 0;
     this.decidedRed = 0;
     this.decidedBlue = 0;
     this.leanRed = 0;
@@ -94,6 +104,19 @@ export class Tab2Page implements OnInit, AfterViewInit {
         this.decidedStatesRight.push(state);
         document.getElementById('US-' + state.abbreviation).style.fill = 'red';
         this.decidedRed += state.college;
+      }
+    }
+    this.safeStates = this.store.getSafeStates();
+    console.log(this.safeStates.length);
+    for (const state of this.safeStates) {
+      if (state.leansDem > 0) {
+        this.safeStatesLeft.push(state);
+        document.getElementById('US-' + state.abbreviation).style.fill = 'blue';
+        this.safeBlue += state.college;
+      } else {
+        this.safeStatesRight.push(state);
+        document.getElementById('US-' + state.abbreviation).style.fill = 'red';
+        this.safeRed += state.college;
       }
     }
     this.leftLeanStates = this.store.getLeftLeanStates();
@@ -123,14 +146,17 @@ export class Tab2Page implements OnInit, AfterViewInit {
       document.getElementById('US-' + state.abbreviation).style.fill = '#ffffe0';
       this.tossUp += state.college;
     }
-    document.getElementById('redbar').style.width = (this.decidedRed * 75 / 538) + '%';
-    document.getElementById('bluebar').style.width = (this.decidedBlue * 75 / 538) + '%';
+    document.getElementById('redbar').style.width = (this.safeRed * 75 / 538) + '%';
+    document.getElementById('bluebar').style.width = (this.safeBlue * 75 / 538) + '%';
     document.getElementById('lightredbar').style.width = (this.leanRed * 75 / 538) + '%';
     document.getElementById('lightbluebar').style.width = (this.leanBlue * 75 / 538) + '%';
     document.getElementById('pinkbar').style.width = (this.pink * 75 / 538) + '%';
     document.getElementById('skybar').style.width = (this.sky * 75 / 538) + '%';
     document.getElementById('graybar').style.width = ((this.tossUp - this.sky - this.pink) * 75 / 538) + '%';
 
+    //AFTER DECIDED CHANGE TO THIS? maybe
+    //document.getElementById('redbar').style.width = (this.decidedRed * 75 / 538) + '%';
+    //document.getElementById('bluebar').style.width = (this.decidedBlue * 75 / 538) + '%';
   }
 
 }

@@ -8,7 +8,16 @@ import { Router } from '@angular/router';
 })
 export class TabsPage {
 
+  actionPending = false;
   constructor(private router: Router) {}
+
+  actionStart() {
+    this.actionPending = true;
+  }
+
+  actionEnd() {
+    this.actionPending = false;
+  }
 
   isTab1(): boolean {
     if (this.router.url.includes('tab1')) {

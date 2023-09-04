@@ -9,9 +9,12 @@
 <ion-button  color="clear" class="party-button" (click)="continue('dem')" style="background: url(../../assets/images/democratWide.png) no-repeat center/cover fixed;"><br><p>DEMOCRAT</p></ion-button>
 </div>
 <div class="center">
-  <ion-button  color="clear" class="party-button" (click)="continue('three')" style="background: url(../../assets/images/thirdWide.png) no-repeat center/cover fixed;">
+  <ion-button  color="clear" class="party-button" [disabled]="true" (click)="continue('three')" style="background: url(../../assets/images/thirdWide.png) no-repeat center/cover fixed;">
     <div>
-      <p style="margin-bottom: 1px;">THIRD PARTY</p>
+      <p style="margin-bottom: 1px; font-size: xx-large;">
+        <ion-icon name="lock-closed"></ion-icon>
+        THIRD PARTY
+        <ion-icon name="lock-closed"></ion-icon></p>
       <p style="font-size: medium; margin-top: 0px;">(HARD DIFFICULTY)</p>
     </div>
   </ion-button>

@@ -12,6 +12,7 @@ import { CalculationService } from '../services/calculations.service';
 })
 export class DiceComponent {
   @Output() diceRolled = new EventEmitter<number>();
+  @Output() rollStarted = new EventEmitter<boolean>();
   @Input() canClick = true;
   value = 1;
   imageValue = 'dice1';
@@ -48,6 +49,7 @@ export class DiceComponent {
   }
 
   async animatedDiceRoll() {
+    this.rollStarted.emit(true);
     this.canClick = false;
     this.rollDice();
     await new Promise(f => setTimeout(f, 80));

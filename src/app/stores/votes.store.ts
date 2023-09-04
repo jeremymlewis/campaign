@@ -17,57 +17,57 @@ export class VotesStore {
   public round = 1;
   public turn = 0;
 
-  Alabama: State = new State('Alabama','AL',9, 32,49,true);
+  Alabama: State = new State('Alabama','AL',9, 32,49);
   Alaska: State = new State('Alaska','AK',3,33,48);
   Arizona: State = new State('Arizona','AZ',11,40,41);
   Arkansas: State = new State('Arkansas','AR',6,32,49);
   California: State = new State('California','CA',54,52,30);
   Colorado: State = new State('Colorado','CO',10,42,39);
-  Connecticut: State = new State('Connecticut','CT',7,46,35,true);
-  Delaware: State = new State('Delaware','DE',3,45,35,true);
-  DC: State = new State('D.C.','DC',3, 75, 7, true);
+  Connecticut: State = new State('Connecticut','CT',7,46,35);
+  Delaware: State = new State('Delaware','DE',3,45,35);
+  DC: State = new State('D.C.','DC',3, 75, 7);
   Florida: State = new State('Florida','FL',30,39,41);
   Georgia: State = new State('Georgia','GA',16,39,42);
   Hawaii: State = new State('Hawaii','HI',4,53,28);
-  Idaho: State = new State('Idaho','ID',4,30,51,true);
+  Idaho: State = new State('Idaho','ID',4,30,51);
   Illinois: State = new State('Illinois','IL',19,48,34);
-  Indiana: State = new State('Indiana','IN',11,30,51,true);
+  Indiana: State = new State('Indiana','IN',11,30,51);
   Iowa: State = new State('Iowa','IA',6,39,43);
-  Kansas: State = new State('Kansas','KS',6,32,49,true);
-  Kentucky: State = new State('Kentucky','KY',8,30,51,true);
+  Kansas: State = new State('Kansas','KS',6,32,49);
+  Kentucky: State = new State('Kentucky','KY',8,30,51);
   Louisiana: State = new State('Louisiana','LA',8,32,49);
   Maine: State = new State('Maine','ME',4,43,39);
-  Maryland: State = new State('Maryland','MD',10,51,31,true);
-  Massachusetts: State = new State('Massachusetts','MA',11,52,30,true);
+  Maryland: State = new State('Maryland','MD',10,51,31);
+  Massachusetts: State = new State('Massachusetts','MA',11,52,30);
   Michigan: State = new State('Michigan','MI',15,42,39);
   Minnesota: State = new State('Minnesota','MN',10,44,39);
   Mississippi: State = new State('Mississippi','MS',6,34,48);
   Missouri: State = new State('Missouri','MO',10,34,46);
   Montana: State = new State('Montana','MT',4,34,47);
-  Nebraska: State = new State('Nebraska','NE',5,32,49,true);
+  Nebraska: State = new State('Nebraska','NE',5,32,49);
   Nevada: State = new State('Nevada','NV',6,41,40);
   NewHampshire: State = new State('New Hampshire','NH',4,42,39);
-  NewJersey: State = new State('New Jersey','NJ',14,48,34,true);
+  NewJersey: State = new State('New Jersey','NJ',14,48,34);
   NewMexico: State = new State('New Mexico','NM',5,44,37);
-  NewYork: State = new State('New York','NY',28,52,30,true);
+  NewYork: State = new State('New York','NY',28,52,30);
   NorthCarolina: State = new State('North Carolina','NC',16,40,42);
-  NorthDakota: State = new State('North Dakota','ND',3,31,51,true);
+  NorthDakota: State = new State('North Dakota','ND',3,31,51);
   Ohio: State = new State('Ohio','OH',17,38,43);
-  Oklahoma: State = new State('Oklahoma','OK',7,30,51,true);
+  Oklahoma: State = new State('Oklahoma','OK',7,30,51);
   Oregon: State = new State('Oregon','OR',8,45,37);
   Pennsylvania: State = new State('Pennsylvania','PA',19,42,40);
-  RhodeIsland: State = new State('Rhode Island','RI',4,50,32,true);
+  RhodeIsland: State = new State('Rhode Island','RI',4,50,32);
   SouthCarolina: State = new State('South Carolina','SC',9,35,46);
-  SouthDakota: State = new State('South Dakota','SD',3,31,51,true);
-  Tennessee: State = new State('Tennessee','TN',11,32,49,true);
+  SouthDakota: State = new State('South Dakota','SD',3,31,51);
+  Tennessee: State = new State('Tennessee','TN',11,32,49);
   Texas: State = new State('Texas','TX',40,37,44);
   Utah: State = new State('Utah','UT',6,32,49);
-  Vermont: State = new State('Vermont','VT',3,52,30,true);
+  Vermont: State = new State('Vermont','VT',3,52,30);
   Virginia: State = new State('Virginia','VA',13,42,39);
   Washington: State = new State('Washington','WA',12,46,35);
-  WestVirginia: State = new State('West Virginia','WV',4,30,51,true);
+  WestVirginia: State = new State('West Virginia','WV',4,30,51);
   Wisconsin: State = new State('Wisconsin','WI',10,41,39);
-  Wyoming: State = new State('Wyoming','WY',3,29,53,true);
+  Wyoming: State = new State('Wyoming','WY',3,29,53);
   states: State[] = [];
   NationalClimate = 0;
   constructor(/*private storage: Storage*/) {
@@ -151,6 +151,13 @@ export class VotesStore {
 
   setUserIsDem(isDem: boolean) {
     this.isDemocrat = isDem;
+    for (const state of this.states) {
+      if (state.leansDem > 17 && !isDem) {
+        state.protected = '*';
+      } else if (state.leansRep > 14 && isDem) {
+        state.protected = '*';
+      }
+    }
   }
 
   getAllStates() {
@@ -234,10 +241,20 @@ export class VotesStore {
     return decidedStates;
   }
 
+  getSafeStates() {
+    const safeStates = [];
+    for (const state of this.states) {
+      if (state.leansDem >= 21 || state.leansRep >= 20 ) {
+        safeStates.push(state);
+      }
+    }
+    return safeStates;
+  }
+
   getLeftLeanStates() {
     const leftLeanStates = [];
     for (const state of this.states) {
-      if (state.leansDem >= 5 && !state.decided) {
+      if (state.leansDem >= 5 && state.leansDem < 21) {
         leftLeanStates.push(state);
       }
     }
@@ -247,7 +264,7 @@ export class VotesStore {
   getRightLeanStates() {
     const rightLeanStates = [];
     for (const state of this.states) {
-      if (state.leansRep >= 5 && !state.decided) {
+      if (state.leansRep >= 5 && state.leansRep < 20) {
         rightLeanStates.push(state);
       }
     }
@@ -257,7 +274,7 @@ export class VotesStore {
   getTossUpsLeft() {
     const undecidedStates = [];
     for (const state of this.states) {
-      if (state.leansDem > 0 && state.leansDem < 5 && !state.decided) {
+      if (state.leansDem > 0 && state.leansDem < 5) {
         undecidedStates.push(state);
       }
     }
@@ -267,7 +284,7 @@ export class VotesStore {
   getTossUps() {
     const undecidedStates = [];
     for (const state of this.states) {
-      if (state.leansDem === 0 && !state.decided) {
+      if (state.leansDem === 0) {
         undecidedStates.push(state);
       }
     }
@@ -277,7 +294,7 @@ export class VotesStore {
   getTossUpsRight() {
     const undecidedStates = [];
     for (const state of this.states) {
-      if (state.leansRep > 0 && state.leansRep < 5 && !state.decided) {
+      if (state.leansRep > 0 && state.leansRep < 5) {
         undecidedStates.push(state);
       }
     }
@@ -303,6 +320,18 @@ export class VotesStore {
         state.repPercent += changeRight;
         state.leansDem = state.demPercent-state.repPercent;
         state.leansRep = state.repPercent-state.demPercent;
+      }
+    }
+  }
+
+  neutralizeStateClimate(abbreviaion: string) {
+    for (const state of this.states) {
+      if (state.abbreviation === abbreviaion) {
+        state.decided = false;
+        state.leansDem = 0;
+        state.demPercent = 40;
+        state.repPercent = 40;
+        state.leansRep = 0;
       }
     }
   }
@@ -466,6 +495,27 @@ export class VotesStore {
       this.Wyoming
     ];
   }
+
+
+  public getStateIconByAbrev(abbreviation: string): string {
+    abbreviation = abbreviation.toUpperCase();
+    for (const state of this.states) {
+      if (state.abbreviation === abbreviation) {
+        const hyphenatedName = state.name.replace(/ /g, '-');
+        return state.abbreviation + '-' + hyphenatedName + '.png';
+      }
+    }
+  }
+
+  public getStateIconByName(name: string): string {
+    for (const state of this.states) {
+      if (state.name === name) {
+        const hyphenatedName = state.name.replace(/ /g, '-');
+        return state.abbreviation + '-' + hyphenatedName + '.png';
+      }
+    }
+  }
+
 
 
 

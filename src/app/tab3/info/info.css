@@ -6,3 +6,8 @@
   align-items: center;
   left: 50%
 }
+
+.group {
+  margin-top: 6px;
+  margin-bottom: 6px;
+}

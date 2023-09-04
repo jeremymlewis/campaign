@@ -13,7 +13,7 @@
 
 <ion-content [fullscreen]="true" >
   <div class="center">
-    <p><strong>TURN:</strong> {{(votes.turn%2)+1}} of 2 <strong>FUNDS:</strong> ${{votes.funds}} MILLION</p>
+    <p><strong>TURN:</strong> {{(votes.turn%2)+1}} of 2 <strong>FUNDS:</strong> ${{votes.funds * 10}} MILLION</p>
   </div>
   <div class="center">
     <p>{{getCurrentTurn()}}</p>
@@ -25,7 +25,7 @@
   <ion-button class="option" (click)="advertising()" [disabled]="!votes.funds">
     <div>
       <p style="margin-bottom: 1px;">ADVERTISE</p>
-      <p style="font-size: small; margin-top: 0px;">COSTS $1 MILLION</p>
+      <p style="font-size: small; margin-top: 0px;">COSTS $10 MILLION</p>
       <p style="font-size: small; margin-top: 0px;">({{votes.funds}} AVAILABLE)</p>
     </div>
   </ion-button>

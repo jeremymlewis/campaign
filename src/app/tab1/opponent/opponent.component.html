@@ -5,6 +5,13 @@
   <div class="center">
     <h2>{{actionText}}</h2>
   </div>
+  <div class="center" *ngFor="let state of actionIcons">
+    <img style="max-height: 28px;" [src]='state.path'>
+    <h3 *ngIf="state.isTowardBlue" style="color:blue">+ {{state.change}}</h3>
+    <h3 *ngIf="!state.isTowardBlue" style="color:red">+ {{state.change}}</h3>
+
+    <!-- change isTowardBlue -->
+  </div>
   <div class="center">
     <ion-button (click)="nextEvent()">Continue</ion-button>
   </div>

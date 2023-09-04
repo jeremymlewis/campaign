@@ -1,17 +1,17 @@
 <ion-tabs>
 
   <ion-tab-bar slot="bottom">
-    <ion-tab-button tab="tab1" [disabled]="isTab1()">
+    <ion-tab-button tab="tab1" [disabled]="actionPending && isTab1()">
       <ion-icon name="play"></ion-icon>
       <ion-label>Play</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="tab2">
+    <ion-tab-button tab="tab2" [disabled]="actionPending">
       <ion-icon name="analytics"></ion-icon>
       <ion-label>Stats</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="tab3">
+    <ion-tab-button tab="tab3" [disabled]="actionPending">
       <ion-icon name="help"></ion-icon>
       <ion-label>Help</ion-label>
     </ion-tab-button>

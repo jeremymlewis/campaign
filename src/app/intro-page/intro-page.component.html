@@ -1,21 +1,20 @@
 
 
 <ion-content [fullscreen]="true">
-  <ion-grid class="ion-no-padding bg-image">
+  <div class="img-wrapper">
+    <img src="../../assets/images/background.png">
+</div>
+  <ion-grid class="ion-no-padding">
   <div class="background">
-    <div class="container">
+    <!-- <h2>PLACEHOLDER TITLE SCREEN</h2>
+
+    <h1>The Campaign Game</h1>
+    <p>A Jonas Linde Creation with production assistance from Julie Linde and Jeremy Lewis</p> -->
       <div class="center">
-        <form *ngIf="passwordRequired">
-          <ion-item lines="full">
-            <ion-label position="floating">Password</ion-label>
-            <ion-input type="text" name='passcode' [(ngModel)]="passcode" required></ion-input>
-          </ion-item>
-        </form>
         <ion-button (click)="toTabs()">Start 1 player</ion-button>
         <br>
         <!-- <ion-button [disabled]="true" (click)="toTabs()">Start 2 player</ion-button> -->
       </div>
     </div>
-  </div>
   </ion-grid>
 </ion-content>

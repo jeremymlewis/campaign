@@ -1,5 +1,6 @@
 export class State {
   name: string;
+  protected: string;
   abbreviation: string;
   college: number;
   thirdPercent: number;
@@ -8,8 +9,11 @@ export class State {
   leansDem: number;
   leansRep: number;
   decided: boolean;
-  constructor(name: string, abbreviation: string, electoralVotes: number, demPercentage: number, repPercentage: number, decided?: boolean) {
+  constructor(name: string, abbreviation: string,
+              electoralVotes: number, demPercentage: number,
+              repPercentage: number, decided?: boolean) {
     this.name = name;
+    this.protected = '';
     this.thirdPercent = -1;
     this.abbreviation = abbreviation;
     this.college = electoralVotes;
@@ -30,4 +34,5 @@ export class Event {
   politicanInvolved: string;
   yearInvolved: string;
   normalEvent: boolean;
+  statesInvolved: string[];
 }

@@ -14,19 +14,25 @@
 <div class="center">
 <p>{{eventDescription}}</p>
 </div>
-<div class="center">
+<div class="center" *ngIf="statesInvolved.length === 0">
 <p *ngIf="eventPoints < 0">This moves the National Climate {{-eventPoints}} points toward your opponent</p>
 <p *ngIf="eventPoints === 0">The National Climate is unaffected</p>
 <p *ngIf="eventPoints > 0">This moves the National Climate {{eventPoints}} points in your favor</p>
 <!-- Or to the right... calculate that on the ts side of this. -->
 </div>
+<div class="center" *ngIf="statesInvolved.length !== 0">
+  <p *ngIf="eventPoints < 0">This moves the Climate {{-eventPoints}} points toward your opponent in {{statesInvolvedString}}</p>
+  <p *ngIf="eventPoints === 0">This state is now polling EVEN for Republican and Democrat</p>
+  <p *ngIf="eventPoints > 0">This moves the Climate {{eventPoints}} points in your favor in {{statesInvolvedString}}</p>
+  <!-- Or to the right... calculate that on the ts side of this. -->
+  </div>
 <div class="center">
-  <ion-button (click)="handleRoll(eventPoints)">Next</ion-button>
+  <ion-button (click)="handleRoll(eventPoints, statesInvolved)">Next</ion-button>
 <!-- <p>{{eventRollsL}}</p>
 <p>{{eventRollsR}}</p> -->
 </div>
 
-<div id="navcontainer">
+<div id="navcontainer" *ngIf="!!eventPersonInvolved">
   <ul id="navlist" >
 
     <li id="active">Fun Fact</li>

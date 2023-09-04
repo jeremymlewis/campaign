@@ -12,6 +12,10 @@ export class FundraisePage {
   canBack = true;
   constructor(private router: Router, private toastController: ToastController, private votes: VotesStore) {}
 
+  rollStarted() {
+    this.canBack = false;
+  }
+
   async handleRoll(rollValue: number) {
     this.canBack = false;
     if (rollValue <= 4) {

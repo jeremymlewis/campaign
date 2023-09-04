@@ -52,6 +52,10 @@ export class AdvertisePage implements OnInit {
     }
   }
 
+  rollStarted() {
+    this.canBack = false;
+  }
+
   async handleRoll(roll: number) {
     this.canBack = false;
     this.getGroup();

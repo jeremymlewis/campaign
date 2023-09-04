@@ -27,33 +27,30 @@ export class CampaignPage implements OnInit {
     this.states = this.votes.getSortedStates();
   }
 
-  async handleRoll(roll: number) {
+  rollStarted() {
     this.canBack = false;
+  }
+
+  async handleRoll(roll: number) {
+    //this.canBack = false;
     //TODO3
-    const stateId = this.chosenState.split(',')[0];
-    const stateModifier = this.chosenState.split(',')[1];
+    let modifier = 0;
+    let stateId = this.chosenState;
+
+    if (this.chosenState[0] === '*') {
+      modifier = -1;
+      stateId = this.chosenState.slice(1);
+    }
+
+    console.log(stateId);
+
     const originalRoll = roll;
-    roll = Math.floor(roll / 2);
+    roll = Math.floor(roll / 2) + modifier;
+
     if (this.chosenState) {
       if (this.isDemocrat) {
-        if (stateModifier === '1') {
-          roll -= 1;
-        } else if (stateModifier === '2') {
-          roll -= 2;
-        }
-        if (roll < 0) {
-          roll = 0;
-        }
         this.votes.changeStateClimate(stateId, roll, 0);
       } else {
-        if (stateModifier === '3') {
-          roll -= 1;
-        } else if (stateModifier === '4') {
-          roll -= 2;
-        }
-        if (roll < 0) {
-          roll = 0;
-        }
         this.votes.changeStateClimate(stateId , 0, roll);
       }
       //TODO3 this number need

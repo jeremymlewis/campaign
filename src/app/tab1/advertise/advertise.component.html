@@ -72,7 +72,7 @@
 <p>After choosing which block you will advertise to, click 'roll' to see how the area is affected.</p>
 </div>
 <div class="center">
-<app-dice [canClick]="diceEnabled"  (diceRolled)="handleRoll($event)"></app-dice>
+<app-dice [canClick]="diceEnabled"  (rollStarted)="rollStarted()"  (diceRolled)="handleRoll($event)"></app-dice>
 </div>
 <div class="center">
 <p>Rolling a 1 will result in no effect<br>

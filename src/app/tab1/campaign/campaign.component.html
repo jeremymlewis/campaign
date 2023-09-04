@@ -7,7 +7,7 @@
   <ion-list>
     <ion-item>
       <ion-select [(ngModel)]="chosenState" placeholder="Choose a state:">
-        <ion-select-option *ngFor="let state of states" [value]="state.abbreviation">{{state.name}} ({{state | scoreDisplay}}) ({{state.college}} votes)</ion-select-option>
+        <ion-select-option *ngFor="let state of states" [value]="state.protected + state.abbreviation">{{state.protected}}{{state.name}} ({{state | scoreDisplay}}) ({{state.college}} votes)</ion-select-option>
 
         <!-- <ion-select-option value="AL,2">Alabama (+2 Rep)</ion-select-option>
         <ion-select-option value="AK,1">Alaska (+1 Rep)</ion-select-option>
@@ -63,11 +63,31 @@
       </ion-select>
     </ion-item>
   </ion-list>
+
   <div class="center">
-    <p>You can sway a state by as much as 3 points</p>
+    <p>Roll 1: +0</p>
   </div>
   <div class="center">
-    <app-dice [canClick]="!!chosenState" (diceRolled)="handleRoll($event)"></app-dice>
+    <p>Roll 2: +1</p>
+  </div>
+  <div class="center">
+    <p>Roll 3: +1</p>
+  </div>
+  <div class="center">
+    <p>Roll 4: +2</p>
+  </div>
+  <div class="center">
+    <p>Roll 5: +2</p>
+  </div>
+  <div class="center">
+    <p>Roll 6: +3</p>
+  </div>
+  <div class="center">
+    <p>(-1 from states marked with a * since they are strongholds for the other party)</p>
+  </div>
+
+  <div class="center">
+    <app-dice [canClick]="!!chosenState" (rollStarted)="rollStarted()" (diceRolled)="handleRoll($event)"></app-dice>
   </div>
   <div class="center">
 

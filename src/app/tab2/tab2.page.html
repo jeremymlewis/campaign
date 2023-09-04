@@ -17,7 +17,7 @@
     </ion-toolbar>
   </ion-header>
   <div class="scorebox">
-  <h1 class="center"><span class="blue"> {{decidedBlue}} </span> | <span class="lightblue"> {{leanBlue}} </span> | <span> {{tossUp}} </span> | <span class="lightred"> {{leanRed}} </span> | <span class="red"> {{decidedRed}} </span></h1>
+  <h1 class="center"><span class="blue"> {{safeBlue}} </span> | <span class="lightblue"> {{leanBlue}} </span> | <span> {{tossUp}} </span> | <span class="lightred"> {{leanRed}} </span> | <span class="red"> {{safeRed}} </span></h1>
   </div>
   <div class="center">
   <p style="margin-top: 0; margin-bottom: 0; padding-top:0; padding-bottom:0;">|</p>
@@ -136,18 +136,18 @@
     </ul>
     </div>
   <div class="center-border">
-    <h1 style="margin-bottom: 0px; padding-bottom: 0px;">Decided States:</h1>
+    <h1 style="margin-bottom: 0px; padding-bottom: 0px;">Safe States:</h1>
   </div>
   <div class="center-border" >
-    <h2 style="margin-top: 2px; padding-top: 2px;" >Rep: {{decidedRed}} votes   Dem: {{decidedBlue}} votes</h2>
+    <h2 style="margin-top: 2px; padding-top: 2px;" >Rep: {{safeRed}} votes   Dem: {{safeBlue}} votes</h2>
   </div>
   <div class="center-border">
 
     <ul>
-      <li class='lightblue' *ngFor="let state of decidedStatesLeft">{{state.abbreviation}} ({{state.college}}) L</li>
+      <li class='lightblue' *ngFor="let state of safeStatesLeft">{{state.abbreviation}} ({{state.college}}): +{{state.leansDem}} D</li>
     </ul>
     <ul>
-      <li class='lightred' *ngFor="let state of decidedStatesRight">{{state.abbreviation}} ({{state.college}}) R</li>
+      <li class='lightred' *ngFor="let state of safeStatesRight">{{state.abbreviation}} ({{state.college}}): +{{state.leansRep}} R</li>
     </ul>
   </div>
 </div>
