@@ -17,7 +17,7 @@
     </ion-toolbar>
   </ion-header>
   <div class="scorebox">
-  <h1 class="center"><span class="blue"> {{safeBlue}} </span> | <span class="lightblue"> {{leanBlue}} </span> | <span> {{tossUp}} </span> | <span class="lightred"> {{leanRed}} </span> | <span class="red"> {{safeRed}} </span></h1>
+  <h1 class="center"><span class="blue"> {{safeBlue + leanBlue + sky}} </span> | <span> {{tossUp}} </span> | <span class="red"> {{leanRed + pink + safeRed}} </span></h1>
   </div>
   <div class="center">
   <p style="margin-top: 0; margin-bottom: 0; padding-top:0; padding-bottom:0;">|</p>
@@ -105,7 +105,7 @@
 <div *ngIf="!isThird">
   <div class="center-border">
 
-    <h1>Toss Up States: ({{tossUp}})</h1>
+    <h1>Toss Up States: ({{pink+ tossUp + sky}})</h1>
   </div>
     <div class="center-border">
 

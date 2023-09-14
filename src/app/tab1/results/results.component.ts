@@ -10,8 +10,17 @@ import { VotesStore } from 'src/app/stores/votes.store';
   templateUrl: 'results.component.html',
   styleUrls: ['results.component.css']
 })
-export class ResultsPage {
+export class ResultsPage implements OnInit {
   constructor(private router: Router, private toastController: ToastController, public votes: VotesStore, private textService: TextService) {}
+
+  ngOnInit() {
+      if (this.votes.isDemocrat) {
+        this.votes.addGameStats(this.votes.getUserWon(),true,this.votes.getFinalBlue());
+      } else {
+        this.votes.addGameStats(this.votes.getUserWon(),false,this.votes.getFinalRed());
+      }
+  }
+
 
   mainMenu() {
     this.votes.reset();

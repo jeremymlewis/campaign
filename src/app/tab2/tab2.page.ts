@@ -107,7 +107,7 @@ export class Tab2Page implements OnInit, AfterViewInit {
       }
     }
     this.safeStates = this.store.getSafeStates();
-    console.log(this.safeStates.length);
+
     for (const state of this.safeStates) {
       if (state.leansDem > 0) {
         this.safeStatesLeft.push(state);
@@ -135,12 +135,12 @@ export class Tab2Page implements OnInit, AfterViewInit {
     for (const state of this.tossUpStatesRight) {
       document.getElementById('US-' + state.abbreviation).style.fill = 'pink';
       this.pink += state.college;
-      this.tossUp += state.college;
+      //this.tossUp += state.college;
     }
     for (const state of this.tossUpStatesLeft) {
       document.getElementById('US-' + state.abbreviation).style.fill = 'lightblue';
       this.sky += state.college;
-      this.tossUp += state.college;
+     // this.tossUp += state.college;
     }
     for (const state of this.tossUpStates) {
       document.getElementById('US-' + state.abbreviation).style.fill = '#ffffe0';

@@ -133,35 +133,35 @@ export class EventPage implements OnInit {
   getCurrentEventType(): string {
     const score: number = this.votes.getCurrentScore();
     //draw a random number... if more that 50 give a positive event. If less give a negitiave event.
-    let draw = Math.floor(Math.random() * 100) + 1;
+    const draw = Math.floor(Math.random() * 100) + 1;
     //The better a player is doing, give them worse event draw. Worse a player is doing give them a better draw.
-    if (score < 0) {
-      draw -= Math.ceil(Math.sqrt(Math.abs(score)));
-    } else {
-      draw += Math.ceil(Math.sqrt(Math.abs(score)));
-    }
-    console.log(draw);
-    draw = draw % 100;
-    if (draw < 0) {
-      draw *= -1;
-    }
+    // if (score < 0) {
+    //   draw -= Math.ceil(Math.sqrt(Math.abs(score)));
+    // } else {
+    //   draw += Math.ceil(Math.sqrt(Math.abs(score)));
+    // }
+    // console.log(draw);
+    // draw = draw % 100;
+    // if (draw < 0) {
+    //   draw *= -1;
+    // }
     //Current total 120 lol but not finished TODO jermy
-    if (draw > 98) {
+    if (draw > 94) {        // 6 (even)
       return 'neutralize';
-    } else if (draw > 85) { //Base 15%
+    } else if (draw > 85) { //10 (even)
       return 'mediaTour'; //1 or 2 no impact... 3/4 +1 to each state. +2 to each state.
-    } else  if (draw > 65) { //Base 20%
+    } else  if (draw > 65) { //20 (good)
       return 'endorsement'; //Big national (that they ran ads in a region)
-    } else if (draw > 50) { //Base 10%
+    } else if (draw > 40) { //25 (slight favor to good)
       return 'superPac'; //Gain or lose but only in swing states (anything currently within 3 points)
-    } else if (draw > 20) { //Base 15%
+    } else if (draw > 15) { //25 (slight favor to good)
       return 'hotButton';
       //Specific place, a Bridge collapses and people talk about it... i.e. event draws event to an issue.
       //Free point if you agree, or risk it to see if you lose or not (button to accept or decline) John Kerry
-    } else if (draw > 6) { //Base 11%
+    } else if (draw > 3) { //12 (bad)
       return 'gaffe'; //loose a point, 2, or 3
     } else { //Base 9%
-      return 'scandal'; //loose 4-6
+      return 'scandal';     //3 (bad)
     }
   }
 

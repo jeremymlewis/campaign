@@ -7,6 +7,7 @@ import { ExploreContainerComponentModule } from '../explore-container/explore-co
 
 import { IntroRoutingModule } from './intro-routing.module';
 import { WelcomePage } from './welcome.component';
+import { RecordsPage } from './records.component';
 
 @NgModule({
   imports: [
@@ -16,6 +17,6 @@ import { WelcomePage } from './welcome.component';
     ExploreContainerComponentModule,
     IntroRoutingModule
   ],
-  declarations: [IntroPage, WelcomePage]
+  declarations: [IntroPage, WelcomePage, RecordsPage]
 })
 export class IntroModule {}

@@ -1,0 +1,27 @@
+<ion-content [fullscreen]="true">
+  <ion-grid class="ion-no-padding bg-image">
+    <div class="center">
+
+    <h1>Game History</h1>
+    </div>      <div class="center">
+
+    <p>Games Played: {{plays || 0}}</p>
+    </div>       <div class="center">
+
+    <p>Games won: {{wins  || 0}}</p>
+    </div>      <div class="center">
+
+    <p>Wins as Republican: {{repWins || 0}}</p>
+    </div>      <div class="center">
+
+    <p>Wins as Democrat: {{demWins || 0}}</p>
+    </div>      <div class="center">
+
+    <p>Most Electoral Votes Won: {{highVotes || 0}}</p>
+    </div>      <div class="center">
+
+    <ion-button (click)="continue()">Back to Main Menu</ion-button>
+    </div>
+
+  </ion-grid>
+</ion-content>

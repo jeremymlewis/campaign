@@ -1,6 +1,8 @@
 /* ion-content{
-  --background: #fff url("../../../assets/images/debate.png") no-repeat center center / cover;
+  /* --background: #fff url("../../assets/images/boardroom.png") no-repeat center center / cover;
+  --background: #aff;
 } */
+
 
 .center {
   font-size: large;

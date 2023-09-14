@@ -39,7 +39,7 @@ export class OpponentPage implements OnInit {
         return 'Your opponent ran fundraising and earned $10 million';
       } else {
         this.votes.opponentFunds -= 1;
-        const statePos = Math.floor(Math.random() * 3);
+        const statePos = Math.floor(Math.random() * 12);
         const group: string[] = this.votes.getSortedGroups(statePos);
         let statesString = '';
         if (group.length === 1) {
@@ -53,8 +53,14 @@ export class OpponentPage implements OnInit {
           statesString = statesString.substring(0, statesString.length - 1);
           statesString = statesString.slice(0, statesString.length - 3) + ' and' + statesString.slice(statesString.length - 3);
         }
-        this.handleGroupScoreUpdate(group, 1);
-        return 'Your opponent ran advertising in' + statesString + ' where they made a difference of 1 point';
+        const isSuccess = Math.floor(Math.random() * 10);
+        if (isSuccess > 2) {
+          this.handleGroupScoreUpdate(group, 1);
+          return 'Your opponent ran advertising in' + statesString + ' where they made a difference of 1 point';
+        } else {
+          this.handleGroupScoreUpdate(group, 0);
+          return 'Your opponent ran advertising in' + statesString + ' where they made no difference';
+        }
       }
       //fundraise
     } else if (value <= 4) {
@@ -64,7 +70,7 @@ export class OpponentPage implements OnInit {
         return 'Your opponent ran fundraising and earned $20 million';
       } else {
         this.votes.opponentFunds -= 1;
-        const statePos = Math.floor(Math.random() * 3);
+        const statePos = Math.floor(Math.random() * 10);
         const group: string[] = this.votes.getSortedGroups(statePos);
         let statesString = '';
         if (group.length === 1) {
@@ -82,11 +88,17 @@ export class OpponentPage implements OnInit {
         return 'Your opponent ran advertising in' + statesString + ' where they made a difference of 1 point';
      }
     } else {
-      //campaign (draw the top 6 closest states and pick one)
-      const statePos = Math.floor(Math.random() * 7);
-      const states = this.votes.getSortedStates(7);
-      this.handleGroupScoreUpdate([states[statePos].abbreviation], 2);
-      return 'Your opponent campaigned in ' + states[statePos].name + ' where they made a difference of 2 points';
+      //campaign (draw the top 10 closest states and pick one)
+      const statePos = Math.floor(Math.random() * 10);
+      const states = this.votes.getSortedStates(10);
+      const isSuccess = Math.floor(Math.random() * 10);
+      if (isSuccess > 2) {
+          this.handleGroupScoreUpdate([states[statePos].abbreviation], 2);
+        return 'Your opponent campaigned in ' + states[statePos].name + ' where they made a difference of 2 points';
+      } else {
+        this.handleGroupScoreUpdate([states[statePos].abbreviation], 1);
+        return 'Your opponent campaigned in ' + states[statePos].name + ' where they made a difference of 1 point';
+      }
     }
 
   }

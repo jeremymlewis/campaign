@@ -7,10 +7,12 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { IonicStorageModule } from '@ionic/storage-angular';
+
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot({
+  imports: [BrowserModule, IonicStorageModule.forRoot(), IonicModule.forRoot({
     swipeBackEnabled: false,
     animated: false,
   }), AppRoutingModule],

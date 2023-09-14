@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { State } from './state';
-//import { Storage } from '@ionic/storage';
+import { Storage } from '@ionic/storage-angular';
 
 
 
@@ -70,7 +70,10 @@ export class VotesStore {
   Wyoming: State = new State('Wyoming','WY',3,29,53);
   states: State[] = [];
   NationalClimate = 0;
-  constructor(/*private storage: Storage*/) {
+  private _storage: Storage | null = null;
+
+  constructor(private storage: Storage) {
+    this.init();
     this.states = [
       this.Alabama,
       this.Alaska,
@@ -124,6 +127,43 @@ export class VotesStore {
       this.Wisconsin,
       this.Wyoming
     ];
+  }
+
+  async init() {
+    // If using, define drivers here: await this.storage.defineDriver(/*...*/);
+    const storage = await this.storage.create();
+    // eslint-disable-next-line no-underscore-dangle
+    this._storage = storage;
+  }
+
+  public async addGameStats(isWin: boolean, isDem: boolean, votes: number) {
+    const plays = await this.getLocalStorage('plays');
+    const wins = await this.getLocalStorage('wins');
+    const demWins = await this.getLocalStorage('demWins');
+    const repWins = await this.getLocalStorage('repWind');
+    const highVotes = await this.getLocalStorage('highVotes');
+    this.setLocalStorage('plays', Number(plays) + 1);
+    if (votes > Number(highVotes)) {
+      this.setLocalStorage('highVotes', votes);
+    }
+    if (isWin) {
+      this.setLocalStorage('wins', Number(wins) + 1);
+      if (isDem) {
+        this.setLocalStorage('demWins', Number(demWins) + 1);
+      } else {
+        this.setLocalStorage('repWins', Number(repWins) + 1);
+      }
+    }
+  }
+
+  public setLocalStorage(key: string, value: any) {
+    // eslint-disable-next-line no-underscore-dangle
+    this._storage?.set(key, value);
+  }
+
+  public async getLocalStorage(key: string) {
+    // eslint-disable-next-line no-underscore-dangle
+    return await this._storage?.get(key);
   }
 
   getUserIsThird() {
@@ -244,7 +284,7 @@ export class VotesStore {
   getSafeStates() {
     const safeStates = [];
     for (const state of this.states) {
-      if (state.leansDem >= 21 || state.leansRep >= 20 ) {
+      if (state.leansDem >= 21 || state.leansRep >= 15 ) {
         safeStates.push(state);
       }
     }
@@ -264,7 +304,7 @@ export class VotesStore {
   getRightLeanStates() {
     const rightLeanStates = [];
     for (const state of this.states) {
-      if (state.leansRep >= 5 && state.leansRep < 20) {
+      if (state.leansRep >= 5 && state.leansRep < 15) {
         rightLeanStates.push(state);
       }
     }
@@ -344,6 +384,7 @@ export class VotesStore {
         state.decided = true;
       }
       if (state.repPercent === state.demPercent && this.NationalClimate >= 0) {
+        this.changeStateClimate(state.abbreviation, -1,1);
         red += state.college;
         state.decided = true;
       }
@@ -359,6 +400,7 @@ export class VotesStore {
         state.decided = true;
       }
       if (state.repPercent === state.demPercent && this.NationalClimate < 0) {
+        this.changeStateClimate(state.abbreviation, 1,-1);
         blue += state.college;
         state.decided = true;
       }
@@ -367,6 +409,27 @@ export class VotesStore {
   }
 
   getUserWon() {
+    if ( this.getFinalBlue() === 269 ) {
+      const closeStates = this.getSortedStates(10);
+      let pos = 0;
+      while (this.getFinalBlue() === 269) {
+        if (this.isDemocrat) {
+          if (closeStates[pos].repPercent - closeStates[pos].demPercent > 0) {
+            this.changeStateClimate(closeStates[pos].abbreviation, 1,-1);
+          } else {
+            pos ++;
+          }
+        }
+        if (!this.isDemocrat) {
+          if (closeStates[pos].demPercent - closeStates[pos].repPercent > 0) {
+            this.changeStateClimate(closeStates[pos].abbreviation, -1,1);
+          } else {
+            pos ++;
+          }
+        }
+      }
+    }
+
     //TODO3
     if (this.getFinalBlue() > 269 && this.isDemocrat) {
       return true;
@@ -385,61 +448,62 @@ export class VotesStore {
     this.isDemocrat = true;
     this.isThird = false;
     this.funds = 0;
+    this.opponentFunds = 0;
     this.round = 1;
     this.turn = 0;
     this.NationalClimate = 0;
 
-    this.Alabama = new State('Alabama','AL',9, 32,49,true);
+    this.Alabama = new State('Alabama','AL',9, 32,49);
     this.Alaska = new State('Alaska','AK',3,33,48);
     this.Arizona = new State('Arizona','AZ',11,40,41);
     this.Arkansas = new State('Arkansas','AR',6,32,49);
-    this.California = new State('California','CA',55,52,30);
-    this.Colorado = new State('Colorado','CO',9,42,39);
-    this.Connecticut = new State('Connecticut','CT',7,46,35,true);
-    this.Delaware = new State('Delaware','DE',3,45,35,true);
-    this.DC = new State('D.C.','DC',3, 75, 7, true);
-    this.Florida = new State('Florida','FL',29,39,41);
+    this.California = new State('California','CA',54,52,30);
+    this.Colorado = new State('Colorado','CO',10,42,39);
+    this.Connecticut = new State('Connecticut','CT',7,46,35);
+    this.Delaware = new State('Delaware','DE',3,45,35);
+    this.DC = new State('D.C.','DC',3, 75, 7);
+    this.Florida = new State('Florida','FL',30,39,41);
     this.Georgia = new State('Georgia','GA',16,39,42);
     this.Hawaii = new State('Hawaii','HI',4,53,28);
-    this.Idaho = new State('Idaho','ID',4,30,51,true);
-    this.Illinois = new State('Illinois','IL',20,48,34);
-    this.Indiana = new State('Indiana','IN',11,30,51,true);
+    this.Idaho = new State('Idaho','ID',4,30,51);
+    this.Illinois = new State('Illinois','IL',19,48,34);
+    this.Indiana = new State('Indiana','IN',11,30,51);
     this.Iowa = new State('Iowa','IA',6,39,43);
-    this.Kansas = new State('Kansas','KS',6,32,49,true);
-    this.Kentucky = new State('Kentucky','KY',8,30,51,true);
+    this.Kansas = new State('Kansas','KS',6,32,49);
+    this.Kentucky = new State('Kentucky','KY',8,30,51);
     this.Louisiana = new State('Louisiana','LA',8,32,49);
     this.Maine = new State('Maine','ME',4,43,39);
-    this.Maryland = new State('Maryland','MD',10,51,31,true);
-    this.Massachusetts = new State('Massachusetts','MA',11,52,30,true);
-    this.Michigan = new State('Michigan','MI',16,42,39);
+    this.Maryland = new State('Maryland','MD',10,51,31);
+    this.Massachusetts = new State('Massachusetts','MA',11,52,30);
+    this.Michigan = new State('Michigan','MI',15,42,39);
     this.Minnesota = new State('Minnesota','MN',10,44,39);
     this.Mississippi = new State('Mississippi','MS',6,34,48);
     this.Missouri = new State('Missouri','MO',10,34,46);
-    this.Montana = new State('Montana','MT',3,34,47);
-    this.Nebraska = new State('Nebraska','NE',5,32,49,true);
+    this.Montana = new State('Montana','MT',4,34,47);
+    this.Nebraska = new State('Nebraska','NE',5,32,49);
     this.Nevada = new State('Nevada','NV',6,41,40);
     this.NewHampshire = new State('New Hampshire','NH',4,42,39);
-    this.NewJersey = new State('New Jersey','NJ',14,48,34,true);
+    this.NewJersey = new State('New Jersey','NJ',14,48,34);
     this.NewMexico = new State('New Mexico','NM',5,44,37);
-    this.NewYork = new State('New York','NY',29,52,30,true);
-    this.NorthCarolina = new State('North Carolina','NC',15,40,42);
-    this.NorthDakota = new State('North Dakota','ND',3,31,51,true);
-    this.Ohio = new State('Ohio','OH',18,38,43);
-    this.Oklahoma = new State('Oklahoma','OK',7,30,51,true);
-    this.Oregon = new State('Oregon','OR',7,45,37);
-    this.Pennsylvania = new State('Pennsylvania','PA',20,42,40);
-    this.RhodeIsland = new State('Rhode Island','RI',4,50,32,true);
+    this.NewYork = new State('New York','NY',28,52,30);
+    this.NorthCarolina = new State('North Carolina','NC',16,40,42);
+    this.NorthDakota = new State('North Dakota','ND',3,31,51);
+    this.Ohio = new State('Ohio','OH',17,38,43);
+    this.Oklahoma = new State('Oklahoma','OK',7,30,51);
+    this.Oregon = new State('Oregon','OR',8,45,37);
+    this.Pennsylvania = new State('Pennsylvania','PA',19,42,40);
+    this.RhodeIsland = new State('Rhode Island','RI',4,50,32);
     this.SouthCarolina = new State('South Carolina','SC',9,35,46);
-    this.SouthDakota = new State('South Dakota','SD',3,31,51,true);
-    this.Tennessee = new State('Tennessee','TN',11,32,49,true);
-    this.Texas = new State('Texas','TX',38,37,44);
+    this.SouthDakota = new State('South Dakota','SD',3,31,51);
+    this.Tennessee = new State('Tennessee','TN',11,32,49);
+    this.Texas = new State('Texas','TX',40,37,44);
     this.Utah = new State('Utah','UT',6,32,49);
-    this.Vermont = new State('Vermont','VT',3,52,30,true);
+    this.Vermont = new State('Vermont','VT',3,52,30);
     this.Virginia = new State('Virginia','VA',13,42,39);
     this.Washington = new State('Washington','WA',12,46,35);
-    this.WestVirginia = new State('West Virginia','WV',5,30,51,true);
+    this.WestVirginia = new State('West Virginia','WV',4,30,51);
     this.Wisconsin = new State('Wisconsin','WI',10,41,39);
-    this.Wyoming = new State('Wyoming','WY',3,29,53,true);
+    this.Wyoming = new State('Wyoming','WY',3,29,53);
     this.states = [];
     this.states = [
       this.Alabama,
