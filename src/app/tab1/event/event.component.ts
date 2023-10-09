@@ -92,6 +92,7 @@ export class EventPage implements OnInit {
     console.log(this.currentEvent);
   }
 
+
   getCurrentEvent(): Event {
    // return this.endorsementEvents[Math.floor(Math.random() * this.endorsementEvents.length)];
     const currentEventType = this.getCurrentEventType();

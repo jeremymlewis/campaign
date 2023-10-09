@@ -1,1 +1,49 @@
 
+#greenbar {
+  height:12px;
+  overflow: visible;
+  color: black;
+  width:6.25%;
+  //fill: #70ff7f;
+  background-image: linear-gradient(to left, rgb(255, 255, 255), rgb(59, 168, 67));
+}
+
+#progress {
+  position: fixed;
+  bottom: 50px;
+  left: 37%;
+  color: black;
+  font-size: 10px;
+}
+
+#progress-icon {
+  position: fixed;
+  bottom: 45px;
+  left: 3%;
+  color: black;
+  font-size: 32px;
+}
+#finish-icon {
+  position: fixed;
+  bottom: 56px;
+  right: 2%;
+  color: black;
+  font-size: 24px;
+}
+
+#whitebar {
+  height:12px;
+  width:98%;
+  fill: #ffffff;
+  background-color: #ffffff;
+}
+
+.center {
+  text-align: center;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 50%
+}
+

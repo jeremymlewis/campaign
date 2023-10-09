@@ -1,3 +1,17 @@
+<ion-header [translucent]="false">
+  <ion-toolbar>
+    <ion-title class="ion-text-center">
+      Your Opponents Turn
+    </ion-title>
+    <ion-button fill="clear" id="click-triggerOp"><ion-icon name="help-circle-outline"></ion-icon></ion-button>
+    <ion-popover trigger="click-triggerOp" triggerAction="click">
+      <ng-template>
+        <ion-content class="ion-padding">You have an opponent? What is it? Who does it? etc.</ion-content>
+      </ng-template>
+    </ion-popover>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content [fullscreen]="true">
   <div class="center">
     <h1>THIS IS WHAT YOUR OPPONENT DID:</h1>

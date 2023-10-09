@@ -6,6 +6,7 @@ import { ExploreContainerComponentModule } from '../explore-container/explore-co
 import { OptionsPage } from './options.component';
 import { OptionsRoutingModule } from './options-routing.module';
 import { ThirdIntroPage } from './third-intro.component';
+import { BackgroundInfoPage } from './background-info.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { ThirdIntroPage } from './third-intro.component';
     ExploreContainerComponentModule,
     OptionsRoutingModule
   ],
-  declarations: [OptionsPage, ThirdIntroPage]
+  declarations: [OptionsPage, ThirdIntroPage, BackgroundInfoPage]
 })
 export class OptionsModule {}

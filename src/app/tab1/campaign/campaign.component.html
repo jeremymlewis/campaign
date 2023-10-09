@@ -1,12 +1,26 @@
+<ion-header [translucent]="false">
+  <ion-toolbar>
+    <ion-title class="ion-text-center">
+      CAMPAIGN
+    </ion-title>
+    <ion-button fill="clear" id="click-triggerCa"><ion-icon name="help-circle-outline"></ion-icon></ion-button>
+    <ion-popover trigger="click-triggerCa" triggerAction="click">
+      <ng-template>
+        <ion-content class="ion-padding">Campaigning! What is it? Who does it? etc.</ion-content>
+      </ng-template>
+    </ion-popover>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content [fullscreen]="true">
   <div class="center">
-  <h1>Campaign in a specific state</h1>
+  <h1>Choose 1 state to visit</h1>
   </div>
 
 
   <ion-list>
     <ion-item>
-      <ion-select [(ngModel)]="chosenState" placeholder="Choose a state:">
+      <ion-select [(ngModel)]="chosenState" placeholder="Select a state...">
         <ion-select-option *ngFor="let state of states" [value]="state.protected + state.abbreviation">{{state.protected}}{{state.name}} ({{state | scoreDisplay}}) ({{state.college}} votes)</ion-select-option>
 
         <!-- <ion-select-option value="AL,2">Alabama (+2 Rep)</ion-select-option>

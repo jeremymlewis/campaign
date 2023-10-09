@@ -1,0 +1,76 @@
+
+<ion-content [fullscreen]="true">
+  <ion-grid class="ion-no-padding bg-image">
+  <div class="background">
+    <div class="center">
+      <h1 id="title">You have just won the Republican Nomination!</h1>
+    </div>
+    <div class="center">
+      <p id="info1">A general election will be held in 16 weeks to decide the next President of The United States</p>
+    </div>
+    <div class="center">
+    <p id="info2">To win the presidency you need 270 Electoral Votes (INSERT SOME BASIC INTRO TO ELECTORAL COLLEGE)</p>
+    </div>
+    <div class="center">
+    <p id="info3">Before you begin, you need to choose some campaign promises:</p>
+    </div>
+
+      <ion-item>
+        <ion-label position="floating">
+          Financial Promise
+       </ion-label>
+        <ion-select label="Financial Promise" placeholder="Make A Promise">
+          <ion-select-option value="apple">Save the middle class</ion-select-option>
+          <ion-select-option value="banana">Bring jobs to the US</ion-select-option>
+          <ion-select-option value="orange">Lower taxes</ion-select-option>
+          <ion-select-option value="orange2">Solve unemployment</ion-select-option>
+
+        </ion-select>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-label position="floating">
+          Personal Values
+        </ion-label>
+        <ion-select label="Campaign Slogan" placeholder="Choose A Value">
+          <ion-select-option value="banana">I Am Very Honest</ion-select-option>
+          <ion-select-option value="banana2">I Am Very Handsome</ion-select-option>
+          <ion-select-option value="orange2">I Am Very Qualified</ion-select-option>
+          <ion-select-option value="apple2">I Am Not As Bad</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">
+          Campaign Slogan
+        </ion-label>
+        <ion-select label="Campaign Slogan" placeholder="Choose A Slogan">
+          <ion-select-option value="banana">For The People</ion-select-option>
+          <ion-select-option value="banana2">America Deserves Me</ion-select-option>
+          <ion-select-option value="orange">Looking Toward The Future</ion-select-option>
+          <ion-select-option value="apple">Make America A Better Place</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-label position="floating">
+          Your Political Background
+        </ion-label>
+        <ion-select label="Campaign Slogan" placeholder="Choose Political Background">
+          <ion-select-option value="banana">Former Senator</ion-select-option>
+          <ion-select-option value="orange">Former Governor</ion-select-option>
+          <ion-select-option value="orange2">Former Vice President</ion-select-option>
+          <ion-select-option value="orange3">Former Military Leader</ion-select-option>
+          <ion-select-option value="apple">No Prior Experience</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <div class="center">
+        <ion-button [disabled]="false" (click)="submitBackground()">Start The Race</ion-button>
+      </div>
+
+  </div>
+  </ion-grid>
+</ion-content>

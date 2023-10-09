@@ -1,19 +1,25 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="false">
   <ion-toolbar>
     <ion-title>
-      Round {{votes.round}} out of 10
+      Campaign Headquarters
       <img class='header-icon' *ngIf="!isDemocrat && !isThird" src="../../assets/images/republicanIcon.png">
       <img class='header-icon' *ngIf="isDemocrat && !isThird" src="../../assets/images/democratIcon.png">
     </ion-title>
     <p class="subtitle" *ngIf="isThird">
     Party: {{partyName}}
     </p>
+    <ion-button fill="clear" id="click-trigger1"><ion-icon name="help-circle-outline"></ion-icon></ion-button>
+    <ion-popover trigger="click-trigger1" triggerAction="click">
+      <ng-template>
+        <ion-content class="ion-padding">Your turn! Do something.</ion-content>
+      </ng-template>
+    </ion-popover>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" >
   <div class="center">
-    <p><strong>TURN:</strong> {{(votes.turn%2)+1}} of 2 <strong>FUNDS:</strong> ${{votes.funds * 10}} MILLION</p>
+    <p><strong>Week {{votes.round}} out of 16</strong></p>
   </div>
   <div class="center">
     <p>{{getCurrentTurn()}}</p>

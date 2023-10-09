@@ -11,6 +11,7 @@ export class VotesStore {
   isDemocrat = true;
   isThird = false;
   thirdName = '';
+  background = {}; //TODO MAKE A TYPED OBJECT WITH A FEW MEMBERS
   thirdPartyName= '';
   public opponentFunds = 0;
   public funds = 0;
@@ -45,7 +46,7 @@ export class VotesStore {
   Missouri: State = new State('Missouri','MO',10,34,46);
   Montana: State = new State('Montana','MT',4,34,47);
   Nebraska: State = new State('Nebraska','NE',5,32,49);
-  Nevada: State = new State('Nevada','NV',6,41,40);
+  Nevada: State = new State('Nevada','NV',6,40,41);
   NewHampshire: State = new State('New Hampshire','NH',4,42,39);
   NewJersey: State = new State('New Jersey','NJ',14,48,34);
   NewMexico: State = new State('New Mexico','NM',5,44,37);
@@ -177,6 +178,10 @@ export class VotesStore {
     }
   }
 
+  setBackground(background) {
+    this.background = background;
+  }
+
   setThirdPartyName(name: string) {
     this.thirdName = name;
   }
@@ -284,7 +289,7 @@ export class VotesStore {
   getSafeStates() {
     const safeStates = [];
     for (const state of this.states) {
-      if (state.leansDem >= 21 || state.leansRep >= 15 ) {
+      if (state.leansDem >= 14 || state.leansRep >= 14 ) {
         safeStates.push(state);
       }
     }
@@ -294,7 +299,7 @@ export class VotesStore {
   getLeftLeanStates() {
     const leftLeanStates = [];
     for (const state of this.states) {
-      if (state.leansDem >= 5 && state.leansDem < 21) {
+      if (state.leansDem >= 5 && state.leansDem < 14) {
         leftLeanStates.push(state);
       }
     }
@@ -304,7 +309,7 @@ export class VotesStore {
   getRightLeanStates() {
     const rightLeanStates = [];
     for (const state of this.states) {
-      if (state.leansRep >= 5 && state.leansRep < 15) {
+      if (state.leansRep >= 5 && state.leansRep < 14) {
         rightLeanStates.push(state);
       }
     }
@@ -481,7 +486,7 @@ export class VotesStore {
     this.Missouri = new State('Missouri','MO',10,34,46);
     this.Montana = new State('Montana','MT',4,34,47);
     this.Nebraska = new State('Nebraska','NE',5,32,49);
-    this.Nevada = new State('Nevada','NV',6,41,40);
+    this.Nevada = new State('Nevada','NV',6,40,41);
     this.NewHampshire = new State('New Hampshire','NH',4,42,39);
     this.NewJersey = new State('New Jersey','NJ',14,48,34);
     this.NewMexico = new State('New Mexico','NM',5,44,37);

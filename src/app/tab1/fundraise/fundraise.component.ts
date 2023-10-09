@@ -30,6 +30,7 @@ export class FundraisePage {
   }
 
   toNextTurn() {
+    this.canBack = true;
     this.router.navigateByUrl('/tabs/tab1/opponent');
   }
 

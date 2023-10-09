@@ -1,18 +1,18 @@
 .blue {
-  color: rgb(2, 2, 124);
+  color: #5050FF;
 }
 
 .red {
-  color: rgb(122, 2, 2);
+  color: #ff3030;
 }
 
 
 .lightred {
-  color: rgb(228, 15, 50);
+  color: #7070FF;
 }
 
 .lightblue {
-  color: rgb(6, 99, 238);
+  color: #ff7070;
 }
 
 .center {
@@ -43,11 +43,15 @@ li {
   list-style-type: none;
 }
 
-.svg-container {
-  width: 325px;
-  height: 225px;
+#svg-container {
+  width: 90%;
   overflow: visible;
+  //TODO THIS COULD BE CENTERED BETTER
  }
+
+text {
+  //text-shadow: 0.5px 0.5px 1px white, -0.5px -0.5px 1px white, 0.5px -0.5px 1px white, -0.5px 0.5px 1px white;
+}
 
  svg {
   width: 100%;
@@ -60,7 +64,10 @@ li {
   stroke:white;
   stroke-opacity: 1;
   stroke-width:0.5;
+  transform-box: fill-box;
+  transform-origin: center;
 }
+
 
 .scorebox {
   background-color: rgb(255, 255, 255);
@@ -75,22 +82,22 @@ li {
 #bluebar {
   height:10px;
   width:25%;
-  fill: rgb(2, 2, 124);
-  background-color: rgb(2, 2, 124);
+  fill: #5050FF;
+  background-color: #5050FF;
 }
 
 #lightbluebar {
   height:10px;
   width:15%;
-  fill: rgb(6, 99, 238);
-  background-color: rgb(6, 99, 238);
+  fill: #7070FF;
+  background-color: #7070FF;
 }
 
 #pinkbar {
   height:10px;
   width:15%;
-  fill: pink;
-  background-color: pink;
+  fill: #ffc0c0;
+  background-color: #ffc0c0;
 }
 
 // ion-content{
@@ -102,8 +109,14 @@ li {
 #skybar {
   height:10px;
   width:15%;
-  fill: lightblue;
-  background-color: lightblue;
+  fill: #c0c0ff;
+  background-color: #c0c0ff;
+}
+
+#US-HI {
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: rotate(323deg);
 }
 
 #greybar{
@@ -116,14 +129,14 @@ li {
 #redbar {
   height:10px;
   width:15%;
-  fill: rgb(122, 2, 2);
-  background-color: rgb(122, 2, 2);
+  fill: #ff3030;
+  background-color: #ff3030;
 }
 
 #lightredbar {
   height:10px;
   width:15%;
-  fill: rgb(228, 15, 50);
-  background-color: rgb(228, 15, 50);
+  fill: #ff7070;
+  background-color: #ff7070;
 }
 

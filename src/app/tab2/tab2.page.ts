@@ -37,6 +37,8 @@ export class Tab2Page implements OnInit, AfterViewInit {
   national = 0;
   bluered = true;
   showFinal = false;
+  showVotes = false;
+  scale = 0.3;
 
   constructor(public store: VotesStore, private router: Router, private audio: AudioService) {
     this.router.events.subscribe((event: Event) => {
@@ -52,7 +54,7 @@ export class Tab2Page implements OnInit, AfterViewInit {
     this.isDemocrat = this.store.getUserIsDem();
     this.isThird = this.store.getUserIsThird();
     this.partyName = this.store.thirdPartyName;
-
+    this.calculateScaleOfMap();
   }
 
   ngAfterViewInit() {
@@ -61,6 +63,12 @@ export class Tab2Page implements OnInit, AfterViewInit {
   }
 
 
+  calculateScaleOfMap() {
+    const w = window.innerWidth;
+    this.scale = w * .9 /1150;
+    const height = w * 0.6;
+    document.getElementById('svg-container').style.height = height + 'px';
+  }
 
 
   updateL() {
@@ -111,34 +119,34 @@ export class Tab2Page implements OnInit, AfterViewInit {
     for (const state of this.safeStates) {
       if (state.leansDem > 0) {
         this.safeStatesLeft.push(state);
-        document.getElementById('US-' + state.abbreviation).style.fill = 'blue';
+        document.getElementById('US-' + state.abbreviation).style.fill = '#5050FF';
         this.safeBlue += state.college;
       } else {
         this.safeStatesRight.push(state);
-        document.getElementById('US-' + state.abbreviation).style.fill = 'red';
+        document.getElementById('US-' + state.abbreviation).style.fill = '#ff3030';
         this.safeRed += state.college;
       }
     }
     this.leftLeanStates = this.store.getLeftLeanStates();
     for (const state of this.leftLeanStates) {
-      document.getElementById('US-' + state.abbreviation).style.fill = '#0096FF';
+      document.getElementById('US-' + state.abbreviation).style.fill = '#7070FF';
       this.leanBlue += state.college;
     }
     this.rightLeanStates = this.store.getRightLeanStates();
     for (const state of this.rightLeanStates) {
-      document.getElementById('US-' + state.abbreviation).style.fill = '#eb706e';
+      document.getElementById('US-' + state.abbreviation).style.fill = '#ff7070';
       this.leanRed += state.college;
     }
     this.tossUpStatesLeft = this.store.getTossUpsLeft();
     this.tossUpStates = this.store.getTossUps();
     this.tossUpStatesRight = this.store.getTossUpsRight();
     for (const state of this.tossUpStatesRight) {
-      document.getElementById('US-' + state.abbreviation).style.fill = 'pink';
+      document.getElementById('US-' + state.abbreviation).style.fill = '#ffc0c0';
       this.pink += state.college;
       //this.tossUp += state.college;
     }
     for (const state of this.tossUpStatesLeft) {
-      document.getElementById('US-' + state.abbreviation).style.fill = 'lightblue';
+      document.getElementById('US-' + state.abbreviation).style.fill = '#c0c0ff';
       this.sky += state.college;
      // this.tossUp += state.college;
     }
@@ -158,5 +166,10 @@ export class Tab2Page implements OnInit, AfterViewInit {
     //document.getElementById('redbar').style.width = (this.decidedRed * 75 / 538) + '%';
     //document.getElementById('bluebar').style.width = (this.decidedBlue * 75 / 538) + '%';
   }
+
+  toggleView() {
+    this.showVotes = !this.showVotes;
+  }
+
 
 }

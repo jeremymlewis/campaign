@@ -1,23 +1,39 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="false">
   <ion-toolbar>
     <ion-title>
-      Map/State Info
+      Map / Polls
       <img class='header-icon' *ngIf="!isDemocrat && !isThird" src="../../assets/images/republicanIcon.png">
       <img class='header-icon' *ngIf="isDemocrat && !isThird" src="../../assets/images/democratIcon.png">
     </ion-title>
+    <ion-button fill="clear" id="click-trigger2"><ion-icon name="help-circle-outline"></ion-icon></ion-button>
+    <ion-popover trigger="click-trigger2" triggerAction="click">
+      <ng-template>
+        <ion-content class="ion-padding">
+          <h3>The Elecion Map:</h3>
+          <p>To help predict election results, polls are taken of people in each state.
+          The results of those polls are shown here on this map.
+          </p><p>States that are darker
+          colors are more likely to stay the way they are, and lighter states are closer.
+          </p><p>You can toggle between viewing the Electoral College Votes a state has, and viewing
+          the state abbreviation.</p>
+
+        </ion-content>
+      </ng-template>
+    </ion-popover>
   </ion-toolbar>
 </ion-header>
 
 
 <ion-content [fullscreen]="true">
 
-    <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">National Projections</ion-title>
-    </ion-toolbar>
-  </ion-header>
   <div class="scorebox">
-  <h1 class="center"><span class="blue"> {{safeBlue + leanBlue + sky}} </span> | <span> {{tossUp}} </span> | <span class="red"> {{leanRed + pink + safeRed}} </span></h1>
+    <div class="center" style="margin-top: 2px; margin-bottom: 0px; padding-bottom: 0px">
+      Current Projected Election Results:
+    </div>
+    <h1 class="center" style="margin-top: 1px; padding-top: 1px; margin-bottom: 1px; padding-bottom: 1px;"><span class="blue"> Dem: {{safeBlue + leanBlue + sky}} </span> <span style="color: white;">----</span> <span class="red"> Rep: {{leanRed + pink + safeRed}} </span></h1>
+    <div class="center" style="margin-top: 0px; padding-top: 0px">
+      270 Votes are Needed to Win
+    </div>
   </div>
   <div class="center">
   <p style="margin-top: 0; margin-bottom: 0; padding-top:0; padding-bottom:0;">|</p>
@@ -34,10 +50,10 @@
 
 
 
-  <div class="svg-container">
+  <div id="svg-container">
   <svg>
-    <g transform="matrix(0.29296875 0 0 0.29296875 0 0)">
-<g>
+    <g attr.transform="matrix({{scale}} 0 0 {{scale}} 0 0)">
+    <g>
   <!-- TODO ADD EACH STATE AS A POLYGON WITH AN ID THAT MATCHES AN ARRAY OF COLOR VALUES -->
 		<path id="US-AK" title="Alaska" class="land" d="M191.8,495.91l2.87,8.43l3.02,-2.96l9.45,2.36l-0.85,3.93l8.45,3.99l6.07,-1.1l11.73,6.53l11.14,2.37l4.41,2.47l7.93,-2.48l8.81,5.39l6.42,2.46l0,0l-0.29,61.92l-0.41,89.84l7.5,0.44l7.5,4.15l5.52,6.58l7.22,9.78l7.24,-8.8l7.5,-5.33l4.57,7.63l5.67,5.86l7.72,6.27l5.88,10.36l9.87,16.24l15.03,7.91l1.32,9.26l-3.88,7.62l-5.24,-5.02l-7.87,-3.96l-3.56,-12.68l-11.56,-11.14l-5.39,-13.83l-7.71,-0.46l-12.67,0.3l-9.46,-4l-16.5,-15.44l-7.41,-2.87l-13.37,-5.62l-10.64,1l-14.65,-7.75l-8.54,-7.13l-8.59,2.6l0.69,10.76l-4.31,0.62l-9.17,2.34l-7.32,4.4l-8.95,2.21v-9.05l5.22,-14.52l8.47,-3.82l-1.62,-4.08l-10.5,7.43l-6.45,9.48L169.57,686l4.61,8.12l-8.97,9.68l-9.49,4.89l-8.73,3.17l-3.13,6.19l-14.01,5.24l-3.92,6.35l-10.87,4.25l-5.39,-2.33l-8.57,2.31l-9.52,2.92l-8.06,3.09l-15.29,0.34l-0.64,-2.74l10.79,-4.25l9.15,-2.37l10.61,-5.76l10.46,0.68l5.31,-5.08l12.97,-6.42l2.37,-2.58l6.88,-4.06l3.48,-10.97l5.58,-8.06l-9.78,2.83l-1.99,-3.05l-5.29,4.55l-3.47,-8.58l-3.22,4.87l-1.26,-8.01l-9,4.19l-4.71,-1.12l1.45,-8.95l2.67,-5.11l-3.54,-6.46l-10.41,0.39l-4.4,-8.61l-4.04,-4.93l2.31,-8.42l-3.72,-7.91l5.2,-7.81l8.05,-6.82l4.58,-7.12l5.87,0.36l4.11,3.66l7.39,-6.02l4.68,2.52l6.33,-3.59l0.34,-7.37l-3.13,-3.67l6.35,-4.88l-4.14,-0.76l-7.89,1.7l-2.89,2.92l-4.41,-4.75l-9.88,-0.77l-8.65,-6.44l-0.92,-7.01l-5.42,-11.46l10.92,-3.79l16.26,-3.71l5.19,1.37l-2.92,7.67l13.69,2.75l-2.8,-11.1l-6.17,-8.03l-2.27,-9.16l-3.95,-8.45l-6.76,-7.45l5.78,-7.51l10.57,2.37l9.34,-5.56l3.41,-7.73l7.78,-6.53l5.97,-0.64l12.31,-5.24l4.93,2.18l10.31,-7.58L191.8,495.91zM59.27,587.82l3.09,4.29l4.68,-0.11l4.08,5.78l6.04,4.18l-1.08,1.46l-6.17,1.5l-4.07,-4.97l-1.64,-3.58l-6.21,-1.19l-1.13,-1.88L59.27,587.82zM84.05,658.96l-5.19,0.99l-4.04,-4.16l-3.25,-5.32l7.96,-0.37l5.42,3L84.05,658.96zM172.79,720.54l-8.89,4.49l-3.56,-4.44l-0.17,-7.13l8.04,-4.19l4.56,-1.67l5.13,1.72l2.78,5.07L172.79,720.54z"/>
 		<path id="US-AL" title="Alabama" class="land" d="M823.25,403.55L831.37,431.02L838.53,452.95L842.13,459.7L844.3,463.54L841.61,467.9L841.4,475.24L842.96,479.38L842.96,483.45L842.88,487.23L844.46,489.98L845.75,492.54L805.82,497.08L794.73,499.45L794.58,501.21L799.58,506.33L798.97,510.92L797.83,514.18L780.04,513.21L776.52,478.48L776.84,441.91L777.66,412.26L775.95,407.99L799.35,405.82z"/>
@@ -90,22 +106,159 @@
 		<path id="US-WI" title="Wisconsin" class="land" d="M718.02,148.31L718.17,148.42L719.11,147.88L719.13,147.95L721.66,148.55L723.2,152.58L737.33,155.69L746.81,159.08L751.29,158.75L754.41,158.78L755.61,162.45L759.51,163.56L761.21,166.63L760.4,168.55L760,172.31L763.55,172.19L762.7,175.96L765.09,178.45L765.1,178.41L765.53,178.53L765.4,178.76L759.81,187.53L762.25,190.02L772.73,174.27L775.14,173.95L768.45,192.24L766.23,208.39L764.26,221.5L767.34,232.41L767.4,237.97L767.34,237.97L767.35,238.03L754.43,238.94L736.92,240.23L719.79,241.33L717.96,237.96L712.37,236.09L711.1,232.54L710.31,230.55L710,225.78L711.39,223.98L709.04,220.49L708.74,219.26L708.17,216.72L707.84,211.25L707.21,209.4L701.49,206.31L697.18,202.59L695.92,200.19L694.02,198.73L688.61,195.71L686.66,195.58L681.75,191.37L682.07,186.34L681.86,180.15L682.88,174.37L679.36,170.21L681.49,165.93L684.81,163.61L688.65,160.93L689.15,160.93L688.46,148.11L692.56,146.66L692.56,146.66L708.07,141.11z"/>
 		<path id="US-WV" title="West Virginia" class="land" d="M917.49,280.96L919.42,292.31L921.71,289.82L924.2,286.7L927.46,285.17L929.32,282.4L934.58,282.31L936.14,280.29L939.12,277.96L944.79,278.66L947.53,281.41L949.46,283.97L948.37,288.54L938.34,284.28L938.14,290.47L936.42,293.1L933.58,296.67L931.55,300.04L930.11,299.35L928.76,302.87L927.56,305.97L927.1,308.15L924.75,309.48L921.84,308.37L919.2,307.07L918.4,312.23L916.1,316.74L915.82,320.19L912.93,323.71L911.2,328L911.95,330.57L911.92,332.68L909.4,334.9L906.86,335.01L904.93,337.02L902.78,336.56L902.73,338.63L896.37,341.61L893.96,340.38L888.75,343.99L885.75,342.62L883.41,340.91L882.03,337.23L878.49,337.35L876.29,334.91L873.25,332.39L871.88,329.12L869.24,325.93L868.74,321.26L868.09,319.18L872.38,317.95L874.2,314.49L873.72,309.48L875.44,304.24L877.89,304.42L878.5,306.88L879.92,305.75L880.12,303.48L880.19,299.33L883.46,294.86L885.64,295.02L887.88,294.01L889.71,292.59L893.57,286.7L893.47,284.35L894.33,279.24L895.11,273.12L895.03,267.83L893.82,265.11L895.99,263.59L899.53,284.16z"/>
 		<path id="US-WY" title="Wyoming" class="land" d="M499.16,180.45L495.46,226.79L491.58,271.97L474.43,270.36L440.2,266.58L423.12,264.4L406.05,262.04L372.15,256.16L375.87,234.37L385.21,178.56L384.7,178.06L385.13,177.31L386.97,165.87L418.47,170.63L443.38,174.28L472.33,177.57z"/>
-</g>
+
+    <text *ngIf="showVotes" style="font-size: xx-large;" id="AK-VOTES" x="185" y="600">3</text>
+    <text *ngIf="!showVotes" style="font-size: xx-large;" id="AK-TITLE" x="185" y="600">AK</text>
+    <text *ngIf="showVotes" style="font-size: xx-large;" id="AZ-VOTES" x="320" y="420">11</text>
+    <text *ngIf="!showVotes" style="font-size: xx-large;" id="AZ-TITLE" x="320" y="420">AZ</text>
+    <text *ngIf="showVotes" style="font-size: xx-large;" id="AL-VOTES" x="800" y="465">9</text>
+    <text *ngIf="!showVotes" style="font-size: xx-large;" id="AL-TITLE" x="790" y="465">AL</text>
+    <text *ngIf="showVotes" style="font-size: xx-large;" id="CA-VOTES" x="185" y="340">54</text>
+    <text *ngIf="!showVotes" style="font-size: xx-large;" id="CA-TITLE" x="180" y="340">CA</text>
+    <text *ngIf="showVotes" style="font-size: xx-large;" id="CO-VOTES" x="440" y="330">10</text>
+    <text *ngIf="!showVotes" style="font-size: xx-large;" id="CO-TITLE" x="440" y="330">CO</text>
+    <text *ngIf="showVotes" style="font-size: xx-large;" id="AR-VOTES" x="685" y="426">6</text>
+    <text *ngIf="!showVotes" style="font-size: xx-large;" id="AR-TITLE" x="673" y="426">AR</text>
+    <text *ngIf="showVotes" style="font-size: x-large;" id="CT-VOTES" x="1025" y="237">---7</text>
+    <text *ngIf="!showVotes" style="font-size: x-large;" id="CT-TITLE" x="1025" y="237">--CT</text>
+    <text *ngIf="showVotes" style="font-size: x-large;" id="DE-VOTES" x="990" y="290">--3</text>
+    <text *ngIf="!showVotes" style="font-size: x-large;" id="DE-TITLE" x="990" y="290">--DE</text>
+    <text *ngIf="showVotes" style="font-size: xx-large;" id="FL-VOTES" x="910" y="580">30</text>
+    <text *ngIf="!showVotes" style="font-size: xx-large;" id="FL-TITLE" x="910" y="580">FL</text>
+    <text *ngIf="showVotes" style="font-size: xx-large;" id="GA-VOTES" x="850" y="460">16</text>
+    <text *ngIf="!showVotes" style="font-size: xx-large;" id="GA-TITLE" x="850" y="460">GA</text>
+    <text *ngIf="showVotes" style="font-size: xx-large;" id="HI-VOTES" x="430" y="680">4</text>
+    <text *ngIf="!showVotes" style="font-size: xx-large;" id="HI-TITLE" x="430" y="680">HI</text>
+    <text *ngIf="showVotes" style="font-size: xx-large;" id="ID-VOTES" x="320" y="200">4</text>
+    <text *ngIf="!showVotes" style="font-size: xx-large;" id="ID-TITLE" x="310" y="200">ID</text>
+    <text *ngIf="showVotes" style="font-size: xx-large;" id="IL-VOTES" x="725" y="300">19</text>
+    <text *ngIf="!showVotes" style="font-size: xx-large;" id="IL-TITLE" x="732" y="300">IL</text>
+    <text *ngIf="showVotes" style="font-size: xx-large;" id="IN-VOTES" x="780" y="300">11</text>
+    <text *ngIf="!showVotes" style="font-size: xx-large;" id="IN-TITLE" x="780" y="300">IN</text>
+    <text *ngIf="showVotes" style="font-size: xx-large;" id="IA-VOTES" x="663" y="262">6</text>
+    <text *ngIf="!showVotes" style="font-size: xx-large;" id="IA-TITLE" x="658" y="262">IA</text>
+    <text *ngIf="showVotes" style="font-size: xx-large;" id="KS-VOTES" x="578" y="350">6</text>
+    <text *ngIf="!showVotes" style="font-size: xx-large;" id="KS-TITLE" x="565" y="350">KS</text>
+    <text *ngIf="showVotes" style="font-size: xx-large;" id="KY-VOTES" x="823" y="350">8</text>
+    <text *ngIf="!showVotes" style="font-size: xx-large;" id="KY-TITLE" x="817" y="352">KY</text>
+    <text *ngIf="showVotes" style="font-size: xx-large;" id="LA-VOTES" x="690" y="513">8</text>
+    <text *ngIf="!showVotes" style="font-size: xx-large;" id="LA-TITLE" x="685" y="513">LA</text>
+    <text *ngIf="showVotes" style="font-size: xx-large;" id="ME-VOTES" x="1045" y="130">4</text>
+    <text *ngIf="!showVotes" style="font-size: xx-large;" id="ME-TITLE" x="1038" y="130">ME</text>
+    <text *ngIf="showVotes" style="font-size: x-large;" id="MD-VOTES" x="980" y="312">-----10</text>
+    <text *ngIf="!showVotes" style="font-size: x-large;" id="MD-TITLE" x="980" y="312">-----MD</text>
+    <text *ngIf="showVotes" style="font-size: xx-large;" id="MA-VOTES" x="1050" y="190">11</text>
+    <text *ngIf="!showVotes" style="font-size: xx-large;" id="MA-TITLE" x="1055" y="190">MA</text>
+    <text *ngIf="showVotes" style="font-size: xx-large;" id="MI-VOTES" x="800" y="225">15</text>
+    <text *ngIf="!showVotes" style="font-size: xx-large;" id="MI-TITLE" x="800" y="225">MI</text>
+    <text *ngIf="showVotes" style="font-size: xx-large;" id="MN-VOTES" x="630" y="180">10</text>
+    <text *ngIf="!showVotes" style="font-size: xx-large;" id="MN-TITLE" x="625" y="180">MN</text>
+    <text *ngIf="showVotes" style="font-size: xx-large;" id="MS-VOTES" x="745" y="460">6</text>
+    <text *ngIf="!showVotes" style="font-size: xx-large;" id="MS-TITLE" x="730" y="460">MS</text>
+    <text *ngIf="showVotes" style="font-size: xx-large;" id="MO-VOTES" x="663" y="342">10</text>
+    <text *ngIf="!showVotes" style="font-size: xx-large;" id="MO-TITLE" x="663" y="342">MO</text>
+    <text *ngIf="showVotes" style="font-size: xx-large;" id="MT-VOTES" x="415" y="140">4</text>
+    <text *ngIf="!showVotes" style="font-size: xx-large;" id="MT-TITLE" x="400" y="140">MT</text>
+    <text *ngIf="showVotes" style="font-size: xx-large;" id="NE-VOTES" x="565" y="275">5</text>
+    <text *ngIf="!showVotes" style="font-size: xx-large;" id="NE-TITLE" x="550" y="275">NE</text>
+    <text *ngIf="showVotes" style="font-size: xx-large;" id="NV-VOTES" x="258" y="290">6</text>
+    <text *ngIf="!showVotes" style="font-size: xx-large;" id="NV-TITLE" x="244" y="290">NV</text>
+    <text *ngIf="showVotes" style="font-size: x-large;" id="NH-VOTES" x="1013" y="125">4</text>
+    <text *ngIf="!showVotes" style="font-size: x-large;" id="NH-TITLE" x="995" y="115">NH</text>
+    <text *ngIf="showVotes" style="font-size: x-large;" id="NJ-VOTES" x="1008" y="263">--14</text>
+    <text *ngIf="!showVotes" style="font-size: x-large;" id="NJ-TITLE" x="1008" y="263">--NJ</text>
+    <text *ngIf="showVotes" style="font-size: xx-large;" id="NM-VOTES" x="428" y="420">5</text>
+    <text *ngIf="!showVotes" style="font-size: xx-large;" id="NM-TITLE" x="420" y="420">NM</text>
+    <text *ngIf="showVotes" style="font-size: xx-large;" id="NY-VOTES" x="960" y="200">28</text>
+    <text *ngIf="!showVotes" style="font-size: xx-large;" id="NY-TITLE" x="956" y="200">NY</text>
+    <text *ngIf="showVotes" style="font-size: xx-large;" id="NC-VOTES" x="929" y="382">16</text>
+    <text *ngIf="!showVotes" style="font-size: xx-large;" id="NC-TITLE" x="929" y="382">NC</text>
+    <text *ngIf="showVotes" style="font-size: xx-large;" id="ND-VOTES" x="553" y="141">3</text>
+    <text *ngIf="!showVotes" style="font-size: xx-large;" id="ND-TITLE" x="545" y="141">ND</text>
+    <text *ngIf="showVotes" style="font-size: xx-large;" id="OH-VOTES" x="840" y="290">17</text>
+    <text *ngIf="!showVotes" style="font-size: xx-large;" id="OH-TITLE" x="837" y="290">OH</text>
+    <text *ngIf="showVotes" style="font-size: xx-large;" id="OK-VOTES" x="592" y="415">7</text>
+    <text *ngIf="!showVotes" style="font-size: xx-large;" id="OK-TITLE" x="580" y="415">OK</text>
+    <text *ngIf="showVotes" style="font-size: xx-large;" id="OR-VOTES" x="215" y="170">8</text>
+    <text *ngIf="!showVotes" style="font-size: xx-large;" id="OR-TITLE" x="205" y="170">OR</text>
+    <text *ngIf="showVotes" style="font-size: xx-large;" id="PA-VOTES" x="920" y="260">19</text>
+    <text *ngIf="!showVotes" style="font-size: xx-large;" id="PA-TITLE" x="920" y="260">PA</text>
+    <text *ngIf="showVotes" style="font-size: x-large;" id="RI-VOTES" x="1055" y="221">---4</text>
+    <text *ngIf="!showVotes" style="font-size: x-large;" id="RI-TITLE" x="1055" y="221">----RI</text>
+    <text *ngIf="showVotes" style="font-size: xx-large;" id="SC-VOTES" x="910" y="430">9</text>
+    <text *ngIf="!showVotes" style="font-size: xx-large;" id="SC-TITLE" x="900" y="430">SC</text>
+    <text *ngIf="showVotes" style="font-size: xx-large;" id="SD-VOTES" x="548" y="207">3</text>
+    <text *ngIf="!showVotes" style="font-size: xx-large;" id="SD-TITLE" x="540" y="207">SD</text>
+    <text *ngIf="showVotes" style="font-size: xx-large;" id="TN-VOTES" x="780" y="400">11</text>
+    <text *ngIf="!showVotes" style="font-size: xx-large;" id="TN-TITLE" x="780" y="400">TN</text>
+    <text *ngIf="showVotes" style="font-size: xx-large;" id="TX-VOTES" x="560" y="500">40</text>
+    <text *ngIf="!showVotes" style="font-size: xx-large;" id="TX-TITLE" x="560" y="500">TX</text>
+    <text *ngIf="showVotes" style="font-size: xx-large;" id="UT-VOTES" x="345" y="310">6</text>
+    <text *ngIf="!showVotes" style="font-size: xx-large;" id="UT-TITLE" x="335" y="310">UT</text>
+    <text *ngIf="showVotes" style="font-size: x-large;" id="VT-VOTES" x="987" y="138">3</text>
+    <text *ngIf="!showVotes" style="font-size: x-large;" id="VT-TITLE" x="980" y="138">VT</text>
+    <text *ngIf="showVotes" style="font-size: xx-large;" id="VA-VOTES" x="930" y="330">13</text>
+    <text *ngIf="!showVotes" style="font-size: xx-large;" id="VA-TITLE" x="930" y="330">VA</text>
+    <text *ngIf="showVotes" style="font-size: xx-large;" id="WA-VOTES" x="240" y="100">12</text>
+    <text *ngIf="!showVotes" style="font-size: xx-large;" id="WA-TITLE" x="235" y="100">WA</text>
+    <text *ngIf="showVotes" style="font-size: xx-large;" id="WI-VOTES" x="705" y="195">10</text>
+    <text *ngIf="!showVotes" style="font-size: xx-large;" id="WI-TITLE" x="705" y="195">WI</text>
+    <text *ngIf="showVotes" style="font-size: xx-large;" id="WY-VOTES" x="430" y="230">3</text>
+    <text *ngIf="!showVotes" style="font-size: xx-large;" id="WY-TITLE" x="420" y="230">WY</text>
+    <text *ngIf="showVotes" style="font-size: xx-large;" id="WV-VOTES" x="887" y="325">5</text>
+    <text *ngIf="!showVotes" style="font-size: x-large;" id="WV-TITLE" x="881" y="325">WV</text>
+    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
+    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
+    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
+    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
+    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
+    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
+    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
+    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
+    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
+    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
+    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
+    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
+    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
+    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
+    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
+    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
+    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
+    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
+    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
+    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
+    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
+    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
+    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
+    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
+    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
+    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
+    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
+    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
+    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
+    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
+    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
+    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
+    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
+    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
+    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
+    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
+    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
+    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
+  </g>
 </g>
 </svg>
 </div>
-<div class="center" *ngIf="!isThird">
-  <h3 *ngIf="national > 0">National Climate Leans Right {{national}}%</h3>
-  <h3 *ngIf="national < 0">National Climate Leans Left {{national * -1}}%</h3>
-  <h3 *ngIf="national === 0">National Climate Is Neutral</h3>
+<div class="center" *ngIf="!showVotes">
+  <ion-button (click)="toggleView()">Show Electoral College</ion-button>
 </div>
-<div class="center" *ngIf="isThird">
-  <h3 *ngIf="national === 0">Your National Perception Is Neutral</h3>
+<div class="center" *ngIf="showVotes">
+  <ion-button (click)="toggleView()">Show State Labels</ion-button>
 </div>
 <div *ngIf="!isThird">
   <div class="center-border">
 
-    <h1>Toss Up States: ({{pink+ tossUp + sky}})</h1>
+    <h1>Close Races: ({{pink+ tossUp + sky}} Votes)</h1>
   </div>
     <div class="center-border">
 
@@ -119,7 +272,7 @@
     </ul>
   </div>
   <div class="center-border">
-    <h1>Lean Left States: ({{leanBlue}})</h1>
+    <h1>Lean Left: ({{leanBlue}} Votes)</h1>
   </div>
   <div class="center-border">
     <ul>
@@ -127,7 +280,7 @@
     </ul>
   </div>
   <div class="center-border">
-    <h1>Lean Right States: ({{leanRed}})</h1>
+    <h1>Lean Right: ({{leanRed}} Votes)</h1>
   </div>
   <div class="center-border">
 

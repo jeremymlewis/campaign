@@ -904,9 +904,9 @@ export class TextService {
 
   public getTurns(): string[] {
     const turns = [
-      'It is your first turn! Each round you get two turns. Take your turn by clicking on one of the options below. Note that you have to fundraise before you can run ads.',
-      'It is your second turn of the round!',
-      'It is your first turn of round 2!',
+      'It is your first turn! Each week you get to choose 1 action. Take your turn by clicking on one of the options below. Your opponent will go next.',
+      'Good job in Week 1! Tap the Map/Polls icon at the bottom of the page to see how you are doing in the Polls.',
+      'Welcome to Week 3! After this week, a SPECIAL EVENT will happen. SPECIAL EVENTS influence the Polls in interesting ways.',
       'It is your second turn of the round!',
       'It is your first turn of the round 3!',
       'It is your second turn of the round. After this turn comes the first presidential debate...',

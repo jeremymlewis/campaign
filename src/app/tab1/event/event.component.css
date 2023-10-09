@@ -31,24 +31,25 @@
   padding-left: 2px;
   padding-right: 2px;
   border-radius:2px 2px 2px 2px;
-  border-bottom: 2px solid rgb(0, 214, 214);
-  background: rgb(0, 214, 214);
+  border-bottom: 2px solid #687a43;
+  background: #687a43;
   list-style: none;
   margin-left: 3px;
-  border-top: 2px solid black;
-  border-left: 2px solid black;
-  border-right: 2px solid black;
+  border-top: 2px solid #687a43;
+  border-left: 2px solid #687a43;
+  border-right: 2px solid #687a43;
   left: 5%;
+  color: white;
   display: inline;
   position:relative;
   top:1px;
 }
 
 .funfact {
-  background-color: aqua;
+  background-color: #287a16;
   border-radius: 4px;
-  border: 2px solid black;
-
+  border: 2px solid #287a16;
+  color: white;
   font-size: large;
   text-align: center;
   display: block;
