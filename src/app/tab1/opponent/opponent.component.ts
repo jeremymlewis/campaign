@@ -15,6 +15,7 @@ export class OpponentPage implements OnInit {
   actionId = 0;
   actionIcons = [];
 
+
   constructor(private router: Router, private toastController: ToastController, private votes: VotesStore, private textService: TextService) {}
 
   ngOnInit() {
@@ -139,22 +140,48 @@ export class OpponentPage implements OnInit {
   }
 
   nextEvent() {
-    this.votes.turn++;
-    if (this.votes.turn % 2 === 0) {
+    this.moveProgressBar();
+    if (this.votes.round % 2 === 0) {
       this.votes.round++;
-      if (this.votes.round > 10) {
+      if (this.votes.round > 16) {
         this.goToResults();
-      } else if (this.votes.round === 2) {
-        this.goToFirstEvent();
-        console.log('firstEvent');
       } else {
         this.goToEvent();
       }
-
     } else {
-      this.goToTab1();
+      this.votes.round++;
+      if (this.votes.round > 16) {
+        this.goToResults();
+      } else {
+        this.goToTab1();
+      }
     }
+    //JERMY THEHREUSHIAUEFIUAEFUIAEHFUIEAHIF
   }
+
+
+  moveProgressBar() {
+    if (this.votes.progress > 15) {
+      document.getElementById('finish-icon').style.left = '100%';
+      document.getElementById('greenbar').style.backgroundColor = '#30ff30';
+      document.getElementById('greenbar').style.backgroundImage = 'none';
+      this.votes.progressMessage = 'ELECTION DAY!';
+    } else {
+      this.votes.progress++;
+    }
+    document.getElementById('greenbar').style.width = ((this.votes.progress) / 16) * 100 + '%';
+    document.getElementById('whitebar').style.width = ((16-this.votes.progress) / 16) * 100+ '%';
+    document.getElementById('progress-icon').style.left = ((this.votes.progress) / 16) * 100 - 4 + '%';
+    if (this.votes.progress > 13) {
+      document.getElementById('greenbar').style.backgroundImage = 'linear-gradient(to left, rgb(255, 255, 255), rgb(255, 40, 40))';
+      this.votes.progressMessage = 'ELECTION DAY SOON';
+    }
+    if (this.votes.progress > 14) {
+      document.getElementById('finish-icon').style.left = '100%';
+    }
+
+    console.log(this.votes.progress);
+}
 
   handleGroupScoreUpdate(group: string[], sway: number) {
     this.actionIcons = [];

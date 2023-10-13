@@ -160,7 +160,7 @@ export class Tab2Page implements OnInit, AfterViewInit {
     document.getElementById('lightbluebar').style.width = (this.leanBlue * 75 / 538) + '%';
     document.getElementById('pinkbar').style.width = (this.pink * 75 / 538) + '%';
     document.getElementById('skybar').style.width = (this.sky * 75 / 538) + '%';
-    document.getElementById('graybar').style.width = ((this.tossUp - this.sky - this.pink) * 75 / 538) + '%';
+    document.getElementById('graybar').style.width = ((this.tossUp) * 75 / 538) + '%';
 
     //AFTER DECIDED CHANGE TO THIS? maybe
     //document.getElementById('redbar').style.width = (this.decidedRed * 75 / 538) + '%';

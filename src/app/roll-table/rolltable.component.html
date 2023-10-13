@@ -1,0 +1,121 @@
+<div class="center" *ngIf="!votes.isDemocrat">
+  <div *ngIf="slot0.length > 0" class="top">
+    <div class="col left"><img *ngFor="let item of slot0" class="dice" src='assets/diceRep{{item}}.png'></div>
+    <div class="col right"> {{val0}} </div>
+  </div>
+  <div *ngIf="slot0.length === 0 && slot1.length > 0" class="top">
+    <div class="col left"><img *ngFor="let item of slot0" class="dice" src='assets/diceRep{{item}}.png'></div>
+    <div class="col right"> {{val1}} </div>
+  </div>
+  <div *ngIf="slot0.length === 0 && slot1.length === 0 && slot2.length > 0" class="top">
+    <div class="col left"><img *ngFor="let item of slot1" class="dice" src='assets/diceRep{{item}}.png'></div>
+    <div class="col right"> {{val2}} </div>
+  </div>
+  <div *ngIf="slot0.length === 0 && slot1.length === 0 && slot2.length === 0 && slot3.length > 0" class="top">
+    <div class="col left"><img *ngFor="let item of slot2" class="dice" src='assets/diceRep{{item}}.png'></div>
+    <div class="col right"> {{val3}} </div>
+  </div>
+  <div *ngIf="slot0.length === 0 && slot1.length === 0 && slot2.length === 0 && slot3.length === 0 && slot4.length > 0" class="top">
+    <div class="col left"><img *ngFor="let item of slot3" class="dice" src='assets/diceRep{{item}}.png'></div>
+    <div class="col right"> {{val4}} </div>
+  </div>
+
+  <div *ngIf="slot1.length > 0 && ((slot0.length > 0) && (slot3.length > 0 || slot2.length > 0 || slot4.length > 0 || slot5.length > 0))" class="row">
+    <div class="col left"><img *ngFor="let item of slot1" class="dice" src='assets/diceRep{{item}}.png'></div>
+    <div class="col right"> {{val1}} </div>
+   </div>
+  <div *ngIf="slot2.length > 0 && ((slot5.length > 0 || slot4.length > 0 || slot3.length > 0) && (slot1.length > 0 || slot0.length > 0))" class="row">
+    <div class="col left"><img *ngFor="let item of slot2" class="dice" src='assets/diceRep{{item}}.png'></div>
+    <div class="col right"> {{val2}} </div>
+  </div>
+  <div *ngIf="slot3.length > 0 && ((slot5.length > 0 || slot4.length > 0) && (slot2.length > 0 || slot1.length > 0 || slot0.length > 0))" class="row">
+    <div class="col left"><img *ngFor="let item of slot3" class="dice" src='assets/diceRep{{item}}.png'></div>
+    <div class="col right"> {{val3}} </div>
+  </div>
+  <div *ngIf="slot4.length > 0 && ((slot5.length > 0) && (slot3.length > 0 || slot2.length > 0 || slot1.length > 0 || slot0.length > 0))" class="row">
+    <div class="col left"><img *ngFor="let item of slot4" class="dice" src='assets/diceRep{{item}}.png'></div>
+    <div class="col right"> {{val4}} </div>
+  </div>
+
+  <div *ngIf="slot5.length === 0 && slot4.length === 0 && slot3.length === 0 && slot2.length === 0 && slot1.length > 0" class="bottom">
+    <div class="col left"><img *ngFor="let item of slot1" class="dice" src='assets/diceRep{{item}}.png'></div>
+    <div class="col right"> {{val1}} </div>
+  </div>
+  <div *ngIf="slot5.length === 0 && slot4.length === 0 && slot3.length === 0 && slot2.length > 0" class="bottom">
+    <div class="col left"><img *ngFor="let item of slot2" class="dice" src='assets/diceRep{{item}}.png'></div>
+    <div class="col right"> {{val2}} </div>
+  </div>
+  <div *ngIf="slot5.length === 0 && slot4.length === 0 && slot3.length > 0" class="bottom">
+    <div class="col left"><img *ngFor="let item of slot3" class="dice" src='assets/diceRep{{item}}.png'></div>
+    <div class="col right"> {{val3}} </div>
+  </div>
+  <div *ngIf="slot5.length === 0 && slot4.length > 0" class="bottom">
+    <div class="col left"><img *ngFor="let item of slot4" class="dice" src='assets/diceRep{{item}}.png'></div>
+    <div class="col right"> {{val4}} </div>
+  </div>
+  <div *ngIf="slot5.length > 0" class="bottom">
+    <div class="col left"><img *ngFor="let item of slot5" class="dice" src='assets/diceRep{{item}}.png'></div>
+    <div class="col right"> {{val5}} </div>
+  </div>
+</div>
+
+<div class="center" *ngIf="votes.isDemocrat">
+  <div *ngIf="slot0.length > 0" class="top">
+    <div class="col left"><img *ngFor="let item of slot0" class="dice" src='assets/diceDem{{item}}.png'></div>
+    <div class="col right"> {{val0}} </div>
+  </div>
+  <div *ngIf="slot0.length === 0 && slot1.length > 0" class="top">
+    <div class="col left"><img *ngFor="let item of slot0" class="dice" src='assets/diceDem{{item}}.png'></div>
+    <div class="col right"> {{val1}} </div>
+  </div>
+  <div *ngIf="slot0.length === 0 && slot1.length === 0 && slot2.length > 0" class="top">
+    <div class="col left"><img *ngFor="let item of slot1" class="dice" src='assets/diceDem{{item}}.png'></div>
+    <div class="col right"> {{val2}} </div>
+  </div>
+  <div *ngIf="slot0.length === 0 && slot1.length === 0 && slot2.length === 0 && slot3.length > 0" class="top">
+    <div class="col left"><img *ngFor="let item of slot2" class="dice" src='assets/diceDem{{item}}.png'></div>
+    <div class="col right"> {{val3}} </div>
+  </div>
+  <div *ngIf="slot0.length === 0 && slot1.length === 0 && slot2.length === 0 && slot3.length === 0 && slot4.length > 0" class="top">
+    <div class="col left"><img *ngFor="let item of slot3" class="dice" src='assets/diceDem{{item}}.png'></div>
+    <div class="col right"> {{val4}} </div>
+  </div>
+
+  <div *ngIf="slot1.length > 0 && ((slot0.length > 0) && (slot3.length > 0 || slot2.length > 0 || slot4.length > 0 || slot5.length > 0))" class="row">
+    <div class="col left"><img *ngFor="let item of slot1" class="dice" src='assets/diceDem{{item}}.png'></div>
+    <div class="col right"> {{val1}} </div>
+   </div>
+  <div *ngIf="slot2.length > 0 && ((slot5.length > 0 || slot4.length > 0 || slot3.length > 0) && (slot1.length > 0 || slot0.length > 0))" class="row">
+    <div class="col left"><img *ngFor="let item of slot2" class="dice" src='assets/diceDem{{item}}.png'></div>
+    <div class="col right"> {{val2}} </div>
+  </div>
+  <div *ngIf="slot3.length > 0 && ((slot5.length > 0 || slot4.length > 0) && (slot2.length > 0 || slot1.length > 0 || slot0.length > 0))" class="row">
+    <div class="col left"><img *ngFor="let item of slot3" class="dice" src='assets/diceDem{{item}}.png'></div>
+    <div class="col right"> {{val3}} </div>
+  </div>
+  <div *ngIf="slot4.length > 0 && ((slot5.length > 0) && (slot3.length > 0 || slot2.length > 0 || slot1.length > 0 || slot0.length > 0))" class="row">
+    <div class="col left"><img *ngFor="let item of slot4" class="dice" src='assets/diceDem{{item}}.png'></div>
+    <div class="col right"> {{val4}} </div>
+  </div>
+
+  <div *ngIf="slot5.length === 0 && slot4.length === 0 && slot3.length === 0 && slot2.length === 0 && slot1.length > 0" class="bottom">
+    <div class="col left"><img *ngFor="let item of slot1" class="dice" src='assets/diceDem{{item}}.png'></div>
+    <div class="col right"> {{val1}} </div>
+  </div>
+  <div *ngIf="slot5.length === 0 && slot4.length === 0 && slot3.length === 0 && slot2.length > 0" class="bottom">
+    <div class="col left"><img *ngFor="let item of slot2" class="dice" src='assets/diceDem{{item}}.png'></div>
+    <div class="col right"> {{val2}} </div>
+  </div>
+  <div *ngIf="slot5.length === 0 && slot4.length === 0 && slot3.length > 0" class="bottom">
+    <div class="col left"><img *ngFor="let item of slot3" class="dice" src='assets/diceDem{{item}}.png'></div>
+    <div class="col right"> {{val3}} </div>
+  </div>
+  <div *ngIf="slot5.length === 0 && slot4.length > 0" class="bottom">
+    <div class="col left"><img *ngFor="let item of slot4" class="dice" src='assets/diceDem{{item}}.png'></div>
+    <div class="col right"> {{val4}} </div>
+  </div>
+  <div *ngIf="slot5.length > 0" class="bottom">
+    <div class="col left"><img *ngFor="let item of slot5" class="dice" src='assets/diceDem{{item}}.png'></div>
+    <div class="col right"> {{val5}} </div>
+  </div>
+</div>

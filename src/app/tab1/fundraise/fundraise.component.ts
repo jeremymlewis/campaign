@@ -13,6 +13,7 @@ export class FundraisePage {
   constructor(private router: Router, private toastController: ToastController, private votes: VotesStore) {}
 
   rollStarted() {
+    //jermy emit something here to disable the footer
     this.canBack = false;
   }
 

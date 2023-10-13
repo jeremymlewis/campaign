@@ -1,3 +1,18 @@
+<ion-header [translucent]="false">
+  <ion-toolbar>
+    <ion-title>
+      Instructions
+    </ion-title>
+    <ion-button class="button-53" role="button" fill="clear" id="click-trigger2"><ion-icon name="help-circle-outline"></ion-icon></ion-button>
+    <ion-popover trigger="click-trigger2" triggerAction="click">
+      <ng-template>
+        <ion-content class="ion-padding">
+          <h3>Instructions:</h3>
+        </ion-content>
+      </ng-template>
+    </ion-popover>
+  </ion-toolbar>
+</ion-header>
 <ion-content [fullscreen]="true">
   <div class="center">
 
@@ -5,7 +20,7 @@
 </div>
 <div class="center">
 
-<p>Special Events happen after each round (10 total) and can have big effects on the race</p>
+<p>Special Events happen every other round! A total of 8 will occur</p>
 </div>
 <div class="center">
 
@@ -17,5 +32,5 @@
   </div>
 
 <div class="center">
-  <ion-button (click)="continue()">Back to main HELP page</ion-button>
+  <button class="button-53" role="button" (click)="continue()">Back to main HELP page</button>
   </div></ion-content>

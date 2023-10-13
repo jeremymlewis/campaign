@@ -1,11 +1,12 @@
 <ion-content [fullscreen]="true">
 
 
-<div class="center">
+<div class="center" style="background-color: #7a6843;">
 <p>A Special Event has been triggered!</p>
 </div>
-<div class="center" style="background-color: rgb(192, 182, 224); border-bottom: 2px black solid; border-top: 2px black solid;">
-<h1>{{eventTitle}}</h1>
+<div class="center" style="background-color: #687a43;
+">
+<h1 style="color: white;">{{eventTitle}}</h1>
 </div>
 <div class="center">
 <!-- <p>Before rounds 4,7,10 there will be a debate!  It has rolling rules that effect national climate<br></p> -->
@@ -27,7 +28,7 @@
   <!-- Or to the right... calculate that on the ts side of this. -->
   </div>
 <div class="center">
-  <ion-button (click)="handleRoll(eventPoints, statesInvolved)">Next</ion-button>
+  <button class="button-53" role="button" (click)="handleRoll(eventPoints, statesInvolved)">Next</button>
 <!-- <p>{{eventRollsL}}</p>
 <p>{{eventRollsR}}</p> -->
 </div>

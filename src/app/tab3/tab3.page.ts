@@ -11,6 +11,10 @@ export class Tab3Page implements OnInit {
   isDemocrat: boolean;
   isThird: boolean;
   partyName = '';
+  slot0 = [1,2];
+  slot1 = [3];
+  slot2 = [4];
+  slot3 = [5,6];
   constructor(private votes: VotesStore, private router: Router) {}
 
   ngOnInit() {

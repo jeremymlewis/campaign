@@ -9,9 +9,26 @@
   position: relative;
 }
 
+.highcenter {
+  position: absolute;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: xx-large;
+  top: 20%;
+  left: 50%;
+  width: 80%;
+  text-align: center;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0px 0px 4px 4px #ffffff;
+  opacity: 0.7;
+  /* box-shadow: inset 0px 0px 8px 8px #5050ff; */
+}
 
 .center {
   position: absolute;
+  display: grid;
   top: 50%;
   left: 50%;
   -ms-transform: translate(-50%, -50%);

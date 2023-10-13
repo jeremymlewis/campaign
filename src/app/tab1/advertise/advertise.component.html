@@ -84,15 +84,10 @@
 <div class="center">
 <p>After choosing which block you will advertise to, click 'roll' to see how the area is affected.</p>
 </div>
+<app-dice [slot0]='[1]' val0="No Effect" [slot1]="[2, 3, 4, 5]" val1="+1%" [slot2]='[6]' val2="+2%" [canClick]="diceEnabled"  (rollStarted)="rollStarted()"  (diceRolled)="handleRoll($event)"></app-dice>
+<br>
+<br>
 <div class="center">
-<app-dice [canClick]="diceEnabled"  (rollStarted)="rollStarted()"  (diceRolled)="handleRoll($event)"></app-dice>
-</div>
-<div class="center">
-<p>Rolling a 1 will result in no effect<br>
-Rolling a 2,3,4 or 5 will result in a +1<br>
-Rolling a 6 will result in a +2<br></p>
-</div>
-<div class="center">
-<ion-button [disabled]="!canBack" (click)="back()">Back To Options</ion-button>
+<button class="button-53" role="button" [disabled]="!canBack" (click)="back()">Back To Options</button>
 </div>
 </ion-content>

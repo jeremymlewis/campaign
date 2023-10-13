@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Injectable, Input, Output } from '@angular/core';
 import { CalculationService } from '../services/calculations.service';
+import { VotesStore } from '../stores/votes.store';
 
 @Component({
   selector: 'app-dice',
@@ -14,8 +15,22 @@ export class DiceComponent {
   @Output() diceRolled = new EventEmitter<number>();
   @Output() rollStarted = new EventEmitter<boolean>();
   @Input() canClick = true;
+  @Input() slot0: number[] = [];
+  @Input() slot1: number[] = [];
+  @Input() slot2: number[] = [];
+  @Input() slot3: number[] = [];
+  @Input() slot4: number[] = [];
+  @Input() slot5: number[] = [];
+
+  @Input() val0 = '0';
+  @Input() val1 = '1';
+  @Input() val2 = '2';
+  @Input() val3 = '3';
+  @Input() val4 = '4';
+  @Input() val5 = '5';
+
   value = 1;
-  imageValue = 'dice1';
+  imageValue= 'dice' + (this.votes.isDemocrat ? 'Dem' : 'Rep') + '1';
   image1 = 'dice1';
   image2 = 'dice2';
   image3 = 'dice3';
@@ -23,33 +38,36 @@ export class DiceComponent {
   image5 = 'dice5';
   image6 = 'dice6';
 
-  constructor(private calculationService: CalculationService ) {}
+
+  constructor(private calculationService: CalculationService, public votes: VotesStore ) {}
 
 
 
   setImage(num: number) {
     if (num <2) {
-      this.imageValue = this.image1;
+      this.imageValue = 'dice' + (this.votes.isDemocrat ? 'Dem' : 'Rep') + 1;
     } else if (num === 2) {
-      this.imageValue = this.image2;
+      this.imageValue = 'dice' + (this.votes.isDemocrat ? 'Dem' : 'Rep') + 2;
     } else if (num === 3) {
-      this.imageValue = this.image3;
+      this.imageValue = 'dice' + (this.votes.isDemocrat ? 'Dem' : 'Rep') + 3;
     } else if (num === 4) {
-      this.imageValue = this.image4;
+      this.imageValue = 'dice' + (this.votes.isDemocrat ? 'Dem' : 'Rep') + 4;
     } else if (num === 5) {
-      this.imageValue = this.image5;
+      this.imageValue = 'dice' + (this.votes.isDemocrat ? 'Dem' : 'Rep') + 5;
     } else {
-      this.imageValue = this.image6;
+      this.imageValue = 'dice' + (this.votes.isDemocrat ? 'Dem' : 'Rep') + 6;
     }
   }
 
   rollDice() {
+    this.votes.actionPending = true;
     this.value = Math.floor(Math.random() * 6) + 1;
     this.setImage(this.value);
   }
 
   async animatedDiceRoll() {
     this.rollStarted.emit(true);
+    document.getElementById('dice').style.animation = 'rotation 2s';
     this.canClick = false;
     this.rollDice();
     await new Promise(f => setTimeout(f, 80));
@@ -68,8 +86,16 @@ export class DiceComponent {
     this.rollDice();
     await new Promise(f => setTimeout(f, 80));
     this.rollDice();
+    await new Promise(f => setTimeout(f, 80));
+    this.rollDice();
+    await new Promise(f => setTimeout(f, 80));
+    this.rollDice();
     this.diceRolled.emit(this.value);
-    await new Promise(f => setTimeout(f, 4000));
+    await new Promise(f => setTimeout(f, 1200));
+    document.getElementById('dice').style.animation = '';
+    await new Promise(f => setTimeout(f, 2000));
+    this.votes.actionPending = false;
+    await new Promise(f => setTimeout(f, 500));
     this.canClick = true;
   }
 

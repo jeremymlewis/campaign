@@ -15,6 +15,17 @@ h3 {
 //   --background: #aff;
 // }
 
+
+
+.centervert {
+  position: absolute;
+  display: grid;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
 .header-icon {
   position: fixed;
   right: 10px;

@@ -256,11 +256,17 @@
   <ion-button (click)="toggleView()">Show State Labels</ion-button>
 </div>
 <div *ngIf="!isThird">
-  <div class="center-border">
 
-    <h1>Close Races: ({{pink+ tossUp + sky}} Votes)</h1>
+  <div class="center-border">
+    <h1 style="margin-bottom: 0px; padding-bottom: 0px;">Battleground States:</h1>
   </div>
-    <div class="center-border">
+  <div class="center-border" >
+    <h2 style="margin-top: 2px; padding-top: 2px; margin-bottom: 0px; padding-bottom: 0px;" >Dem: {{sky}} votes<span style="color: white;">--</span> Rep: {{pink}} votes</h2>
+  </div>
+  <div *ngIf="tossUp" class="center-border" >
+    <h2 style="margin-top: 2px; padding-top: 2px; margin-bottom: 0px; padding-bottom: 0px;" >Toss Up States: {{tossUp}} votes</h2>
+  </div>
+  <div class="center-border">
 
     <ul>
       <li class='lightblue' *ngFor="let state of tossUpStatesLeft">{{state.abbreviation}} ({{state.college}}): +{{state.leansDem}} L</li>
@@ -271,28 +277,26 @@
       <li class='lightred' *ngFor="let state of tossUpStatesRight">{{state.abbreviation}} ({{state.college}}): +{{state.leansRep}} R</li>
     </ul>
   </div>
+
   <div class="center-border">
-    <h1>Lean Left: ({{leanBlue}} Votes)</h1>
+    <h1 style="margin-bottom: 0px; padding-bottom: 0px;">Medium Lean States:</h1>
+  </div>
+  <div  class="center-border">
+    <h1 style="margin-top: 0px; padding-top: 2px;" >Dem: {{leanBlue}} Votes <span style="color: white;">--</span>  Rep: {{leanRed}} Vote</h1>
   </div>
   <div class="center-border">
     <ul>
       <li class='lightblue' *ngFor="let state of leftLeanStates">{{state.abbreviation}} ({{state.college}}): +{{state.leansDem}} L</li>
     </ul>
-  </div>
-  <div class="center-border">
-    <h1>Lean Right: ({{leanRed}} Votes)</h1>
-  </div>
-  <div class="center-border">
-
     <ul>
       <li class='lightred' *ngFor="let state of rightLeanStates">{{state.abbreviation}} ({{state.college}}): +{{state.leansRep}} R</li>
     </ul>
-    </div>
+  </div>
   <div class="center-border">
     <h1 style="margin-bottom: 0px; padding-bottom: 0px;">Safe States:</h1>
   </div>
-  <div class="center-border" >
-    <h2 style="margin-top: 2px; padding-top: 2px;" >Rep: {{safeRed}} votes   Dem: {{safeBlue}} votes</h2>
+  <div class="center-border">
+    <h2 style="margin-top: 0px; padding-top: 2px;" >Dem: {{safeBlue}} votes<span style="color: white;">--</span> Rep: {{safeRed}} votes</h2>
   </div>
   <div class="center-border">
 

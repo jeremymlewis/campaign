@@ -79,32 +79,13 @@
   </ion-list>
 
   <div class="center">
-    <p>Roll 1: +0</p>
-  </div>
-  <div class="center">
-    <p>Roll 2: +1</p>
-  </div>
-  <div class="center">
-    <p>Roll 3: +1</p>
-  </div>
-  <div class="center">
-    <p>Roll 4: +2</p>
-  </div>
-  <div class="center">
-    <p>Roll 5: +2</p>
-  </div>
-  <div class="center">
-    <p>Roll 6: +3</p>
-  </div>
-  <div class="center">
-    <p>(-1 from states marked with a * since they are strongholds for the other party)</p>
+    <p>(States marked with a * since they are strongholds for the other party)</p>
   </div>
 
-  <div class="center">
-    <app-dice [canClick]="!!chosenState" (rollStarted)="rollStarted()" (diceRolled)="handleRoll($event)"></app-dice>
-  </div>
-  <div class="center">
+  <app-dice [slot0]='[1]' val0="+0%" [slot1]="[2, 3]" val1="+1%" [slot2]='[4, 5]' val2="+2%" [slot3]="[6]" val3="+3%" [canClick]="!!chosenState" (rollStarted)="rollStarted()" (diceRolled)="handleRoll($event)"></app-dice>
+  <br><br>
 
-  <ion-button [disabled]="!canBack"(click)="back()">Back To Options</ion-button>
+  <div class="center">
+  <button class="button-53" role="button" [disabled]="!canBack"(click)="back()">Back To Options</button>
   </div>
 </ion-content>

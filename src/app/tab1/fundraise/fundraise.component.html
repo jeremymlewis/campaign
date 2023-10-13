@@ -23,11 +23,9 @@
 <div class="center">
   <p>Roll 5-6: $20 million</p>
 </div>
+<app-dice [slot0]='[1,2,3,4]' val0="$1 Million" [slot1]="[5,6]" val1="$2 Million" (rollStarted)="rollStarted()"  (diceRolled)="handleRoll($event)"></app-dice>
+<br><br>
 <div class="center">
-<app-dice  (rollStarted)="rollStarted()"  (diceRolled)="handleRoll($event)"></app-dice>
-</div>
-<br>
-<div class="center">
-<ion-button [disabled]="!canBack" (click)="back()">Back To Options</ion-button>
+<button class="button-53" role="button" [disabled]="!canBack" (click)="back()">Back To Options</button>
 </div>
 </ion-content>

@@ -8,6 +8,9 @@ import { Storage } from '@ionic/storage-angular';
 
 @Injectable({providedIn: 'root'})
 export class VotesStore {
+  actionPending = false;
+  progressMessage = '';
+  progress = 0;
   isDemocrat = true;
   isThird = false;
   thirdName = '';
@@ -289,7 +292,7 @@ export class VotesStore {
   getSafeStates() {
     const safeStates = [];
     for (const state of this.states) {
-      if (state.leansDem >= 14 || state.leansRep >= 14 ) {
+      if (state.leansDem >= 12 || state.leansRep >= 12 ) {
         safeStates.push(state);
       }
     }
@@ -299,7 +302,7 @@ export class VotesStore {
   getLeftLeanStates() {
     const leftLeanStates = [];
     for (const state of this.states) {
-      if (state.leansDem >= 5 && state.leansDem < 14) {
+      if (state.leansDem >= 5 && state.leansDem < 12) {
         leftLeanStates.push(state);
       }
     }
@@ -309,7 +312,7 @@ export class VotesStore {
   getRightLeanStates() {
     const rightLeanStates = [];
     for (const state of this.states) {
-      if (state.leansRep >= 5 && state.leansRep < 14) {
+      if (state.leansRep >= 5 && state.leansRep < 12) {
         rightLeanStates.push(state);
       }
     }
@@ -457,7 +460,8 @@ export class VotesStore {
     this.round = 1;
     this.turn = 0;
     this.NationalClimate = 0;
-
+    this.progressMessage = '';
+    this.progress = 0;
     this.Alabama = new State('Alabama','AL',9, 32,49);
     this.Alaska = new State('Alaska','AK',3,33,48);
     this.Arizona = new State('Arizona','AZ',11,40,41);

@@ -1,15 +1,19 @@
 <ion-content [fullscreen]="true">
 
 <ion-grid>
+  <br><br>
 <h1>Choose your party!</h1>
+<br><br>  <br><br>
 <div class="center">
-<ion-button color="clear" class="party-button" (click)="continue('rep')" style="background: url(../../assets/images/republicanWide.png) no-repeat center/cover fixed;"><br><p>REPUBLICAN</p></ion-button>
+<ion-button color="clear" class="party-button" (click)="continue('rep')" style="background: url(../../assets/RepBackground.png) no-repeat center/cover fixed;"><br><p>REPUBLICAN</p></ion-button>
 </div>
+<br><br>
+<br><br>
 <div class="center">
-<ion-button  color="clear" class="party-button" (click)="continue('dem')" style="background: url(../../assets/images/democratWide.png) no-repeat center/cover fixed;"><br><p>DEMOCRAT</p></ion-button>
+<ion-button  color="clear" class="party-button" (click)="continue('dem')" style="background: url(../../assets/DemBackground.png) no-repeat center/cover fixed;"><br><p>DEMOCRAT</p></ion-button>
 </div>
-<div class="center">
-  <ion-button  color="clear" class="party-button" [disabled]="true" (click)="continue('three')" style="background: url(../../assets/images/thirdWide.png) no-repeat center/cover fixed;">
+<!-- <div class="center">
+  <button class="button-53" role="button"  color="clear" class="party-button" [disabled]="true" (click)="continue('three')" style="background: url(../../assets/images/thirdWide.png) no-repeat center/cover fixed;">
     <div>
       <p style="margin-bottom: 1px; font-size: xx-large;">
         <ion-icon name="lock-closed"></ion-icon>
@@ -17,8 +21,8 @@
         <ion-icon name="lock-closed"></ion-icon></p>
       <p style="font-size: medium; margin-top: 0px;">(HARD DIFFICULTY)</p>
     </div>
-  </ion-button>
-  </div>
+  </button>
+  </div> -->
 </ion-grid>
 
 </ion-content>

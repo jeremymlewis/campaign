@@ -10,11 +10,15 @@ import { VotesStore } from '../stores/votes.store';
 })
 export class BackgroundInfoPage implements AfterViewInit {
   partyName = '';
+  field1 = '';
+  field2 = '';
+  field3 = '';
   constructor(private route: Router, private votes: VotesStore) {}
 
   ngAfterViewInit() {
 
   }
+
 
   goBack() {
     this.route.navigateByUrl('/options');

@@ -4,46 +4,61 @@
       Instructions
       <img class='header-icon' *ngIf="!isDemocrat && !isThird" src="../../assets/images/republicanIcon.png">
       <img class='header-icon' *ngIf="isDemocrat && !isThird" src="../../assets/images/democratIcon.png">
-      <h1 *ngIf="isThird">{{partyName}}</h1>
     </ion-title>
+    <ion-button fill="clear" id="click-trigger2"><ion-icon name="help-circle-outline"></ion-icon></ion-button>
+    <ion-popover trigger="click-trigger2" triggerAction="click">
+      <ng-template>
+        <ion-content class="ion-padding">
+          <h3>Instructions:</h3>
+        </ion-content>
+      </ng-template>
+    </ion-popover>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Instructions</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <!-- <div class="centervert"> -->
+    <br>
+    <br>
+    <br>
   <!-- <div class="center">
   <!-- <p>Hello! How can I help you?</p> -->
   <!-- <img id="aid" src="../../../assets/images/aid.png"> -->
-  <div class="center">
-  <ion-button (click)='turn()' style="padding-left: 20px;">What to do on my turn?</ion-button>
-  </div>
-  <div class="center">
+    <div class="center">
+    <button class="button-53" role="button" (click)='turn()' style="padding-left: 20px;">What to do on my turn?</button>
+    </div>
+    <br>
+    <div class="center">
 
-  <ion-button (click)='advertise()' style="padding-left: 20px;">Info on Advertizing?</ion-button>
-</div>
-<div class="center">
 
-  <ion-button (click)='campaign()' style="padding-left: 20px;">Info on Campaigning?</ion-button>
+    <button class="button-53" role="button" (click)='advertise()' style="padding-left: 20px;">Info on Advertizing?</button>
   </div>
-  <div class="center">
-
-  <ion-button (click)='fundraise()' style="padding-left: 20px;">Info on Fundraising?</ion-button>
-  </div>
-  <!-- <div class="center">
-  <ion-button (click)='debate()' style="padding-left: 20px;">Info on Debates?</ion-button>
-  </div> -->
+  <br>
   <div class="center">
 
-  <ion-button (click)='event()' style="padding-left: 20px;">Info on Special Events?</ion-button>
-  </div>
-  <div class="center">
+    <button class="button-53" role="button" (click)='campaign()' style="padding-left: 20px;">Info on Campaigning?</button>
+    </div>
+    <br>
+    <div class="center">
 
-  <ion-button (click)="reset()" style="padding-left: 20px;" color="danger">Forfeit the race</ion-button>
-  </div>
+    <button class="button-53" role="button" (click)='fundraise()' style="padding-left: 20px;">Info on Fundraising?</button>
+    </div>
+
+    <br>
+    <div class="center">
+
+    <button class="button-53" role="button" (click)='event()' style="padding-left: 20px;">Info on Special Events?</button>
+    </div>
+    <br>
+    <div class="center">
+
+    <button class="button-53" role="button" (click)="reset()" style="padding-left: 20px; background-color: #ff6060;">Forfeit the race</button>
+    </div>
+
+        <!-- <div class="center">
+    <button class="button-53" role="button" (click)='debate()' style="padding-left: 20px;">Info on Debates?</button>
+    </div> -->
+
 
 
 </ion-content>

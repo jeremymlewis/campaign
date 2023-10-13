@@ -3,9 +3,9 @@
   height:12px;
   overflow: visible;
   color: black;
-  width:6.25%;
+  width:4.25%;
   //fill: #70ff7f;
-  background-image: linear-gradient(to left, rgb(255, 255, 255), rgb(59, 168, 67));
+  background-image: linear-gradient(to left, rgb(255, 255, 255), #38ff80);
 }
 
 #progress {
@@ -19,7 +19,7 @@
 #progress-icon {
   position: fixed;
   bottom: 45px;
-  left: 3%;
+  left: 0%;
   color: black;
   font-size: 32px;
 }
@@ -33,7 +33,7 @@
 
 #whitebar {
   height:12px;
-  width:98%;
+  width:99%;
   fill: #ffffff;
   background-color: #ffffff;
 }

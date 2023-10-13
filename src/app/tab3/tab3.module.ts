@@ -6,6 +6,8 @@ import { FormsModule } from '@angular/forms';
 import { Tab3Page } from './tab3.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 
+
+import { RollTableComponent } from '../roll-table/rolltable.component';
 import { Tab3PageRoutingModule } from './tab3-routing.module';
 import { InfoAdvertisePage } from './info/info.advertise';
 import { InfoCampaignPage } from './info/info.campaign';
@@ -23,6 +25,15 @@ import { InfoTurnPage } from './info/info.turn';
     RouterModule.forChild([{ path: '', component: Tab3Page }]),
     Tab3PageRoutingModule,
   ],
-  declarations: [Tab3Page, InfoAdvertisePage, InfoCampaignPage, InfoDebatePage, InfoEventPage, InfoFundraisePage, InfoTurnPage]
+  declarations: [
+    Tab3Page,
+    InfoAdvertisePage,
+    InfoCampaignPage,
+    InfoDebatePage,
+    InfoEventPage,
+    InfoFundraisePage,
+    InfoTurnPage,
+    //RollTableComponent
+  ]
 })
 export class Tab3PageModule {}

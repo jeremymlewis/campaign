@@ -8,16 +8,17 @@
 
 
 .lightred {
-  color: #7070FF;
-}
-
-.lightblue {
   color: #ff7070;
 }
 
+.lightblue {
+  color: #7070FF;
+}
+
+
+
 .center {
   text-align: center;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -105,6 +106,12 @@ text {
 //   --background: #aff;
 // }
 
+#graybar {
+  height:10px;
+  width:15%;
+  fill: #d0ffd0;
+  background-color: #d0ffd0;
+}
 
 #skybar {
   height:10px;

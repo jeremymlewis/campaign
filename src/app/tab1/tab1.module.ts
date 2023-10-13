@@ -12,6 +12,7 @@ import { EventWelcomePage } from './event/event.welcome';
 import { CampaignPage } from './campaign/campaign.component';
 import { AdvertisePage } from './advertise/advertise.component';
 import { DiceComponent } from '../dice/dice.component';
+import { RollTableComponent } from '../roll-table/rolltable.component';
 import { OpponentPage } from './opponent/opponent.component';
 import { ResultsPage } from './results/results.component';
 import { ScoreDisplayPipe } from '../score-display.pipe';
@@ -33,6 +34,7 @@ import { ScoreDisplayPipe } from '../score-display.pipe';
     CampaignPage,
     AdvertisePage,
     DiceComponent,
+    RollTableComponent,
     OpponentPage,
     ResultsPage,
     ScoreDisplayPipe,

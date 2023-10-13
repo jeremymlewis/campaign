@@ -6,16 +6,20 @@
 </div>
   <ion-grid class="ion-no-padding">
   <div class="background">
-    <!-- <h2>PLACEHOLDER TITLE SCREEN</h2>
-
-    <h1>The Campaign Game</h1>
-    <p>A Jonas Linde Creation with production assistance from Julie Linde and Jeremy Lewis</p> -->
+    <!--<h2>PLACEHOLDER TITLE SCREEN</h2-->
+      <div class="highcenter">
+        <h1>The US Election<br> Board Game</h1>
+      </div>
+    <!--p>A Jonas Linde Creation with production assistance from Julie Linde and Jeremy Lewis</p> -->
       <div class="center">
-        <ion-button (click)="toTabs()">Start 1 player</ion-button>
-        <br>
-        <ion-button (click)="toAchievements()">Achievements</ion-button>
 
-        <!-- <ion-button [disabled]="true" (click)="toTabs()">Start 2 player</ion-button> -->
+        <button class="button-54" role="button" (click)="toTabs()">1 Player</button>
+        <!-- <br> -->
+        <!-- <button class="button-53" role="button" disabled="true">Resume Saved</button> -->
+        <br>
+        <button class="button-54" role="button" (click)="toAchievements()">Achievements</button>
+
+        <!-- <button class="button-53" role="button" [disabled]="true" (click)="toTabs()">Start 2 player</button> -->
       </div>
     </div>
   </ion-grid>
