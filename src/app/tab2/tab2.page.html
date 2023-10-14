@@ -10,12 +10,16 @@
       <ng-template>
         <ion-content class="ion-padding">
           <h3>The Elecion Map:</h3>
-          <p>To help predict election results, polls are taken of people in each state.
-          The results of those polls are shown here on this map.
-          </p><p>States that are darker
-          colors are more likely to stay the way they are, and lighter states are closer.
-          </p><p>You can toggle between viewing the Electoral College Votes a state has, and viewing
+          <p>To help predict election results, polls are taken of people in each state.</p>
+          <p>The results of those polls are shown here on this map.
+          </p>
+          <p>Darker
+          colors have a larger margin, and lighter states are closer.
+          </p><p>You can toggle between viewing how many Electoral College Votes a state has, and viewing
           the state abbreviation.</p>
+          <p>Since each state gets a different number of Electoral Votes based on size,
+            try to pay attention to states with a large Electoral number.</p>
+
 
         </ion-content>
       </ng-template>
@@ -250,10 +254,10 @@
 </svg>
 </div>
 <div class="center" *ngIf="!showVotes">
-  <ion-button (click)="toggleView()">Show Electoral College</ion-button>
+  <ion-button class="button43" (click)="toggleView()">Show Electoral College</ion-button>
 </div>
 <div class="center" *ngIf="showVotes">
-  <ion-button (click)="toggleView()">Show State Labels</ion-button>
+  <ion-button class="button43" (click)="toggleView()">Show State Labels</ion-button>
 </div>
 <div *ngIf="!isThird">
 

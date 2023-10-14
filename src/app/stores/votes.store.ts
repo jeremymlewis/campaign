@@ -18,7 +18,7 @@ export class VotesStore {
   thirdPartyName= '';
   public opponentFunds = 0;
   public funds = 0;
-  public round = 1;
+  public round = 14;
   public turn = 0;
 
   Alabama: State = new State('Alabama','AL',9, 32,49);

@@ -16,7 +16,7 @@ export class EventPage implements OnInit {
   allEvents: Event[];
   scandalEvents: Event[];
   gaffeEvents: Event[];
-  neutralizeEvents: Event[];
+  //neutralizeEvents: Event[];
   boonEvents: Event[];
   endorsementEvents: Event[];
   superPacEvents: Event[];
@@ -33,7 +33,7 @@ export class EventPage implements OnInit {
   eventPoints: number;
   statesInvolved: string[];
   statesInvolvedString: string;
-  normalEvent: boolean;
+  normalFactDisplay: boolean;
   isDemocrat: boolean;
   constructor(private router: Router, public votes: VotesStore, private toastController: ToastController, public textService: TextService) {}
 //TODO3 all this page
@@ -44,7 +44,7 @@ export class EventPage implements OnInit {
     this.allEvents = this.textService.getEvents();
     this.scandalEvents = this.textService.getScandalEvents();
     this.gaffeEvents = this.textService.getGaffeEvents();
-    this.neutralizeEvents = this.textService.getNeutralizationEvents();
+    //this.neutralizeEvents = this.textService.getNeutralizationEvents();
     this.boonEvents = this.textService.getBoonEvents();
     this.endorsementEvents = this.textService.getEndorsementEvents();
     this.hotButtonEvents = this.textService.getHotButtonEvents();
@@ -74,7 +74,7 @@ export class EventPage implements OnInit {
     this.eventYear = this.currentEvent.yearInvolved;
     this.eventPersonInvolved = this.currentEvent.politicanInvolved;
     this.eventPoints = this.currentEvent.points;
-    this.normalEvent = this.currentEvent.normalEvent;
+    this.normalFactDisplay = this.currentEvent.normalFactDisplay;
     this.statesInvolved = this.currentEvent.statesInvolved;
     this.statesInvolvedString = '';
     if (this.statesInvolved.length === 1) {
@@ -105,11 +105,12 @@ export class EventPage implements OnInit {
         description:'A super pac ran ads for you in Michigan and Illinois',
         points: 2,
         imageSrc:'/assets/images/presidents/campaign.png',
-        normalEvent: false,
+        normalFactDisplay: false,
         history: 'Super Pacs affect elections with money',
         politicanInvolved: 'a',
         yearInvolved:'a',
-        statesInvolved: ['MI', 'IL']
+        statesInvolved: ['MI', 'IL'],
+        choiceEvent: false
       };
     } else if (currentEventType === 'endorsement') {
       return this.endorsementEvents[Math.floor(Math.random() * this.endorsementEvents.length)];
@@ -123,9 +124,11 @@ export class EventPage implements OnInit {
       return this.gaffeEvents[Math.floor(Math.random() * this.gaffeEvents.length)];
     } else if (currentEventType === 'scandal') {
       return this.scandalEvents[Math.floor(Math.random() * this.scandalEvents.length)];
-    } else if (currentEventType === 'neutralize') {
-      return this.neutralizeEvents[Math.floor(Math.random() * this.neutralizeEvents.length)];
-    } else {
+    }
+    // else if (currentEventType === 'neutralize') {
+    //   return this.neutralizeEvents[Math.floor(Math.random() * this.neutralizeEvents.length)];
+    // }
+    else {
       return this.allEvents[0];
     }
 
@@ -147,9 +150,7 @@ export class EventPage implements OnInit {
     //   draw *= -1;
     // }
     //Current total 120 lol but not finished TODO jermy
-    if (draw > 94) {        // 6 (even)
-      return 'neutralize';
-    } else if (draw > 85) { //10 (even)
+    if (draw > 85) { //10 (even)
       return 'mediaTour'; //1 or 2 no impact... 3/4 +1 to each state. +2 to each state.
     } else  if (draw > 65) { //20 (good)
       return 'endorsement'; //Big national (that they ran ads in a region)
@@ -166,10 +167,42 @@ export class EventPage implements OnInit {
     }
   }
 
+  async handleRollToast(roll: number, states: string[]) {
+    this.votes.actionPending = true;
+
+    let statesInvolved = '';
+    if (states.length === 1) {
+      statesInvolved  = ' ' + states[0];
+    } else {
+      for (const state of states) {
+        statesInvolved += ' ';
+        statesInvolved += state;
+        statesInvolved += ',';
+      }
+      statesInvolved = statesInvolved.substring(0, statesInvolved.length - 1);
+      statesInvolved = statesInvolved.slice(0, statesInvolved.length - 3) + ' and' + statesInvolved.slice(statesInvolved.length - 3);
+    }
+    let toastString = '';
+    if (roll < 0) {
+      toastString = 'This moves the Climate ' + (-roll) +  ' points toward your opponent in ' + statesInvolved;
+    }  else {
+      toastString = 'This moves the Climate ' + roll +  ' points in your favor in ' + statesInvolved;
+    }
+
+    this.presentToast(toastString, 3000);
+    await new Promise(f => setTimeout(f, 3000));
+    this.votes.actionPending = false;
+    this.handleRoll(roll, states);
+  }
+
+
+
   async handleRoll(roll: number, states: string[]) {
-    if (roll === 0 && this.currentEvent.title === 'Neutralization') {
-      this.votes.neutralizeStateClimate(states[0]);
-    } else if (states.length === 0) {
+    // if (roll === 0 && this.currentEvent.title === 'Neutralization') {
+    //   this.votes.neutralizeStateClimate(states[0]);
+    // } else
+
+    if (states.length === 0) {
       if (this.isDemocrat) {
         this.votes.changeNationalClimate(roll/2, -roll/2);
       } else {

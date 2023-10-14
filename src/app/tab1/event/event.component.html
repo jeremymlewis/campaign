@@ -13,24 +13,38 @@
 <!-- <p>Debates, Gaffes, scandals, media tour, endorsements, SuperPacs will appear here</p> -->
 </div>
 <div class="center">
-<p>{{eventDescription}}</p>
+<h2>{{eventDescription}}</h2>
 </div>
-<div class="center" *ngIf="statesInvolved.length === 0">
-<p *ngIf="eventPoints < 0">This moves the National Climate {{-eventPoints}} points toward your opponent</p>
-<p *ngIf="eventPoints === 0">The National Climate is unaffected</p>
-<p *ngIf="eventPoints > 0">This moves the National Climate {{eventPoints}} points in your favor</p>
-<!-- Or to the right... calculate that on the ts side of this. -->
+<div *ngIf="!currentEvent.choiceEvent">
+    <div class="center" *ngIf="statesInvolved.length === 0">
+    <p *ngIf="eventPoints < 0">This moves the National Climate {{-eventPoints}} points toward your opponent</p>
+    <p *ngIf="eventPoints === 0">The National Climate is unaffected</p>
+    <p *ngIf="eventPoints > 0">This moves the National Climate {{eventPoints}} points in your favor</p>
+    <!-- Or to the right... calculate that on the ts side of this. -->
+    </div>
+    <div class="center" *ngIf="statesInvolved.length !== 0">
+      <p *ngIf="eventPoints < 0">This moves the Climate {{-eventPoints}} points toward your opponent in {{statesInvolvedString}}</p>
+      <p *ngIf="eventPoints === 0">This state is now polling EVEN for Republican and Democrat</p>
+      <p *ngIf="eventPoints > 0">This moves the Climate {{eventPoints}} points in your favor in {{statesInvolvedString}}</p>
+      <!-- Or to the right... calculate that on the ts side of this. -->
+      </div>
+
+    <div  class="center">
+      <button class="button-53" role="button" (click)="handleRoll(eventPoints, statesInvolved)">Next</button>
+    <!-- <p>{{eventRollsL}}</p>
+    <p>{{eventRollsR}}</p> -->
+    </div>
 </div>
-<div class="center" *ngIf="statesInvolved.length !== 0">
-  <p *ngIf="eventPoints < 0">This moves the Climate {{-eventPoints}} points toward your opponent in {{statesInvolvedString}}</p>
-  <p *ngIf="eventPoints === 0">This state is now polling EVEN for Republican and Democrat</p>
-  <p *ngIf="eventPoints > 0">This moves the Climate {{eventPoints}} points in your favor in {{statesInvolvedString}}</p>
-  <!-- Or to the right... calculate that on the ts side of this. -->
+
+
+<div *ngIf="currentEvent.choiceEvent">
+  <div class="center">
+    <p>{{currentEvent.history}}</p>
   </div>
-<div class="center">
-  <button class="button-53" role="button" (click)="handleRoll(eventPoints, statesInvolved)">Next</button>
-<!-- <p>{{eventRollsL}}</p>
-<p>{{eventRollsR}}</p> -->
+  <button style="left: 20%;" class="button-53" role="button" (click)="handleRollToast(currentEvent.choicePoints1, currentEvent.statesInvolved)">{{currentEvent.choiceText1}}</button>
+  <br>
+  <br>
+  <button style="left: 20%;" class="button-53" role="button" (click)="handleRollToast(currentEvent.choicePoints2, currentEvent.statesInvolved2)">{{currentEvent.choiceText2}}</button>
 </div>
 
 <div id="navcontainer" *ngIf="!!eventPersonInvolved">
@@ -39,7 +53,7 @@
     <li id="active">Fun Fact</li>
       <div class="funfact">
         <!-- Put this last part in a toast looking box TODO -->
-        <p style="margin-bottom: 0;" *ngIf="normalEvent">This event happened to {{eventPersonInvolved}} during the election of {{eventYear}}</p>
+        <p style="margin-bottom: 0;" *ngIf="normalFactDisplay">This event happened to {{eventPersonInvolved}} during the election of {{eventYear}}</p>
         <img [src]="eventIcon" style="border-radius: 50%; border: 2px solid black; width:50px; height:50px; padding-top: 0; margin-bottom: 0;">
         <p style="margin-top: 0;">{{eventHistory}}</p>
         <!-- <app-dice (diceRolled)="handleRoll($event)"></app-dice> -->

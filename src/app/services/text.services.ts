@@ -36,8 +36,9 @@ export class TextService {
         history: 'Known as "The Dead Cow Campaign", Harrison\'s opponent said that he was courtmartialed for killing a cow while in the military',
         politicanInvolved: 'William Henry Harrison',
         yearInvolved:'1840',
-        normalEvent: true,
+        normalFactDisplay: true,
         statesInvolved: [],
+        choiceEvent: false
       },
       {
         title:'Scandal',
@@ -47,8 +48,9 @@ export class TextService {
         history: '',
         politicanInvolved: '',
         yearInvolved:'',
-        normalEvent: true,
+        normalFactDisplay: true,
         statesInvolved: [],
+        choiceEvent: false
       },
       {
         title:'Scandal',
@@ -58,8 +60,9 @@ export class TextService {
         history: '',
         politicanInvolved: '',
         yearInvolved:'',
-        normalEvent: true,
+        normalFactDisplay: true,
         statesInvolved: [],
+        choiceEvent: false
       },
       {
         title:'Scandal',
@@ -69,8 +72,9 @@ export class TextService {
         history: '',
         politicanInvolved: '',
         yearInvolved:'',
-        normalEvent: true,
+        normalFactDisplay: true,
         statesInvolved: [],
+        choiceEvent: false
       },
       {
         title:'Scandal',
@@ -80,8 +84,9 @@ export class TextService {
         history: '',
         politicanInvolved: '',
         yearInvolved:'',
-        normalEvent: true,
+        normalFactDisplay: true,
         statesInvolved: [],
+        choiceEvent: false
       },
       {
         title:'Scandal',
@@ -91,8 +96,9 @@ export class TextService {
         history: '',
         politicanInvolved: '',
         yearInvolved:'',
-        normalEvent: true,
+        normalFactDisplay: true,
         statesInvolved: [],
+        choiceEvent: false
       },
     ];
     return results;
@@ -108,19 +114,21 @@ export class TextService {
         history: 'During an event in Michigan, Bush said “The human and the fish can coexist peacefully” during a discussion on energy',
         politicanInvolved: 'George W Bush',
         yearInvolved:'2000',
-        normalEvent: true,
+        normalFactDisplay: true,
         statesInvolved: ['MI','PA','WI','OH','IL'],
+        choiceEvent: false
       },
       {
         title:'Gaffe',
         description:'You say the wrong number during a speech',
         points: -1,
-        normalEvent: true,
+        normalFactDisplay: true,
         imageSrc:'/assets/images/presidents/44-obama.jpg',
         history: 'During a campaign speech in Oregon, Obama accidently said: "I\'ve now been to 57 states"',
         politicanInvolved: 'Barack Obama',
         yearInvolved:'2008',
         statesInvolved: ['OR','ID','MT','WA','UT','NV','OK'],
+        choiceEvent: false
       },
       {
         title:'Gaffe',
@@ -130,8 +138,9 @@ export class TextService {
         history: 'During a speech in Iowa, Biden mispoke saying: "Poor kids are just as bright and just as talented as white kids" before immediately correcting himself',
         politicanInvolved: 'Joe Biden',
         yearInvolved:'2020',
-        normalEvent: true,
+        normalFactDisplay: true,
         statesInvolved: ['TX','CA','FL','PA','NC','NY','IL'],
+        choiceEvent: false
       },
       {
         title:'Gaffe',
@@ -141,8 +150,9 @@ export class TextService {
         history: 'During a speech in Nashville, Bush said: "There\'s an old saying in Tennessee - I know it\'s in Texas, probably in Tennessee - that says, fool me once, shame on - shame on you. Fool me - you can\'t get fooled again."',
         politicanInvolved: 'George W Bush',
         yearInvolved:'2004',
-        normalEvent: true,
+        normalFactDisplay: true,
         statesInvolved: ['TX','CA','FL','PA','NC','NY','IL'],
+        choiceEvent: false
       },
     ];
     return results;
@@ -158,8 +168,9 @@ export class TextService {
         history: 'Sometimes a bad opponent is more important than a good candidate',
         politicanInvolved: '',
         yearInvolved:'',
-        normalEvent: false,
+        normalFactDisplay: false,
         statesInvolved: [],
+        choiceEvent: false
       },
       {
         title:'Boon',
@@ -169,8 +180,9 @@ export class TextService {
         history: 'People often vote for a president who handles things well',
         politicanInvolved: '',
         yearInvolved:'',
-        normalEvent: false,
+        normalFactDisplay: false,
         statesInvolved: [],
+        choiceEvent: false
       },
       {
         title:'Boon',
@@ -180,62 +192,63 @@ export class TextService {
         history: 'The Economy is often one of the biggest things voters look at during an election',
         politicanInvolved: '',
         yearInvolved:'',
-        normalEvent: false,
+        normalFactDisplay: false,
         statesInvolved: [],
+        choiceEvent: false
       },
     ];
     return results;
   }
 
-  public getNeutralizationEvents(): Event[] {
-    const results: Event[] = [
-      {
-        title:'Neutralization',
-        description:'Republican Stronghold North Dakota has become a swing state',
-        points: 0,
-        imageSrc:'/assets/images/presidents/44-obama.jpg',
-        history: '',
-        politicanInvolved: '',
-        yearInvolved:'',
-        normalEvent: false,
-        statesInvolved: ['ND'],
-      },
-      {
-        title:'Neutralization',
-        description:'Democratic Stronghold Vermont has become a swing state',
-        points: 0,
-        imageSrc:'/assets/images/presidents/44-obama.jpg',
-        history: '',
-        politicanInvolved: '',
-        yearInvolved:'',
-        normalEvent: false,
-        statesInvolved: ['VT'],
-      },
-      {
-        title:'Neutralization',
-        description:'Republican Stronghold Tennessee has become a swing state',
-        points: 0,
-        imageSrc:'/assets/images/presidents/44-obama.jpg',
-        history: '',
-        politicanInvolved: '',
-        yearInvolved:'',
-        normalEvent: false,
-        statesInvolved: ['TN'],
-      },
-      {
-        title:'Neutralization',
-        description:'Democratic Stronghold Massachusets has become a swing state',
-        points: 0,
-        imageSrc:'/assets/images/presidents/44-obama.jpg',
-        history: '',
-        politicanInvolved: '',
-        yearInvolved:'',
-        normalEvent: false,
-        statesInvolved: ['MA'],
-      }
-    ];
-    return results;
-  }
+  // public getNeutralizationEvents(): Event[] {
+  //   const results: Event[] = [
+  //     {
+  //       title:'Neutralization',
+  //       description:'Republican Stronghold North Dakota has become a swing state',
+  //       points: 0,
+  //       imageSrc:'/assets/images/presidents/44-obama.jpg',
+  //       history: '',
+  //       politicanInvolved: '',
+  //       yearInvolved:'',
+  //       normalFactDisplay: false,
+  //       statesInvolved: ['ND'],
+  //     },
+  //     {
+  //       title:'Neutralization',
+  //       description:'Democratic Stronghold Vermont has become a swing state',
+  //       points: 0,
+  //       imageSrc:'/assets/images/presidents/44-obama.jpg',
+  //       history: '',
+  //       politicanInvolved: '',
+  //       yearInvolved:'',
+  //       normalFactDisplay: false,
+  //       statesInvolved: ['VT'],
+  //     },
+  //     {
+  //       title:'Neutralization',
+  //       description:'Republican Stronghold Tennessee has become a swing state',
+  //       points: 0,
+  //       imageSrc:'/assets/images/presidents/44-obama.jpg',
+  //       history: '',
+  //       politicanInvolved: '',
+  //       yearInvolved:'',
+  //       normalFactDisplay: false,
+  //       statesInvolved: ['TN'],
+  //     },
+  //     {
+  //       title:'Neutralization',
+  //       description:'Democratic Stronghold Massachusets has become a swing state',
+  //       points: 0,
+  //       imageSrc:'/assets/images/presidents/44-obama.jpg',
+  //       history: '',
+  //       politicanInvolved: '',
+  //       yearInvolved:'',
+  //       normalFactDisplay: false,
+  //       statesInvolved: ['MA'],
+  //     }
+  //   ];
+  //   return results;
+  // }
 
   public getEndorsementEvents(): Event[] {
     const results: Event[] = [
@@ -247,12 +260,13 @@ export class TextService {
         history: 'Oprah endorsed President Obama even before he told everyone he was running!',
         politicanInvolved: 'Barack Obama',
         yearInvolved:'2008',
-        normalEvent: true,
+        normalFactDisplay: true,
         statesInvolved: [],
+        choiceEvent: false
 
       },
       {
-        normalEvent: true,
+        normalFactDisplay: true,
         title:'Endorsement',
         description:'You receive a grudgingly given endorsement from your former opponent',
         points: 2,
@@ -261,9 +275,10 @@ export class TextService {
         politicanInvolved: 'Barack Obama',
         yearInvolved:'2008',
         statesInvolved: ['NY', 'IN'],
+        choiceEvent: false
       },
       {
-        normalEvent: true,
+        normalFactDisplay: true,
         title:'Endorsement',
         description:'You have been endorsed by famous actor, George Clooney',
         points: 3,
@@ -272,9 +287,10 @@ export class TextService {
         politicanInvolved: 'Barack Obama',
         yearInvolved:'2008',
         statesInvolved: ['CA', 'FL'],
+        choiceEvent: false
       },
       {
-        normalEvent: true,
+        normalFactDisplay: true,
         title:'Endorsement',
         description:'You have been endorsed by the Planned Parenthood Action Fund',
         points: 1,
@@ -283,6 +299,7 @@ export class TextService {
         politicanInvolved: 'Joe Biden',
         yearInvolved:'2024',
         statesInvolved: ['KS','OH'],
+        choiceEvent: false
       },
       {
         title:'Endorsement',
@@ -292,8 +309,9 @@ export class TextService {
         history: 'This organization spent around $2.6 Million that year lobbying on firearm legislation',
         politicanInvolved: 'Donald Trump',
         yearInvolved:'2016',
-        normalEvent: true,
+        normalFactDisplay: true,
         statesInvolved: ['TX', 'MI', 'GA', 'ID', 'MT'],
+        choiceEvent: false
       },
       {
         title:'Endorsement',
@@ -303,8 +321,9 @@ export class TextService {
         history: 'Reproductive rights are a central issue in the 2024 election',
         politicanInvolved: 'Joe Biden',
         yearInvolved:'2024',
-        normalEvent: true,
+        normalFactDisplay: true,
         statesInvolved: ['DE','CT','NM'],
+        choiceEvent: false
       },
       {
         title:'Endorsement',
@@ -314,8 +333,9 @@ export class TextService {
         history: 'Reproductive rights were a central issue in the 2016 election',
         politicanInvolved: 'Hillary Clinton',
         yearInvolved:'2016',
-        normalEvent: true,
+        normalFactDisplay: true,
         statesInvolved: ['VA','MD','IA'],
+        choiceEvent: false
       },
       {
         title:'Endorsement',
@@ -325,8 +345,9 @@ export class TextService {
         history: 'He was endorsed by his father, George H W Bush, who had held office 8 years earlier',
         politicanInvolved: 'George W Bush',
         yearInvolved:'2000',
-        normalEvent: true,
+        normalFactDisplay: true,
         statesInvolved: [],
+        choiceEvent: false
       },
       {
         title:'Endorsement',
@@ -336,8 +357,9 @@ export class TextService {
         history: 'Speaker of the house Carl Albert publicly endorsed Carter\'s candidacy',
         politicanInvolved: 'Jimmy Carter',
         yearInvolved:'1976',
-        normalEvent: true,
+        normalFactDisplay: true,
         statesInvolved: ['ME','MT','NE','SC','UT'],
+        choiceEvent: false
       },
       {
         title:'Endorsement',
@@ -347,8 +369,9 @@ export class TextService {
         history: 'FDR was endorsed early on by the Governor of California, Hiran Johnson',
         politicanInvolved: 'Franklin D Roosevelt',
         yearInvolved:'1932',
-        normalEvent: true,
+        normalFactDisplay: true,
         statesInvolved: ['OH'],
+        choiceEvent: false
       },
       {
         title:'Endorsement',
@@ -358,8 +381,9 @@ export class TextService {
         history: 'FDR was endorsed early on by the Governor of California, Hiran Johnson',
         politicanInvolved: 'Franklin D Roosevelt',
         yearInvolved:'1932',
-        normalEvent: true,
+        normalFactDisplay: true,
         statesInvolved: ['FL'],
+        choiceEvent: false
       },
       {
         title:'Endorsement',
@@ -369,8 +393,9 @@ export class TextService {
         history: 'FDR was endorsed early on by the Governor of California, Hiran Johnson',
         politicanInvolved: 'Franklin D Roosevelt',
         yearInvolved:'1932',
-        normalEvent: true,
+        normalFactDisplay: true,
         statesInvolved: ['NC'],
+        choiceEvent: false
       },
       {
         title:'Endorsement',
@@ -380,8 +405,9 @@ export class TextService {
         history: 'FDR was endorsed early on by the Governor of California, Hiran Johnson',
         politicanInvolved: 'Franklin D Roosevelt',
         yearInvolved:'1932',
-        normalEvent: true,
+        normalFactDisplay: true,
         statesInvolved: ['AZ'],
+        choiceEvent: false
       },
       {
         title:'Endorsement',
@@ -391,8 +417,9 @@ export class TextService {
         history: 'Former Vice President Dan Quayle gave his endorsement to this member of his party',
         politicanInvolved: 'George W Bush',
         yearInvolved:'2000',
-        normalEvent: true,
+        normalFactDisplay: true,
         statesInvolved: ['CA','OR','WA','PA','NC','TN','WI'],
+        choiceEvent: false
       },
 
     ];
@@ -406,143 +433,156 @@ export class TextService {
         description:'A super pac ran ads for you in Michigan and Illinois',
         points: 3,
         imageSrc:'/assets/images/presidents/campaign.png',
-        normalEvent: false,
+        normalFactDisplay: false,
         history: 'Super Pacs affect elections with money',
         politicanInvolved: '',
         yearInvolved:'',
-        statesInvolved: ['MI', 'IL']
+        statesInvolved: ['MI', 'IL'],
+        choiceEvent: false
       },
       {
         title:'Super Pac/Donation',
         description:'A super pac ran ads for your opponent in Georgia and Mississippi',
         points: -3,
         imageSrc:'/assets/images/presidents/campaign.png',
-        normalEvent: false,
+        normalFactDisplay: false,
         history: 'Super Pacs affect elections with money',
         politicanInvolved: '',
         yearInvolved:'',
-        statesInvolved: ['MS', 'GA']
+        statesInvolved: ['MS', 'GA'],
+        choiceEvent: false
       },
       {
         title:'Super Pac/Donation',
         description:'A super pac ran ads for your opponent in the South West',
         points: -2,
         imageSrc:'/assets/images/presidents/campaign.png',
-        normalEvent: false,
+        normalFactDisplay: false,
         history: 'Super Pacs affect elections with money',
         politicanInvolved: '',
         yearInvolved:'',
-        statesInvolved: ['NM', 'AZ', 'TX', 'NV']
+        statesInvolved: ['NM', 'AZ', 'TX', 'NV'],
+        choiceEvent: false
       },
       {
         title:'Super Pac/Donation',
         description:'A super pac ran ads for you in the South West',
         points: 2,
         imageSrc:'/assets/images/presidents/campaign.png',
-        normalEvent: false,
+        normalFactDisplay: false,
         history: 'Super Pacs affect elections with money',
         politicanInvolved: '',
         yearInvolved:'',
-        statesInvolved: ['NM', 'AZ', 'TX', 'NV']
+        statesInvolved: ['NM', 'AZ', 'TX', 'NV'],
+        choiceEvent: false
       },
       {
         title:'Super Pac/Donation',
         description:'A super pac ran ads for you in Maine and New Hampshire',
         points: 3,
         imageSrc:'/assets/images/presidents/campaign.png',
-        normalEvent: false,
+        normalFactDisplay: false,
         history: 'Super Pacs affect elections with money',
         politicanInvolved: '',
         yearInvolved:'',
-        statesInvolved: ['ME', 'NH']
+        statesInvolved: ['ME', 'NH'],
+        choiceEvent: false
       },
       {
         title:'Super Pac/Donation',
         description:'A super pac ran ads for your opponent in Maine and New Hampshire',
         points: -2,
         imageSrc:'/assets/images/presidents/campaign.png',
-        normalEvent: false,
+        normalFactDisplay: false,
         history: 'Super Pacs affect elections with money',
         politicanInvolved: '',
         yearInvolved:'',
-        statesInvolved: ['ME', 'NH']
+        statesInvolved: ['ME', 'NH'],
+        choiceEvent: false
       },
       {
         title:'Super Pac/Donation',
         description:'A super pac ran ads for your opponent in Oregon and Washington',
         points: -4,
         imageSrc:'/assets/images/presidents/campaign.png',
-        normalEvent: false,
+        normalFactDisplay: false,
         history: 'Super Pacs affect elections with money',
         politicanInvolved: '',
         yearInvolved:'',
-        statesInvolved: ['MI', 'IL']
+        statesInvolved: ['MI', 'IL'],
+        choiceEvent: false
       },
       {
         title:'Super Pac/Donation',
         description:'A super pac ran ads for you in the Carolinas',
         points: 2,
         imageSrc:'/assets/images/presidents/campaign.png',
-        normalEvent: false,
+        normalFactDisplay: false,
         history: 'Super Pacs affect elections with money',
         politicanInvolved: '',
         yearInvolved:'',
-        statesInvolved: ['SC', 'NC']
+        statesInvolved: ['SC', 'NC'],
+        choiceEvent: false
       },
       {
         title:'Super Pac/Donation',
         description:'A super pac ran ads for you in Hawaii and Alaska',
         points: 2,
         imageSrc:'/assets/images/presidents/campaign.png',
-        normalEvent: false,
+        normalFactDisplay: false,
         history: 'Super Pacs affect elections with money',
         politicanInvolved: '',
         yearInvolved:'',
-        statesInvolved: ['HI', 'AK']
+        statesInvolved: ['HI', 'AK'],
+        choiceEvent: false
       },
       {
         title:'Super Pac/Donation',
         description:'A super pac ran ads for your opponent in Hawaii and Alaska',
         points: -2,
         imageSrc:'/assets/images/presidents/campaign.png',
-        normalEvent: false,
+        normalFactDisplay: false,
         history: 'Super Pacs affect elections with money',
         politicanInvolved: '',
         yearInvolved:'',
-        statesInvolved: ['HI', 'AK']
+        statesInvolved: ['HI', 'AK'],
+        choiceEvent: false
       },
       {
         title:'Super Pac/Donation',
         description:'A super pac ran ads for you in Wisconsin and Minnesota',
         points: 3,
         imageSrc:'/assets/images/presidents/campaign.png',
-        normalEvent: false,
+        normalFactDisplay: false,
         history: 'Super Pacs affect elections with money',
         politicanInvolved: '',
         yearInvolved:'',
-        statesInvolved: ['WI', 'MN']
+        statesInvolved: ['WI', 'MN'],
+        choiceEvent: false
       },
       {
         title:'Super Pac/Donation',
         description:'A super pac ran ads for your opponent in Wisconsin and Minnesota',
         points: -2,
         imageSrc:'/assets/images/presidents/campaign.png',
-        normalEvent: false,
+        normalFactDisplay: false,
         history: 'Super Pacs affect elections with money',
         politicanInvolved: '',
         yearInvolved:'',
-        statesInvolved: ['WI', 'MN']
+        statesInvolved: ['WI', 'MN'],
+        choiceEvent: false
       },
       {
         title:'Super Pac/Donation',
         description:'A super pac ran ads for you in Missouri, Arkansas and Louisianna',
         points: 2,
         imageSrc:'/assets/images/presidents/campaign.png',
-        normalEvent: false,
+        normalFactDisplay: false,
         history: 'Super Pacs affect elections with money',
         politicanInvolved: '',
         yearInvolved:'',
-        statesInvolved: ['MO', 'AR', 'LA']
+        statesInvolved: ['MO', 'AR', 'LA'],
+        choiceEvent: false
       },
     ];
     return results;
@@ -558,8 +598,9 @@ export class TextService {
         history: 'FDR was the first president to appear on TV during the 1939 World\'s Fair',
         politicanInvolved: 'Franklin D Roosevelt',
         yearInvolved:'1940',
-        normalEvent: false,
+        normalFactDisplay: false,
         statesInvolved: [],
+        choiceEvent: false
       },
       {
         title:'Media Tour',
@@ -569,8 +610,9 @@ export class TextService {
         history: 'He was the first president to talk over the radio, giving a speech at the dedication of the Lincoln monument',
         politicanInvolved: 'Warren G Harding',
         yearInvolved:'1920',
-        normalEvent: false,
+        normalFactDisplay: false,
         statesInvolved: [],
+        choiceEvent: false
       },
       {
         title:'Media Tour',
@@ -580,8 +622,9 @@ export class TextService {
         history: 'Bill Clinton was the president when the White House built their first website',
         politicanInvolved: 'Bill Clinton',
         yearInvolved:'1996',
-        normalEvent: false,
+        normalFactDisplay: false,
         statesInvolved: [],
+        choiceEvent: false
       },
       {
         title:'Media Tour',
@@ -591,8 +634,9 @@ export class TextService {
         history: 'FDR was the first president to appear on TV during the 1939 World\'s Fair',
         politicanInvolved: 'Franklin D Roosevelt',
         yearInvolved:'1940',
-        normalEvent: false,
+        normalFactDisplay: false,
         statesInvolved: [],
+        choiceEvent: false
       },
       {
         title:'Media Tour',
@@ -602,8 +646,9 @@ export class TextService {
         history: 'He was the first president to talk over the radio, giving a speech at the dedication of the Lincoln monument',
         politicanInvolved: 'Warren G Harding',
         yearInvolved:'1920',
-        normalEvent: false,
+        normalFactDisplay: false,
         statesInvolved: [],
+        choiceEvent: false
       },
       {
         title:'Media Tour',
@@ -613,8 +658,9 @@ export class TextService {
         history: 'Bill Clinton was the president when the White House built their first website',
         politicanInvolved: 'Bill Clinton',
         yearInvolved:'1996',
-        normalEvent: false,
+        normalFactDisplay: false,
         statesInvolved: [],
+        choiceEvent: false
       }
     ];
     return results;
@@ -625,79 +671,19 @@ export class TextService {
       {
         title:'Hot Button Issue',
         description:'Border Security',
-        points: -1,
-        imageSrc:'/assets/images/presidents/43-bush.jpg',
-        history: 'Your position on Border Security is not popular in border states',
-        politicanInvolved: '',
-        yearInvolved:'2004',
-        normalEvent: false,
-        statesInvolved: ['CA', 'AZ', 'NM', 'TX'],
-      },
-      {
-        title:'Hot Button Issue',
-        description:'Border Security',
         points: 1,
         imageSrc:'/assets/images/presidents/43-bush.jpg',
-        history: 'Your position on Border Security is very popular in border states',
+        history: 'People want to know your position on Border Security',
         politicanInvolved: '',
         yearInvolved:'2004',
-        normalEvent: false,
+        normalFactDisplay: false,
         statesInvolved: ['CA', 'AZ', 'NM', 'TX'],
-      },
-      {
-        title:'Hot Button Issue',
-        description:'Border Security',
-        points: 1,
-        imageSrc:'/assets/images/presidents/43-bush.jpg',
-        history: 'Your position on Border Security is very popular in border states',
-        politicanInvolved: '',
-        yearInvolved:'2004',
-        normalEvent: false,
-        statesInvolved: ['CA', 'AZ', 'NM', 'TX'],
-      },
-      {
-        title:'Hot Button Issue',
-        description:'Hurricane Releif',
-        points: -2,
-        imageSrc:'/assets/images/presidents/43-bush.jpg',
-        history: 'Your position on Hurricane Releif is not well received by southern states',
-        politicanInvolved: '',
-        yearInvolved:'2004',
-        normalEvent: false,
-        statesInvolved: ['CA', 'AZ', 'NM', 'TX'],
-      },
-      {
-        title:'Hot Button Issue',
-        description:'Hurricane Releif',
-        points: 2,
-        imageSrc:'/assets/images/presidents/43-bush.jpg',
-        history: 'Your position on Hurricane Releif is very popular in southern states',
-        politicanInvolved: '',
-        yearInvolved:'2004',
-        normalEvent: false,
-        statesInvolved: ['CA', 'AZ', 'NM', 'TX'],
-      },
-      {
-        title:'Hot Button Issue',
-        description:'Car Company Bailout',
-        points: -2,
-        imageSrc:'/assets/images/presidents/43-bush.jpg',
-        history: 'Your position on Car Company Bailout is not well received by midwest states',
-        politicanInvolved: '',
-        yearInvolved:'2004',
-        normalEvent: false,
-        statesInvolved: ['MI', 'WI', 'PA'],
-      },
-      {
-        title:'Hot Button Issue',
-        description:'Car Company Bailout',
-        points: 2,
-        imageSrc:'/assets/images/presidents/43-bush.jpg',
-        history: 'Your position on Car Company Bailout is very popular in midwest states',
-        politicanInvolved: '',
-        yearInvolved:'2004',
-        normalEvent: false,
-        statesInvolved: ['MI', 'WI', 'PA'],
+        statesInvolved2: ['NJ', 'NH', 'FL', 'CO'],
+        choiceEvent: true,
+        choiceText1: 'More Border Patrol',
+        choiceText2: 'Less Border Patrol',
+        choicePoints1: 2,
+        choicePoints2: -1,
       },
       {
         title:'Hot Button Issue',
@@ -707,85 +693,65 @@ export class TextService {
         history: 'Your position on Car Company Bailout is very popular in midwest states',
         politicanInvolved: '',
         yearInvolved:'2004',
-        normalEvent: false,
+        normalFactDisplay: false,
         statesInvolved: ['MI', 'WI', 'PA'],
-      },
-      {
-        title:'Hot Button Issue',
-        description:'Coal Mining',
-        points: -2,
-        imageSrc:'/assets/images/presidents/43-bush.jpg',
-        history: 'Your position on Coal Mining is not well received by Appalacian states',
-        politicanInvolved: '',
-        yearInvolved:'2004',
-        normalEvent: false,
-        statesInvolved: ['WV', 'KY', 'PA'],
+        statesInvolved2: ['MI', 'WI', 'PA'],
+        choiceEvent: true,
+        choiceText1: 'Bail out car company',
+        choiceText2: 'Don\'t Support Bail Out',
+        choicePoints1: 2,
+        choicePoints2: -1,
       },
       {
         title:'Hot Button Issue',
         description:'Coal Mining',
         points: 2,
         imageSrc:'/assets/images/presidents/43-bush.jpg',
-        history: 'Your position on Coal Mining is very well received by Appalacian states',
+        history: 'People in Appalacian states want to know if you prefer Coal Mining or Green Energy',
         politicanInvolved: '',
         yearInvolved:'2004',
-        normalEvent: false,
+        normalFactDisplay: false,
         statesInvolved: ['WV', 'KY', 'PA'],
-      },
-      {
-        title:'Hot Button Issue',
-        description:'Water Conservation',
-        points: -2,
-        imageSrc:'/assets/images/presidents/43-bush.jpg',
-        history: 'Your position on Water Conservation is not well received by dry western states',
-        politicanInvolved: '',
-        yearInvolved:'2004',
-        normalEvent: false,
-        statesInvolved: ['NV', 'UT', 'AZ', 'WY',],
-      },
-      {
-        title:'Hot Button Issue',
-        description:'Water Conservation',
-        points: 2,
-        imageSrc:'/assets/images/presidents/43-bush.jpg',
-        history: 'Your position on Water Conservation is very well received by dry western states',
-        politicanInvolved: '',
-        yearInvolved:'2004',
-        normalEvent: false,
-        statesInvolved: ['NV', 'UT', 'AZ', 'WY',],
+        statesInvolved2: ['ID', 'VA', 'ME'],
+        choiceEvent: true,
+        choiceText1: 'Support Mining',
+        choiceText2: 'Suport Green Energy',
+        choicePoints1: 2,
+        choicePoints2: 2,
       },
       {
         title:'Hot Button Issue',
         description:'Water Conservation',
         points: 1,
         imageSrc:'/assets/images/presidents/43-bush.jpg',
-        history: 'Your position on Water Conservation is very well received by dry western states',
+        history: 'A South Western governor want the Federal Gov to spend more on Dams and Water Conservation',
         politicanInvolved: '',
         yearInvolved:'2004',
-        normalEvent: false,
-        statesInvolved: ['NV', 'UT', 'AZ', 'WY',],
+        normalFactDisplay: false,
+        statesInvolved: ['NV', 'UT', 'AZ', 'WY'],
+        statesInvolved2: ['NV', 'UT', 'AZ', 'WY'],
+        choiceEvent: true,
+        choiceText1: 'Spend More',
+        choiceText2: 'Ignore calls for spending',
+        choicePoints1: 2,
+        choicePoints2: -1,
       },
       {
         title:'Hot Button Issue',
-        description:'Mississipi River Flooding',
-        points: -2,
-        imageSrc:'/assets/images/presidents/43-bush.jpg',
-        history: 'Your response to the Mississippi River flooding is not well received by bordering states',
-        politicanInvolved: '',
-        yearInvolved:'2004',
-        normalEvent: false,
-        statesInvolved: ['MS', 'MO', 'LA', 'AR', 'TN'],
-      },
-      {
-        title:'Hot Button Issue',
-        description:'Mississipi River Flooding',
+        description:'The Mississipi River Has Flooded!',
         points: 2,
         imageSrc:'/assets/images/presidents/43-bush.jpg',
-        history: 'Your response to the Mississippi River flooding is very well received by bordering states',
+        history: 'A reporter asks whether you support taking money from the defense budget to give aid to effected states.',
         politicanInvolved: '',
         yearInvolved:'2004',
-        normalEvent: false,
+        normalFactDisplay: false,
         statesInvolved: ['MS', 'MO', 'LA', 'AR', 'TN'],
+        statesInvolved2: ['MS', 'MO', 'LA', 'AR', 'TN'],
+        choiceEvent: true,
+        choiceText1: 'Give money to flooded states',
+        choiceText2: 'Keep money in defense budget',
+        choicePoints1: 2,
+        choicePoints2: -1,
       },
     ];
     return results;
@@ -806,8 +772,9 @@ export class TextService {
         history: 'Your position on Car Company Bailout is very popular in midwest states',
         politicanInvolved: '',
         yearInvolved:'2004',
-        normalEvent: false,
+        normalFactDisplay: false,
         statesInvolved: ['MI', 'WI', 'PA'],
+        choiceEvent: true
       },
       // {
       //   title:'Hot Button Issue',

@@ -4,16 +4,17 @@
 /** Ionic CSS Variables **/
 :root {
 
+  --ion-background-color: #ffffff;
   --ion-font-family: ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
   /** JERMY GLOBAL COLORS **/
   /** primary **/
   // --ion-background-color: #a0a0a0;
-  --ion-color-primary: #3DD1E7;
+  --ion-color-primary: #25a652;
   --ion-color-primary-rgb: 56, 255, 128 ;
   --ion-color-primary-contrast: #000000;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
-  --ion-color-primary-shade: #1bb3cb;
-  --ion-color-primary-tint: #49b1c1;
+  --ion-color-primary-shade: #1f8543;
+  --ion-color-primary-tint: #3ab264;
 
   /** secondary **/
   --ion-color-secondary: #3dc2ff;
@@ -81,7 +82,8 @@
 
 /* CSS */
 .button-53 {
-  background-color: #3DD1E7;
+//  background-color: #3DD1E7;
+  background-color: #25a652;
   border: 0 solid #E5E7EB;
   box-sizing: border-box;
   color: #000000;
@@ -107,7 +109,8 @@
 }
 
 .button-54 {
-  background-color: #3DD1E7;
+  //  background-color: #3DD1E7;
+  background-color: #25a652;
   border: 0 solid #E5E7EB;
   box-sizing: border-box;
   color: #000000;
@@ -159,6 +162,15 @@
   }
 }
 
+.button-53:disabled {
+  outline: 0;
+  opacity: 0.6;
+}
+
+.button-54:disabled {
+  outline: 0;
+  opacity: 0.6;
+}
 
 .button-53:focus {
   outline: 0;
@@ -184,6 +196,12 @@
     padding: .75rem 3rem;
     font-size: 1.25rem;
   }
+}
+
+.button43 {
+  border-right: #000000 solid 3px !important;
+  border-bottom: #000000 solid 3px !important;
+  border-radius: 12px;
 }
 
 }

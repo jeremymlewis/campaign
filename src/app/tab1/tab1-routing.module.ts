@@ -6,7 +6,6 @@ import { EventPage } from './event/event.component';
 import { EventWelcomePage } from './event/event.welcome';
 import { FundraisePage } from './fundraise/fundraise.component';
 import { OpponentPage } from './opponent/opponent.component';
-import { ResultsPage } from './results/results.component';
 import { Tab1Page } from './tab1.page';
 
 const routes: Routes = [
@@ -21,10 +20,6 @@ const routes: Routes = [
   {
     path: 'opponent',
     component: OpponentPage,
-  },
-  {
-    path: 'results',
-    component: ResultsPage,
   },
   {
     path: 'firstevent',

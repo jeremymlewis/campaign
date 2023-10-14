@@ -33,6 +33,12 @@ export class Event {
   history: string;
   politicanInvolved: string;
   yearInvolved: string;
-  normalEvent: boolean;
+  normalFactDisplay: boolean;
   statesInvolved: string[];
+  statesInvolved2?: string[];
+  choiceEvent: boolean;
+  choiceText1?: string;
+  choiceText2?: string;
+  choicePoints1?: number;
+  choicePoints2?: number;
 }

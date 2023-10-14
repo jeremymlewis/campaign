@@ -19,7 +19,6 @@ export class OpponentPage implements OnInit {
   constructor(private router: Router, private toastController: ToastController, private votes: VotesStore, private textService: TextService) {}
 
   ngOnInit() {
-    console.log("ngOnInit");
     this.actionText = this.getNextOpponentAction();
   }
 
@@ -124,7 +123,7 @@ export class OpponentPage implements OnInit {
 
 
   goToResults() {
-    this.router.navigateByUrl('/tabs/tab1/results');
+    this.router.navigateByUrl('/results');
   }
 
   goToTab1() {

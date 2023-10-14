@@ -5,11 +5,13 @@
       <img class='header-icon' *ngIf="!isDemocrat && !isThird" src="../../assets/images/republicanIcon.png">
       <img class='header-icon' *ngIf="isDemocrat && !isThird" src="../../assets/images/democratIcon.png">
     </ion-title>
-    <ion-button fill="clear" id="click-trigger2"><ion-icon name="help-circle-outline"></ion-icon></ion-button>
-    <ion-popover trigger="click-trigger2" triggerAction="click">
+    <ion-button fill="clear" id="click-trigger3"><ion-icon name="help-circle-outline"></ion-icon></ion-button>
+    <ion-popover trigger="click-trigger3" triggerAction="click">
       <ng-template>
         <ion-content class="ion-padding">
           <h3>Instructions:</h3>
+          <p>You can click on any of these options to view more instructions!</p>
+          <p><strong>This is also where you can drop out of the race!</strong></p>
         </ion-content>
       </ng-template>
     </ion-popover>

@@ -11,7 +11,14 @@
     <ion-button fill="clear" id="click-trigger1"><ion-icon name="help-circle-outline"></ion-icon></ion-button>
     <ion-popover trigger="click-trigger1" triggerAction="click">
       <ng-template>
-        <ion-content class="ion-padding">Your turn! Do something.</ion-content>
+        <ion-content class="ion-padding">
+          <h3>It is your turn!</h3>
+          <p>You have three choices on your turn:</p>
+          <p>Fundraise! You can raise money for ads. This is an important part of winning the presidential race.</p>
+          <p>Run Ads! Use your fundraised money to affect multiple states.</p>
+          <p>Campaign! Visit a state and boost your popularity in that state.</p>
+          <p>If you are unsure what to do, go to the MAP tab and pick a state you want to affect</p>
+        </ion-content>
       </ng-template>
     </ion-popover>
   </ion-toolbar>
@@ -27,13 +34,13 @@
   <!-- <ion-button class="option" (click)="fundraise()"><img src="../../assets/images/funds.png"> Fundraise!</ion-button>
   <ion-button class="option" (click)="campaign()"><img src="../../assets/images/campaign.png"> Campaign!</ion-button>
   <ion-button class="option" (click)="advertising()"><img src="../../assets/images/ads.png"> Advertise!</ion-button> -->
-  <ion-button class="option" (click)="fundraise()">FUNDRAISE</ion-button>
-  <ion-button class="option" (click)="advertising()" [disabled]="!votes.funds">
+  <ion-button class="option button43" (click)="fundraise()">FUNDRAISE</ion-button>
+  <ion-button class="option button43" (click)="advertising()" [disabled]="!votes.funds">
     <div>
       <p style="margin-bottom: 1px;">ADVERTISE</p>
       <p style="font-size: small; margin-top: 0px;">COSTS $10 MILLION</p>
       <p style="font-size: small; margin-top: 0px;">({{votes.funds}} AVAILABLE)</p>
     </div>
   </ion-button>
-  <ion-button class="option" (click)="campaign()">CAMPAIGN</ion-button>
+  <ion-button class="option button43" (click)="campaign()">CAMPAIGN</ion-button>
 </ion-content>
