@@ -18,7 +18,7 @@ export class VotesStore {
   thirdPartyName= '';
   public opponentFunds = 0;
   public funds = 0;
-  public round = 14;
+  public round = 1;
   public turn = 0;
 
   Alabama: State = new State('Alabama','AL',9, 32,49);
@@ -168,6 +168,31 @@ export class VotesStore {
   public async getLocalStorage(key: string) {
     // eslint-disable-next-line no-underscore-dangle
     return await this._storage?.get(key);
+  }
+
+  finalizeVotes() {
+    for (const state of this.states) {
+      const value = Math.floor(Math.random() * 11) + 1;
+      const value2 = Math.floor(Math.random() * 100) + 1;
+      let adjustment = 0;
+      if (value2 > 65) { //give a boost to the player
+        adjustment += (value/10);
+      } else { //give boost to opponent
+        adjustment -= (value/10);
+      }
+      if (this.isDemocrat) {
+        this.changeStateClimate(state.abbreviation, adjustment, 0);
+      } else {
+        this.changeStateClimate(state.abbreviation, 0, adjustment);
+      }
+      if (state.leansDem === state.leansRep) {
+        if (this.isDemocrat) {
+          this.changeStateClimate(state.abbreviation, adjustment, 0);
+        } else {
+          this.changeStateClimate(state.abbreviation, 0, adjustment);
+        }
+      }
+    }
   }
 
   getUserIsThird() {

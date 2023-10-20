@@ -1,6 +1,7 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AudioService } from '../services/audio.service';
+import { VotesStore } from '../stores/votes.store';
 
 @Component({
   selector: 'app-intro-page',
@@ -10,7 +11,7 @@ import { AudioService } from '../services/audio.service';
 export class IntroPage implements AfterViewInit {
   passwordRequired = false;
   passcode = '';
-  constructor(private route: Router, private audio: AudioService,) {}
+  constructor(private route: Router, private audio: AudioService, public votes: VotesStore) {}
 
   ngAfterViewInit() {
     this.audio.preload('chief', 'assets/audio/chief.mp3');
@@ -19,6 +20,11 @@ export class IntroPage implements AfterViewInit {
   toTabs() {
     this.audio.play('chief');
     this.route.navigateByUrl('/options'); //Jermy TODO was selcome but I changed it
+  }
+
+  toTabsTestEnd() {
+    this.route.navigateByUrl('/options');
+    this.votes.round = 15;
   }
 
   toAchievements() {

@@ -19,6 +19,17 @@ export class ResultsPage implements OnInit {
       }
   }
 
+  map() {
+    this.router.navigateByUrl('/results/final-map');
+  }
+
+  day() {
+    this.router.navigateByUrl('/results/election-day');
+  }
+
+  news() {
+    this.router.navigateByUrl('/results/cable-news');
+  }
 
   mainMenu() {
     this.votes.reset();

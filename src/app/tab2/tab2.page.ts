@@ -72,7 +72,7 @@ export class Tab2Page implements OnInit, AfterViewInit {
 
 
   updateL() {
-    this.audio.play('america');
+    //this.audio.play('america');
     // this.store.changeNationalClimate(5, 0);
     // this.national = this.store.NationalClimate;
     this.national = this.store.NationalClimate;

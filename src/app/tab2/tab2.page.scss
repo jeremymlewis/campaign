@@ -47,7 +47,6 @@ li {
 #svg-container {
   width: 90%;
   overflow: visible;
-  //TODO THIS COULD BE CENTERED BETTER
  }
 
 text {
@@ -80,13 +79,6 @@ text {
   max-height: 30px;
 }
 
-#bluebar {
-  height:10px;
-  width:25%;
-  fill: #5050FF;
-  background-color: #5050FF;
-}
-
 #lightbluebar {
   height:10px;
   width:15%;
@@ -113,6 +105,20 @@ text {
   background-color: #d0ffd0;
 }
 
+#redbar {
+  height:10px;
+  width:15%;
+  fill: #ff3030;
+  background-color: #ff3030;
+}
+
+#bluebar {
+  height:10px;
+  width:25%;
+  fill: #5050FF;
+  background-color: #5050FF;
+}
+
 #skybar {
   height:10px;
   width:15%;
@@ -131,13 +137,6 @@ text {
   width:15%;
   fill: gray;
   background-color: gray;
-}
-
-#redbar {
-  height:10px;
-  width:15%;
-  fill: #ff3030;
-  background-color: #ff3030;
 }
 
 #lightredbar {

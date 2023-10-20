@@ -20,7 +20,8 @@ export class OptionsPage {
         this.votes.setUserIsThird(true);
         this.route.navigateByUrl('/options/third');
       } else {
-        this.route.navigateByUrl('/options/background');
+        this.route.navigateByUrl('/tabs');
+        // this.route.navigateByUrl('/options/background');JERMY add options here
       }
   }
 
