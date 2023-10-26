@@ -36,7 +36,8 @@ export class Event {
   normalFactDisplay: boolean;
   statesInvolved: string[];
   statesInvolved2?: string[];
-  choiceEvent: boolean;
+  choiceEvent?: boolean;
+  diceEvent?: boolean;
   choiceText1?: string;
   choiceText2?: string;
   choicePoints1?: number;

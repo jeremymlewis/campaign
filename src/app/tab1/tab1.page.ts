@@ -33,18 +33,23 @@ export class Tab1Page implements OnInit, AfterViewInit {
     this.isDemocrat = this.votes.getUserIsDem();
   }
 
+
+  ionViewWillEnter(){
+    this.isDemocrat = this.votes.isDemocrat;
+  }
+
   ngAfterViewInit() {
-    this.audio.preload('a3', 'assets/audio/vote.mp3');
-    this.audio.preload('a5', 'assets/audio/thats-america.mp3');
-    this.audio.preload('a6', 'assets/audio/dont-boo-vote.mp3');
-    this.audio.preload('a8', 'assets/audio/america.mp3');
+    // this.audio.preload('a3', 'assets/audio/vote.mp3');
+    // this.audio.preload('a5', 'assets/audio/thats-america.mp3');
+    // this.audio.preload('a6', 'assets/audio/dont-boo-vote.mp3');
+    // this.audio.preload('a8', 'assets/audio/america.mp3');
 
-    this.audio.preload('a2', 'assets/audio/i-said-no.mp3');
-    this.audio.preload('a0', 'assets/audio/thank-you-and-good-evening.mp3');
-    this.audio.preload('a1', 'assets/audio/bad-news.mp3');
+    // this.audio.preload('a2', 'assets/audio/i-said-no.mp3');
+    // this.audio.preload('a0', 'assets/audio/thank-you-and-good-evening.mp3');
+    // this.audio.preload('a1', 'assets/audio/bad-news.mp3');
 
-    this.audio.preload('a4', 'assets/audio/come-on-man.mp3');
-    this.audio.preload('a7', 'assets/audio/congratulations.mp3');
+    // this.audio.preload('a4', 'assets/audio/come-on-man.mp3');
+    // this.audio.preload('a7', 'assets/audio/congratulations.mp3');
   }
 
   getCurrentTurn(): string {
@@ -81,7 +86,6 @@ export class Tab1Page implements OnInit, AfterViewInit {
     }
 
   async presentToast(message, duration, color = 'primary') {
-    this.audio.play('a1');
     const toast = await this.toastController.create({
       message,
       duration,

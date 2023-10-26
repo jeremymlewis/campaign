@@ -1,10 +1,11 @@
 /* eslint-disable max-len */
 import { OnInit, Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ToastController } from '@ionic/angular';
+import { ModalController, ToastController } from '@ionic/angular';
 import { TextService } from 'src/app/services/text.services';
 import { VotesStore } from 'src/app/stores/votes.store';
 import { Event } from '../../stores/state';
+import { ModalToastComponent } from 'src/app/modal-toast/modal-toast.component';
 
 @Component({
   selector: 'app-event',
@@ -35,7 +36,7 @@ export class EventPage implements OnInit {
   statesInvolvedString: string;
   normalFactDisplay: boolean;
   isDemocrat: boolean;
-  constructor(private router: Router, public votes: VotesStore, private toastController: ToastController, public textService: TextService) {}
+  constructor(private modalCtrl: ModalController, private router: Router, public votes: VotesStore, private toastController: ToastController, public textService: TextService) {}
 //TODO3 all this page
 
   ngOnInit() {
@@ -101,7 +102,7 @@ export class EventPage implements OnInit {
       return this.superPacEvents[Math.floor(Math.random() * this.endorsementEvents.length)];
 
       return   {
-        title:'Super Pac/Donation',
+        title:'Super Pac',
         description:'A super pac ran ads for you in Michigan and Illinois',
         points: 2,
         imageSrc:'/assets/images/presidents/campaign.png',
@@ -167,41 +168,55 @@ export class EventPage implements OnInit {
     }
   }
 
+  async handleDiceRoll(roll: number) {
+    if (roll <= 2) {
+      this.handleRollToast(-1, []);
+    } else {
+      this.handleRollToast(1, []);
+    }
+  }
+
   async handleRollToast(roll: number, states: string[]) {
-    this.votes.actionPending = true;
 
     let statesInvolved = '';
-    if (states.length === 1) {
-      statesInvolved  = ' ' + states[0];
-    } else {
-      for (const state of states) {
-        statesInvolved += ' ';
-        statesInvolved += state;
-        statesInvolved += ',';
-      }
-      statesInvolved = statesInvolved.substring(0, statesInvolved.length - 1);
-      statesInvolved = statesInvolved.slice(0, statesInvolved.length - 3) + ' and' + statesInvolved.slice(statesInvolved.length - 3);
-    }
     let toastString = '';
-    if (roll < 0) {
-      toastString = 'This moves the Climate ' + (-roll) +  ' points toward your opponent in ' + statesInvolved;
-    }  else {
-      toastString = 'This moves the Climate ' + roll +  ' points in your favor in ' + statesInvolved;
-    }
+    let toastTitle = '';
 
-    this.presentToast(toastString, 3000);
-    await new Promise(f => setTimeout(f, 3000));
-    this.votes.actionPending = false;
-    this.handleRoll(roll, states);
+    if (states.length === 0) {
+      if (roll < 0) {
+        toastTitle = 'Bad news...';
+        toastString = 'You fall ' + roll +  '% in the polls in every state';
+      }  else {
+        toastTitle = 'Good News!';
+        toastString = 'You gain ' + roll +  '% in the polls in every state';
+      }
+    }
+    else {
+      if (states.length === 1) {
+        statesInvolved  = ' ' + states[0];
+      } else {
+        for (const state of states) {
+          statesInvolved += ' ';
+          statesInvolved += state;
+          statesInvolved += ',';
+        }
+        statesInvolved = statesInvolved.substring(0, statesInvolved.length - 1);
+        statesInvolved = statesInvolved.slice(0, statesInvolved.length - 3) + ' and' + statesInvolved.slice(statesInvolved.length - 3);
+      }
+      if (roll < 0) {
+        toastString = 'This moves the Climate ' + (-roll) +  ' points toward your opponent in ' + statesInvolved;
+        toastTitle = 'Tough luck...';
+      }  else {
+        toastTitle = 'Great Choice!';
+        toastString = 'This moves the Climate ' + roll +  ' points in your favor in ' + statesInvolved;
+      }
+    }
+    this.handleRoll(roll, states, toastString, toastTitle);
   }
 
 
 
-  async handleRoll(roll: number, states: string[]) {
-    // if (roll === 0 && this.currentEvent.title === 'Neutralization') {
-    //   this.votes.neutralizeStateClimate(states[0]);
-    // } else
-
+  async handleRoll(roll: number, states: string[], message: string, title?: string) {
     if (states.length === 0) {
       if (this.isDemocrat) {
         this.votes.changeNationalClimate(roll/2, -roll/2);
@@ -217,110 +232,25 @@ export class EventPage implements OnInit {
         }
       }
     }
-    // if (roll === 1) {
-    //   if (this.currentEvent.rollMap[0] > 0 && this.isDemocrat ) {
-    //     this.votes.changeNationalClimate(this.currentEvent.rollMap[0]/2, -this.currentEvent.rollMap[0]/2);
-    //     this.presentToast('National Climate moved ' + this.currentEvent.rollMap[0] + ' to the left', 2000);
-    //   } else if (this.currentEvent.rollMap[0] < 0 && this.isDemocrat) {
-    //     this.votes.changeNationalClimate(this.currentEvent.rollMap[0]/2, -this.currentEvent.rollMap[0]/2);
-    //     this.presentToast('National Climate moved ' + -1*this.currentEvent.rollMap[0] + ' to the right', 2000);
-    //   } else if (this.currentEvent.rollMap[0] > 0 && !this.isDemocrat) {
-    //     this.votes.changeNationalClimate(-this.currentEvent.rollMap[0]/2, this.currentEvent.rollMap[0]/2);
-    //     this.presentToast('National Climate moved ' + this.currentEvent.rollMap[0] + ' to the right', 2000);
-    //   }
-    //   if (this.currentEvent.rollMap[0] < 0 && !this.isDemocrat) {
-    //     this.votes.changeNationalClimate(-this.currentEvent.rollMap[0]/2, this.currentEvent.rollMap[0]/2);
-    //     this.presentToast('National Climate moved ' + -1*this.currentEvent.rollMap[0] + ' to the left', 2000);
-    //   }
-    // }
-    // if (roll === 2) {
-    //   if (this.currentEvent.rollMap[1] > 0 && this.isDemocrat) {
-    //     this.votes.changeNationalClimate(this.currentEvent.rollMap[1]/2, -this.currentEvent.rollMap[1]/2);
-    //     this.presentToast('National Climate moved ' + this.currentEvent.rollMap[1] + ' to the left', 2000);
-    //   } else if (this.currentEvent.rollMap[1] > 0 && !this.isDemocrat) {
-    //     this.votes.changeNationalClimate(-this.currentEvent.rollMap[1]/2, this.currentEvent.rollMap[1]/2);
-    //     this.presentToast('National Climate moved ' + this.currentEvent.rollMap[1] + ' to the right', 2000);
-    //   } else if (this.currentEvent.rollMap[1] < 0 && this.isDemocrat) {
-    //     this.votes.changeNationalClimate(this.currentEvent.rollMap[1]/2, -this.currentEvent.rollMap[1]/2);
-    //     this.presentToast('National Climate moved ' + -1*this.currentEvent.rollMap[1] + ' to the right', 2000);
-    //   } else if (this.currentEvent.rollMap[1] < 0 && !this.isDemocrat) {
-    //     this.votes.changeNationalClimate(-this.currentEvent.rollMap[1]/2, this.currentEvent.rollMap[1]/2);
-    //     this.presentToast('National Climate moved ' + -1*this.currentEvent.rollMap[1] + ' to the left', 2000);
-    //   }
-    // }
-    // if (roll === 3) {
-    //   if (this.currentEvent.rollMap[2] > 0 && this.isDemocrat) {
-    //     this.votes.changeNationalClimate(this.currentEvent.rollMap[2]/2, -this.currentEvent.rollMap[2]/2);
-    //     this.presentToast('National Climate moved ' + this.currentEvent.rollMap[2] + ' to the left', 2000);
-    //   } else if (this.currentEvent.rollMap[2] > 0 && !this.isDemocrat) {
-    //     this.votes.changeNationalClimate(-this.currentEvent.rollMap[2]/2, this.currentEvent.rollMap[2]/2);
-    //     this.presentToast('National Climate moved ' + this.currentEvent.rollMap[2] + ' to the right', 2000);
-    //   } else if (this.currentEvent.rollMap[2] < 0 && this.isDemocrat) {
-    //     this.votes.changeNationalClimate(this.currentEvent.rollMap[2]/2, -this.currentEvent.rollMap[2]/2);
-    //     this.presentToast('National Climate moved ' + -1*this.currentEvent.rollMap[2] + ' to the right', 2000);
-    //   } else if (this.currentEvent.rollMap[2] < 0 && !this.isDemocrat) {
-    //     this.votes.changeNationalClimate(-this.currentEvent.rollMap[2]/2, this.currentEvent.rollMap[2]/2);
-    //     this.presentToast('National Climate moved ' + -1*this.currentEvent.rollMap[2] + ' to the left', 2000);
-    //   }
-    // }
-    // if (roll === 4) {
-    //   if (this.currentEvent.rollMap[3] > 0 && this.isDemocrat) {
-    //     this.votes.changeNationalClimate(this.currentEvent.rollMap[3]/2, -this.currentEvent.rollMap[3]/2);
-    //     this.presentToast('National Climate moved ' + this.currentEvent.rollMap[3] + ' to the left', 2000);
-    //   } else if (this.currentEvent.rollMap[3] > 0 && !this.isDemocrat) {
-    //     this.votes.changeNationalClimate(-this.currentEvent.rollMap[3]/2, this.currentEvent.rollMap[3]/2);
-    //     this.presentToast('National Climate moved ' + this.currentEvent.rollMap[3] + ' to the right', 2000);
-    //   } else if (this.currentEvent.rollMap[3] < 0 && this.isDemocrat) {
-    //     this.votes.changeNationalClimate(this.currentEvent.rollMap[3]/2, -this.currentEvent.rollMap[3]/2);
-    //     this.presentToast('National Climate moved ' + -1*this.currentEvent.rollMap[3] + ' to the right', 2000);
-    //   } else if (this.currentEvent.rollMap[3] < 0 && !this.isDemocrat) {
-    //     this.votes.changeNationalClimate(-this.currentEvent.rollMap[3]/2, this.currentEvent.rollMap[3]/2);
-    //     this.presentToast('National Climate moved ' + -1*this.currentEvent.rollMap[3] + ' to the left', 2000);
-    //   }
-    // }
-    // if (roll === 5) {
-    //   if (this.currentEvent.rollMap[4] > 0 && this.isDemocrat) {
-    //     this.votes.changeNationalClimate(this.currentEvent.rollMap[4]/2, -this.currentEvent.rollMap[4]/2);
-    //     this.presentToast('National Climate moved ' + this.currentEvent.rollMap[4] + ' to the left', 2000);
-    //   } else if (this.currentEvent.rollMap[4] > 0 && !this.isDemocrat) {
-    //     this.votes.changeNationalClimate(-this.currentEvent.rollMap[4]/2, this.currentEvent.rollMap[4]/2);
-    //     this.presentToast('National Climate moved ' + this.currentEvent.rollMap[4] + ' to the right', 2000);
-    //   } else if (this.currentEvent.rollMap[4] < 0 && this.isDemocrat) {
-    //     this.votes.changeNationalClimate(this.currentEvent.rollMap[4]/2, -this.currentEvent.rollMap[4]/2);
-    //     this.presentToast('National Climate moved ' + -1*this.currentEvent.rollMap[4] + ' to the right', 2000);
-    //   } else if (this.currentEvent.rollMap[4] < 0 && !this.isDemocrat) {
-    //     this.votes.changeNationalClimate(-this.currentEvent.rollMap[4]/2, this.currentEvent.rollMap[4]/2);
-    //     this.presentToast('National Climate moved ' + -1*this.currentEvent.rollMap[4] + ' to the left', 2000);
-    //   }
-    // }
-    // if (roll === 6) {
-    //   if (this.currentEvent.rollMap[5] > 0 && this.isDemocrat) {
-    //     this.votes.changeNationalClimate(this.currentEvent.rollMap[5]/2, -this.currentEvent.rollMap[5]/2);
-    //     this.presentToast('National Climate moved ' + this.currentEvent.rollMap[5] + ' to the left', 2000);
-    //   } else if (this.currentEvent.rollMap[5] > 0 && !this.isDemocrat) {
-    //     this.votes.changeNationalClimate(-this.currentEvent.rollMap[5]/2, this.currentEvent.rollMap[5]/2);
-    //     this.presentToast('National Climate moved ' + this.currentEvent.rollMap[5] + ' to the right', 2000);
-    //   } else if (this.currentEvent.rollMap[5] < 0 && this.isDemocrat) {
-    //     this.votes.changeNationalClimate(this.currentEvent.rollMap[5]/2, -this.currentEvent.rollMap[5]/2);
-    //     this.presentToast('National Climate moved ' + -1*this.currentEvent.rollMap[5] + ' to the right', 2000);
-    //   } else if (this.currentEvent.rollMap[5] < 0 && !this.isDemocrat) {
-    //     this.votes.changeNationalClimate(-this.currentEvent.rollMap[5]/2, this.currentEvent.rollMap[5]/2);
-    //     this.presentToast('National Climate moved ' + -1*this.currentEvent.rollMap[5] + ' to the left', 2000);
-    //   }
-    // }
-    // await new Promise(f => setTimeout(f, 2400));
-    this.endEvent();
+    if (message) {
+      this.openModal(message, title);
+    } else {
+      this.endEvent();
+    }
   }
 
-  async presentToast(message, duration, color = 'primary') {
-    const toast = await this.toastController.create({
-      message,
-      duration,
-      color,
-      position: 'middle',
-      mode: 'md'
+  async openModal(message, title = 'Results') {
+    const modal = await this.modalCtrl.create({
+      component: ModalToastComponent,
+      componentProps: { message, title }
     });
-    toast.present();
+
+    modal.onDidDismiss().then( () => {
+      this.endEvent();
+    });
+
+    modal.present();
+    const { data, role } = await modal.onWillDismiss();
   }
 
 
@@ -350,6 +280,6 @@ export class EventPage implements OnInit {
     // this.eventDescription = this.currentEvent.description;
    // this.eventRollsL = this.currentEvent.rollMapDescription1;
     //this.eventRollsR = this.currentEvent.rollMapDescription2;
-    this.router.navigateByUrl('/tabs/tab1');
+    this.router.navigateByUrl('/tabs/tab1', { replaceUrl: true });
   }
 }

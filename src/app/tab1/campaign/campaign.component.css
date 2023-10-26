@@ -33,3 +33,9 @@ p {
   left: 50%
 }
 
+.header-icon {
+  position: fixed;
+  right: 10px;
+  max-height: 30px;
+  z-index: 199999;
+}

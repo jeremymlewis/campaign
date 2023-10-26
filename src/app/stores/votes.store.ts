@@ -29,7 +29,7 @@ export class VotesStore {
   Colorado: State = new State('Colorado','CO',10,42,39);
   Connecticut: State = new State('Connecticut','CT',7,46,35);
   Delaware: State = new State('Delaware','DE',3,45,35);
-  DC: State = new State('D.C.','DC',3, 75, 7);
+  DC: State = new State('DC','DC',3, 75, 7);
   Florida: State = new State('Florida','FL',30,39,41);
   Georgia: State = new State('Georgia','GA',16,39,42);
   Hawaii: State = new State('Hawaii','HI',4,53,28);
@@ -495,7 +495,7 @@ export class VotesStore {
     this.Colorado = new State('Colorado','CO',10,42,39);
     this.Connecticut = new State('Connecticut','CT',7,46,35);
     this.Delaware = new State('Delaware','DE',3,45,35);
-    this.DC = new State('D.C.','DC',3, 75, 7);
+    this.DC = new State('DC','DC',3, 75, 7);
     this.Florida = new State('Florida','FL',30,39,41);
     this.Georgia = new State('Georgia','GA',16,39,42);
     this.Hawaii = new State('Hawaii','HI',4,53,28);

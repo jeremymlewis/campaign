@@ -1,7 +1,9 @@
 <ion-header [translucent]="false">
   <ion-toolbar>
-    <ion-title class="ion-text-center">
-      ADVERTISE
+    <ion-title>
+      Advertise
+      <img class='header-icon' *ngIf="!isDemocrat" src="../../../assets/images/republicanIcon.png">
+      <img class='header-icon' *ngIf="isDemocrat" src="../../../assets/images/democratIcon.png">
     </ion-title>
     <ion-button fill="clear" id="click-triggerAd"><ion-icon name="help-circle-outline"></ion-icon></ion-button>
     <ion-popover trigger="click-triggerAd" triggerAction="click">
@@ -20,8 +22,12 @@
 
 <ion-content [fullscreen]="true">
 
+  <div style="margin-left: 2px; margin-top: 2px;">
+    <ion-button class="button43" size="small" [disabled]="!canBack" (click)="back()"><ion-icon name="arrow-back-circle-outline"></ion-icon>Back To Options</ion-button>
+  </div>
+
 <div class="center">
-<h3>Choose a block of states to advertise to:</h3>
+<h3>Choose where to run advertisements:</h3>
 </div>
 
 <!-- Have an icon for each of the state blocks -->
@@ -71,28 +77,22 @@
       FL, NC, GA</label>
     <input (click)="enableDice()" type="radio" name="buttonGroup" formControlName="buttonGroup" value="seven" id="seven"><label for="seven">
       <img class="state-icon" src="../../../assets/images/states/TX-Texas.png">
+      <img class="state-icon" src="../../../assets/images/states/AK-Alaska.png">
       <br>
-      TX</label>
+      TX, AK</label>
     <input (click)="enableDice()" type="radio" name="buttonGroup" formControlName="buttonGroup" value="eight" id="eight"><label for="eight">
       <img class="state-icon" src="../../../assets/images/states/SC-South-Carolina.png">
       <img class="state-icon" src="../../../assets/images/states/MO-Missouri.png">
       <img class="state-icon" src="../../../assets/images/states/IN-Indiana.png">
-      <img class="state-icon" src="../../../assets/images/states/MT-Montana.png">
       <img class="state-icon" src="../../../assets/images/states/MS-Mississippi.png">
-      <img class="state-icon" src="../../../assets/images/states/AK-Alaska.png">
       <img class="state-icon" src="../../../assets/images/states/LA-Louisiana.png">
       <br>
-      SC, MO, IN, MT, MS, AK, LA</label>
+      SC, MO, IN, MS, LA</label>
     </div>
   </div>
 </div>
 <div class="center">
-<p>After choosing which block you will advertise to, click 'roll' to see how the area is affected.</p>
+<p>Click 'roll' to see how well the ads work.</p>
 </div>
 <app-dice [slot0]='[1]' val0="No Effect" [slot1]="[2, 3, 4, 5]" val1="+1%" [slot2]='[6]' val2="+2%" [canClick]="diceEnabled"  (rollStarted)="rollStarted()"  (diceRolled)="handleRoll($event)"></app-dice>
-<br>
-<br>
-<div class="center">
-<button class="button-53" role="button" [disabled]="!canBack" (click)="back()">Back To Options</button>
-</div>
 </ion-content>

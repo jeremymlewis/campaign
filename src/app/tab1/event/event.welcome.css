@@ -15,65 +15,70 @@
   align-items: center;
   left: 50%;
 }
-
+.header-icon {
+  position: fixed;
+  right: 10px;
+  max-height: 30px;
+  z-index: 199999;
+}
 p {
   margin-top: 10px;
 }
 
 #aid {
-  animation: flyaid 15s linear;
+  /* animation: flyaid 12s linear; */
   top: 100vw;
   left: 0;
 }
 
 #title {
-  animation: flytitle 15s linear;
+  /* animation: flytitle 12s linear; */
   top: 100vw;
   left: 0;
 }
 
 #info1 {
-  animation: flyinfo1 15s linear;
+  /* animation: flyinfo1 12s linear; */
   top: 100vw;
   left: 0;
 }
 
 #info2 {
-  animation: flyinfo2 15s linear;
+  /* animation: flyinfo2 12s linear; */
   top: 100vw;
   left: 0;
 }
 
 #info3 {
-  animation: flyinfo3 15s linear;
+  /* animation: flyinfo3 12s linear; */
   top: 100vw;
   left: 0;
 }
 
 #info4 {
-  animation: flyinfo4 15s linear;
+  /* animation: flyinfo4 12s linear; */
   top: 100vw;
   left: 0;
 }
 
 #info5 {
-  animation: flyinfo5 15s linear;
+  /* animation: flyinfo5 12s linear; */
   top: 100vw;
   left: 0;
 }
 
 #info6 {
-  animation: flyinfo6 15s linear;
+  /* animation: flyinfo6 12s linear; */
   top: 100vw;
   left: 0;
 }
 
 #ready {
-  animation: flyready 15s linear;
+  /* animation: flyready 12s linear; */
   top: 100vw;
   left: 0;
 }
-
+/*
 @keyframes flyaid {
   0%{
     transform: translate(110vw,-90vw);opacity: .75;
@@ -215,4 +220,4 @@ p {
   100%{
       transform: translate(0,0);opacity: 1;
   }
-}
+} */

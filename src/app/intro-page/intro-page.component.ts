@@ -17,8 +17,11 @@ export class IntroPage implements AfterViewInit {
     this.audio.preload('chief', 'assets/audio/chief.mp3');
   }
 
+  toTutorial() {
+    this.route.navigateByUrl('/welcome'); //Jermy TODO was selcome but I changed it
+  }
+
   toTabs() {
-    this.audio.play('chief');
     this.route.navigateByUrl('/options'); //Jermy TODO was selcome but I changed it
   }
 

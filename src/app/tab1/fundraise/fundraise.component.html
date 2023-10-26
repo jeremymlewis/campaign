@@ -1,7 +1,9 @@
 <ion-header [translucent]="false">
   <ion-toolbar>
-    <ion-title class="ion-text-center">
+    <ion-title>
       FUNDRAISE
+      <img class='header-icon' *ngIf="!isDemocrat" src="../../../assets/images/republicanIcon.png">
+      <img class='header-icon' *ngIf="isDemocrat" src="../../../assets/images/democratIcon.png">
     </ion-title>
     <ion-button fill="clear" id="click-triggerFa"><ion-icon name="help-circle-outline"></ion-icon></ion-button>
     <ion-popover trigger="click-triggerFa" triggerAction="click">
@@ -19,18 +21,15 @@
 
 
 <ion-content [fullscreen]="true">
-
-
-
-<div class="center">
-<p>Roll 1-4: $10 million</p>
-</div>
-<div class="center">
-  <p>Roll 5-6: $20 million</p>
-</div>
+  <div style="margin-left: 2px; margin-top: 2px;">
+    <ion-button class="button43" size="small" [disabled]="!canBack" (click)="back()"><ion-icon name="arrow-back-circle-outline"></ion-icon>Back To Options</ion-button>
+  </div>
+  <div class="center">
+    <h1>Fundraise</h1>
+    </div>
+    <div style="margin-top: 0px;"  class="center">
+      <p style="margin-top: 0px;" >Roll the dice to raise $1-2 million for advertising!</p>
+    </div>
 <app-dice [slot0]='[1,2,3,4]' val0="$1 Million" [slot1]="[5,6]" val1="$2 Million" (rollStarted)="rollStarted()"  (diceRolled)="handleRoll($event)"></app-dice>
-<br><br>
-<div class="center">
-<button class="button-53" role="button" [disabled]="!canBack" (click)="back()">Back To Options</button>
-</div>
+<br>
 </ion-content>

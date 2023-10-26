@@ -16,7 +16,7 @@ import { RollTableComponent } from '../roll-table/rolltable.component';
 import { OpponentPage } from './opponent/opponent.component';
 import { ResultsPage } from './results/results.component';
 import { ScoreDisplayPipe } from '../score-display.pipe';
-
+import { ModalToastComponent } from '../modal-toast/modal-toast.component';
 @NgModule({
   imports: [
     IonicModule,
@@ -38,6 +38,7 @@ import { ScoreDisplayPipe } from '../score-display.pipe';
     OpponentPage,
     ResultsPage,
     ScoreDisplayPipe,
+    ModalToastComponent,
   ],
   providers: [
     ScoreDisplayPipe

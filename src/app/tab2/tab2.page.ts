@@ -51,10 +51,14 @@ export class Tab2Page implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.isDemocrat = this.store.getUserIsDem();
+    this.isDemocrat = this.store.isDemocrat;
     this.isThird = this.store.getUserIsThird();
     this.partyName = this.store.thirdPartyName;
     this.calculateScaleOfMap();
+  }
+
+  ionViewWillEnter(){
+    this.isDemocrat = this.store.isDemocrat;
   }
 
   ngAfterViewInit() {

@@ -60,14 +60,14 @@ export class DiceComponent {
   }
 
   rollDice() {
-    this.votes.actionPending = true;
     this.value = Math.floor(Math.random() * 6) + 1;
     this.setImage(this.value);
   }
 
   async animatedDiceRoll() {
+    this.votes.actionPending = true;
     this.rollStarted.emit(true);
-    document.getElementById('dice').style.animation = 'rotation 2s';
+    document.getElementById('dice').style.animation = 'rotation 1.6s';
     this.canClick = false;
     this.rollDice();
     await new Promise(f => setTimeout(f, 80));
@@ -90,10 +90,11 @@ export class DiceComponent {
     this.rollDice();
     await new Promise(f => setTimeout(f, 80));
     this.rollDice();
+    await new Promise(f => setTimeout(f, 500));
+    //document.getElementById('dice').style.animation = '';
     this.diceRolled.emit(this.value);
-    await new Promise(f => setTimeout(f, 1200));
-    document.getElementById('dice').style.animation = '';
-    await new Promise(f => setTimeout(f, 2000));
+    await new Promise(f => setTimeout(f, 1000));
+
     this.votes.actionPending = false;
     await new Promise(f => setTimeout(f, 500));
     this.canClick = true;

@@ -9,12 +9,15 @@ import { VotesStore } from '../stores/votes.store';
   styleUrls: ['results-page.component.css']
 })
 export class ResultsPage implements OnInit {
+  isDemocrat: boolean;
   constructor(private router: Router, public votes: VotesStore) {}
 
   ngOnInit() {
       if (this.votes.isDemocrat) {
+        this.isDemocrat = true;
         this.votes.addGameStats(this.votes.getUserWon(),true,this.votes.getFinalBlue());
       } else {
+        this.isDemocrat = false;
         this.votes.addGameStats(this.votes.getUserWon(),false,this.votes.getFinalRed());
       }
   }

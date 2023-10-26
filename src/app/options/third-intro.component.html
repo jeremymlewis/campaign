@@ -15,7 +15,7 @@
     <p id="info2">You can go back and select a major party now:</p>
     </div>
     <div class="center">
-    <button class="button-53" role="button" (click)="goBack()">Go Back</button>
+    <ion-button class="button43" (click)="goBack()">Go Back</ion-button>
     </div>
     <div class="center">
     <p id="info3">Or chose a name for your new party and continue on to the race:</p>
@@ -28,7 +28,7 @@
 
     </div>
     <div class="center">
-      <button class="button-53" role="button" [disabled]="partyName === ''" (click)="submitName()">Start The Race</button>
+      <ion-button class="button43" [disabled]="partyName === ''" (click)="submitName()">Start The Race</ion-button>
 
     </div>
   </div>

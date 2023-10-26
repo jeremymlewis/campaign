@@ -2,6 +2,8 @@
   <ion-toolbar>
     <ion-title class="ion-text-center">
       <span style="color: red;">•LIVE</span> Election Results
+      <img class='header-icon' *ngIf="!isDemocrat" src="../../../assets/images/republicanIcon.png">
+      <img class='header-icon' *ngIf="isDemocrat" src="../../../assets/images/democratIcon.png">
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -166,7 +168,7 @@
 </div>
 
 <div class="center">
-<ion-button style="position: fixed; bottom: 5px; right: 5px;" (click)="skip()">Skip</ion-button>
+<ion-button class="button43" style="position: fixed; bottom: 5px; right: 5px;" (click)="skip()">Skip</ion-button>
 </div>
 
 </ion-content>

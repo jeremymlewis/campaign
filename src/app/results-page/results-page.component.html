@@ -2,6 +2,8 @@
   <ion-toolbar>
     <ion-title class="ion-text-center">
       Election Results
+      <img class='header-icon' *ngIf="!isDemocrat" src="../../../assets/images/republicanIcon.png">
+      <img class='header-icon' *ngIf="isDemocrat" src="../../../assets/images/democratIcon.png">
     </ion-title>
     <ion-button fill="clear" id="click-triggerRs"><ion-icon name="help-circle-outline"></ion-icon></ion-button>
     <ion-popover trigger="click-triggerRs" triggerAction="click">
@@ -28,6 +30,6 @@
 </div>
 <div class="center">
 
-<ion-button (click)="day()">Continue</ion-button>
+<ion-button class="button43" (click)="day()">Continue</ion-button>
 </div>
 </ion-content>

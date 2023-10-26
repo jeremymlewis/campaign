@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ToastController } from '@ionic/angular';
+import { ModalController, ToastController } from '@ionic/angular';
 import { VotesStore } from '../../stores/votes.store';
+import { ModalToastComponent } from 'src/app/modal-toast/modal-toast.component';
 
 @Component({
   selector: 'app-advertise',
@@ -19,7 +20,7 @@ export class AdvertisePage implements OnInit {
   myGroup = new FormGroup({
     buttonGroup: new FormControl()
   });
-  constructor(private router: Router, private toastController: ToastController, private votes: VotesStore) {}
+  constructor(private router: Router, private modalCtrl: ModalController, private votes: VotesStore) {}
 
   ngOnInit() {
     this.isDemocrat = this.votes.getUserIsDem();
@@ -44,9 +45,9 @@ export class AdvertisePage implements OnInit {
     } else if (this.myGroup.value.buttonGroup === 'six') {
       this.selectedStates = ['FL','NC','GA'];
     } else if (this.myGroup.value.buttonGroup === 'seven') {
-      this.selectedStates = ['TX'];
+      this.selectedStates = ['TX', 'AK'];
     } else if (this.myGroup.value.buttonGroup === 'eight') {
-      this.selectedStates = ['SC','MO','IN','MT','MS','AK','LA'];
+      this.selectedStates = ['SC','MO','IN','MS','LA'];
     } else {
       //error
     }
@@ -68,11 +69,11 @@ export class AdvertisePage implements OnInit {
 
 
     if (roll === 1) {
-      this.presentToast('You rolled a ' + roll + ', Your advertising made no difference!' , 3000);
-      await new Promise(f => setTimeout(f, 3200));
-      this.toNextTurn();
+      this.openModal('You rolled a ' + roll + ', Your advertising made no difference!');
+      // await new Promise(f => setTimeout(f, 3200));
+      // this.toNextTurn();
     } else if (roll < 6) {
-      this.presentToast('You rolled a ' + roll + ', Your advertising made a difference of 1 in your selected states!', 3000);
+      this.openModal('You rolled a ' + roll + ', Your advertising made a difference of 1 in your selected states!');
       for (const state in this.selectedStates) {
         if (this.isDemocrat) {
           this.votes.changeStateClimate(this.selectedStates[state], 1, 0);
@@ -80,10 +81,10 @@ export class AdvertisePage implements OnInit {
           this.votes.changeStateClimate(this.selectedStates[state], 0, 1);
         }
       }
-      await new Promise(f => setTimeout(f, 3200));
-      this.toNextTurn();
+      // await new Promise(f => setTimeout(f, 3200));
+      // this.toNextTurn();
     } else {
-      this.presentToast('You rolled a ' + roll + ', Your advertising made a difference of 2 in your selected states!', 3000);
+      this.openModal('You rolled a ' + roll + ', Your advertising made a difference of 2 in your selected states!');
       for (const state in this.selectedStates) {
         if (this.isDemocrat) {
           this.votes.changeStateClimate(this.selectedStates[state], 2, 0);
@@ -91,27 +92,42 @@ export class AdvertisePage implements OnInit {
           this.votes.changeStateClimate(this.selectedStates[state], 0, 2);
         }
       }
-      await new Promise(f => setTimeout(f, 3200));
-      this.toNextTurn();
+      // await new Promise(f => setTimeout(f, 3200));
+      // this.toNextTurn();
     }
   }
 
   toNextTurn() {
-    this.router.navigateByUrl('/tabs/tab1/opponent');
+    this.router.navigateByUrl('/tabs/tab1/opponent', { replaceUrl: true });
   }
 
   back() {
-    this.router.navigateByUrl('/tabs/tab1');
+    this.votes.funds++;
+    this.router.navigateByUrl('/tabs/tab1', { replaceUrl: true });
   }
 
-  async presentToast(message, duration, color = 'primary') {
-    const toast = await this.toastController.create({
-      message,
-      duration,
-      color,
-      position: 'middle',
-      mode: 'md'
+  // async presentToast(message, duration, color = 'primary') {
+  //   const toast = await this.toastController.create({
+  //     message,
+  //     duration,
+  //     color,
+  //     position: 'middle',
+  //     mode: 'md'
+  //   });
+  //   toast.present();
+  // }
+
+  async openModal(message, title = 'Results') {
+    const modal = await this.modalCtrl.create({
+      component: ModalToastComponent,
+      componentProps: { message, title }
     });
-    toast.present();
+
+    modal.onDidDismiss().then( () => {
+      this.toNextTurn();
+    });
+
+    modal.present();
+    const { data, role } = await modal.onWillDismiss();
   }
 }

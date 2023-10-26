@@ -1,6 +1,22 @@
 
+<ion-header [translucent]="false">
+  <ion-toolbar>
+    <ion-title class="ion-text-center">
+      Instructions
+    </ion-title>
+    <ion-button fill="clear" id="click-triggerWc"><ion-icon name="help-circle-outline"></ion-icon></ion-button>
+    <ion-popover trigger="click-triggerWc" triggerAction="click">
+      <ng-template>
+        <ion-content class="ion-padding">Results. Here you see if you win</ion-content>
+      </ng-template>
+    </ion-popover>
+  </ion-toolbar>
+</ion-header>
 <ion-content [fullscreen]="true">
-  <ion-grid class="ion-no-padding bg-image">
+  <div class="center">
+  <h1>What is the Electoral College?</h1>
+  </div>
+  <!-- <ion-grid class="ion-no-padding bg-image">
   <div class="background">
     <div class="container">
       <div class="center">
@@ -18,13 +34,72 @@
           <p id="info4">That's where you can campaign, and see a map of the current state of the race</p></div>
           <div class="center">
             <p id="info5">You can reach me in the HELP tab if you need anything</p></div>
-      <img id="aid" src="../../../assets/images/aid.png">
+       <div class="center"><img id="aid" src="../../../assets/images/aid.png">
       <div id="ready" class="center">
         <p id="info6">If you are ready to go, let's campaign!</p>
 
-        <button class="button-53" role="button" (click)="continue()">Ready</button>
+        <ion-button class="button43" (click)="continue()">Ready</ion-button>
       </div>
     </div>
   </div>
-  </ion-grid>
+  </ion-grid> -->
+  <div class="center"><img src="../../assets/images/constitution.png"></div>
+
+  <div class="center">
+    <p>When the US constitution was written in 1787, the Office Of The President was created.</p>
+  </div>
+  <div class="center">
+
+  <p>To fill this office, every 4 years each state would help to elect a new President.</p>
+  </div>
+  <div class="center"><img src="../../assets/images/horses.jpg"></div>
+
+  <div class="center">
+  <p>Due to the limits of communication and travel, each state had to send Electors to a meeting to record their votes. </p>
+  </div>
+  <div class="center">
+  <p>Large states would get to send lots of electors, and small states would get to send fewer electors.</p>
+</div>
+<div class="center"><img src="../../assets/images/ElectoralMap.jpg"></div>
+
+<div class="center">
+  <p>Today, each state* puts their Electoral Votes toward the Candadite that was most popular in the election in their state.
+  </p></div> <div class="center">
+      <p>   To become president, a candadite needs to recieve 270 electoral votes out of the 541.</p>
+</div>
+<div class="center">
+  <h1>What do you do in this game?</h1>
+</div>
+<div class="center"><img src="../../assets/images/vs.jpg"></div>
+<div class="center">
+    <p> You will be competing in a 2 party race, meaning that you will run against just 1 opponent. The Republican Party will be represented by the color RED and the Democratic Party will be represented by the color BLUE.</p>
+</div>
+<div class="center"><img src="../../assets/images/options.png"></div>
+
+<div class="center">
+    <p> Your job in this game is to win enough States/Electoral Votes to become president. You can raise money, spend it on advertisements, travel to states for campaign events, and weigh in on national issues to become more popular -- and win the election in states. The game will last 16 turns, so use every move wisely.</p></div>
+
+    <div class="center"><img src="../../assets/images/score.png"></div>
+
+    <div class="center">
+
+
+   <p> You will see how popular you are in a states shown as a Percentage.  (A +3% means you are predicted to win that state by 3% of the vote. A state that is EVEN could vote for either candadite on election day.)</p>
+  </div>
+  <div class="center"><img src="../../assets/images/map.png"></div>
+
+  <div class="center">
+      <p> You will be given a map that shows how close the race is in each state (based on real past elections data), as well as how many votes you could gain by winning that state.</p></div>
+
+      <div class="center">
+
+       <p> It is a good idea to check in on this often, and use it to decide which states you are going to target in your campaign.</p>
+    </div>
+    <div class="center">
+        <p> Good luck! If you need any more info, check out the HELP tab during a game</p>
+      </div>
+      <div class="center">
+        <ion-button class="button43" (click)="continue()">Back To Main Menu</ion-button>
+        </div>
+
 </ion-content>

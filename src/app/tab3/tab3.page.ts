@@ -23,6 +23,11 @@ export class Tab3Page implements OnInit {
     this.partyName = this.votes.thirdPartyName;
   }
 
+  ionViewWillEnter(){
+    this.isDemocrat = this.votes.isDemocrat;
+  }
+
+
   campaign() {
     this.router.navigateByUrl('tabs/tab3/campaign');
 

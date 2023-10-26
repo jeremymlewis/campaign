@@ -22,18 +22,21 @@ export class CableNewsPage implements OnInit {
   resultMessage = '';
   stateVotes = 3;
   stateName = '';
-  stateImg = '/assets/images/states/DC-WashingtonDC.png';
+  stateImg = '/assets/images/states/DC-DC.png';
   leftVal = '28%';
   rightVal = '72%';
   electoralLeft = 0;
   electoralRight = 0;
   scale = 0.3;
   resultsReady = false;
+  isDemocrat: boolean;
 
   constructor(private router: Router, public votes: VotesStore) {}
   //NEWS CHANNEL PAGE (cycles through 10 closest states... plus 10 random)
 
   ngOnInit() {
+    this.isDemocrat = this.votes.isDemocrat;
+
     this.calculateScaleOfMap();
     this.getResultStates();
     this.runAnimation();
@@ -69,14 +72,14 @@ export class CableNewsPage implements OnInit {
   async runAnimation() {
     for (const state of this.mapStates) {
       this.addStateToMap(state);
-      await new Promise(f => setTimeout(f, 40));
+      await new Promise(f => setTimeout(f, 80));
     }
     document.getElementById('cnresults').style.opacity = '1';
     for (const state of this.resultStates) {
       await this.runSingleStateAnimation(state);
       await new Promise(f => setTimeout(f, this.restTime));
     }
-    this.router.navigateByUrl('/results/final-map');
+    this.router.navigateByUrl('/results/final-map', { replaceUrl: true });
   }
 
   async runSingleStateAnimation(state: State) {

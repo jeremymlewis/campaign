@@ -1,28 +1,38 @@
-
+<ion-header [translucent]="false">
+  <ion-toolbar>
+    <ion-title>
+      Special Event
+    </ion-title>
+    <ion-button fill="clear" id="click-triggerEW"><ion-icon name="help-circle-outline"></ion-icon></ion-button>
+    <ion-popover trigger="click-triggerEW" triggerAction="click">
+      <ng-template>
+        <ion-content class="ion-padding">
+          <h3>Special Event</h3>
+        </ion-content>
+      </ng-template>
+    </ion-popover>
+  </ion-toolbar>
+</ion-header>
 <ion-content [fullscreen]="true">
   <ion-grid class="ion-no-padding bg-image">
   <div class="background">
     <div class="container">
       <div class="center">
-      <h1 id="title">Hello Again Candidate!</h1>
-    </div>
-    <div class="center">
-      <p id="info1">You have been doing great so far!</p>
-    </div>
-    <div class="center">
-
-      <p id="info2">Since you have completed the first round, it is time for a special event!</p></div>
+        <h1>It is time for a SPECIAL EVENT!</h1>
+      </div>
       <div class="center">
-        <p id="info3">These will happen after every round, and are different every time.</p></div>
-        <div class="center">
-          <p id="info4">These events sway the national climate.</p></div>
-          <div class="center">
-            <p id="info5">The national climate affects polls in every state so a few points can make a big difference.</p></div>
-      <img id="aid" src="../../../assets/images/aid.png">
-      <div id="ready" class="center">
-        <p id="info6">Good luck!</p>
 
-        <button class="button-53" role="button" (click)="continue()">Ready</button>
+        <p id="info2">Every 2 rounds you will draw a special event card</p>
+      </div>
+      <div class="center">
+        <p id="info1">National News, Media Coverage, Scandals, Fortunes, and Issues await!</p>
+      </div>
+      <img src="../../../assets/images/deck/{{imgSrc}}.png">
+      <div id="ready" class="center">
+      <p>Good luck!</p>
+      </div>
+      <div id="ready" class="center">
+        <ion-button class="button43" (click)="continue()">Draw A Card</ion-button>
       </div>
     </div>
   </div>

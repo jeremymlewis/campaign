@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ToastController } from '@ionic/angular';
+import { ModalController, ToastController } from '@ionic/angular';
 import { VotesStore } from '../../stores/votes.store';
 import { State } from 'src/app/stores/state';
+import { ModalToastComponent } from 'src/app/modal-toast/modal-toast.component';
 
 @Component({
   selector: 'app-campaign',
@@ -10,7 +11,7 @@ import { State } from 'src/app/stores/state';
   styleUrls: ['campaign.component.css']
 })
 export class CampaignPage implements OnInit {
-  chosenState = '';
+  chosenState: State = null;
   isDemocrat: boolean;
   isThird: boolean;
 
@@ -18,6 +19,7 @@ export class CampaignPage implements OnInit {
   states: State[];
 
   constructor(private router: Router,
+    private modalCtrl: ModalController,
     private toastController: ToastController,
     private votes: VotesStore) {}
 
@@ -35,11 +37,10 @@ export class CampaignPage implements OnInit {
     //this.canBack = false;
     //TODO3
     let modifier = 0;
-    let stateId = this.chosenState;
+    const stateId = this.chosenState.abbreviation;
 
-    if (this.chosenState[0] === '*') {
+    if (this.chosenState.protected) {
       modifier = -1;
-      stateId = this.chosenState.slice(1);
     }
 
     console.log(stateId);
@@ -54,30 +55,30 @@ export class CampaignPage implements OnInit {
         this.votes.changeStateClimate(stateId , 0, roll);
       }
       //TODO3 this number need
-      this.presentToast('You rolled a ' + originalRoll + ', making a difference of ' + roll + ' in ' + stateId, 3000);
-      await new Promise(f => setTimeout(f, 3200));
-      this.toNextTurn();
-    } else {
-      this.presentToast('Please select a state', 1000, 'danger');
+      this.openModal('You rolled a ' + originalRoll + ', your polling numbers go up by ' + roll + '% in ' + this.chosenState.name);
     }
   }
 
   toNextTurn() {
-    this.router.navigateByUrl('/tabs/tab1/opponent');
+    this.router.navigateByUrl('/tabs/tab1/opponent', { replaceUrl: true });
   }
 
   back() {
-    this.router.navigateByUrl('/tabs/tab1');
+    this.router.navigateByUrl('/tabs/tab1', { replaceUrl: true });
   }
 
-  async presentToast(message, duration, color = 'primary') {
-    const toast = await this.toastController.create({
-      message,
-      duration,
-      color,
-      position: 'middle',
-      mode: 'md'
+
+  async openModal(message, title = 'Results') {
+    const modal = await this.modalCtrl.create({
+      component: ModalToastComponent,
+      componentProps: { message, title }
     });
-    toast.present();
+
+    modal.onDidDismiss().then( () => {
+      this.toNextTurn();
+    });
+
+    modal.present();
+    const { data, role } = await modal.onWillDismiss();
   }
 }

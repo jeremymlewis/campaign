@@ -1,51 +1,95 @@
+<ion-header [translucent]="false">
+  <ion-toolbar>
+    <ion-title class="ion-text-center">
+      Special Event Card
+      <img class='header-icon' *ngIf="!isDemocrat" src="../../../assets/images/republicanIcon.png">
+      <img class='header-icon' *ngIf="isDemocrat" src="../../../assets/images/democratIcon.png">
+    </ion-title>
+    <ion-button fill="clear" id="click-triggerEvent"><ion-icon name="help-circle-outline"></ion-icon></ion-button>
+    <ion-popover trigger="click-triggerEvent" triggerAction="click">
+      <ng-template>
+        <ion-content class="ion-padding">
+          <h3>Special Event</h3>
+        </ion-content>
+      </ng-template>
+    </ion-popover>
+  </ion-toolbar>
+</ion-header>
 <ion-content [fullscreen]="true">
 
-
-<div class="center" style="background-color: #7a6843;">
-<p>A Special Event has been triggered!</p>
-</div>
-<div class="center" style="background-color: #687a43;
-">
-<h1 style="color: white;">{{eventTitle}}</h1>
-</div>
-<div class="center">
-<!-- <p>Before rounds 4,7,10 there will be a debate!  It has rolling rules that effect national climate<br></p> -->
-<!-- <p>Debates, Gaffes, scandals, media tour, endorsements, SuperPacs will appear here</p> -->
-</div>
-<div class="center">
-<h2>{{eventDescription}}</h2>
-</div>
-<div *ngIf="!currentEvent.choiceEvent">
-    <div class="center" *ngIf="statesInvolved.length === 0">
-    <p *ngIf="eventPoints < 0">This moves the National Climate {{-eventPoints}} points toward your opponent</p>
-    <p *ngIf="eventPoints === 0">The National Climate is unaffected</p>
-    <p *ngIf="eventPoints > 0">This moves the National Climate {{eventPoints}} points in your favor</p>
-    <!-- Or to the right... calculate that on the ts side of this. -->
-    </div>
-    <div class="center" *ngIf="statesInvolved.length !== 0">
-      <p *ngIf="eventPoints < 0">This moves the Climate {{-eventPoints}} points toward your opponent in {{statesInvolvedString}}</p>
-      <p *ngIf="eventPoints === 0">This state is now polling EVEN for Republican and Democrat</p>
-      <p *ngIf="eventPoints > 0">This moves the Climate {{eventPoints}} points in your favor in {{statesInvolvedString}}</p>
+<br>
+<div class="card">
+  <div style="margin-top: 0px; margin-bottom: 0px;" class="center">
+  <h1 style="margin-top: 2px; margin-bottom: 0px;">{{eventTitle}}</h1>
+  </div>
+  <hr style="color: white; border-width: 1px;">
+  <div class="center">
+  <!-- <p>Before rounds 4,7,10 there will be a debate!  It has rolling rules that effect national climate<br></p> -->
+  <!-- <p>Debates, Gaffes, scandals, media tour, endorsements, SuperPacs will appear here</p> -->
+  </div>
+  <div class="center">
+  <h2 style="margin-top: 1px;">{{eventDescription}}</h2>
+  </div>
+  <div *ngIf="!currentEvent?.choiceEvent && !currentEvent?.diceEvent">
+      <div class="center" *ngIf="statesInvolved.length === 0">
+      <p *ngIf="eventPoints < 0">This moves the National Climate {{-eventPoints}} points toward your opponent</p>
+      <p *ngIf="eventPoints === 0">The National Climate is unaffected</p>
+      <p *ngIf="eventPoints > 0">This moves the National Climate {{eventPoints}} points in your favor</p>
       <!-- Or to the right... calculate that on the ts side of this. -->
       </div>
+      <div class="center" *ngIf="statesInvolved.length !== 0">
+        <p *ngIf="eventPoints < 0">This moves the Climate {{-eventPoints}} points toward your opponent in {{statesInvolvedString}}</p>
+        <p *ngIf="eventPoints === 0">This state is now polling EVEN for Republican and Democrat</p>
+        <p *ngIf="eventPoints > 0">This moves the Climate {{eventPoints}} points in your favor in {{statesInvolvedString}}</p>
+        <!-- Or to the right... calculate that on the ts side of this. -->
+        </div>
 
-    <div  class="center">
-      <button class="button-53" role="button" (click)="handleRoll(eventPoints, statesInvolved)">Next</button>
-    <!-- <p>{{eventRollsL}}</p>
-    <p>{{eventRollsR}}</p> -->
+
+  </div>
+
+  <div *ngIf="currentEvent?.diceEvent">
+    <div class="center">
+      <p>Roll to see if this hurts you, or helps you</p>
+    </div>
+   </div>
+
+  <div *ngIf="currentEvent?.choiceEvent">
+    <div class="center">
+      <p>{{currentEvent?.history}}</p>
+    </div>
+   </div>
+</div>
+<div *ngIf="currentEvent?.diceEvent">
+   <app-dice [slot0]='[1, 2]' val0="-1%" [slot1]="[3, 4, 5, 6]" val1="+1%" (diceRolled)="handleDiceRoll($event)"></app-dice>
+</div>
+
+<div *ngIf="currentEvent?.choiceEvent">
+  <br>
+  <div class="center">
+    Your choice will affect 3-5 states.
+  </div>
+  <div class="center">
+    You can help your standing... or hurt it.
+  </div>
+  <br>
+  <div class="center">
+
+  <ion-button  (click)="handleRollToast(currentEvent?.choicePoints1, currentEvent?.statesInvolved)">{{currentEvent?.choiceText1}}</ion-button>
+  </div>
+  <div class="center">
+
+  <ion-button (click)="handleRollToast(currentEvent?.choicePoints2, currentEvent?.statesInvolved2)">{{currentEvent?.choiceText2}}</ion-button>
     </div>
 </div>
+<div *ngIf="!currentEvent?.choiceEvent && !currentEvent?.diceEvent">
 
-
-<div *ngIf="currentEvent.choiceEvent">
-  <div class="center">
-    <p>{{currentEvent.history}}</p>
+<div  class="center">
+  <ion-button class="button43" (click)="handleRoll(eventPoints, statesInvolved, null)">Next</ion-button>
+  <!-- <p>{{eventRollsL}}</p>
+  <p>{{eventRollsR}}</p> -->
   </div>
-  <button style="left: 20%;" class="button-53" role="button" (click)="handleRollToast(currentEvent.choicePoints1, currentEvent.statesInvolved)">{{currentEvent.choiceText1}}</button>
-  <br>
-  <br>
-  <button style="left: 20%;" class="button-53" role="button" (click)="handleRollToast(currentEvent.choicePoints2, currentEvent.statesInvolved2)">{{currentEvent.choiceText2}}</button>
 </div>
+
 
 <div id="navcontainer" *ngIf="!!eventPersonInvolved">
   <ul id="navlist" >
@@ -56,7 +100,6 @@
         <p style="margin-bottom: 0;" *ngIf="normalFactDisplay">This event happened to {{eventPersonInvolved}} during the election of {{eventYear}}</p>
         <img [src]="eventIcon" style="border-radius: 50%; border: 2px solid black; width:50px; height:50px; padding-top: 0; margin-bottom: 0;">
         <p style="margin-top: 0;">{{eventHistory}}</p>
-        <!-- <app-dice (diceRolled)="handleRoll($event)"></app-dice> -->
       </div>
     </ul>
 </div>

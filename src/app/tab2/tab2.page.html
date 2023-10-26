@@ -2,8 +2,8 @@
   <ion-toolbar>
     <ion-title>
       Map / Polls
-      <img class='header-icon' *ngIf="!isDemocrat && !isThird" src="../../assets/images/republicanIcon.png">
-      <img class='header-icon' *ngIf="isDemocrat && !isThird" src="../../assets/images/democratIcon.png">
+      <img class='header-icon' *ngIf="!isDemocrat" src="../../assets/images/republicanIcon.png">
+      <img class='header-icon' *ngIf="isDemocrat" src="../../assets/images/democratIcon.png">
     </ion-title>
     <ion-button fill="clear" id="click-trigger2"><ion-icon name="help-circle-outline"></ion-icon></ion-button>
     <ion-popover trigger="click-trigger2" triggerAction="click">

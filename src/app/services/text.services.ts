@@ -430,7 +430,7 @@ export class TextService {
     const results: Event[] = [
       {
         title:'Super Pac',
-        description:'A super pac ran ads for you in Michigan and Illinois',
+        description:'A Politcal Action Group ran ads for you in Michigan and Illinois',
         points: 3,
         imageSrc:'/assets/images/presidents/campaign.png',
         normalFactDisplay: false,
@@ -441,8 +441,8 @@ export class TextService {
         choiceEvent: false
       },
       {
-        title:'Super Pac/Donation',
-        description:'A super pac ran ads for your opponent in Georgia and Mississippi',
+        title:'Super Pac',
+        description:'A Politcal Action Group ran ads for your opponent in Georgia and Mississippi',
         points: -3,
         imageSrc:'/assets/images/presidents/campaign.png',
         normalFactDisplay: false,
@@ -453,8 +453,8 @@ export class TextService {
         choiceEvent: false
       },
       {
-        title:'Super Pac/Donation',
-        description:'A super pac ran ads for your opponent in the South West',
+        title:'Super Pac',
+        description:'A Politcal Action Group ran ads for your opponent in the South West',
         points: -2,
         imageSrc:'/assets/images/presidents/campaign.png',
         normalFactDisplay: false,
@@ -465,8 +465,8 @@ export class TextService {
         choiceEvent: false
       },
       {
-        title:'Super Pac/Donation',
-        description:'A super pac ran ads for you in the South West',
+        title:'Super Pac',
+        description:'A Politcal Action Group ran ads for you in the South West',
         points: 2,
         imageSrc:'/assets/images/presidents/campaign.png',
         normalFactDisplay: false,
@@ -477,8 +477,8 @@ export class TextService {
         choiceEvent: false
       },
       {
-        title:'Super Pac/Donation',
-        description:'A super pac ran ads for you in Maine and New Hampshire',
+        title:'Super Pac',
+        description:'A Politcal Action Group ran ads for you in Maine and New Hampshire',
         points: 3,
         imageSrc:'/assets/images/presidents/campaign.png',
         normalFactDisplay: false,
@@ -489,8 +489,8 @@ export class TextService {
         choiceEvent: false
       },
       {
-        title:'Super Pac/Donation',
-        description:'A super pac ran ads for your opponent in Maine and New Hampshire',
+        title:'Super Pac',
+        description:'A Politcal Action Group ran ads for your opponent in Maine and New Hampshire',
         points: -2,
         imageSrc:'/assets/images/presidents/campaign.png',
         normalFactDisplay: false,
@@ -501,8 +501,8 @@ export class TextService {
         choiceEvent: false
       },
       {
-        title:'Super Pac/Donation',
-        description:'A super pac ran ads for your opponent in Oregon and Washington',
+        title:'Super Pac',
+        description:'A Politcal Action Group ran ads for your opponent in Oregon and Washington',
         points: -4,
         imageSrc:'/assets/images/presidents/campaign.png',
         normalFactDisplay: false,
@@ -513,8 +513,8 @@ export class TextService {
         choiceEvent: false
       },
       {
-        title:'Super Pac/Donation',
-        description:'A super pac ran ads for you in the Carolinas',
+        title:'Super Pac',
+        description:'A Politcal Action Group ran ads for you in the Carolinas',
         points: 2,
         imageSrc:'/assets/images/presidents/campaign.png',
         normalFactDisplay: false,
@@ -525,8 +525,8 @@ export class TextService {
         choiceEvent: false
       },
       {
-        title:'Super Pac/Donation',
-        description:'A super pac ran ads for you in Hawaii and Alaska',
+        title:'Super Pac',
+        description:'A Politcal Action Group ran ads for you in Hawaii and Alaska',
         points: 2,
         imageSrc:'/assets/images/presidents/campaign.png',
         normalFactDisplay: false,
@@ -537,8 +537,8 @@ export class TextService {
         choiceEvent: false
       },
       {
-        title:'Super Pac/Donation',
-        description:'A super pac ran ads for your opponent in Hawaii and Alaska',
+        title:'Super Pac',
+        description:'A Politcal Action Group ran ads for your opponent in Hawaii and Alaska',
         points: -2,
         imageSrc:'/assets/images/presidents/campaign.png',
         normalFactDisplay: false,
@@ -549,8 +549,8 @@ export class TextService {
         choiceEvent: false
       },
       {
-        title:'Super Pac/Donation',
-        description:'A super pac ran ads for you in Wisconsin and Minnesota',
+        title:'Super Pac',
+        description:'A Politcal Action Group ran ads for you in Wisconsin and Minnesota',
         points: 3,
         imageSrc:'/assets/images/presidents/campaign.png',
         normalFactDisplay: false,
@@ -561,8 +561,8 @@ export class TextService {
         choiceEvent: false
       },
       {
-        title:'Super Pac/Donation',
-        description:'A super pac ran ads for your opponent in Wisconsin and Minnesota',
+        title:'Super Pac',
+        description:'A Politcal Action Group ran ads for your opponent in Wisconsin and Minnesota',
         points: -2,
         imageSrc:'/assets/images/presidents/campaign.png',
         normalFactDisplay: false,
@@ -573,8 +573,8 @@ export class TextService {
         choiceEvent: false
       },
       {
-        title:'Super Pac/Donation',
-        description:'A super pac ran ads for you in Missouri, Arkansas and Louisianna',
+        title:'Super Pac',
+        description:'A Politcal Action Group ran ads for you in Missouri, Arkansas and Louisianna',
         points: 2,
         imageSrc:'/assets/images/presidents/campaign.png',
         normalFactDisplay: false,
@@ -592,31 +592,33 @@ export class TextService {
     const results: Event[] = [
       {
         title:'Media Tour',
-        description:'You receive some free press as the media spends time covering your story',
+        description:'A National TV show covers you story',
         points: 1,
         imageSrc:'/assets/images/presidents/32-roosevelt.jpg',
-        history: 'FDR was the first president to appear on TV during the 1939 World\'s Fair',
+        history: 'Franklin D Roosevelt was the first president to appear on TV during the 1939 World\'s Fair',
         politicanInvolved: 'Franklin D Roosevelt',
         yearInvolved:'1940',
         normalFactDisplay: false,
         statesInvolved: [],
+        diceEvent: true,
         choiceEvent: false
       },
       {
         title:'Media Tour',
-        description:'You receive some free press as the media spends time covering your story',
+        description:'A National Radio show covers your story',
         points: 1,
         imageSrc:'/assets/images/presidents/29-harding.jpg',
-        history: 'He was the first president to talk over the radio, giving a speech at the dedication of the Lincoln monument',
+        history: 'Warren G Harding was the first president to talk over the radio, giving a speech at the dedication of the Lincoln monument',
         politicanInvolved: 'Warren G Harding',
         yearInvolved:'1920',
         normalFactDisplay: false,
         statesInvolved: [],
+        diceEvent: true,
         choiceEvent: false
       },
       {
         title:'Media Tour',
-        description:'You receive some free press as the media spends time covering your story',
+        description:'A popular website runs a story on you',
         points: 1,
         imageSrc:'/assets/images/presidents/42-clinton.jpg',
         history: 'Bill Clinton was the president when the White House built their first website',
@@ -624,42 +626,7 @@ export class TextService {
         yearInvolved:'1996',
         normalFactDisplay: false,
         statesInvolved: [],
-        choiceEvent: false
-      },
-      {
-        title:'Media Tour',
-        description:'You receive some negative press as the media spends time covering your story',
-        points: -1,
-        imageSrc:'/assets/images/presidents/32-roosevelt.jpg',
-        history: 'FDR was the first president to appear on TV during the 1939 World\'s Fair',
-        politicanInvolved: 'Franklin D Roosevelt',
-        yearInvolved:'1940',
-        normalFactDisplay: false,
-        statesInvolved: [],
-        choiceEvent: false
-      },
-      {
-        title:'Media Tour',
-        description:'You receive some negative press as the media spends time covering your story',
-        points: -1,
-        imageSrc:'/assets/images/presidents/29-harding.jpg',
-        history: 'He was the first president to talk over the radio, giving a speech at the dedication of the Lincoln monument',
-        politicanInvolved: 'Warren G Harding',
-        yearInvolved:'1920',
-        normalFactDisplay: false,
-        statesInvolved: [],
-        choiceEvent: false
-      },
-      {
-        title:'Media Tour',
-        description:'You receive some negative press as the media spends time covering your story',
-        points: -1,
-        imageSrc:'/assets/images/presidents/42-clinton.jpg',
-        history: 'Bill Clinton was the president when the White House built their first website',
-        politicanInvolved: 'Bill Clinton',
-        yearInvolved:'1996',
-        normalFactDisplay: false,
-        statesInvolved: [],
+        diceEvent: true,
         choiceEvent: false
       }
     ];

@@ -8,10 +8,14 @@ import { VotesStore } from '../../stores/votes.store';
   styleUrls: ['election-day.component.css']
 })
 export class ElectionDayPage implements OnInit {
+  isDemocrat: boolean;
+
   constructor(private router: Router, public votes: VotesStore) {}
   //ELECTION DAY PAGE (announce that campaigning is over... display "HOT TOPICS" on voters minds [these could be the tie breakers])
 
   ngOnInit() {
+    this.isDemocrat = this.votes.isDemocrat;
+
     this.votes.finalizeVotes();
 
   }

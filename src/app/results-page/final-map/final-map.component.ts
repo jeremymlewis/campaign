@@ -14,11 +14,13 @@ export class FinalMapPage implements OnInit, AfterViewInit {
   allStates: State[] = [];
   electoralLeft = 0;
   electoralRight = 0;
+  isDemocrat: boolean;
 
   constructor(private router: Router, public votes: VotesStore) {}
   //FINAL MAP PAGE (each state has its own row with 49% - 51% display)
 
   ngOnInit() {
+    this.isDemocrat = this.votes.isDemocrat;
     this.win = this.votes.getUserWon();
     this.calculateScaleOfMap();
     if (this.votes.isDemocrat) {

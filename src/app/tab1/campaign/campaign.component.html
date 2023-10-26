@@ -1,7 +1,9 @@
 <ion-header [translucent]="false">
   <ion-toolbar>
-    <ion-title class="ion-text-center">
-      CAMPAIGN
+    <ion-title>
+      Visit a State
+      <img class='header-icon' *ngIf="!isDemocrat" src="../../../assets/images/republicanIcon.png">
+      <img class='header-icon' *ngIf="isDemocrat" src="../../../assets/images/democratIcon.png">
     </ion-title>
     <ion-button fill="clear" id="click-triggerCa"><ion-icon name="help-circle-outline"></ion-icon></ion-button>
     <ion-popover trigger="click-triggerCa" triggerAction="click">
@@ -18,79 +20,40 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <div style="margin-left: 2px; margin-top: 2px;">
+    <ion-button class="button43" size="small" [disabled]="!canBack" (click)="back()"><ion-icon name="arrow-back-circle-outline"></ion-icon>Back To Options</ion-button>
+  </div>
   <div class="center">
   <h1>Choose 1 state to visit</h1>
   </div>
-
-
-  <ion-list>
+  <div class="center">
+    <p>You will hold an in-person rally to raise support</p>
+  </div>
+  <ion-list [inset]="true" style="width: 80%; margin-left:10%; border: 1px black solid;">
     <ion-item>
       <ion-select [(ngModel)]="chosenState" placeholder="Select a state...">
-        <ion-select-option *ngFor="let state of states" [value]="state.protected + state.abbreviation">{{state.protected}}{{state.name}} ({{state | scoreDisplay}}) ({{state.college}} votes)</ion-select-option>
-
-        <!-- <ion-select-option value="AL,2">Alabama (+2 Rep)</ion-select-option>
-        <ion-select-option value="AK,1">Alaska (+1 Rep)</ion-select-option>
-        <ion-select-option value="AZ,0">Arizona</ion-select-option>
-        <ion-select-option value="AR,2">Arkansas (+2 Rep)</ion-select-option>
-        <ion-select-option value="CA,3">California (+1 Dem)</ion-select-option>
-        <ion-select-option value="CO,0">Colorado</ion-select-option>
-        <ion-select-option value="CT,4">Connecticut (+2 Dem)</ion-select-option>
-        <ion-select-option value="DE,4">Delaware (+2 Dem)</ion-select-option>
-        <ion-select-option value="DC,4">D.C. (+2 Dem)</ion-select-option>
-        <ion-select-option value="FL,0">Florida</ion-select-option>
-        <ion-select-option value="GA,0">Georgia</ion-select-option>
-        <ion-select-option value="HI,3">Hawaii (+1 Dem)</ion-select-option>
-        <ion-select-option value="ID,2">Idaho (+2 Rep)</ion-select-option>
-        <ion-select-option value="IL,3">Illinois (+1 Dem)</ion-select-option>
-        <ion-select-option value="IN,1">Indiana (+1 Rep)</ion-select-option>
-        <ion-select-option value="IA,0">Iowa</ion-select-option>
-        <ion-select-option value="KS,2">Kansas (+2 Rep)</ion-select-option>
-        <ion-select-option value="KY,2">Kentucky (+2 Rep)</ion-select-option>
-        <ion-select-option value="LA,1">Louisiana (+1 Rep)</ion-select-option>
-        <ion-select-option value="ME,0">Maine</ion-select-option>
-        <ion-select-option value="MD,4">Maryland (+2 Dem)</ion-select-option>
-        <ion-select-option value="MA,4">Massachusetts (+2 Dem)</ion-select-option>
-        <ion-select-option value="MI,0">Michigan</ion-select-option>
-        <ion-select-option value="MN,3">Minnesota (+1 Dem)</ion-select-option>
-        <ion-select-option value="MS,1">Mississippi (+1 Rep)</ion-select-option>
-        <ion-select-option value="MO,1">Missouri (+1 Rep)</ion-select-option>
-        <ion-select-option value="MT,1">Montana (+1 Rep)</ion-select-option>
-        <ion-select-option value="NE,2">Nebraska (+2 Rep)</ion-select-option>
-        <ion-select-option value="NV,0">Nevada</ion-select-option>
-        <ion-select-option value="NH,0">New Hampshire</ion-select-option>
-        <ion-select-option value="NJ,4">New Jersey (+2 Dem)</ion-select-option>
-        <ion-select-option value="NM,0">New Mexico</ion-select-option>
-        <ion-select-option value="NY,4">New York (+2 Dem)</ion-select-option>
-        <ion-select-option value="NC,0">North Carolina</ion-select-option>
-        <ion-select-option value="ND,2">North Dakota (+2 Rep)</ion-select-option>
-        <ion-select-option value="OH,0">Ohio</ion-select-option>
-        <ion-select-option value="OK,2">Oklahoma (+2 Rep)</ion-select-option>
-        <ion-select-option value="OR,3">Oregon (+1 Dem)</ion-select-option>
-        <ion-select-option value="PA,0">Pennsylvania</ion-select-option>
-        <ion-select-option value="RI,4">Rhode Island (+2 Dem)</ion-select-option>
-        <ion-select-option value="SC,1">South Carolina (+1 Rep)</ion-select-option>
-        <ion-select-option value="SD,2">South Dakota (+2 Rep)</ion-select-option>
-        <ion-select-option value="TN,2">Tennessee (+2 Rep)</ion-select-option>
-        <ion-select-option value="TX,1">Texas (+1 Rep)</ion-select-option>
-        <ion-select-option value="UT,2">Utah (+2 Rep)</ion-select-option>
-        <ion-select-option value="VT,4">Vermont (+2 Dem)</ion-select-option>
-        <ion-select-option value="VI,0">Virginia</ion-select-option>
-        <ion-select-option value="WA,3">Washington (+1 Dem)</ion-select-option>
-        <ion-select-option value="WV,2">West Virginia (+2 Rep)</ion-select-option>
-        <ion-select-option value="WI,0">Wisconsin</ion-select-option>
-        <ion-select-option value="WY,2">Wyoming (+2 Rep)</ion-select-option> -->
+        <ion-select-option *ngFor="let state of states" [value]="state">{{state.protected}}{{state.name}} ({{state | scoreDisplay}}) ({{state.college}} votes)</ion-select-option>
       </ion-select>
     </ion-item>
   </ion-list>
 
-  <div class="center">
-    <p>(States marked with a * since they are strongholds for the other party)</p>
+  <div *ngIf="!chosenState"  class="center">
+    <div style="height: 160px; border-radius: 8px; border: 2px black solid; width: 80%; left: 10%;">
+      <img style="height: 156px;" src="../../../assets/images/USmystery.png">
+    </div>
   </div>
+
+  <div *ngIf="chosenState"  class="center">
+    <div style="height: 160px; border-radius: 8px; border: 2px black solid; width: 80%; left: 10%;">
+      <img style="height: 100px;" src="../../../assets/images/states/{{chosenState.abbreviation}}-{{chosenState.name.replace(' ', '-')}}.png">
+      <p style="font-size: 18px;">Leans: {{chosenState | scoreDisplay}}</p>
+      <p style="font-size: 18px;">Electoral Votes: {{chosenState.college}}</p>
+      <h2 style="color: black; margin-top: 0px; position: relative; bottom: 120px;">{{chosenState.name}}</h2>
+    </div>
+  </div>
+
+  <br>
 
   <app-dice [slot0]='[1]' val0="+0%" [slot1]="[2, 3]" val1="+1%" [slot2]='[4, 5]' val2="+2%" [slot3]="[6]" val3="+3%" [canClick]="!!chosenState" (rollStarted)="rollStarted()" (diceRolled)="handleRoll($event)"></app-dice>
   <br><br>
-
-  <div class="center">
-  <button class="button-53" role="button" [disabled]="!canBack"(click)="back()">Back To Options</button>
-  </div>
 </ion-content>

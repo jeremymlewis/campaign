@@ -2,9 +2,11 @@
   <ion-toolbar>
     <ion-title class="ion-text-center">
       Election Results
+      <img class='header-icon' *ngIf="!isDemocrat" src="../../../assets/images/republicanIcon.png">
+      <img class='header-icon' *ngIf="isDemocrat" src="../../../assets/images/democratIcon.png">
     </ion-title>
-    <ion-button fill="clear" id="click-triggerRs"><ion-icon name="help-circle-outline"></ion-icon></ion-button>
-    <ion-popover trigger="click-triggerRs" triggerAction="click">
+    <ion-button fill="clear" id="click-triggerFns"><ion-icon name="help-circle-outline"></ion-icon></ion-button>
+    <ion-popover trigger="click-triggerFns" triggerAction="click">
       <ng-template>
         <ion-content class="ion-padding">Results. Here you see if you win</ion-content>
       </ng-template>
@@ -177,7 +179,7 @@
       </div>
     </div>
     <div class="center">
-    <ion-button style="position: fixed; bottom: 20px;" (click)="mainMenu()">Return to Main Menu</ion-button>
+    <ion-button class="button43" style="position: fixed; bottom: 20px;" (click)="mainMenu()">Return to Main Menu</ion-button>
   </div>
   <div style="height: 15%;"><br></div>
 

@@ -11,6 +11,6 @@ export class WelcomePage {
   constructor(private route: Router, private votes: VotesStore) {}
 
   continue() {
-    this.route.navigateByUrl('/options');
+    this.route.navigateByUrl('/');
   }
 }

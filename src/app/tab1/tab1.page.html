@@ -5,9 +5,6 @@
       <img class='header-icon' *ngIf="!isDemocrat && !isThird" src="../../assets/images/republicanIcon.png">
       <img class='header-icon' *ngIf="isDemocrat && !isThird" src="../../assets/images/democratIcon.png">
     </ion-title>
-    <p class="subtitle" *ngIf="isThird">
-    Party: {{partyName}}
-    </p>
     <ion-button fill="clear" id="click-trigger1"><ion-icon name="help-circle-outline"></ion-icon></ion-button>
     <ion-popover trigger="click-trigger1" triggerAction="click">
       <ng-template>
@@ -31,16 +28,16 @@
   <div class="center">
     <p>{{getCurrentTurn()}}</p>
   </div>
-  <!-- <ion-button class="option" (click)="fundraise()"><img src="../../assets/images/funds.png"> Fundraise!</ion-button>
-  <ion-button class="option" (click)="campaign()"><img src="../../assets/images/campaign.png"> Campaign!</ion-button>
-  <ion-button class="option" (click)="advertising()"><img src="../../assets/images/ads.png"> Advertise!</ion-button> -->
+  <!-- <ion-button class="button43" class="option" (click)="fundraise()"><img src="../../assets/images/funds.png"> Fundraise!</ion-button>
+  <ion-button class="button43" class="option" (click)="campaign()"><img src="../../assets/images/campaign.png"> Campaign!</ion-button>
+  <ion-button class="button43" class="option" (click)="advertising()"><img src="../../assets/images/ads.png"> Advertise!</ion-button> -->
   <ion-button class="option button43" (click)="fundraise()">FUNDRAISE</ion-button>
   <ion-button class="option button43" (click)="advertising()" [disabled]="!votes.funds">
     <div>
       <p style="margin-bottom: 1px;">ADVERTISE</p>
-      <p style="font-size: small; margin-top: 0px;">COSTS $10 MILLION</p>
+      <p style="font-size: small; margin-top: 0px;">COSTS $1 MILLION</p>
       <p style="font-size: small; margin-top: 0px;">({{votes.funds}} AVAILABLE)</p>
     </div>
   </ion-button>
-  <ion-button class="option button43" (click)="campaign()">CAMPAIGN</ion-button>
+  <ion-button class="option button43" (click)="campaign()">VISIT A STATE</ion-button>
 </ion-content>
