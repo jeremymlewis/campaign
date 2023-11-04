@@ -12,7 +12,7 @@
           <h3>Running Advertisements!</h3>
           <p>Ads here are run on regional TV channels, so you can pick any of the 8 available regions.</p>
           <p>Ads are great for influencing multiple states in 1 turn.</p>
-          <p>Sometimes, the ads will have no effect on the people in these regions.</p>
+          <p>Sometimes, the ads will have no effect on the people in these regions. Your roll will determine how effective they are!</p>
         </ion-content>
       </ng-template>
     </ion-popover>
@@ -22,12 +22,8 @@
 
 <ion-content [fullscreen]="true">
 
-  <div style="margin-left: 2px; margin-top: 2px;">
-    <ion-button class="button43" size="small" [disabled]="!canBack" (click)="back()"><ion-icon name="arrow-back-circle-outline"></ion-icon>Back To Options</ion-button>
-  </div>
-
 <div class="center">
-<h3>Choose where to run advertisements:</h3>
+<h3 style="margin-top: 14px; max-width: 65%;">Choose where to run advertisements:</h3>
 </div>
 
 <!-- Have an icon for each of the state blocks -->
@@ -95,4 +91,8 @@
 <p>Click 'roll' to see how well the ads work.</p>
 </div>
 <app-dice [slot0]='[1]' val0="No Effect" [slot1]="[2, 3, 4, 5]" val1="+1%" [slot2]='[6]' val2="+2%" [canClick]="diceEnabled"  (rollStarted)="rollStarted()"  (diceRolled)="handleRoll($event)"></app-dice>
+<br>
+<div style="margin-left: 2px; margin-top: 2px;">
+  <ion-button class="backbutton" size="small" [disabled]="!canBack" (click)="back()"><ion-icon name="arrow-back-circle-outline"></ion-icon><em>Back</em></ion-button>
+</div>
 </ion-content>

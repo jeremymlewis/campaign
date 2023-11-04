@@ -4,6 +4,8 @@
 /** Ionic CSS Variables **/
 :root {
 
+
+
   --ion-background-color: #ffffff;
   --ion-font-family: ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
   /** JERMY GLOBAL COLORS **/
@@ -199,6 +201,9 @@
 }
 
 .button43 {
+  --background: none;
+  background-size: 100% auto;
+  background-image: linear-gradient(to right, #4bbd73 0%, #25a652 51%, #128139 100%);
   border-right: #000000 solid 3px !important;
   border-bottom: #000000 solid 3px !important;
   border-radius: 12px;

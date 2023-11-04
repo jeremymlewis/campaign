@@ -23,11 +23,11 @@ export class FinalMapPage implements OnInit, AfterViewInit {
     this.isDemocrat = this.votes.isDemocrat;
     this.win = this.votes.getUserWon();
     this.calculateScaleOfMap();
-    if (this.votes.isDemocrat) {
-      this.votes.addGameStats(this.win,true,this.votes.getFinalBlue());
-    } else {
-      this.votes.addGameStats(this.win,false,this.votes.getFinalRed());
-    }
+    // if (this.votes.isDemocrat) {
+    //   this.votes.addGameStats(this.win,true,this.votes.getFinalBlue());
+    // } else {
+    //   this.votes.addGameStats(this.win,false,this.votes.getFinalRed());
+    // }
   }
 
   ngAfterViewInit() {

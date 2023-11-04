@@ -1,28 +1,35 @@
-<ion-content [fullscreen]="true">
+<ion-header [translucent]="false">
+  <ion-toolbar>
+    <ion-title>
+      Party Selection
+    </ion-title>
+    <ion-button fill="clear" id="click-triggerChoose"><ion-icon name="help-circle-outline"></ion-icon></ion-button>
+    <ion-popover trigger="click-triggerChoose" triggerAction="click">
+      <ng-template>
+        <ion-content class="ion-padding">
+          <h3>Choose a party!</h3>
+          <p>There are 2 major parties in the USA, the Republican Party and the Democratic Party.</p>
+          <p>Depending on which party you choose, different states will support you.</p>
+        </ion-content>
+      </ng-template>
+    </ion-popover>
+  </ion-toolbar>
+</ion-header>
 
-<ion-grid>
-  <br><br>
+
+
+<ion-content [fullscreen]="true">
+  <div class="fix-center">
+    <ion-button class="button43" (click)="back()"><ion-icon name="arrow-back-circle-outline"></ion-icon>Back To Main Menu</ion-button>
+  </div>
+<br>
 <h1>Choose your party!</h1>
-<br><br>  <br><br>
+<br>
 <div class="center">
-<ion-button class="button43" color="clear" class="party-button" (click)="continue('rep')" style="background: url(../../assets/RepBackground.png) no-repeat center/cover fixed;"><br><p>REPUBLICAN</p></ion-button>
+<button color="clear" class="party-button button43 extra" (click)="continue('rep')" style="background: url(../../assets/RepBackground.png) no-repeat center/cover fixed;"><br><p>REPUBLICAN</p></button>
 </div>
-<br><br>
-<br><br>
 <div class="center">
-<ion-button class="button43"  color="clear" class="party-button" (click)="continue('dem')" style="background: url(../../assets/DemBackground.png) no-repeat center/cover fixed;"><br><p>DEMOCRAT</p></ion-button>
+<button color="clear" class="party-button button43 extra" (click)="continue('dem')" style="background: url(../../assets/DemBackground.png) no-repeat center/cover fixed;"><br><p>DEMOCRAT</p></button>
 </div>
-<!-- <div class="center">
-  <ion-button class="button43"  color="clear" class="party-button" [disabled]="true" (click)="continue('three')" style="background: url(../../assets/images/thirdWide.png) no-repeat center/cover fixed;">
-    <div>
-      <p style="margin-bottom: 1px; font-size: xx-large;">
-        <ion-icon name="lock-closed"></ion-icon>
-        THIRD PARTY
-        <ion-icon name="lock-closed"></ion-icon></p>
-      <p style="font-size: medium; margin-top: 0px;">(HARD DIFFICULTY)</p>
-    </div>
-  </button>
-  </div> -->
-</ion-grid>
 
 </ion-content>

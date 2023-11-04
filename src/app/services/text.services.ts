@@ -54,6 +54,18 @@ export class TextService {
       },
       {
         title:'Scandal',
+        description:'Your opponent\'s campaign manager is arrested',
+        points: 2,
+        imageSrc:'',
+        history: '',
+        politicanInvolved: '',
+        yearInvolved:'',
+        normalFactDisplay: true,
+        statesInvolved: [],
+        choiceEvent: false
+      },
+      {
+        title:'Scandal',
         description:'A leak from private fundraising event reveals some bad comments you made',
         points: -2,
         imageSrc:'',
@@ -66,8 +78,8 @@ export class TextService {
       },
       {
         title:'Scandal',
-        description:'An embarrasing photo from college resurfaces',
-        points: -2,
+        description:'An embarrasing old photo of your opponent resurfaces',
+        points: 2,
         imageSrc:'',
         history: '',
         politicanInvolved: '',
@@ -90,8 +102,8 @@ export class TextService {
       },
       {
         title:'Scandal',
-        description:'A company you are associated with has an embezzlement scandal',
-        points: -2,
+        description:'Your opponent\'s company has an embezzlement scandal',
+        points: 2,
         imageSrc:'',
         history: '',
         politicanInvolved: '',
@@ -110,6 +122,18 @@ export class TextService {
         title:'Gaffe',
         description:'One of your thoughts doesn\'t translate well into words during an interview',
         points: -1,
+        imageSrc:'/assets/images/presidents/43-bush.jpg',
+        history: 'During an event in Michigan, Bush said “The human and the fish can coexist peacefully” during a discussion on energy',
+        politicanInvolved: 'George W Bush',
+        yearInvolved:'2000',
+        normalFactDisplay: true,
+        statesInvolved: ['MI','PA','WI','OH','IL'],
+        choiceEvent: false
+      },
+      {
+        title:'Gaffe',
+        description:'One of your opponent\'s thoughts doesn\'t translate well into words during an interview',
+        points: 1,
         imageSrc:'/assets/images/presidents/43-bush.jpg',
         history: 'During an event in Michigan, Bush said “The human and the fish can coexist peacefully” during a discussion on energy',
         politicanInvolved: 'George W Bush',
@@ -144,8 +168,8 @@ export class TextService {
       },
       {
         title:'Gaffe',
-        description:'You misremember a common saying',
-        points: -1,
+        description:'Your opponent misremembers a common saying',
+        points: 1,
         imageSrc:'/assets/images/presidents/43-bush.jpg',
         history: 'During a speech in Nashville, Bush said: "There\'s an old saying in Tennessee - I know it\'s in Texas, probably in Tennessee - that says, fool me once, shame on - shame on you. Fool me - you can\'t get fooled again."',
         politicanInvolved: 'George W Bush',
@@ -280,8 +304,8 @@ export class TextService {
       {
         normalFactDisplay: true,
         title:'Endorsement',
-        description:'You have been endorsed by famous actor, George Clooney',
-        points: 3,
+        description:'Your opponent has been endorsed by famous actor, George Clooney',
+        points: -3,
         imageSrc:'/assets/images/presidents/44-obama.jpg',
         history: 'During an interview with "Good Morning America", Clooney praised the president-to-be and offered an endorsement.',
         politicanInvolved: 'Barack Obama',
@@ -327,8 +351,8 @@ export class TextService {
       },
       {
         title:'Endorsement',
-        description:'You have been endorsed by Planned Parenthood Action Fund',
-        points: 1,
+        description:'Your opponet has been endorsed by Planned Parenthood Action Fund',
+        points: -1,
         imageSrc:'/assets/images/presidents/hillary_clinton.jpg',
         history: 'Reproductive rights were a central issue in the 2016 election',
         politicanInvolved: 'Hillary Clinton',
@@ -341,6 +365,18 @@ export class TextService {
         title:'Endorsement',
         description:'You are endorsed by a former president!',
         points: 1,
+        imageSrc:'/assets/images/presidents/43-bush.jpg',
+        history: 'He was endorsed by his father, George H W Bush, who had held office 8 years earlier',
+        politicanInvolved: 'George W Bush',
+        yearInvolved:'2000',
+        normalFactDisplay: true,
+        statesInvolved: [],
+        choiceEvent: false
+      },
+      {
+        title:'Endorsement',
+        description:'Your opponent is endorsed by a former president!',
+        points: -1,
         imageSrc:'/assets/images/presidents/43-bush.jpg',
         history: 'He was endorsed by his father, George H W Bush, who had held office 8 years earlier',
         politicanInvolved: 'George W Bush',
@@ -375,6 +411,30 @@ export class TextService {
       },
       {
         title:'Endorsement',
+        description:'Your opponent has been endorsed by the governor of Michigan',
+        points: -2,
+        imageSrc:'/assets/images/presidents/32-roosevelt.jpg',
+        history: 'FDR was endorsed early on by the Governor of California, Hiran Johnson',
+        politicanInvolved: 'Franklin D Roosevelt',
+        yearInvolved:'1932',
+        normalFactDisplay: true,
+        statesInvolved: ['MI'],
+        choiceEvent: false
+      },
+      {
+        title:'Endorsement',
+        description:'Your opponent has been endorsed by the governor of Pennsylvania',
+        points: -2,
+        imageSrc:'/assets/images/presidents/32-roosevelt.jpg',
+        history: 'FDR was endorsed early on by the Governor of California, Hiran Johnson',
+        politicanInvolved: 'Franklin D Roosevelt',
+        yearInvolved:'1932',
+        normalFactDisplay: true,
+        statesInvolved: ['PA'],
+        choiceEvent: false
+      },
+      {
+        title:'Endorsement',
         description:'You have been endorsed by the governor of Florida',
         points: 2,
         imageSrc:'/assets/images/presidents/32-roosevelt.jpg',
@@ -395,6 +455,18 @@ export class TextService {
         yearInvolved:'1932',
         normalFactDisplay: true,
         statesInvolved: ['NC'],
+        choiceEvent: false
+      },
+      {
+        title:'Endorsement',
+        description:'Your opponent has been endorsed by the governor of Colorado',
+        points: 2,
+        imageSrc:'/assets/images/presidents/32-roosevelt.jpg',
+        history: 'FDR was endorsed early on by the Governor of California, Hiran Johnson',
+        politicanInvolved: 'Franklin D Roosevelt',
+        yearInvolved:'1932',
+        normalFactDisplay: true,
+        statesInvolved: ['CO'],
         choiceEvent: false
       },
       {
@@ -502,6 +574,18 @@ export class TextService {
       },
       {
         title:'Super Pac',
+        description:'A Politcal Action Group ran ads for your opponent in Virginia and West Virginia',
+        points: -2,
+        imageSrc:'/assets/images/presidents/campaign.png',
+        normalFactDisplay: false,
+        history: 'Super Pacs affect elections with money',
+        politicanInvolved: '',
+        yearInvolved:'',
+        statesInvolved: ['VA', 'WV'],
+        choiceEvent: false
+      },
+      {
+        title:'Super Pac',
         description:'A Politcal Action Group ran ads for your opponent in Oregon and Washington',
         points: -4,
         imageSrc:'/assets/images/presidents/campaign.png',
@@ -509,7 +593,7 @@ export class TextService {
         history: 'Super Pacs affect elections with money',
         politicanInvolved: '',
         yearInvolved:'',
-        statesInvolved: ['MI', 'IL'],
+        statesInvolved: ['OR', 'WA'],
         choiceEvent: false
       },
       {
@@ -526,32 +610,32 @@ export class TextService {
       },
       {
         title:'Super Pac',
-        description:'A Politcal Action Group ran ads for you in Hawaii and Alaska',
-        points: 2,
+        description:'A Politcal Action Group ran ads for your opponent in Florida',
+        points: -3,
         imageSrc:'/assets/images/presidents/campaign.png',
         normalFactDisplay: false,
         history: 'Super Pacs affect elections with money',
         politicanInvolved: '',
         yearInvolved:'',
-        statesInvolved: ['HI', 'AK'],
+        statesInvolved: ['FL'],
         choiceEvent: false
       },
       {
         title:'Super Pac',
-        description:'A Politcal Action Group ran ads for your opponent in Hawaii and Alaska',
+        description:'A Politcal Action Group ran ads for your opponent in Texas',
         points: -2,
         imageSrc:'/assets/images/presidents/campaign.png',
         normalFactDisplay: false,
         history: 'Super Pacs affect elections with money',
         politicanInvolved: '',
         yearInvolved:'',
-        statesInvolved: ['HI', 'AK'],
+        statesInvolved: ['TX'],
         choiceEvent: false
       },
       {
         title:'Super Pac',
         description:'A Politcal Action Group ran ads for you in Wisconsin and Minnesota',
-        points: 3,
+        points: 2,
         imageSrc:'/assets/images/presidents/campaign.png',
         normalFactDisplay: false,
         history: 'Super Pacs affect elections with money',
@@ -563,13 +647,25 @@ export class TextService {
       {
         title:'Super Pac',
         description:'A Politcal Action Group ran ads for your opponent in Wisconsin and Minnesota',
-        points: -2,
+        points: -3,
         imageSrc:'/assets/images/presidents/campaign.png',
         normalFactDisplay: false,
         history: 'Super Pacs affect elections with money',
         politicanInvolved: '',
         yearInvolved:'',
         statesInvolved: ['WI', 'MN'],
+        choiceEvent: false
+      },
+      {
+        title:'Super Pac',
+        description:'A Politcal Action Group ran ads for your opponent in Colorado and Nevada',
+        points: -3,
+        imageSrc:'/assets/images/presidents/campaign.png',
+        normalFactDisplay: false,
+        history: 'Super Pacs affect elections with money',
+        politicanInvolved: '',
+        yearInvolved:'',
+        statesInvolved: ['CO', 'NV'],
         choiceEvent: false
       },
       {
@@ -618,7 +714,7 @@ export class TextService {
       },
       {
         title:'Media Tour',
-        description:'A popular website runs a story on you',
+        description:'A popular website runs a big story on you',
         points: 1,
         imageSrc:'/assets/images/presidents/42-clinton.jpg',
         history: 'Bill Clinton was the president when the White House built their first website',
@@ -645,19 +741,36 @@ export class TextService {
         yearInvolved:'2004',
         normalFactDisplay: false,
         statesInvolved: ['CA', 'AZ', 'NM', 'TX'],
-        statesInvolved2: ['NJ', 'NH', 'FL', 'CO'],
+        statesInvolved2: ['NV', 'CO', 'FL', 'TX'],
         choiceEvent: true,
         choiceText1: 'More Border Patrol',
         choiceText2: 'Less Border Patrol',
         choicePoints1: 2,
-        choicePoints2: -1,
+        choicePoints2: -2,
+      },
+      {
+        title:'Hot Button Issue',
+        description:'National Healthcare',
+        points: 1,
+        imageSrc:'/assets/images/presidents/43-bush.jpg',
+        history: 'People want to know your position on expanding Medicare',
+        politicanInvolved: '',
+        yearInvolved:'2004',
+        normalFactDisplay: false,
+        statesInvolved: ['ID', 'AZ', 'IA', 'OH'],
+        statesInvolved2: ['NM', 'IL', 'OR', 'WA'],
+        choiceEvent: true,
+        choiceText1: 'Expand Medicare',
+        choiceText2: 'Reduce Medicare',
+        choicePoints1: -3,
+        choicePoints2: -3,
       },
       {
         title:'Hot Button Issue',
         description:'Car Company Bailout',
         points: 1,
         imageSrc:'/assets/images/presidents/43-bush.jpg',
-        history: 'Your position on Car Company Bailout is very popular in midwest states',
+        history: 'Car Companies in the midwest are seeking government funds in a "Bail Out" to avoid layoffs',
         politicanInvolved: '',
         yearInvolved:'2004',
         normalFactDisplay: false,
@@ -674,12 +787,12 @@ export class TextService {
         description:'Coal Mining',
         points: 2,
         imageSrc:'/assets/images/presidents/43-bush.jpg',
-        history: 'People in Appalacian states want to know if you prefer Coal Mining or Green Energy',
+        history: 'Appalacian Coal Miners want your support of coal mining, while New Englanders are asking you to support Green Energy',
         politicanInvolved: '',
         yearInvolved:'2004',
         normalFactDisplay: false,
         statesInvolved: ['WV', 'KY', 'PA'],
-        statesInvolved2: ['ID', 'VA', 'ME'],
+        statesInvolved2: ['NH', 'CT', 'ME'],
         choiceEvent: true,
         choiceText1: 'Support Mining',
         choiceText2: 'Suport Green Energy',
@@ -691,7 +804,7 @@ export class TextService {
         description:'Water Conservation',
         points: 1,
         imageSrc:'/assets/images/presidents/43-bush.jpg',
-        history: 'A South Western governor want the Federal Gov to spend more on Dams and Water Conservation',
+        history: 'A South Western governor asks if you will spend more on Dams and Water Conservation',
         politicanInvolved: '',
         yearInvolved:'2004',
         normalFactDisplay: false,
@@ -699,7 +812,7 @@ export class TextService {
         statesInvolved2: ['NV', 'UT', 'AZ', 'WY'],
         choiceEvent: true,
         choiceText1: 'Spend More',
-        choiceText2: 'Ignore calls for spending',
+        choiceText2: 'Keep Spending the Same',
         choicePoints1: 2,
         choicePoints2: -1,
       },
@@ -718,7 +831,24 @@ export class TextService {
         choiceText1: 'Give money to flooded states',
         choiceText2: 'Keep money in defense budget',
         choicePoints1: 2,
-        choicePoints2: -1,
+        choicePoints2: -4,
+      },
+      {
+        title:'Hot Button Issue',
+        description:'A Huricane has Stuck the East Coast!',
+        points: 2,
+        imageSrc:'/assets/images/presidents/43-bush.jpg',
+        history: 'A reporter asks whether you support taking money from the National Parks budget to give aid to effected states.',
+        politicanInvolved: '',
+        yearInvolved:'2004',
+        normalFactDisplay: false,
+        statesInvolved: ['NC', 'SC', 'VA', 'MD'],
+        statesInvolved2: ['NC', 'SC', 'VA', 'MD'],
+        choiceEvent: true,
+        choiceText1: 'Give money to flooded states',
+        choiceText2: 'Keep money in defense budget',
+        choicePoints1: 2,
+        choicePoints2: -2,
       },
     ];
     return results;
@@ -729,139 +859,59 @@ export class TextService {
     return results;
   }
 
-  public getEvents(): Event[] {
-    const results: Event[] = [
-      {
-        title:'Hot Button Issue',
-        description:'Car Company Bailout',
-        points: 2,
-        imageSrc:'/assets/images/presidents/43-bush.jpg',
-        history: 'Your position on Car Company Bailout is very popular in midwest states',
-        politicanInvolved: '',
-        yearInvolved:'2004',
-        normalFactDisplay: false,
-        statesInvolved: ['MI', 'WI', 'PA'],
-        choiceEvent: true
-      },
-      // {
-      //   title:'Hot Button Issue',
-      //   description:'You and your opponent are asked to weigh in on a Hot Button Issue. How you respond will decide if the National Climate moves in your favor, or whether your opponent will benefit.',
-      //   rollMap:[-1,-1,-1,1,1,1],
-      //   imageSrc:'',
-      //   rollMapDescription1:'1, 2, 3 will move polls -1 point',
-      //   rollMapDescription2:'4, 5, 6 will move polls +1 point'
-      // },
-      // {
-      //   title:'Media Tour',
-      //   description:'Is all press good press? A top media outlet is talking about you. Roll to decide if this press helps you, or hurts you in the National Climate.',
-      //   rollMap:[-1,-1,1,1,2,2],
-      //   imageSrc:'',
-      //   rollMapDescription1:'Rolling 1 or 2 will move the polls -1 point',
-      //   rollMapDescription2:'3 or 4 will move polls +1, 5 or 6 will move polls +2'
-      // },
-      // {
-      //   title:'Debate 1',
-      //   description:'Hosted by Fox at a University in your opponent\'s home state.  All eyes are on you! Roll to see how your performance affects the national polls.',
-      //   rollMap:[-1,-1,-1,1,1,1],
-      //   imageSrc:'',
-      //   rollMapDescription1:'1, 2, 3 will move polls -1 point',
-      //   rollMapDescription2:'4, 5, 6 will move polls +1 point'
-      // },
-      // {
-      //   title:'SuperPac',
-      //   description:'Money, Money, Money. Special interest groups are pouring money into the race. Roll to see if this hurts your campaign, or gives you the boost you need.',
-      //   rollMap:[-3,-2,-1,1,2,3],
-      //   imageSrc:'',
-      //   rollMapDescription1:'Lower rolls hurt you up to -3 points',
-      //   rollMapDescription2:'Higher rolls benefit you up to +3 points'
-      // },
-      // {
-      //   title:'Scandal',
-      //   description:'Uh Oh! You were caught doing some not very presidential things... This could really hurt you in the polls... Roll to see how bad the damage is.',
-      //   rollMap:[-1,-1,-2,-2,-3,-3],
-      //   imageSrc:'',
-      //   rollMapDescription1:'1 or 2 will move polls -1, 3 or 4 will move polls -2',
-      //   rollMapDescription2:'Rolling 5 or 6 will move the polls -3 points'
-      // },
-      // {
-      //   title:'Debate 2',
-      //   description:'Hosted by ABC at a University in the important swing state of Nevada. All eyes are on you! Roll to see how your performance affects the national polls.',
-      //   rollMap:[-1,-1,-1,1,1,1],
-      //   imageSrc:'',
-      //   rollMapDescription1:'1, 2, 3 will move polls -1 point',
-      //   rollMapDescription2:'4, 5, 6 will move polls +1 point'
-      // },
-      // {
-      //   title:'Endorsement',
-      //   description:'You just received an endorsement from a former president. This will turn the National Climate in your favor! Roll to see how many points the National Climate will move.',
-      //   rollMap:[1,1,2,2,3,3],
-      //   imageSrc:'',
-      //   rollMapDescription1:'1 or 2 will move polls +1, 3 or 4 will move polls +2',
-      //   rollMapDescription2:'Rolling 5 or 6 will move the polls +3 points'
-      // },
-      // {
-      //   title:'Debate 3',
-      //   description:'Hosted by CNN. Many of tonights questions are taken from local concerned citizens. All eyes are on you! Roll to see how your performance affects the national polls.',
-      //   rollMap:[-1,-1,-1,1,1,1],
-      //   imageSrc:'',
-      //   rollMapDescription1:'1, 2, 3 will move polls -1 point',
-      //   rollMapDescription2:'4, 5, 6 will move polls +1 point'
-      // },
-      // {
-      //   title:'Endorsement',
-      //   description:'You just received an endorsement from a hall of fame MLB player! This will turn the National Climate in your favor! Roll to see how many points the National Climate will move.',
-      //   rollMap:[1,1,2,2,3,3],
-      //   imageSrc:'',
-      //   rollMapDescription1:'1 or 2 will move polls +1, 3 or 4 will move polls +2',
-      //   rollMapDescription2:'Rolling 5 or 6 will move the polls +3 points'
-      // },
-      // {
-      //   title:'Scandal',
-      //   description:'Uh Oh! You were caught doing some not very presidential things... This could really hurt you in the polls... Roll to see how bad the damage is.',
-      //   rollMap:[-1,-1,-2,-2,-3,-3],
-      //   imageSrc:'',
-      //   rollMapDescription1:'1 or 2 will move polls -1, 3 or 4 will move polls -2',
-      //   rollMapDescription2:'Rolling 5 or 6 will move the polls -3 points'
-      // },
-    ];
-    return results;
-
-    /*     {
-      title:'Gaffes',
-      description:'',
-      rollMap:[-1,-1,-2,-2,-3,-3],
-      imageSrc:''
-    },
-    */
-  }
-
-
   public getTurns(): string[] {
     const turns = [
-      'It is your first turn! Each week you get to choose 1 action. Take your turn by clicking on one of the options below. Your opponent will go next.',
-      'Good job in Week 1! Tap the Map/Polls icon at the bottom of the page to see how you are doing in the Polls.',
-      'Welcome to Week 3! After this week, a SPECIAL EVENT will happen. SPECIAL EVENTS influence the Polls in interesting ways.',
-      'It is your second turn of the round!',
-      'It is your first turn of the round 3!',
-      'It is your second turn of the round. After this turn comes the first presidential debate...',
-      'It is your first turn of the round 4!',
-      'It is your second turn of the round!',
-      'It is your first turn of the round 5!',
-      'It is your second turn of the round!',
-      'It is your first turn of the round 6!',
-      'It is your second turn of the round!  After this turn comes the second presidential debate...',
-      'It is your first turn of the round 7!',
-      'It is your second turn of the round!',
-      'It is your first turn of the round 8!',
-      'It is your second turn of the round!',
-      'It is your first turn of the round 9!',
-      'It is your second turn of the round!  After this turn comes the last presidential debate...',
-      'It is your first turn of the last round!',
-      'It is your final turn of the game!',
-      'Opponent Campaigned',
-      'Opponent Ran Ads',
-      'Opponent Fundraised'];
+      'It is your first turn! Each turn you get to choose 1 action. Click on one of the options below! Your opponent will go next.',
+      'Good job in Round 1! Tap the Map/Polls icon at the bottom of the page to see how you are doing in the Polls.',
+      'Welcome to Round 3! Have you tried fundraising yet?',
+      'It is Round 4.',
+      'It is Round 5. Are you paying attention to your opponent\'s moves? They might affect your strategy.',
+      'It is Round 6. ',
+      'It is Round 7. ',
+      'It is Round 8. You are half way to the Election!',
+      'It is Round 9. ',
+      'It is Round 10. I hope you get a good Event Card this time...',
+      'It is Round 11. ',
+      'It is Round 12. You are doing great. I would vote for you.',
+      'It is Round 13. ',
+      'It is Round 14. We are three rounds away! Check the Map for which last states to target.',
+      'It is Round 15. ',
+      'It is Round 16. This is your last move before election day! Make it count!',];
     return turns;
+  }
+
+  public getFundraisingFacts(): any[] {
+    const facts = [
+      {
+        presidentIcon: '/assets/images/presidents/44-obama.jpg',
+        eventHistory: 'Barack Obama spent $730 Million during the 2008 election'
+      },
+      {
+        presidentIcon: '/assets/images/presidents/37-nixon.jpg',
+        eventHistory: 'Richard Nixon spent $25.4 Million during the 1968 election'
+      },
+      {
+        presidentIcon: '/assets/images/presidents/39-carter.jpg',
+        eventHistory: 'Jimmy Carter spent $33.4 Million during the 1976 election'
+      },
+      {
+        presidentIcon: '/assets/images/presidents/40-reagan.jpg',
+        eventHistory: 'Ronald Reagan spent $57.7 Million during the 1980 election'
+      },
+      {
+        presidentIcon: '/assets/images/presidents/41-bush.jpg',
+        eventHistory: 'George H W Bush spent $80 Million during the 1988 election'
+      },
+      {
+        presidentIcon: '/assets/images/presidents/42-clinton.jpg',
+        eventHistory: 'Bill Clinton spent $107 Million dring the 1992 election'
+      },
+      {
+        presidentIcon: '/assets/images/presidents/43-bush.jpg',
+        eventHistory: 'George W Bush spent $186 Millon during the 2000 election'
+      },
+    ];
+    return facts;
   }
 
 }

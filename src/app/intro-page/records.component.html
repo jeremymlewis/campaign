@@ -7,7 +7,7 @@
     <ion-button fill="clear" id="click-triggerGH"><ion-icon name="help-circle-outline"></ion-icon></ion-button>
     <ion-popover trigger="click-triggerGH" triggerAction="click">
       <ng-template>
-        <ion-content class="ion-padding">Results. Here you see if you win</ion-content>
+        <ion-content class="ion-padding">Check up here on how many games you have played, and how many times you have won!</ion-content>
       </ng-template>
     </ion-popover>
   </ion-toolbar>
@@ -34,8 +34,9 @@
 
     <p>Most Electoral Votes Won: {{highVotes || 0}}</p>
     </div>      <div class="center">
-
-    <ion-button class="button43" (click)="continue()">Back to Main Menu</ion-button>
+    </div>
+    <div class="fix-center">
+      <ion-button class="button43" (click)="continue()"><ion-icon name="arrow-back-circle-outline"></ion-icon>Back To Main Menu</ion-button>
     </div>
 
   </ion-grid>

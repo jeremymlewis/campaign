@@ -24,7 +24,15 @@ p {
   margin-bottom: 2px;
 }
 
+.backbutton {
+  position: fixed;
+  top: 65px;
+  left: 4px;
+}
+
 .center {
+  margin-left: 3px;
+  margin-right: 3px;
   font-size: large;
   text-align: center;
   display: flex;

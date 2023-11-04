@@ -12,7 +12,13 @@
   margin-right: 5%;
 }
 
+.dice {
+  margin-top: 4px;
+}
+
 .center {
+  margin-left: 3px;
+  margin-right: 3px;
   font-size: large;
   text-align: center;
   display: flex;

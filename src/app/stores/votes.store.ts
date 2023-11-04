@@ -141,21 +141,47 @@ export class VotesStore {
   }
 
   public async addGameStats(isWin: boolean, isDem: boolean, votes: number) {
-    const plays = await this.getLocalStorage('plays');
-    const wins = await this.getLocalStorage('wins');
-    const demWins = await this.getLocalStorage('demWins');
-    const repWins = await this.getLocalStorage('repWind');
-    const highVotes = await this.getLocalStorage('highVotes');
+    console.log('add game stats');
+    let plays = await this.getLocalStorage('plays');
+    let wins = await this.getLocalStorage('wins');
+    let demWins = await this.getLocalStorage('demWins');
+    let repWins = await this.getLocalStorage('repWind');
+    let highVotes = await this.getLocalStorage('highVotes');
+    wins = Number(wins);
+    demWins = Number(demWins);
+    repWins = Number(repWins);
+    highVotes = Number(highVotes);
+    plays = Number(plays);
+    if (Number.isNaN(wins)) {
+      wins = 0;
+    }
+    if (Number.isNaN(plays)) {
+      plays = 0;
+    }
+    if (Number.isNaN(demWins)) {
+      demWins = 0;
+    }
+    if (Number.isNaN(repWins)) {
+      repWins = 0;
+    }
+    if (Number.isNaN(highVotes)) {
+      highVotes = 0;
+    }
+    console.log(plays);
+    console.log(wins);
+    console.log(demWins);
+    console.log(repWins);
+    console.log(highVotes);
     this.setLocalStorage('plays', Number(plays) + 1);
     if (votes > Number(highVotes)) {
       this.setLocalStorage('highVotes', votes);
     }
     if (isWin) {
-      this.setLocalStorage('wins', Number(wins) + 1);
+      this.setLocalStorage('wins', wins + 1);
       if (isDem) {
-        this.setLocalStorage('demWins', Number(demWins) + 1);
+        this.setLocalStorage('demWins', demWins + 1);
       } else {
-        this.setLocalStorage('repWins', Number(repWins) + 1);
+        this.setLocalStorage('repWins', repWins + 1);
       }
     }
   }

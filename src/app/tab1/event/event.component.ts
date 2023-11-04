@@ -42,7 +42,6 @@ export class EventPage implements OnInit {
   ngOnInit() {
     this.currentIndex = this.votes.round - 2;
     this.isDemocrat = this.votes.isDemocrat;
-    this.allEvents = this.textService.getEvents();
     this.scandalEvents = this.textService.getScandalEvents();
     this.gaffeEvents = this.textService.getGaffeEvents();
     //this.neutralizeEvents = this.textService.getNeutralizationEvents();
@@ -99,7 +98,7 @@ export class EventPage implements OnInit {
     const currentEventType = this.getCurrentEventType();
     console.log(currentEventType);
     if (currentEventType === 'superPac' ) {
-      return this.superPacEvents[Math.floor(Math.random() * this.endorsementEvents.length)];
+      return this.superPacEvents[Math.floor(Math.random() * this.superPacEvents.length)];
 
       return   {
         title:'Super Pac',

@@ -24,6 +24,19 @@ export class RecordsPage implements OnInit {
     this.highVotes = await this.votes.getLocalStorage('highVotes');
   }
 
+  async ionViewWillEnter() {
+    this.plays = await this.votes.getLocalStorage('plays');
+    this.wins = await this.votes.getLocalStorage('wins');
+    this.demWins = await this.votes.getLocalStorage('demWins');
+    this.repWins = await this.votes.getLocalStorage('repWind');
+    this.highVotes = await this.votes.getLocalStorage('highVotes');
+    console.log(this.plays);
+    console.log(this.wins);
+    console.log(this.demWins);
+    console.log(this.repWins);
+    console.log(this.highVotes);
+  }
+
   continue() {
     this.route.navigateByUrl('/');
   }

@@ -10,6 +10,7 @@
       <ng-template>
         <ion-content class="ion-padding">
           <h3>Special Event</h3>
+          <p>There are tons of events that have effected previous elections. The events could help you, or hurt you. It is always a good idea to check the MAP tab after a special event to see how the race has changed.</p>
         </ion-content>
       </ng-template>
     </ion-popover>
@@ -59,7 +60,7 @@
     </div>
    </div>
 </div>
-<div *ngIf="currentEvent?.diceEvent">
+<div class="dice" *ngIf="currentEvent?.diceEvent">
    <app-dice [slot0]='[1, 2]' val0="-1%" [slot1]="[3, 4, 5, 6]" val1="+1%" (diceRolled)="handleDiceRoll($event)"></app-dice>
 </div>
 

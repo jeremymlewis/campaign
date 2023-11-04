@@ -79,7 +79,10 @@ export class CableNewsPage implements OnInit {
       await this.runSingleStateAnimation(state);
       await new Promise(f => setTimeout(f, this.restTime));
     }
-    this.router.navigateByUrl('/results/final-map', { replaceUrl: true });
+    if (this.router.url === '/results/cable-news') {
+      //Hopefully this takes care of the race condition...
+      this.router.navigateByUrl('/results/final-map', { replaceUrl: true });
+    }
   }
 
   async runSingleStateAnimation(state: State) {

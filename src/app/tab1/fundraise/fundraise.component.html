@@ -13,6 +13,7 @@
           <p>You cant win without money!</p>
           <p>Use the money you gain here to pay for ads on a later turn.</p>
           <p>Since Ads are so powerful, Fundraising is an important way to progress your candadicy</p>
+          <p>Roll the dice to fundraise!</p>
         </ion-content>
       </ng-template>
     </ion-popover>
@@ -21,15 +22,32 @@
 
 
 <ion-content [fullscreen]="true">
-  <div style="margin-left: 2px; margin-top: 2px;">
-    <ion-button class="button43" size="small" [disabled]="!canBack" (click)="back()"><ion-icon name="arrow-back-circle-outline"></ion-icon>Back To Options</ion-button>
+  <div class="center">
+    <h1 style="margin-top: 14px; max-width: 65%;">Fundraise</h1>
   </div>
   <div class="center">
-    <h1>Fundraise</h1>
-    </div>
-    <div style="margin-top: 0px;"  class="center">
-      <p style="margin-top: 0px;" >Roll the dice to raise $1-2 million for advertising!</p>
-    </div>
-<app-dice [slot0]='[1,2,3,4]' val0="$1 Million" [slot1]="[5,6]" val1="$2 Million" (rollStarted)="rollStarted()"  (diceRolled)="handleRoll($event)"></app-dice>
+    <p style="margin-top: 0px;" >During the 2020 presidencial election, candadites spent around $12 Billion total.</p>
+  </div>
+  <div style="margin-top: 0px;" class="center">
+    <p style="margin-top: 0px;" >Roll the dice to raise $1-3 million for advertising!</p>
+  </div>
+<app-dice [slot0]='[1,2,3]' val0="$1 Million" [slot1]="[4,5]" val1="$2 Million" [slot2]="[6]" val2="$3 Million" (rollStarted)="rollStarted()"  (diceRolled)="handleRoll($event)"></app-dice>
+
+<div id="navcontainer">
+  <ul id="navlist" >
+
+    <li id="active">Fun Fact</li>
+      <div class="funfact">
+        <!-- Put this last part in a toast looking box TODO -->
+        <img class="photo" [src]="presidentIcon">
+        <p style="margin-top: 0;">{{eventHistory}}</p>
+      </div>
+    </ul>
+</div>
+
 <br>
+<div style="margin-left: 2px; margin-top: 2px;">
+  <ion-button class="backbutton" size="small" [disabled]="!canBack" (click)="back()"><ion-icon name="arrow-back-circle-outline"></ion-icon><em>Back</em></ion-button>
+</div>
+
 </ion-content>

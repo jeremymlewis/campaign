@@ -39,8 +39,15 @@ input[type='radio'][name='buttonGroup']:checked + label { background-color:#bbbb
   --background: #aff;
 } */
 
+.backbutton {
+  position: fixed;
+  top: 65px;
+  left: 4px;
+}
 
 .center {
+  margin-left: 3px;
+  margin-right: 3px;
   font-size: large;
   text-align: center;
   display: flex;

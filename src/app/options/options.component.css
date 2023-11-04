@@ -9,12 +9,24 @@
 }
 
 .center {
-  position: relative;
-  margin: auto;
-  width: 100%;
-  height: 100%;
+  font-size: large;
+  text-align: center;
   display: flex;
   justify-content: center;
+  align-items: center;
+  left: 50%
+}
+
+.fix-center {
+  position: fixed;
+  bottom: 12px;
+  left: 12px;
+}
+
+.backbutton {
+  position: fixed;
+  top: 65px;
+  left: 4px;
 }
 
 h1 {
@@ -25,15 +37,19 @@ h1 {
   left: 50%
 }
 
-ion-button {
-  border: 2px black solid;
+.extra {
+  border: 2px black solid !important;
   border-radius: 8px;
   --background: none;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
   font-size: 3em;
+  height: 150px;
   color: black;
+  margin-bottom: 4px;
+  margin-top: 4px;
+
 }
 
 p {

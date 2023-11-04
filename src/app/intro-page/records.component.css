@@ -1,8 +1,16 @@
 .center {
+  margin-left: 3px;
+  margin-right: 3px;
   text-align: center;
 
   display: flex;
   justify-content: center;
   align-items: center;
   left: 50%
+}
+
+.fix-center {
+  position: fixed;
+  bottom: 12px;
+  left: 12px;
 }
