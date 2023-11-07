@@ -14,7 +14,7 @@ public getScandalEvents(): Event[] {
       description:'Your opponent spreads a bizarre rumour about you. Voters find this distasteful.',
       points: -2,
       imageSrc:'/assets/images/presidents/09-harrison.jpg',
-      history: 'Known as "The Dead Cow Campaign", Harrison\'s opponent said that he was courtmartialed for killing a cow while in the military',
+      history: 'Known as "The Dead Cow Campaign", Harrison\'s opponent falsely claimed that he was courtmartialed for killing a cow while in the military',
       politicanInvolved: 'William Henry Harrison',
       yearInvolved:'1840',
       normalFactDisplay: true,

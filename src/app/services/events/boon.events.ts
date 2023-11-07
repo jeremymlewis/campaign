@@ -9,11 +9,11 @@ export class BoonEvents {
   public getBoonEvents(): Event[] {
     const results: Event[] = [
       {
-        title:'Boon',
+        title:'Lucky Break',
         description:'Your opponent is rocked by a scandal',
         points: 1,
         imageSrc:'/assets/images/presidents/campaign.png',
-        history: 'Sometimes a bad opponent is more important than a good candidate',
+        history: 'Sometimes a bad opponent is more important than a good candidate...',
         politicanInvolved: '',
         yearInvolved:'',
         normalFactDisplay: false,
@@ -21,8 +21,8 @@ export class BoonEvents {
         choiceEvent: false
       },
       {
-        title:'Boon',
-        description:'A close family member dies, and you handle it very well in the public eye',
+        title:'Lucky Break',
+        description:'You handle a current issue very well in the public eye',
         points: 1,
         imageSrc:'/assets/images/presidents/campaign.png',
         history: 'People often vote for a president who handles things well',
@@ -33,7 +33,7 @@ export class BoonEvents {
         choiceEvent: false
       },
       {
-        title:'Boon',
+        title:'Lucky Break',
         description:'A big swing in the economy occurs',
         points: 1,
         imageSrc:'/assets/images/presidents/campaign.png',

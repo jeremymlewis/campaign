@@ -102,12 +102,12 @@ export class EventPage implements OnInit {
 
   getCurrentEventType(): string {
     const draw = Math.floor(Math.random() * 100);
-    if (draw > 85) {
-      return                 'boon'; // 15%
-    } else if (draw > 75) {
+    if (draw > 95) {
+      return                 'boon'; // 5%
+    } else if (draw > 80) {
       return                 'mediaTour'; // 15%
     } else  if (draw > 60) {
-      return                 'endorsement'; // 15%
+      return                 'endorsement'; // 20%
     } else if (draw > 45) {
       return                 'superPac'; // 10%
     } else if (draw > 20) {
@@ -158,7 +158,7 @@ export class EventPage implements OnInit {
         toastString = 'This moves the Climate ' + (-roll) +  ' points toward your opponent in ' + statesInvolved;
         toastTitle = 'Tough luck...';
       }  else {
-        toastTitle = 'Great Choice!';
+        toastTitle = 'Smart Choice!';
         toastString = 'This moves the Climate ' + roll +  ' points in your favor in ' + statesInvolved;
       }
     }
