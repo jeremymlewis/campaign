@@ -23,7 +23,6 @@ export class EventPage implements OnInit {
   superPacEvents: Event[];
   mediaTourEvents: Event[];
   hotButtonEvents: Event[];
-  endingEvents: Event[];
   currentIndex = 0;
   eventTitle: string;
   eventDescription: string;
@@ -48,25 +47,9 @@ export class EventPage implements OnInit {
     this.boonEvents = this.textService.getBoonEvents();
     this.endorsementEvents = this.textService.getEndorsementEvents();
     this.hotButtonEvents = this.textService.getHotButtonEvents();
-    this.endingEvents = this.textService.getEndingEvents();
     this.mediaTourEvents = this.textService.getMediaTourEvents();
     this.superPacEvents = this.textService.getSuperPacEvents();
     this.currentEvent = this.getCurrentEvent();
-    //this.currentEvent = this.allEvents[this.currentIndex];
-    //const isDebate = (this.currentIndex === 3 || this.currentIndex === 6 || this.currentIndex === 8);
-    // if (this.votes.NationalClimate > 3 && !isDebate) {
-    //   if (this.isDemocrat) {
-    //     this.currentEvent = this.allEvents[9];
-    //   } else {
-    //     this.currentEvent = this.allEvents[10];
-    //   }
-    // } else if (this.votes.NationalClimate < -3 && !isDebate) {
-    //   if (this.isDemocrat) {
-    //     this.currentEvent = this.allEvents[10];
-    //   } else {
-    //     this.currentEvent = this.allEvents[9];
-    //   }
-    // }
     this.eventTitle = this.currentEvent.title;
     this.eventDescription = this.currentEvent.description;
     this.eventHistory = this.currentEvent.history;
@@ -96,22 +79,8 @@ export class EventPage implements OnInit {
   getCurrentEvent(): Event {
    // return this.endorsementEvents[Math.floor(Math.random() * this.endorsementEvents.length)];
     const currentEventType = this.getCurrentEventType();
-    console.log(currentEventType);
     if (currentEventType === 'superPac' ) {
       return this.superPacEvents[Math.floor(Math.random() * this.superPacEvents.length)];
-
-      return   {
-        title:'Super Pac',
-        description:'A super pac ran ads for you in Michigan and Illinois',
-        points: 2,
-        imageSrc:'/assets/images/presidents/campaign.png',
-        normalFactDisplay: false,
-        history: 'Super Pacs affect elections with money',
-        politicanInvolved: 'a',
-        yearInvolved:'a',
-        statesInvolved: ['MI', 'IL'],
-        choiceEvent: false
-      };
     } else if (currentEventType === 'endorsement') {
       return this.endorsementEvents[Math.floor(Math.random() * this.endorsementEvents.length)];
     } else if (currentEventType === 'boon') {
@@ -125,9 +94,6 @@ export class EventPage implements OnInit {
     } else if (currentEventType === 'scandal') {
       return this.scandalEvents[Math.floor(Math.random() * this.scandalEvents.length)];
     }
-    // else if (currentEventType === 'neutralize') {
-    //   return this.neutralizeEvents[Math.floor(Math.random() * this.neutralizeEvents.length)];
-    // }
     else {
       return this.allEvents[0];
     }
@@ -135,35 +101,21 @@ export class EventPage implements OnInit {
   }
 
   getCurrentEventType(): string {
-    const score: number = this.votes.getCurrentScore();
-    //draw a random number... if more that 50 give a positive event. If less give a negitiave event.
-    const draw = Math.floor(Math.random() * 100) + 1;
-    //The better a player is doing, give them worse event draw. Worse a player is doing give them a better draw.
-    // if (score < 0) {
-    //   draw -= Math.ceil(Math.sqrt(Math.abs(score)));
-    // } else {
-    //   draw += Math.ceil(Math.sqrt(Math.abs(score)));
-    // }
-    // console.log(draw);
-    // draw = draw % 100;
-    // if (draw < 0) {
-    //   draw *= -1;
-    // }
-    //Current total 120 lol but not finished TODO jermy
-    if (draw > 85) { //10 (even)
-      return 'mediaTour'; //1 or 2 no impact... 3/4 +1 to each state. +2 to each state.
-    } else  if (draw > 65) { //20 (good)
-      return 'endorsement'; //Big national (that they ran ads in a region)
-    } else if (draw > 40) { //25 (slight favor to good)
-      return 'superPac'; //Gain or lose but only in swing states (anything currently within 3 points)
-    } else if (draw > 15) { //25 (slight favor to good)
-      return 'hotButton';
-      //Specific place, a Bridge collapses and people talk about it... i.e. event draws event to an issue.
-      //Free point if you agree, or risk it to see if you lose or not (button to accept or decline) John Kerry
-    } else if (draw > 3) { //12 (bad)
-      return 'gaffe'; //loose a point, 2, or 3
-    } else { //Base 9%
-      return 'scandal';     //3 (bad)
+    const draw = Math.floor(Math.random() * 100);
+    if (draw > 85) {
+      return                 'boon'; // 15%
+    } else if (draw > 75) {
+      return                 'mediaTour'; // 15%
+    } else  if (draw > 60) {
+      return                 'endorsement'; // 15%
+    } else if (draw > 45) {
+      return                 'superPac'; // 10%
+    } else if (draw > 20) {
+      return                 'hotButton'; // 25%
+    } else if (draw > 6) {
+      return                 'gaffe'; // 14%
+    } else {
+      return                 'scandal'; // 6%
     }
   }
 
