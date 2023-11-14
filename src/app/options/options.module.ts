@@ -3,10 +3,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
-import { OptionsPage } from './options.component';
+import { PartySelectPage } from './partyselect.component';
 import { OptionsRoutingModule } from './options-routing.module';
 import { ThirdIntroPage } from './third-intro.component';
 import { BackgroundInfoPage } from './background-info.component';
+import { GameModePage } from './gamemode.component';
+import { PurchasePage } from './purchase.component';
 
 @NgModule({
   imports: [
@@ -16,6 +18,6 @@ import { BackgroundInfoPage } from './background-info.component';
     ExploreContainerComponentModule,
     OptionsRoutingModule
   ],
-  declarations: [OptionsPage, ThirdIntroPage, BackgroundInfoPage]
+  declarations: [GameModePage, PartySelectPage, ThirdIntroPage, BackgroundInfoPage, PurchasePage]
 })
 export class OptionsModule {}

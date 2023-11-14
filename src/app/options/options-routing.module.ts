@@ -1,13 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { OptionsPage } from './options.component';
+import { PartySelectPage } from './partyselect.component';
 import { ThirdIntroPage } from './third-intro.component';
 import { BackgroundInfoPage } from './background-info.component';
+import { GameModePage } from './gamemode.component';
+import { PurchasePage } from './purchase.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: OptionsPage,
+    component: GameModePage,
+  },
+  {
+    path: 'party',
+    component: PartySelectPage,
   },
   {
     path: 'third',
@@ -17,6 +23,10 @@ const routes: Routes = [
     path: 'background',
     component: BackgroundInfoPage
   },
+  {
+    path: 'purchase',
+    component: PurchasePage
+  }
 ];
 
 @NgModule({

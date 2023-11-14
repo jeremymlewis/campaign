@@ -72,7 +72,6 @@ export class EventPage implements OnInit {
       this.statesInvolvedString = this.statesInvolvedString.slice(0, this.statesInvolvedString.length - 3) + ' and' + this.statesInvolvedString.slice(this.statesInvolvedString.length - 3);
     }
     //console.log(this.currentIndex);
-    console.log(this.currentEvent);
   }
 
 
@@ -101,7 +100,7 @@ export class EventPage implements OnInit {
   }
 
   getCurrentEventType(): string {
-    const draw = Math.floor(Math.random() * 100);
+    const draw = Math.floor(Math.random() * 93);
     if (draw > 95) {
       return                 'boon'; // 5%
     } else if (draw > 80) {

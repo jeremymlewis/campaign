@@ -37,8 +37,7 @@ export class Tab1Page implements OnInit, AfterViewInit {
   ionViewWillEnter(){
     this.isDemocrat = this.votes.isDemocrat;
     this.currentTurn = this.turns[this.votes.round-1];
-    console.log(this.currentTurn);
-    console.log(this.turns);
+
   }
 
   ngAfterViewInit() {

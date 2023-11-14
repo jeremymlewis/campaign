@@ -4,9 +4,7 @@
 } */
 
 .backbutton {
-  position: fixed;
-  top: 65px;
-  left: 4px;
+  position: absolute;
 }
 
 .center {

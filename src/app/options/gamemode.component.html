@@ -1,0 +1,41 @@
+<ion-header [translucent]="false">
+  <ion-toolbar>
+    <ion-title>
+      Game Mode
+    </ion-title>
+    <ion-button fill="clear" id="click-triggerChoosemode"><ion-icon name="help-circle-outline"></ion-icon></ion-button>
+    <ion-popover trigger="click-triggerChoosemode" triggerAction="click">
+      <ng-template>
+        <ion-content class="ion-padding">
+          <h3>Game Mode Selection</h3>
+          <p>Decide if you want to play the basic game, or a special game mode.</p>
+        </ion-content>
+      </ng-template>
+    </ion-popover>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content [fullscreen]="true">
+  <div class="fix-center">
+    <ion-button class="button43" (click)="back()"><ion-icon name="arrow-back-circle-outline"></ion-icon>Back To Main Menu</ion-button>
+  </div>
+<br>
+<h1>Choose your game mode</h1>
+<br>
+<div class="center">
+<button color="clear" class="party-button button43 extra tall" (click)="continue('')" style="background: url(../../assets/ClassicBackground.png) no-repeat center/cover fixed;"><br><p>CLASSIC <br>(2024 election)</p></button>
+</div>
+<div class="center">
+<button color="clear" class="party-button button43 extra short" (click)="continue('extra')" style="background: url(../../assets/PlainBackground.png) no-repeat center/cover fixed;"><br><ion-icon name="lock-closed"></ion-icon><p>Historic Elections</p></button>
+</div>
+<div class="center">
+  <button color="clear" class="party-button button43 extra short" (click)="continue('extra')" style="background: url(../../assets/PlainBackground.png) no-repeat center/cover fixed;"><br><ion-icon name="lock-closed"></ion-icon><p>32 Round Mode</p></button>
+  </div>
+  <div class="center">
+    <button color="clear" class="party-button button43 extra short" (click)="continue('extra')" style="background: url(../../assets/PlainBackground.png) no-repeat center/cover fixed;"><br><ion-icon name="lock-closed"></ion-icon><p>Randomized States</p></button>
+    </div>
+
+
+</ion-content>

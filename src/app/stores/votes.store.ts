@@ -141,11 +141,10 @@ export class VotesStore {
   }
 
   public async addGameStats(isWin: boolean, isDem: boolean, votes: number) {
-    console.log('add game stats');
     let plays = await this.getLocalStorage('plays');
     let wins = await this.getLocalStorage('wins');
     let demWins = await this.getLocalStorage('demWins');
-    let repWins = await this.getLocalStorage('repWind');
+    let repWins = await this.getLocalStorage('repWins');
     let highVotes = await this.getLocalStorage('highVotes');
     wins = Number(wins);
     demWins = Number(demWins);
@@ -167,11 +166,7 @@ export class VotesStore {
     if (Number.isNaN(highVotes)) {
       highVotes = 0;
     }
-    console.log(plays);
-    console.log(wins);
-    console.log(demWins);
-    console.log(repWins);
-    console.log(highVotes);
+
     this.setLocalStorage('plays', Number(plays) + 1);
     if (votes > Number(highVotes)) {
       this.setLocalStorage('highVotes', votes);

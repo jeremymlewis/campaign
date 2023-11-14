@@ -58,10 +58,10 @@ export class TextService {
       'Welcome to Round 3! Have you tried fundraising yet?',
       'It is Round 4.',
       'It is Round 5. Are you paying attention to your opponent\'s moves? They might affect your strategy.',
-      'It is Round 6. ',
+      'It is Round 6.',
       'It is Round 7. ',
       'It is Round 8. You are half way to the Election!',
-      'It is Round 9. ',
+      'It is Round 9. Sometimes it pays off to go after a state that seems out of reach...',
       'It is Round 10. I hope you get a good Event Card this time...',
       'It is Round 11. ',
       'It is Round 12. You are doing great. I would vote for you.',
@@ -96,7 +96,7 @@ export class TextService {
       },
       {
         presidentIcon: '/assets/images/presidents/42-clinton.jpg',
-        eventHistory: 'Bill Clinton spent $107 Million dring the 1992 election'
+        eventHistory: 'Bill Clinton spent $107 Million during the 1992 election'
       },
       {
         presidentIcon: '/assets/images/presidents/43-bush.jpg',

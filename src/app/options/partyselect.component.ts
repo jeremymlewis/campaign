@@ -3,11 +3,11 @@ import { Router } from '@angular/router';
 import { VotesStore } from '../stores/votes.store';
 
 @Component({
-  selector: 'app-options-page',
-  templateUrl: 'options.component.html',
-  styleUrls: ['options.component.css']
+  selector: 'app-partyselect-page',
+  templateUrl: 'partyselect.component.html',
+  styleUrls: ['partyselect.component.css']
 })
-export class OptionsPage {
+export class PartySelectPage {
   constructor(private route: Router, private votes: VotesStore) {}
 
   continue(party: string) {
@@ -26,6 +26,6 @@ export class OptionsPage {
   }
 
   back() {
-    this.route.navigateByUrl('/');
+    this.route.navigateByUrl('/options');
   }
 }

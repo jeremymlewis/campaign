@@ -25,11 +25,8 @@ p {
 }
 
 .backbutton {
-  position: fixed;
-  top: 65px;
-  left: 4px;
+  position: absolute;
 }
-
 .center {
   margin-left: 3px;
   margin-right: 3px;

@@ -21,7 +21,9 @@
 
 
 <ion-content [fullscreen]="true">
-
+  <div style="margin-left: 2px; margin-top: 2px;">
+    <ion-button class="backbutton" size="small" [disabled]="!canBack" (click)="back()"><ion-icon name="arrow-back-circle-outline"></ion-icon><em>Back</em></ion-button>
+  </div>
 <div class="center">
 <h3 style="margin-top: 14px; max-width: 65%;">Choose where to run advertisements:</h3>
 </div>
@@ -91,8 +93,4 @@
 <p>Click 'roll' to see how well the ads work.</p>
 </div>
 <app-dice [slot0]='[1]' val0="No Effect" [slot1]="[2, 3, 4, 5]" val1="+1%" [slot2]='[6]' val2="+2%" [canClick]="diceEnabled"  (rollStarted)="rollStarted()"  (diceRolled)="handleRoll($event)"></app-dice>
-<br>
-<div style="margin-left: 2px; margin-top: 2px;">
-  <ion-button class="backbutton" size="small" [disabled]="!canBack" (click)="back()"><ion-icon name="arrow-back-circle-outline"></ion-icon><em>Back</em></ion-button>
-</div>
 </ion-content>

@@ -179,7 +179,6 @@ export class OpponentPage implements OnInit {
       document.getElementById('finish-icon').style.left = '100%';
     }
 
-    console.log(this.votes.progress);
 }
 
   handleGroupScoreUpdate(group: string[], sway: number) {

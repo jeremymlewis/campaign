@@ -40,9 +40,7 @@ input[type='radio'][name='buttonGroup']:checked + label { background-color:#bbbb
 } */
 
 .backbutton {
-  position: fixed;
-  top: 65px;
-  left: 4px;
+  position: absolute;
 }
 
 .center {

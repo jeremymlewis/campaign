@@ -21,7 +21,9 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-
+  <div style="margin-left: 2px; margin-top: 2px;">
+    <ion-button class="backbutton" size="small" [disabled]="!canBack" (click)="back()"><ion-icon name="arrow-back-circle-outline"></ion-icon><em>Back</em></ion-button>
+  </div>
   <div class="center">
   <h1 style="margin-top: 14px; max-width: 65%;">State Visit</h1>
   </div>
@@ -54,8 +56,5 @@
   <br>
 
   <app-dice [slot0]='[1]' val0="+0%" [slot1]="[2, 3]" val1="+1%" [slot2]='[4, 5]' val2="+2%" [slot3]="[6]" val3="+3%" [canClick]="!!chosenState" (rollStarted)="rollStarted()" (diceRolled)="handleRoll($event)"></app-dice>
-  <br>
-  <div style="margin-left: 2px; margin-top: 2px;">
-    <ion-button class="backbutton" size="small" [disabled]="!canBack" (click)="back()"><ion-icon name="arrow-back-circle-outline"></ion-icon><em>Back</em></ion-button>
-  </div>
+
 </ion-content>

@@ -43,7 +43,6 @@ export class CampaignPage implements OnInit {
       modifier = -1;
     }
 
-    console.log(stateId);
 
     const originalRoll = roll;
     roll = Math.floor(roll / 2) + modifier;

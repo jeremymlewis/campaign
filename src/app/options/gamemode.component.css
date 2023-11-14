@@ -1,0 +1,63 @@
+.party-button {
+  height: 25%;
+  width: 90%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 50%
+}
+
+.center {
+  font-size: large;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 50%
+}
+
+.fix-center {
+  position: fixed;
+  bottom: 16px;
+  left: 16px;
+}
+
+.backbutton {
+  position: absolute;
+}
+
+h1 {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 50%
+}
+
+.tall {
+  height: 120px;
+  font-size: 40px;
+}
+
+.short {
+  height: 40px;
+  font-size: 20px;
+}
+
+.extra {
+  border: 2px black solid !important;
+  border-radius: 8px;
+  --background: none;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: black;
+  margin-bottom: 4px;
+  margin-top: 4px;
+
+}
+
+p {
+  text-shadow: 2px 2px 4px white, 0 0 1em white, 0 0 0.2em white;
+}

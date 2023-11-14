@@ -44,7 +44,6 @@ export class FinalMapPage implements OnInit, AfterViewInit {
         document.getElementById('fUS-' + state.abbreviation).style.fill = '#ff3030';
         this.electoralRight += state.college;
       }
-      console.log(state.abbreviation);
     }
     document.getElementById('fredbar').style.width = (this.electoralRight * 75 / 538) + '%';
     document.getElementById('fbluebar').style.width = (this.electoralLeft * 75 / 538) + '%';
