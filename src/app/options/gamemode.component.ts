@@ -22,8 +22,9 @@ export class GameModePage {
       this.route.navigateByUrl('/options/party');
     } else if (gamemode === 'e1916'){
       this.votes.setElectionOf1916();
-      this.route.navigateByUrl('/options/party');
+      this.route.navigateByUrl('/options/historic');
     } else {
+      this.votes.reset();
       this.route.navigateByUrl('/options/party');
     }
   }

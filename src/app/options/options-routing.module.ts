@@ -5,6 +5,7 @@ import { ThirdIntroPage } from './third-intro.component';
 import { BackgroundInfoPage } from './background-info.component';
 import { GameModePage } from './gamemode.component';
 import { PurchasePage } from './purchase.component';
+import { HistoricInfoPage } from './historic-info.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'purchase',
     component: PurchasePage
+  },
+  {
+    path: 'historic',
+    component: HistoricInfoPage
   }
 ];
 

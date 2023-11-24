@@ -9,6 +9,7 @@ import { ThirdIntroPage } from './third-intro.component';
 import { BackgroundInfoPage } from './background-info.component';
 import { GameModePage } from './gamemode.component';
 import { PurchasePage } from './purchase.component';
+import { HistoricInfoPage } from './historic-info.component';
 
 @NgModule({
   imports: [
@@ -18,6 +19,6 @@ import { PurchasePage } from './purchase.component';
     ExploreContainerComponentModule,
     OptionsRoutingModule
   ],
-  declarations: [GameModePage, PartySelectPage, ThirdIntroPage, BackgroundInfoPage, PurchasePage]
+  declarations: [GameModePage, PartySelectPage, ThirdIntroPage, BackgroundInfoPage, PurchasePage, HistoricInfoPage]
 })
 export class OptionsModule {}
