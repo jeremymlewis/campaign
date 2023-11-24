@@ -18,11 +18,11 @@ export class IntroPage implements AfterViewInit {
   }
 
   toTutorial() {
-    this.route.navigateByUrl('/welcome'); //Jermy TODO was selcome but I changed it
+    this.route.navigateByUrl('/welcome'); //TODO was selcome but I changed it
   }
 
   toTabs() {
-    this.route.navigateByUrl('/options'); //Jermy TODO was selcome but I changed it
+    this.route.navigateByUrl('/options'); //TODO was selcome but I changed it
   }
 
   toTabsTestEnd() {

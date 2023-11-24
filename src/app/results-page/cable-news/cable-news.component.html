@@ -14,7 +14,7 @@
     </div>
     <h1 class="center" style="margin-top: 1px; padding-top: 1px; margin-bottom: 1px; padding-bottom: 1px;"><span class="blue"> Dem: {{electoralLeft}} </span> <span style="color: white;">----</span> <span class="red"> Rep: {{electoralRight}} </span></h1>
     <div class="center" style="margin-top: 0px; padding-top: 0px">
-      270 Votes are Needed to Win
+      {{this.votes.neededToWin}} Votes are Needed to Win
     </div>
   </div>
   <div class="center">
@@ -31,7 +31,7 @@
         <g attr.transform="matrix({{scale}} 0 0 {{scale}} 0 0)">
         <g>
       <!-- TODO ADD EACH STATE AS A POLYGON WITH AN ID THAT MATCHES AN ARRAY OF COLOR VALUES -->
-        <path id="cnUS-AK" style="fill: white" title="Alaska" class="land" d="M191.8,495.91l2.87,8.43l3.02,-2.96l9.45,2.36l-0.85,3.93l8.45,3.99l6.07,-1.1l11.73,6.53l11.14,2.37l4.41,2.47l7.93,-2.48l8.81,5.39l6.42,2.46l0,0l-0.29,61.92l-0.41,89.84l7.5,0.44l7.5,4.15l5.52,6.58l7.22,9.78l7.24,-8.8l7.5,-5.33l4.57,7.63l5.67,5.86l7.72,6.27l5.88,10.36l9.87,16.24l15.03,7.91l1.32,9.26l-3.88,7.62l-5.24,-5.02l-7.87,-3.96l-3.56,-12.68l-11.56,-11.14l-5.39,-13.83l-7.71,-0.46l-12.67,0.3l-9.46,-4l-16.5,-15.44l-7.41,-2.87l-13.37,-5.62l-10.64,1l-14.65,-7.75l-8.54,-7.13l-8.59,2.6l0.69,10.76l-4.31,0.62l-9.17,2.34l-7.32,4.4l-8.95,2.21v-9.05l5.22,-14.52l8.47,-3.82l-1.62,-4.08l-10.5,7.43l-6.45,9.48L169.57,686l4.61,8.12l-8.97,9.68l-9.49,4.89l-8.73,3.17l-3.13,6.19l-14.01,5.24l-3.92,6.35l-10.87,4.25l-5.39,-2.33l-8.57,2.31l-9.52,2.92l-8.06,3.09l-15.29,0.34l-0.64,-2.74l10.79,-4.25l9.15,-2.37l10.61,-5.76l10.46,0.68l5.31,-5.08l12.97,-6.42l2.37,-2.58l6.88,-4.06l3.48,-10.97l5.58,-8.06l-9.78,2.83l-1.99,-3.05l-5.29,4.55l-3.47,-8.58l-3.22,4.87l-1.26,-8.01l-9,4.19l-4.71,-1.12l1.45,-8.95l2.67,-5.11l-3.54,-6.46l-10.41,0.39l-4.4,-8.61l-4.04,-4.93l2.31,-8.42l-3.72,-7.91l5.2,-7.81l8.05,-6.82l4.58,-7.12l5.87,0.36l4.11,3.66l7.39,-6.02l4.68,2.52l6.33,-3.59l0.34,-7.37l-3.13,-3.67l6.35,-4.88l-4.14,-0.76l-7.89,1.7l-2.89,2.92l-4.41,-4.75l-9.88,-0.77l-8.65,-6.44l-0.92,-7.01l-5.42,-11.46l10.92,-3.79l16.26,-3.71l5.19,1.37l-2.92,7.67l13.69,2.75l-2.8,-11.1l-6.17,-8.03l-2.27,-9.16l-3.95,-8.45l-6.76,-7.45l5.78,-7.51l10.57,2.37l9.34,-5.56l3.41,-7.73l7.78,-6.53l5.97,-0.64l12.31,-5.24l4.93,2.18l10.31,-7.58L191.8,495.91zM59.27,587.82l3.09,4.29l4.68,-0.11l4.08,5.78l6.04,4.18l-1.08,1.46l-6.17,1.5l-4.07,-4.97l-1.64,-3.58l-6.21,-1.19l-1.13,-1.88L59.27,587.82zM84.05,658.96l-5.19,0.99l-4.04,-4.16l-3.25,-5.32l7.96,-0.37l5.42,3L84.05,658.96zM172.79,720.54l-8.89,4.49l-3.56,-4.44l-0.17,-7.13l8.04,-4.19l4.56,-1.67l5.13,1.72l2.78,5.07L172.79,720.54z"/>
+        <path *ngIf="this.votes.Alaska" id="cnUS-AK" style="fill: white" title="Alaska" class="land" d="M191.8,495.91l2.87,8.43l3.02,-2.96l9.45,2.36l-0.85,3.93l8.45,3.99l6.07,-1.1l11.73,6.53l11.14,2.37l4.41,2.47l7.93,-2.48l8.81,5.39l6.42,2.46l0,0l-0.29,61.92l-0.41,89.84l7.5,0.44l7.5,4.15l5.52,6.58l7.22,9.78l7.24,-8.8l7.5,-5.33l4.57,7.63l5.67,5.86l7.72,6.27l5.88,10.36l9.87,16.24l15.03,7.91l1.32,9.26l-3.88,7.62l-5.24,-5.02l-7.87,-3.96l-3.56,-12.68l-11.56,-11.14l-5.39,-13.83l-7.71,-0.46l-12.67,0.3l-9.46,-4l-16.5,-15.44l-7.41,-2.87l-13.37,-5.62l-10.64,1l-14.65,-7.75l-8.54,-7.13l-8.59,2.6l0.69,10.76l-4.31,0.62l-9.17,2.34l-7.32,4.4l-8.95,2.21v-9.05l5.22,-14.52l8.47,-3.82l-1.62,-4.08l-10.5,7.43l-6.45,9.48L169.57,686l4.61,8.12l-8.97,9.68l-9.49,4.89l-8.73,3.17l-3.13,6.19l-14.01,5.24l-3.92,6.35l-10.87,4.25l-5.39,-2.33l-8.57,2.31l-9.52,2.92l-8.06,3.09l-15.29,0.34l-0.64,-2.74l10.79,-4.25l9.15,-2.37l10.61,-5.76l10.46,0.68l5.31,-5.08l12.97,-6.42l2.37,-2.58l6.88,-4.06l3.48,-10.97l5.58,-8.06l-9.78,2.83l-1.99,-3.05l-5.29,4.55l-3.47,-8.58l-3.22,4.87l-1.26,-8.01l-9,4.19l-4.71,-1.12l1.45,-8.95l2.67,-5.11l-3.54,-6.46l-10.41,0.39l-4.4,-8.61l-4.04,-4.93l2.31,-8.42l-3.72,-7.91l5.2,-7.81l8.05,-6.82l4.58,-7.12l5.87,0.36l4.11,3.66l7.39,-6.02l4.68,2.52l6.33,-3.59l0.34,-7.37l-3.13,-3.67l6.35,-4.88l-4.14,-0.76l-7.89,1.7l-2.89,2.92l-4.41,-4.75l-9.88,-0.77l-8.65,-6.44l-0.92,-7.01l-5.42,-11.46l10.92,-3.79l16.26,-3.71l5.19,1.37l-2.92,7.67l13.69,2.75l-2.8,-11.1l-6.17,-8.03l-2.27,-9.16l-3.95,-8.45l-6.76,-7.45l5.78,-7.51l10.57,2.37l9.34,-5.56l3.41,-7.73l7.78,-6.53l5.97,-0.64l12.31,-5.24l4.93,2.18l10.31,-7.58L191.8,495.91zM59.27,587.82l3.09,4.29l4.68,-0.11l4.08,5.78l6.04,4.18l-1.08,1.46l-6.17,1.5l-4.07,-4.97l-1.64,-3.58l-6.21,-1.19l-1.13,-1.88L59.27,587.82zM84.05,658.96l-5.19,0.99l-4.04,-4.16l-3.25,-5.32l7.96,-0.37l5.42,3L84.05,658.96zM172.79,720.54l-8.89,4.49l-3.56,-4.44l-0.17,-7.13l8.04,-4.19l4.56,-1.67l5.13,1.72l2.78,5.07L172.79,720.54z"/>
         <path id="cnUS-AL" style="fill: white" title="Alabama" class="land" d="M823.25,403.55L831.37,431.02L838.53,452.95L842.13,459.7L844.3,463.54L841.61,467.9L841.4,475.24L842.96,479.38L842.96,483.45L842.88,487.23L844.46,489.98L845.75,492.54L805.82,497.08L794.73,499.45L794.58,501.21L799.58,506.33L798.97,510.92L797.83,514.18L780.04,513.21L776.52,478.48L776.84,441.91L777.66,412.26L775.95,407.99L799.35,405.82z"/>
         <path id="cnUS-AR" style="fill: white" title="Arkansas" class="land" d="M746.45,386.99L746.39,388.88L744.74,392.2L741.65,394.62L741.19,398.42L738.45,401.59L739.1,408.17L737.11,410.42L736.87,412.24L733.64,414.14L733.77,417.43L731.63,423.65L729.53,425.07L726.38,428.35L724.64,433.14L720.94,441.29L720.79,446.7L723.3,452.55L722.62,457.07L706.39,457.09L685.47,458.65L666.94,459.1L667.77,446.16L663.36,446.16L659.67,446.53L658.64,445.06L658.85,425.16L658.87,403.06L654.82,379.13L677.08,378.97L697.32,378.33L716.63,377.44L737.54,377.61L739.25,380.31L737.34,382.88L735.44,385.46L734.45,387.78z"/>
         <path id="cnUS-AZ" style="fill: white" title="Arizona" class="land" d="M393.21,351.89L374.82,479.32L336.43,473.46L295.45,449.76L268.97,433.11L271.6,429.19L274.1,429.74L277.1,425.71L274.42,421.95L274.45,418.47L274.3,414.34L279,409.98L282.58,400.09L289.13,396.66L286.51,391.67L284.99,386.99L284.28,382.78L283.9,379.56L283.94,377.49L285.97,373.36L285.98,368.82L286.5,364.43L287.5,359.65L286.52,356.27L288.33,353.79L292.12,354.57L295.26,356.86L297.54,358.24L299.42,355.09L300.35,354.51L303.82,336.59L332.7,341.78L367.14,347.74z"/>
@@ -42,7 +42,7 @@
         <path id="cnUS-DE" style="fill: white" title="Delaware" class="land" d="M986.93,264.85L984.93,267.74L986.35,271.89L992.67,282.97L1000,293.17L988.42,295.83L980.78,267.93L981.69,265.89L983,264.55z"/>
         <path id="cnUS-FL" style="fill: white" title="Florida" class="land" d="M915.25,488.75L920.47,504.83L931.05,522.16L942.9,537.63L944.43,546.48L957.31,568.23L961.78,588.44L960.97,609.01L952.91,614.56L942.16,613.5L937.22,603.98L928.48,599.97L914.49,581.98L901.97,566.79L898.51,556.09L899.92,541.71L893.44,529.65L878.58,517.85L866.13,510.74L845.03,523.09L839.71,517.25L819.88,509.08L797.83,514.18L798.97,510.92L799.58,506.33L794.58,501.21L794.73,499.45L805.82,497.08L845.75,492.54L849.47,498.29L869.32,496.79L901.59,495.62L903.65,499.35L905.87,496.93L904.7,489.07L906.93,487.93L911.06,488.99z"/>
         <path id="cnUS-GA" style="fill: white" title="Georgia" class="land" d="M870.54,397.61L868.77,399.77L866.4,404.45L871.95,407.48L875.38,408.38L879.89,414.99L882.71,418.65L890.05,423L891.77,425.6L896.8,428.57L899.84,433.58L906.61,437.16L908.79,442.08L910.32,444.39L909.93,446.15L913.88,448.03L916.46,451.94L917.13,456.23L919.03,456.77L922.51,457.38L916.86,475.27L915.25,488.75L911.06,488.99L906.93,487.93L904.7,489.07L905.87,496.93L903.65,499.35L901.59,495.62L869.32,496.79L849.47,498.29L845.75,492.54L844.46,489.98L842.88,487.23L842.96,483.45L842.96,479.38L841.4,475.24L841.61,467.9L844.3,463.54L842.13,459.7L838.53,452.95L831.37,431.02L823.25,403.55L837.59,402.05L847.46,400.57z"/>
-        <path id="cnUS-HI" style="fill: white" title="Hawaii" class="land" d="M443.39,612.09l-3.04,0.1l-1.75,-2.38l-0.9,-4.35l2.24,-0.78l3.28,0.52l3.31,2.87l-0.17,1.63L443.39,612.09zM460.92,640.38l-0.66,3.48l-2.99,-1.37l-0.62,-2.43l-1.04,-0.48l-0.48,-0.1l-1.92,-1.63l1.05,-6.3l2.46,1.6l3.75,0.34l-1,5.34L460.92,640.38zM472.36,657.57l-3.54,-0.18l-5.86,-6.16l2.14,-1.41L472.36,657.57zM472.75,661.08l0.38,3.47l3.3,1.61l1.96,5.74l-0.91,1.33l-2.35,0.03l-5.18,-3l1.42,-4.08l-1.82,-1.98l0.38,-3.08l1.6,-0.74L472.75,661.08zM464.41,705.67l-3.3,1.32l-2.68,-4.91l3.87,-5.3l2.25,-8.02l6.97,-1.6l0.83,-3.42l1.47,-1.3l0.87,0.25l6.34,12.29l0.27,3.33l-1.3,2.37l1.01,1.2l-0.53,1.9l0.83,3.79l-6.57,0.44l-4.82,-2.11L464.41,705.67z"/>
+        <path *ngIf="this.votes.Hawaii" id="cnUS-HI" style="fill: white" title="Hawaii" class="land" d="M443.39,612.09l-3.04,0.1l-1.75,-2.38l-0.9,-4.35l2.24,-0.78l3.28,0.52l3.31,2.87l-0.17,1.63L443.39,612.09zM460.92,640.38l-0.66,3.48l-2.99,-1.37l-0.62,-2.43l-1.04,-0.48l-0.48,-0.1l-1.92,-1.63l1.05,-6.3l2.46,1.6l3.75,0.34l-1,5.34L460.92,640.38zM472.36,657.57l-3.54,-0.18l-5.86,-6.16l2.14,-1.41L472.36,657.57zM472.75,661.08l0.38,3.47l3.3,1.61l1.96,5.74l-0.91,1.33l-2.35,0.03l-5.18,-3l1.42,-4.08l-1.82,-1.98l0.38,-3.08l1.6,-0.74L472.75,661.08zM464.41,705.67l-3.3,1.32l-2.68,-4.91l3.87,-5.3l2.25,-8.02l6.97,-1.6l0.83,-3.42l1.47,-1.3l0.87,0.25l6.34,12.29l0.27,3.33l-1.3,2.37l1.01,1.2l-0.53,1.9l0.83,3.79l-6.57,0.44l-4.82,-2.11L464.41,705.67z"/>
         <path id="cnUS-IA" style="fill: white" title="Iowa" class="land" d="M708.74,219.26L709.04,220.49L711.39,223.98L710,225.78L710.31,230.55L711.1,232.54L712.37,236.09L717.96,237.96L719.79,241.33L720.87,243L722.93,244.04L723.88,246.44L726.64,248.09L728.51,249.94L727.99,256.09L725.17,261.42L724.13,263.12L720.32,264.66L714.53,266.11L713.21,270.09L715.43,271.74L716.35,275.21L714.32,279.26L713.36,282.76L709.11,286.36L708.97,290.51L706.51,288.74L703.03,285.22L684.16,286.48L664.27,287.22L648.77,287.52L633.24,287.62L632.09,283.51L632.57,279.45L632.19,275.54L630.42,268.99L629.29,266.28L628.06,265.54L627.94,260.29L626.88,256.53L623.81,252.24L623.86,250.36L622.8,246.61L622.06,244.34L622.09,242.26L619.39,239.72L620.76,236L621.65,232.36L622.06,229.89L619.95,226.86L620.01,221.31L622.21,221.31L640.32,221.33L662.83,220.7L687.01,219.83z"/>
         <path id="cnUS-ID" style="fill: white" title="Idaho" class="land" d="M384.7,178.06L385.21,178.56L375.87,234.37L326.11,225.41L276.58,214.43L286.18,174.71L289.06,168.74L288.45,165.54L285.82,163.34L286.7,159.8L290.12,155.29L294.56,151.7L298.48,145.04L301.92,139.8L304.17,137.26L304.11,133.69L301.91,131.28L299.24,126.14L300.3,122.21L299.68,118.48L306.56,87.28L313.23,58.66L327.79,61.98L323.71,85.85L326.37,92.69L325.47,96.73L327.51,100.93L330.57,103.82L332.38,107.84L335.18,115.68L338.48,119.77L343.09,120.94L340.37,125.56L337.65,131.15L337.77,137.18L335.65,138.25L334.63,144.02L336.98,146.81L340.63,144.78L342.87,141.95L344.65,142.95L345.92,146.4L346.33,153.84L348.59,157.19L348.46,163.24L349.11,165.06L352.25,166.24L353.6,169.87L355.34,176.23L358.88,173.67L363.99,175.46L364.82,173.33L373.63,176.35L377.44,176.27L380.5,172.2L382.13,173.11L383.16,176.53z"/>
         <path id="cnUS-IL" style="fill: white" title="Illinois" class="land" d="M767.4,237.97L767.4,238.03L768.06,243.91L773.71,255.38L773.71,255.38L773.71,255.38L776.14,281.56L778.56,307.71L777.15,314.18L778.75,315.7L780.04,319.47L780.19,322.52L778.83,324.03L777.89,327.89L774.65,333.15L772.69,339.44L772.52,344.06L772.79,345.73L771.03,349.05L772.75,351.05L769.73,352.97L765.81,355.21L766.92,360.09L764.7,362.15L760.16,360.41L755.25,359.56L754.19,361.85L755.15,365.22L751.67,361.95L749.76,362.68L747.04,357.29L747.46,353.85L745.73,348.47L743.87,347.93L738.83,343.28L736.79,343.33L733.04,340.37L730.3,337.13L731.2,333.08L732.64,329.68L733.38,325.44L729.78,322.01L726.52,323.68L724.45,322.85L723.94,319.08L722.22,314.86L720.54,313.92L716.32,311.1L712.77,307.43L709.63,302.92L707.74,296.22L708.97,290.51L709.11,286.36L713.36,282.76L714.32,279.26L716.35,275.21L715.43,271.74L713.21,270.09L714.53,266.11L720.32,264.66L724.13,263.12L725.17,261.42L727.99,256.09L728.51,249.94L726.64,248.09L723.88,246.44L722.93,244.04L720.87,243L719.79,241.33L736.92,240.23L754.43,238.94L767.35,238.03L767.34,237.97z"/>
@@ -82,56 +82,57 @@
         <path id="cnUS-WI" style="fill: white" title="Wisconsin" class="land" d="M718.02,148.31L718.17,148.42L719.11,147.88L719.13,147.95L721.66,148.55L723.2,152.58L737.33,155.69L746.81,159.08L751.29,158.75L754.41,158.78L755.61,162.45L759.51,163.56L761.21,166.63L760.4,168.55L760,172.31L763.55,172.19L762.7,175.96L765.09,178.45L765.1,178.41L765.53,178.53L765.4,178.76L759.81,187.53L762.25,190.02L772.73,174.27L775.14,173.95L768.45,192.24L766.23,208.39L764.26,221.5L767.34,232.41L767.4,237.97L767.34,237.97L767.35,238.03L754.43,238.94L736.92,240.23L719.79,241.33L717.96,237.96L712.37,236.09L711.1,232.54L710.31,230.55L710,225.78L711.39,223.98L709.04,220.49L708.74,219.26L708.17,216.72L707.84,211.25L707.21,209.4L701.49,206.31L697.18,202.59L695.92,200.19L694.02,198.73L688.61,195.71L686.66,195.58L681.75,191.37L682.07,186.34L681.86,180.15L682.88,174.37L679.36,170.21L681.49,165.93L684.81,163.61L688.65,160.93L689.15,160.93L688.46,148.11L692.56,146.66L692.56,146.66L708.07,141.11z"/>
         <path id="cnUS-WV" style="fill: white" title="West Virginia" class="land" d="M917.49,280.96L919.42,292.31L921.71,289.82L924.2,286.7L927.46,285.17L929.32,282.4L934.58,282.31L936.14,280.29L939.12,277.96L944.79,278.66L947.53,281.41L949.46,283.97L948.37,288.54L938.34,284.28L938.14,290.47L936.42,293.1L933.58,296.67L931.55,300.04L930.11,299.35L928.76,302.87L927.56,305.97L927.1,308.15L924.75,309.48L921.84,308.37L919.2,307.07L918.4,312.23L916.1,316.74L915.82,320.19L912.93,323.71L911.2,328L911.95,330.57L911.92,332.68L909.4,334.9L906.86,335.01L904.93,337.02L902.78,336.56L902.73,338.63L896.37,341.61L893.96,340.38L888.75,343.99L885.75,342.62L883.41,340.91L882.03,337.23L878.49,337.35L876.29,334.91L873.25,332.39L871.88,329.12L869.24,325.93L868.74,321.26L868.09,319.18L872.38,317.95L874.2,314.49L873.72,309.48L875.44,304.24L877.89,304.42L878.5,306.88L879.92,305.75L880.12,303.48L880.19,299.33L883.46,294.86L885.64,295.02L887.88,294.01L889.71,292.59L893.57,286.7L893.47,284.35L894.33,279.24L895.11,273.12L895.03,267.83L893.82,265.11L895.99,263.59L899.53,284.16z"/>
         <path id="cnUS-WY" style="fill: white" title="Wyoming" class="land" d="M499.16,180.45L495.46,226.79L491.58,271.97L474.43,270.36L440.2,266.58L423.12,264.4L406.05,262.04L372.15,256.16L375.87,234.37L385.21,178.56L384.7,178.06L385.13,177.31L386.97,165.87L418.47,170.63L443.38,174.28L472.33,177.57z"/>
-        <text style="font-size: xx-large;" id="cnAK-VOTES" x="185" y="600">3</text>
-      <text style="font-size: xx-large;" id="cnAZ-VOTES" x="320" y="420">11</text>
-      <text style="font-size: xx-large;" id="cnAL-VOTES" x="800" y="465">9</text>
-      <text style="font-size: xx-large;" id="cnCA-VOTES" x="185" y="340">54</text>
-      <text style="font-size: xx-large;" id="cnCO-VOTES" x="440" y="330">10</text>
-      <text style="font-size: xx-large;" id="cnAR-VOTES" x="685" y="426">6</text>
-      <text style="font-size: x-large;" id="cnCT-VOTES" x="1025" y="237">---7</text>
-      <text style="font-size: x-large;" id="cnDE-VOTES" x="990" y="290">--3</text>
-      <text style="font-size: xx-large;" id="cnFL-VOTES" x="910" y="580">30</text>
-      <text style="font-size: xx-large;" id="cnGA-VOTES" x="850" y="460">16</text>
-      <text style="font-size: xx-large;" id="cnHI-VOTES" x="430" y="680">4</text>
-      <text style="font-size: xx-large;" id="cnID-VOTES" x="320" y="200">4</text>
-      <text style="font-size: xx-large;" id="cnIL-VOTES" x="725" y="300">19</text>
-      <text style="font-size: xx-large;" id="cnIN-VOTES" x="780" y="300">11</text>
-      <text style="font-size: xx-large;" id="cnIA-VOTES" x="663" y="262">6</text>
-      <text style="font-size: xx-large;" id="cnKS-VOTES" x="578" y="350">6</text>
-      <text style="font-size: xx-large;" id="cnKY-VOTES" x="823" y="350">8</text>
-      <text style="font-size: xx-large;" id="cnLA-VOTES" x="690" y="513">8</text>
-      <text style="font-size: xx-large;" id="cnME-VOTES" x="1045" y="130">4</text>
-      <text style="font-size: x-large;" id="cnMD-VOTES" x="980" y="312">-----10</text>
-      <text style="font-size: xx-large;" id="cnMA-VOTES" x="1050" y="190">11</text>
-      <text style="font-size: xx-large;" id="cnMI-VOTES" x="800" y="225">15</text>
-      <text style="font-size: xx-large;" id="cnMN-VOTES" x="630" y="180">10</text>
-      <text style="font-size: xx-large;" id="cnMS-VOTES" x="745" y="460">6</text>
-      <text style="font-size: xx-large;" id="cnMO-VOTES" x="663" y="342">10</text>
-      <text style="font-size: xx-large;" id="cnMT-VOTES" x="415" y="140">4</text>
-      <text style="font-size: xx-large;" id="cnNE-VOTES" x="565" y="275">5</text>
-      <text style="font-size: xx-large;" id="cnNV-VOTES" x="258" y="290">6</text>
-      <text style="font-size: x-large;" id="cnNH-VOTES" x="1013" y="125">4</text>
-      <text style="font-size: x-large;" id="cnNJ-VOTES" x="1008" y="263">--14</text>
-      <text style="font-size: xx-large;" id="cnNM-VOTES" x="428" y="420">5</text>
-      <text style="font-size: xx-large;" id="cnNY-VOTES" x="960" y="200">28</text>
-      <text style="font-size: xx-large;" id="cnNC-VOTES" x="929" y="382">16</text>
-      <text style="font-size: xx-large;" id="cnND-VOTES" x="553" y="141">3</text>
-      <text style="font-size: xx-large;" id="cnOH-VOTES" x="840" y="290">17</text>
-      <text style="font-size: xx-large;" id="cnOK-VOTES" x="592" y="415">7</text>
-      <text style="font-size: xx-large;" id="cnOR-VOTES" x="215" y="170">8</text>
-      <text style="font-size: xx-large;" id="cnPA-VOTES" x="920" y="260">19</text>
-      <text style="font-size: x-large;" id="cnRI-VOTES" x="1055" y="221">---4</text>
-      <text style="font-size: xx-large;" id="cnSC-VOTES" x="910" y="430">9</text>
-      <text style="font-size: xx-large;" id="cnSD-VOTES" x="548" y="207">3</text>
-      <text style="font-size: xx-large;" id="cnTN-VOTES" x="780" y="400">11</text>
-      <text style="font-size: xx-large;" id="cnTX-VOTES" x="560" y="500">40</text>
-      <text style="font-size: xx-large;" id="cnUT-VOTES" x="345" y="310">6</text>
-      <text style="font-size: x-large;" id="cnVT-VOTES" x="987" y="138">3</text>
-      <text style="font-size: xx-large;" id="cnVA-VOTES" x="930" y="330">13</text>
-      <text style="font-size: xx-large;" id="cnWA-VOTES" x="240" y="100">12</text>
-      <text style="font-size: xx-large;" id="cnWI-VOTES" x="705" y="195">10</text>
-      <text style="font-size: xx-large;" id="cnWY-VOTES" x="430" y="230">3</text>
-      <text style="font-size: xx-large;" id="cnWV-VOTES" x="887" y="325">5</text>
+        <text *ngIf="this.votes.Alaska" style="font-size: xx-large;" Id="cnAK-VOTES" x="185" y="600">{{this.votes.Alaska.college}}</text>
+      <text style="font-size: xx-large;" Id="cnAZ-VOTES" x="320" y="420">{{this.votes.Arizona.college}}</text>
+      <text style="font-size: xx-large;" Id="cnAL-VOTES" x="800" y="465">{{this.votes.Alabama.college}}</text>
+      <text style="font-size: xx-large;" Id="cnCA-VOTES" x="185" y="340">{{this.votes.California.college}}</text>
+      <text style="font-size: xx-large;" Id="cnCO-VOTES" x="440" y="330">{{this.votes.Colorado.college}}</text>
+      <text style="font-size: xx-large;" Id="cnAR-VOTES" x="685" y="426">{{this.votes.Arkansas.college}}</text>
+      <text style="font-size: x-large;" Id="cnCT-VOTES" x="1025" y="237">---{{this.votes.Connecticut.college}}</text>
+      <text style="font-size: x-large;" Id="cnDE-VOTES" x="990" y="290">--{{this.votes.Delaware.college}}</text>
+      <text style="font-size: xx-large;" Id="cnFL-VOTES" x="910" y="580">{{this.votes.Florida.college}}</text>
+      <text style="font-size: xx-large;" Id="cnGA-VOTES" x="850" y="460">{{this.votes.Georgia.college}}</text>
+      <text *ngIf="this.votes.Hawaii" style="font-size: xx-large;" Id="cnHI-VOTES" x="430" y="680">{{this.votes.Hawaii.college}}</text>
+      <text style="font-size: xx-large;" Id="cnID-VOTES" x="320" y="200">{{this.votes.Idaho.college}}</text>
+      <text style="font-size: xx-large;" Id="cnIL-VOTES" x="725" y="300">{{this.votes.Illinois.college}}</text>
+      <text style="font-size: xx-large;" Id="cnIN-VOTES" x="780" y="300">{{this.votes.Indiana.college}}</text>
+      <text style="font-size: xx-large;" Id="cnIA-VOTES" x="663" y="262">{{this.votes.Iowa.college}}</text>
+      <text style="font-size: xx-large;" Id="cnKS-VOTES" x="578" y="350">{{this.votes.Kansas.college}}</text>
+      <text style="font-size: xx-large;" Id="cnKY-VOTES" x="823" y="350">{{this.votes.Kentucky.college}}</text>
+      <text style="font-size: xx-large;" Id="cnLA-VOTES" x="690" y="513">{{this.votes.Louisiana.college}}</text>
+      <text style="font-size: xx-large;" Id="cnME-VOTES" x="1045" y="130">{{this.votes.Maine.college}}</text>
+      <text style="font-size: x-large;" Id="cnMD-VOTES" x="980" y="312">-----{{this.votes.Maryland.college}}</text>
+      <text style="font-size: xx-large;" Id="cnMA-VOTES" x="1050" y="190">{{this.votes.Massachusetts.college}}</text>
+      <text style="font-size: xx-large;" Id="cnMI-VOTES" x="800" y="225">{{this.votes.Michigan.college}}</text>
+      <text style="font-size: xx-large;" Id="cnMN-VOTES" x="630" y="180">{{this.votes.Minnesota.college}}</text>
+      <text style="font-size: xx-large;" Id="cnMS-VOTES" x="745" y="460">{{this.votes.Mississippi.college}}</text>
+      <text style="font-size: xx-large;" Id="cnMO-VOTES" x="663" y="342">{{this.votes.Missouri.college}}</text>
+      <text style="font-size: xx-large;" Id="cnMT-VOTES" x="415" y="140">{{this.votes.Montana.college}}</text>
+      <text style="font-size: xx-large;" Id="cnNE-VOTES" x="565" y="275">{{this.votes.Nebraska.college}}</text>
+      <text style="font-size: xx-large;" Id="cnNV-VOTES" x="258" y="290">{{this.votes.Nevada.college}}</text>
+      <text style="font-size: x-large;" Id="cnNH-VOTES" x="1013" y="125">{{this.votes.NewHampshire.college}}</text>
+      <text style="font-size: x-large;" Id="cnNJ-VOTES" x="1008" y="263">--{{this.votes.NewJersey.college}}</text>
+      <text style="font-size: xx-large;" Id="cnNM-VOTES" x="428" y="420">{{this.votes.NewMexico.college}}</text>
+      <text style="font-size: xx-large;" Id="cnNY-VOTES" x="960" y="200">{{this.votes.NewYork.college}}</text>
+      <text style="font-size: xx-large;" Id="cnNC-VOTES" x="929" y="382">{{this.votes.NorthCarolina.college}}</text>
+      <text style="font-size: xx-large;" Id="cnND-VOTES" x="553" y="141">{{this.votes.NorthDakota.college}}</text>
+      <text style="font-size: xx-large;" Id="cnOH-VOTES" x="840" y="290">{{this.votes.Ohio.college}}</text>
+      <text style="font-size: xx-large;" Id="cnOK-VOTES" x="592" y="415">{{this.votes.Oklahoma.college}}</text>
+      <text style="font-size: xx-large;" Id="cnOR-VOTES" x="215" y="170">{{this.votes.Oregon.college}}</text>
+      <text style="font-size: xx-large;" Id="cnPA-VOTES" x="920" y="260">{{this.votes.Pennsylvania.college}}</text>
+      <text style="font-size: x-large;" Id="cnRI-VOTES" x="1055" y="221">---{{this.votes.RhodeIsland.college}}</text>
+      <text style="font-size: xx-large;" Id="cnSC-VOTES" x="910" y="430">{{this.votes.SouthCarolina.college}}</text>
+      <text style="font-size: xx-large;" Id="cnSD-VOTES" x="548" y="207">{{this.votes.SouthDakota.college}}</text>
+      <text style="font-size: xx-large;" Id="cnTN-VOTES" x="780" y="400">{{this.votes.Tennessee.college}}</text>
+      <text style="font-size: xx-large;" Id="cnTX-VOTES" x="560" y="500">{{this.votes.Texas.college}}</text>
+      <text style="font-size: xx-large;" Id="cnUT-VOTES" x="345" y="310">{{this.votes.Utah.college}}</text>
+      <text style="font-size: x-large;" Id="cnVT-VOTES" x="987" y="138">{{this.votes.Vermont.college}}</text>
+      <text style="font-size: xx-large;" Id="cnVA-VOTES" x="930" y="330">{{this.votes.Virginia.college}}</text>
+      <text style="font-size: xx-large;" Id="cnWA-VOTES" x="240" y="100">{{this.votes.Washington.college}}</text>
+      <text style="font-size: xx-large;" Id="cnWI-VOTES" x="705" y="195">{{this.votes.Wisconsin.college}}</text>
+      <text style="font-size: xx-large;" Id="cnWY-VOTES" x="430" y="230">{{this.votes.Wyoming.college}}</text>
+      <text style="font-size: xx-large;" Id="cnWV-VOTES" x="887" y="325">{{this.votes.WestVirginia.college}}</text>
+
 
       </g>
     </g>

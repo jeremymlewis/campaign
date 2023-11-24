@@ -20,7 +20,7 @@ export class AdvertisePage implements OnInit {
   myGroup = new FormGroup({
     buttonGroup: new FormControl()
   });
-  constructor(private router: Router, private modalCtrl: ModalController, private votes: VotesStore) {}
+  constructor(private router: Router, private modalCtrl: ModalController, public votes: VotesStore) {}
 
   ngOnInit() {
     this.isDemocrat = this.votes.getUserIsDem();

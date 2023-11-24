@@ -4,10 +4,10 @@ import { VotesStore } from '../stores/votes.store';
 
 @Component({
   selector: 'app-records-page',
-  templateUrl: 'records.component.html',
+  templateUrl: 'records2.component.html',
   styleUrls: ['records.component.css']
 })
-export class RecordsPage implements OnInit {
+export class Records2Page implements OnInit {
   plays: string;
   wins: string;
   demWins: string;
@@ -55,7 +55,7 @@ export class RecordsPage implements OnInit {
       {title: 'State Resident', description: 'Visit the same state 5 times in a single Classic Mode game', id: 'record9'},
       {title: 'Not Fit For Office', description: 'Draw 2 scandal events in 1 game', id: 'record5'},
       {title: 'Seasoned Campaigner', description: 'Play all the game modes', id: 'record6'},
-      {title: 'Bellweather State?', description: 'Win without Ohio', id: 'record7'},
+      {title: 'Bellweather?', description: 'Win without Ohio', id: 'record7'},
       {title: 'Don\'t mess with Texas', description: 'Win Texas as a Democrat', id: 'record10'},
       {title: 'Is this possible?', description: 'Win California as a Republican', id: 'record17'},
 
@@ -74,6 +74,6 @@ export class RecordsPage implements OnInit {
   }
 
   continue() {
-    this.route.navigateByUrl('/');
+    this.route.navigateByUrl('/results/final-map');
   }
 }

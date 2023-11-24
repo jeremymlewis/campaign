@@ -32,13 +32,20 @@
 <div class="row">
   <div [formGroup]="myGroup">
     <div class="column left">
-    <input (click)="enableDice()" type="radio" name="buttonGroup" formControlName="buttonGroup" value="one" id="one"><label for="one">
+    <input (click)="enableDice()" type="radio" name="buttonGroup" formControlName="buttonGroup" value="one" id="one">
+    <label *ngIf="this.votes.Hawaii" for="one">
       <img class="state-icon" src="../../../assets/images/states/HI-Hawaii.png">
       <img class="state-icon" src="../../../assets/images/states/CA-California.png">
       <img class="state-icon" src="../../../assets/images/states/WA-Washington.png">
       <img class="state-icon" src="../../../assets/images/states/OR-Oregon.png">
       <br>
       HI, CA, WA, OR</label>
+      <label *ngIf="!this.votes.Hawaii" for="one">
+        <img class="state-icon" src="../../../assets/images/states/CA-California.png">
+        <img class="state-icon" src="../../../assets/images/states/WA-Washington.png">
+        <img class="state-icon" src="../../../assets/images/states/OR-Oregon.png">
+        <br>
+        CA, WA, OR</label>
     <input (click)="enableDice()" type="radio" name="buttonGroup" formControlName="buttonGroup" value="two" id="two"><label for="two">
       <img class="state-icon" src="../../../assets/images/states/IL-Illinois.png">
       <img class="state-icon" src="../../../assets/images/states/MN-Minnesota.png">
@@ -73,11 +80,16 @@
       <img class="state-icon" src="../../../assets/images/states/GA-Georgia.png">
       <br>
       FL, NC, GA</label>
-    <input (click)="enableDice()" type="radio" name="buttonGroup" formControlName="buttonGroup" value="seven" id="seven"><label for="seven">
+    <input (click)="enableDice()" type="radio" name="buttonGroup" formControlName="buttonGroup" value="seven" id="seven">
+    <label *ngIf="this.votes.Alaska" for="seven">
       <img class="state-icon" src="../../../assets/images/states/TX-Texas.png">
       <img class="state-icon" src="../../../assets/images/states/AK-Alaska.png">
       <br>
       TX, AK</label>
+      <label *ngIf="!this.votes.Alaska" for="seven">
+        <img class="state-icon" src="../../../assets/images/states/TX-Texas.png">
+        <br>
+        TX</label>
     <input (click)="enableDice()" type="radio" name="buttonGroup" formControlName="buttonGroup" value="eight" id="eight"><label for="eight">
       <img class="state-icon" src="../../../assets/images/states/SC-South-Carolina.png">
       <img class="state-icon" src="../../../assets/images/states/MO-Missouri.png">

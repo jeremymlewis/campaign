@@ -21,7 +21,7 @@ export class PartySelectPage {
         this.route.navigateByUrl('/options/third');
       } else {
         this.route.navigateByUrl('/tabs');
-        // this.route.navigateByUrl('/options/background');JERMY add options here
+        // this.route.navigateByUrl('/options/background');TODO add options here
       }
   }
 

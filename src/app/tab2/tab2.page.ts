@@ -54,11 +54,11 @@ export class Tab2Page implements OnInit, AfterViewInit {
     this.isDemocrat = this.store.isDemocrat;
     this.isThird = this.store.getUserIsThird();
     this.partyName = this.store.thirdPartyName;
-    this.calculateScaleOfMap();
   }
 
   ionViewWillEnter(){
     this.isDemocrat = this.store.isDemocrat;
+    this.calculateScaleOfMap();
   }
 
   ngAfterViewInit() {
@@ -70,7 +70,10 @@ export class Tab2Page implements OnInit, AfterViewInit {
   calculateScaleOfMap() {
     const w = window.innerWidth;
     this.scale = w * .9 /1150;
-    const height = w * 0.6;
+    let height = w * 0.6;
+    if (!this.store.Alaska) {
+      height = w * 0.5;
+    }
     document.getElementById('svg-container').style.height = height + 'px';
   }
 

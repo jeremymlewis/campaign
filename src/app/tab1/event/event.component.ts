@@ -114,6 +114,7 @@ export class EventPage implements OnInit {
     } else if (draw > 6) {
       return                 'gaffe'; // 14%
     } else {
+      this.votes.scandalDrawn();
       return                 'scandal'; // 6%
     }
   }
@@ -201,6 +202,10 @@ export class EventPage implements OnInit {
 
     modal.present();
     const { data, role } = await modal.onWillDismiss();
+  }
+
+  checkRecordCompletion() {
+    //check for 2 scandals in 1 game i.e. this.votes.scandalCount maybe?
   }
 
 

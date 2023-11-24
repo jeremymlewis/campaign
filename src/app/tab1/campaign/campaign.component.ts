@@ -33,6 +33,10 @@ export class CampaignPage implements OnInit {
     this.canBack = false;
   }
 
+  checkRecordCompletion() {
+    //set false to if they made it thorugh a whole game without visiting a state.
+  }
+
   async handleRoll(roll: number) {
     //this.canBack = false;
     //TODO3
@@ -47,6 +51,7 @@ export class CampaignPage implements OnInit {
     const originalRoll = roll;
     roll = Math.floor(roll / 2) + modifier;
 
+    this.votes.stateVisited(this.chosenState);
     if (this.chosenState) {
       if (this.isDemocrat) {
         this.votes.changeStateClimate(stateId, roll, 0);

@@ -44,10 +44,10 @@ background-color: #f2d74e; left: 100%; animation-delay: -2.5s;
 
 @keyframes confetti {
 0% { transform: rotateZ(15deg) rotateY(0deg) translate(0,0); }
-25% { transform: rotateZ(5deg) rotateY(360deg) translate(-5vw,20vh); }
-50% { transform: rotateZ(15deg) rotateY(720deg) translate(5vw,60vh); }
-75% { transform: rotateZ(5deg) rotateY(1080deg) translate(-10vw,80vh); }
-100% { transform: rotateZ(15deg) rotateY(1440deg) translate(10vw,110vh); }
+25% { transform: rotateZ(5deg) rotateY(360deg) translate(-3vw,10vh); }
+50% { transform: rotateZ(15deg) rotateY(720deg) translate(3vw,30vh); }
+75% { transform: rotateZ(5deg) rotateY(1080deg) translate(-6vw,40vh); }
+100% { transform: rotateZ(15deg) rotateY(1440deg) translate(6vw,55vh); }
 }
 
 #fsvg-container {
@@ -99,4 +99,20 @@ height: 100%;
   right: 10px;
   max-height: 30px;
   z-index: 199999;
+}
+
+.record {
+  position: relative;
+  overflow: hidden;
+ /* Apply animation to this element */
+ animation: example1 2s linear;
+}
+/* Move it (define the animation) */
+@keyframes example1 {
+ 0%   {
+ width: 0%;
+ }
+ 100% {
+ width: 100%;
+ }
 }

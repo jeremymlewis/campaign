@@ -27,38 +27,61 @@ export class Tab3Page implements OnInit {
     this.isDemocrat = this.votes.isDemocrat;
   }
 
+  learnTheGameAcheievment() {
+    this.votes.unlockRecord('record14');
+    //give them the Learn The Game acheivement here
+  }
+
+  dropOutAcheievment() {
+    this.votes.unlockRecord('record16');
+    //give them the Dropout acheivement here
+  }
+
+
 
   campaign() {
+    this.learnTheGameAcheievment();
     this.router.navigateByUrl('tabs/tab3/campaign');
 
   }
 
   turn() {
+    this.learnTheGameAcheievment();
+
     this.router.navigateByUrl('tabs/tab3/turn');
 
   }
 
   fundraise() {
+    this.learnTheGameAcheievment();
+
     this.router.navigateByUrl('tabs/tab3/fundraise');
 
   }
 
   debate() {
+    this.learnTheGameAcheievment();
+
     this.router.navigateByUrl('tabs/tab3/debate');
   }
 
   event() {
+    this.learnTheGameAcheievment();
+
     this.router.navigateByUrl('tabs/tab3/event');
 
   }
 
   advertise() {
+    this.learnTheGameAcheievment();
+
     this.router.navigateByUrl('tabs/tab3/advertise');
   }
 
   reset() {
     if (window.confirm('Do you want to drop out of the race? All progress will be lost')) {
       this.votes.reset();
+      this.dropOutAcheievment();
       this.router.navigateByUrl('/');
     }
   }

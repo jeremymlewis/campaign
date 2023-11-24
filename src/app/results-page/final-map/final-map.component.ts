@@ -64,5 +64,9 @@ export class FinalMapPage implements OnInit, AfterViewInit {
       this.router.navigateByUrl('/');
     }
   }
+
+  records() {
+    this.router.navigateByUrl('/records2');
+  }
 }
 

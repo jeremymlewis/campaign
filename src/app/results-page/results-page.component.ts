@@ -13,13 +13,19 @@ export class ResultsPage implements OnInit {
   constructor(private router: Router, public votes: VotesStore) {}
 
   ngOnInit() {
-      if (this.votes.isDemocrat) {
-        this.isDemocrat = true;
-        this.votes.addGameStats(this.votes.getUserWon(),true,this.votes.getFinalBlue());
-      } else {
-        this.isDemocrat = false;
-        this.votes.addGameStats(this.votes.getUserWon(),false,this.votes.getFinalRed());
-      }
+    this.checkRecordCompletion();
+  }
+
+  checkRecordCompletion() {
+    if (this.votes.isDemocrat) {
+      this.isDemocrat = true;
+      this.votes.addGameStats(this.votes.getUserWon(),true,this.votes.getFinalBlue());
+    } else {
+      this.isDemocrat = false;
+      this.votes.addGameStats(this.votes.getUserWon(),false,this.votes.getFinalRed());
+    }
+    //should we update the wins/losses acheivements here or in this.votes.addGameStats? idk
+    //game mode acheivements here too?
   }
 
   map() {

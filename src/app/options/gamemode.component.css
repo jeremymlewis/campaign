@@ -40,6 +40,11 @@ h1 {
   font-size: 40px;
 }
 
+.medium {
+  height: 80px;
+  font-size: 28px;
+}
+
 .short {
   height: 40px;
   font-size: 20px;

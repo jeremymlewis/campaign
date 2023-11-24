@@ -27,7 +27,7 @@ export class Tab1Page implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.partyName = this.votes.getThirdPartyName();
-    this.turns = this.textService.getTurns();
+    this.turns = this.textService.getTurns(this.votes.gameLength > 20);
     this.currentTurn = this.turns[0];//NEEDS TO BE UPDATED
     this.isThird = this.votes.getUserIsThird();
     this.isDemocrat = this.votes.getUserIsDem();
@@ -37,7 +37,12 @@ export class Tab1Page implements OnInit, AfterViewInit {
   ionViewWillEnter(){
     this.isDemocrat = this.votes.isDemocrat;
     this.currentTurn = this.turns[this.votes.round-1];
-
+    if (this.votes.progress === 0) {
+      document.getElementById('greenbar').style.backgroundImage = 'linear-gradient(to left, rgb(255, 255, 255), #38ff80)';
+      document.getElementById('greenbar').style.width = ((1) / this.votes.gameLength) * 100 + '%';
+      document.getElementById('whitebar').style.width = ((this.votes.gameLength-1) / this.votes.gameLength) * 100+ '%';
+      document.getElementById('progress-icon').style.left = ((1) / this.votes.gameLength) * 100 - 4 + '%';
+    }
   }
 
   ngAfterViewInit() {
