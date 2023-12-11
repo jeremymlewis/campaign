@@ -32,12 +32,23 @@ export class AdvertisePage implements OnInit {
   }
 
   getGroup() {
+    //JERMY CHECK THIS FOR DIFFERING HISTORIC GROUPS && randomize it for random maybe?
     if (this.myGroup.value.buttonGroup === 'one') {
-      this.selectedStates = ['HI','CA','WA','OR'];
+      if (!this.votes.Washington) {
+        this.selectedStates = ['CA','NV','OR'];
+      } else if (this.votes.Hawaii) {
+        this.selectedStates = ['HI','CA','WA','OR'];
+      } else {
+        this.selectedStates = ['CA','WA','OR'];
+      }
     } else if (this.myGroup.value.buttonGroup === 'two') {
       this.selectedStates = ['IL','MN'];
     } else if (this.myGroup.value.buttonGroup === 'three') {
-      this.selectedStates = ['NM','CO','NV','AZ'];
+      if (this.votes.NewMexico) {
+        this.selectedStates = ['NM','CO','NV','AZ'];
+      } else {
+        this.selectedStates = ['NY', 'NJ', 'CT'];
+      }
     } else if (this.myGroup.value.buttonGroup === 'four') {
       this.selectedStates = ['ME','NH','VA','PA'];
     } else if (this.myGroup.value.buttonGroup === 'five') {
@@ -45,7 +56,11 @@ export class AdvertisePage implements OnInit {
     } else if (this.myGroup.value.buttonGroup === 'six') {
       this.selectedStates = ['FL','NC','GA'];
     } else if (this.myGroup.value.buttonGroup === 'seven') {
-      this.selectedStates = ['TX', 'AK'];
+      if (this.votes.Alaska) {
+        this.selectedStates = ['TX', 'AK'];
+      } else {
+        this.selectedStates = ['TX'];
+      }
     } else if (this.myGroup.value.buttonGroup === 'eight') {
       this.selectedStates = ['SC','MO','IN','MS','LA'];
     } else {

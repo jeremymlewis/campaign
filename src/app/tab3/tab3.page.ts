@@ -80,7 +80,6 @@ export class Tab3Page implements OnInit {
 
   reset() {
     if (window.confirm('Do you want to drop out of the race? All progress will be lost')) {
-      this.votes.reset();
       this.dropOutAcheievment();
       this.router.navigateByUrl('/');
     }

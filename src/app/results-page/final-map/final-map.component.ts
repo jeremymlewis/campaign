@@ -45,9 +45,12 @@ export class FinalMapPage implements OnInit, AfterViewInit {
         this.electoralRight += state.college;
       }
     }
-    document.getElementById('fredbar').style.width = (this.electoralRight * 75 / 538) + '%';
-    document.getElementById('fbluebar').style.width = (this.electoralLeft * 75 / 538) + '%';
-    document.getElementById('fgraybar').style.width = ((538 - (this.electoralRight + this.electoralLeft)) * 75 / 538) + '%';
+    console.log((this.electoralRight * 75 / (this.votes.neededToWin*2-2)) + '%');
+    console.log((this.electoralRight));
+    console.log((this.votes.neededToWin*2-2));
+
+    document.getElementById('fredbar').style.width = (this.electoralRight * 75 / (this.votes.neededToWin*2-2)) + '%';
+    document.getElementById('fbluebar').style.width = (this.electoralLeft * 75 / (this.votes.neededToWin*2-2)) + '%';
   }
 
   calculateScaleOfMap() {
@@ -60,7 +63,6 @@ export class FinalMapPage implements OnInit, AfterViewInit {
 
   mainMenu() {
     if (window.confirm('Finished with current game?')) {
-      this.votes.reset();
       this.router.navigateByUrl('/');
     }
   }

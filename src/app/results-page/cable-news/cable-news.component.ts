@@ -56,9 +56,10 @@ export class CableNewsPage implements OnInit {
       document.getElementById('cnUS-' + state.abbreviation).style.fill = '#ff3030';
       this.electoralRight += state.college;
     }
-    document.getElementById('cnredbar').style.width = (this.electoralRight * 75 / 538) + '%';
-    document.getElementById('cnbluebar').style.width = (this.electoralLeft * 75 / 538) + '%';
-    document.getElementById('cngraybar').style.width = ((538 - (this.electoralRight + this.electoralLeft)) * 75 / 538) + '%';
+    document.getElementById('cnredbar').style.width = (this.electoralRight * 75 / (this.votes.neededToWin*2-2)) + '%';
+    document.getElementById('cnbluebar').style.width = (this.electoralLeft * 75 / (this.votes.neededToWin*2-2)) + '%';
+    document.getElementById('cngraybar').style.width =
+      ((((this.votes.neededToWin*2-2)) - (this.electoralRight + this.electoralLeft)) * 75 / ((this.votes.neededToWin*2-2))) + '%';
 
   }
 
@@ -95,8 +96,8 @@ export class CableNewsPage implements OnInit {
     let rightIntVal = 1;
     this.leftVal = '1%';
     this.rightVal = '1%';
-    const trueLeftVal = state.leansRep + 50;
-    const trueRightVal = state.leansDem + 50;
+    const trueLeftVal = state.leansRep/2 + 50;
+    const trueRightVal = state.leansDem/2 + 50;
     for (let i = 0; i < this.tickCount; i++) {
       leftIntVal += Math.floor(trueLeftVal/this.tickCount);
       rightIntVal += Math.floor(trueRightVal/this.tickCount);
@@ -115,10 +116,5 @@ export class CableNewsPage implements OnInit {
     this.router.navigateByUrl('/results/final-map');
   }
 
-
-  mainMenu() {
-    this.votes.reset();
-    this.router.navigateByUrl('/');
-  }
 }
 

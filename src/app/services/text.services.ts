@@ -52,8 +52,6 @@ export class TextService {
   }
 
   public getTurns(longGame: boolean = false): string[] {
-    //jermy check for 32 round game
-
     let turns = [
       'It is your first turn! Each turn you get to choose 1 action. Click on one of the options below! Your opponent will go next.',
       'Good job in Round 1! Tap the Map/Polls icon at the bottom of the page to see how you are doing in the Polls.',

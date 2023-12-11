@@ -40,24 +40,38 @@
       <img class="state-icon" src="../../../assets/images/states/OR-Oregon.png">
       <br>
       HI, CA, WA, OR</label>
-      <label *ngIf="!this.votes.Hawaii" for="one">
+      <label *ngIf="!this.votes.Hawaii && this.votes.Washington" for="one">
         <img class="state-icon" src="../../../assets/images/states/CA-California.png">
         <img class="state-icon" src="../../../assets/images/states/WA-Washington.png">
         <img class="state-icon" src="../../../assets/images/states/OR-Oregon.png">
         <br>
         CA, WA, OR</label>
+        <label *ngIf="!this.votes.Hawaii && !this.votes.Washington" for="one">
+          <img class="state-icon" src="../../../assets/images/states/CA-California.png">
+          <img class="state-icon" src="../../../assets/images/states/OR-Oregon.png">
+          <img class="state-icon" src="../../../assets/images/states/NV-Nevada.png">
+          <br>
+          CA, OR, NV</label>
+        <!-- JERMY -->
     <input (click)="enableDice()" type="radio" name="buttonGroup" formControlName="buttonGroup" value="two" id="two"><label for="two">
       <img class="state-icon" src="../../../assets/images/states/IL-Illinois.png">
       <img class="state-icon" src="../../../assets/images/states/MN-Minnesota.png">
       <br>
       IL, MN</label>
-    <input (click)="enableDice()" type="radio" name="buttonGroup" formControlName="buttonGroup" value="three" id="three"><label for="three">
+    <input (click)="enableDice()" type="radio" name="buttonGroup" formControlName="buttonGroup" value="three" id="three">
+    <label *ngIf="this.votes.NewMexico" for="three">
       <img class="state-icon" src="../../../assets/images/states/NM-New-Mexico.png">
       <img class="state-icon" src="../../../assets/images/states/CO-Colorado.png">
       <img class="state-icon" src="../../../assets/images/states/NV-Nevada.png">
       <img class="state-icon" src="../../../assets/images/states/AZ-Arizona.png">
       <br>
       NM, CO, NV, AZ</label>
+      <label *ngIf="!this.votes.NewMexico" for="three">
+        <img class="state-icon" src="../../../assets/images/states/NY-New-York.png">
+        <img class="state-icon" src="../../../assets/images/states/NJ-New-Jersey.png">
+        <img class="state-icon" src="../../../assets/images/states/CT-Connecticut.png">
+        <br>
+        NY, NJ, CT</label>
     <input (click)="enableDice()" type="radio" name="buttonGroup" formControlName="buttonGroup" value="four" id="four"><label for="four">
       <img class="state-icon" src="../../../assets/images/states/ME-Maine.png">
       <img class="state-icon" src="../../../assets/images/states/NH-New-Hampshire.png">

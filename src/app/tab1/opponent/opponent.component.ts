@@ -182,7 +182,7 @@ export class OpponentPage implements OnInit {
 
   moveProgressBar() {
     document.getElementById('greenbar').style.backgroundImage = 'linear-gradient(to left, rgb(255, 255, 255), #38ff80)';
-    if (this.votes.progress > 15) {
+    if (this.votes.progress > this.votes.gameLength - 1) {
       document.getElementById('finish-icon').style.left = '100%';
       document.getElementById('greenbar').style.backgroundColor = '#30ff30';
       document.getElementById('greenbar').style.backgroundImage = 'none';

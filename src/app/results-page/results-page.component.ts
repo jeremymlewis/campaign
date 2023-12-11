@@ -39,10 +39,5 @@ export class ResultsPage implements OnInit {
   news() {
     this.router.navigateByUrl('/results/cable-news');
   }
-
-  mainMenu() {
-    this.votes.reset();
-    this.router.navigateByUrl('/');
-  }
 }
 

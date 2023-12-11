@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { VotesStore } from '../stores/votes.store';
 
 @Component({
   selector: 'app-historic',
@@ -7,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['historic-info.component.css']
 })
 export class HistoricInfoPage {
-  constructor(private router: Router) {}
+  constructor(private router: Router, public votes: VotesStore) {}
 
   continue() {
     this.router.navigateByUrl('/options/party');

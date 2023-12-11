@@ -12,6 +12,7 @@ export class GameModePage {
   constructor(private route: Router, private votes: VotesStore) {}
 
   continue(gamemode: string) {
+    this.votes.reset();
     if (gamemode === 'extra') {
       this.route.navigateByUrl('/options/purchase');
     } else if (gamemode === 'long') {
@@ -23,8 +24,13 @@ export class GameModePage {
     } else if (gamemode === 'e1916'){
       this.votes.setElectionOf1916();
       this.route.navigateByUrl('/options/historic');
+    } else if (gamemode === 'e1976'){
+      this.votes.setElectionOf1976();
+      this.route.navigateByUrl('/options/historic');
+    } else if (gamemode === 'e1876'){
+      this.votes.setElectionOf1876();
+      this.route.navigateByUrl('/options/historic');
     } else {
-      this.votes.reset();
       this.route.navigateByUrl('/options/party');
     }
   }

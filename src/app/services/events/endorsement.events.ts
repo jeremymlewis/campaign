@@ -133,7 +133,7 @@ export class EndorsementEvents {
         title:'Endorsement',
         description:'You have been endorsed by a large Newspaper in Ohio',
         points: 1,
-        imageSrc:'/assets/images/presidents/',
+        imageSrc:'/assets/images/presidents/40-reagan.jpg',
         history: 'Reagan was endorsed by "The Plain Dealer" of Clevand, Ohio',
         politicanInvolved: 'Ronald Reagan',
         yearInvolved:'1980',
@@ -307,6 +307,54 @@ export class EndorsementEvents {
         yearInvolved:'2016',
         normalFactDisplay: true,
         statesInvolved: ['IN'],
+        choiceEvent: false
+      },
+      {
+        title:'Endorsement',
+        description:'You have been endorsed by The American Federation of Teachers',
+        points: 1,
+        imageSrc:'/assets/images/presidents/42-clinton.jpg',
+        history: 'Education is often a top issue that voters care about.',
+        politicanInvolved: 'Bill Clinton',
+        yearInvolved:'1996',
+        normalFactDisplay: true,
+        statesInvolved: [],
+        choiceEvent: false
+      },
+      {
+        title:'Endorsement',
+        description:'Your opponent has been endorsed by The American Federation of Teachers',
+        points: -1,
+        imageSrc:'/assets/images/presidents/42-clinton.jpg',
+        history: 'Education is often a top issue that voters care about.',
+        politicanInvolved: 'Bill Clinton',
+        yearInvolved:'1996',
+        normalFactDisplay: true,
+        statesInvolved: [],
+        choiceEvent: false
+      },
+      {
+        title:'Endorsement',
+        description:'Your opponent has been endorsed by a Grassroots Organization',
+        points: -1,
+        imageSrc:'/assets/images/presidents/34-eisenhower.jpg',
+        history: 'A group called Citizens for Eisenhower helped raise money for his campaign.',
+        politicanInvolved: 'Dwight Eisenhower',
+        yearInvolved:'1952',
+        normalFactDisplay: true,
+        statesInvolved: [],
+        choiceEvent: false
+      },
+      {
+        title:'Endorsement',
+        description:'You have been endorsed by a Grassroots Organization',
+        points: 1,
+        imageSrc:'/assets/images/presidents/34-eisenhower.jpg',
+        history: 'A group called Citizens for Eisenhower helped raise money for his campaign.',
+        politicanInvolved: 'Dwight Eisenhower',
+        yearInvolved:'1952',
+        normalFactDisplay: true,
+        statesInvolved: [],
         choiceEvent: false
       },
     ];

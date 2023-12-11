@@ -161,17 +161,17 @@ export class Tab2Page implements OnInit, AfterViewInit {
       document.getElementById('US-' + state.abbreviation).style.fill = '#ffffe0';
       this.tossUp += state.college;
     }
-    document.getElementById('redbar').style.width = (this.safeRed * 75 / 538) + '%';
-    document.getElementById('bluebar').style.width = (this.safeBlue * 75 / 538) + '%';
-    document.getElementById('lightredbar').style.width = (this.leanRed * 75 / 538) + '%';
-    document.getElementById('lightbluebar').style.width = (this.leanBlue * 75 / 538) + '%';
-    document.getElementById('pinkbar').style.width = (this.pink * 75 / 538) + '%';
-    document.getElementById('skybar').style.width = (this.sky * 75 / 538) + '%';
-    document.getElementById('graybar').style.width = ((this.tossUp) * 75 / 538) + '%';
+    document.getElementById('redbar').style.width = (this.safeRed * 75 / (this.store.neededToWin*2-2)) + '%';
+    document.getElementById('bluebar').style.width = (this.safeBlue * 75 / (this.store.neededToWin*2-2)) + '%';
+    document.getElementById('lightredbar').style.width = (this.leanRed * 75 / (this.store.neededToWin*2-2)) + '%';
+    document.getElementById('lightbluebar').style.width = (this.leanBlue * 75 / (this.store.neededToWin*2-2)) + '%';
+    document.getElementById('pinkbar').style.width = (this.pink * 75 / (this.store.neededToWin*2-2)) + '%';
+    document.getElementById('skybar').style.width = (this.sky * 75 / (this.store.neededToWin*2-2)) + '%';
+    document.getElementById('graybar').style.width = ((this.tossUp) * 75 / (this.store.neededToWin*2-2)) + '%';
 
     //AFTER DECIDED CHANGE TO THIS? maybe
-    //document.getElementById('redbar').style.width = (this.decidedRed * 75 / 538) + '%';
-    //document.getElementById('bluebar').style.width = (this.decidedBlue * 75 / 538) + '%';
+    //document.getElementById('redbar').style.width = (this.decidedRed * 75 / (this.votes.neededToWin*2-2)) + '%';
+    //document.getElementById('bluebar').style.width = (this.decidedBlue * 75 / (this.votes.neededToWin*2-2)) + '%';
   }
 
   toggleView() {

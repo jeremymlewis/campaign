@@ -9,6 +9,7 @@ import { Storage } from '@ionic/storage-angular';
 @Injectable({providedIn: 'root'})
 export class VotesStore {
   neededToWin = 270;
+  mapTitle = '';
   actionPending = false;
   unlockedOccuredThisRound = false;
   scandals = 0;
@@ -344,19 +345,27 @@ export class VotesStore {
 
   getSortedGroups(pos: number = 0): string[] {
     const states = this.getSortedStates();
-
-    if (states[pos].abbreviation === 'HI' || states[pos].abbreviation === 'CA' ||
+    if (!this.NewMexico && (states[pos].abbreviation === 'NY' || states[pos].abbreviation === 'NJ')){
+      return ['NY','NJ','CT'];
+    }
+    else if (states[pos].abbreviation === 'HI' || states[pos].abbreviation === 'CA' ||
         states[pos].abbreviation === 'WA' || states[pos].abbreviation === 'OR' ) {
           if (this.Hawaii) {
             return ['HI','CA','WA','OR'];
-          } else {
+          } else if (this.Washington) {
             return ['CA','WA','OR'];
+          } else {
+            return ['CA','OR','NV'];
           }
     } else if (states[pos].abbreviation === 'IL' || states[pos].abbreviation === 'MN') {
           return ['IL','MN'];
     } else if (states[pos].abbreviation === 'NM' || states[pos].abbreviation === 'CO' ||
     states[pos].abbreviation === 'NV' || states[pos].abbreviation === 'AZ' ) {
-      return ['NM','CO','NV','AZ'];
+      if (!this.NewMexico) {
+        return ['CA','OR','NV'];
+      } else {
+        return ['NM','CO','NV','AZ'];
+      }
     } else if (states[pos].abbreviation === 'ME' || states[pos].abbreviation === 'NH' ||
     states[pos].abbreviation === 'VA' || states[pos].abbreviation === 'PA' ) {
       return['ME','NH','VA','PA'];
@@ -375,7 +384,11 @@ export class VotesStore {
     } else if (states[pos].abbreviation === 'SC' || states[pos].abbreviation === 'MO' ||
                states[pos].abbreviation === 'IN' || states[pos].abbreviation === 'MT'  ||
                states[pos].abbreviation === 'MS' || states[pos].abbreviation === 'LA') {
+                if (this.Montana) {
       return ['SC','MO','IN','MT','MS','LA'];
+                } else {
+                  return ['SC','MO','IN','MS','LA'];
+                }
     } else {
       pos += 1;
       if (pos > 49) {
@@ -495,6 +508,19 @@ export class VotesStore {
         state.repPercent += changeRight;
         state.leansDem = state.demPercent-state.repPercent;
         state.leansRep = state.repPercent-state.demPercent;
+        //max out the margin at 90%
+        if (state.leansDem > 90) {
+          state.leansDem = 90;
+          state.leansRep = -90;
+          state.demPercent = 95;
+          state.repPercent = 5;
+        }
+        if (state.leansDem < -90) {
+          state.leansDem = -90;
+          state.leansRep = 90;
+          state.demPercent = 5;
+          state.repPercent = 95;
+        }
       }
     }
   }
@@ -544,10 +570,10 @@ export class VotesStore {
   }
 
   getUserWon() {
-    if ( this.getFinalBlue() === 269 ) {
+    if ( this.getFinalBlue() === (this.neededToWin - 1) ) {
       const closeStates = this.getSortedStates(10);
       let pos = 0;
-      while (this.getFinalBlue() === 269) {
+      while (this.getFinalBlue() === (this.neededToWin - 1)) {
         if (this.isDemocrat) {
           if (closeStates[pos].repPercent - closeStates[pos].demPercent > 0) {
             this.changeStateClimate(closeStates[pos].abbreviation, 1,-1);
@@ -566,12 +592,12 @@ export class VotesStore {
     }
 
     //TODO3
-    if (this.getFinalBlue() > 269 && this.isDemocrat) {
+    if (this.getFinalBlue() > (this.neededToWin - 1) && this.isDemocrat) {
       return true;
-    } else if (this.getFinalBlue() > 269 && !this.isDemocrat) {
+    } else if (this.getFinalBlue() > (this.neededToWin - 1) && !this.isDemocrat) {
       return false;
     }
-    if (this.getFinalRed() > 269 && !this.isDemocrat) {
+    if (this.getFinalRed() > (this.neededToWin - 1) && !this.isDemocrat) {
       return true;
     } else {
       return false;
@@ -601,11 +627,7 @@ export class VotesStore {
   };
 
   async randomizeStates() {
-    this.setLocalStorage('randomPlayed', true);
-    const unlock = await this.getLocalStorage('longPlayed');
-    if (unlock) {
-      this.unlockRecord('record6');
-    }
+    this.mapTitle = 'Randomized Game Mode!';
     let tempStates = this.states;
     tempStates = this.shuffle(tempStates);
     let middleIndex = 0;
@@ -636,23 +658,17 @@ export class VotesStore {
   }
 
   async setLongGameLength() {
-    this.setLocalStorage('longPlayed', true);
-    const unlock = await this.getLocalStorage('randomPlayed');
-    if (unlock) {
-      this.unlockRecord('record6');
-    }
     this.gameLength = 32;
   }
 
   setElectionOf1916() {
     //JERMY 1916 issus:
     /*
-      END MAP NEEDS TO GET THE {{this.votes.college}} and CABLE NEWS TOO
-      Events that refrence Alaska or Hawaii!!!!
-      Maxing out states... we do not want +100 point to be possible. (good for regular DC I think too)
       Maybe we use custom events? just a 'get1916Events' and they are a bit more limited and old timey?
       ALSO THE ACHIVEMENT ABOUT PLAYING ALL GAME MODES
+      ALSO we should set a flag so we can update the context page
     */
+    this.mapTitle = '1916 Election';
     this.neededToWin = 266;
     this.Alaska = null;
     this.Hawaii = null;
@@ -756,8 +772,231 @@ export class VotesStore {
     ];
   }
 
-  reset() {
+  setElectionOf1876() {
+    //JERMY 1876 issus:
+    /*
+      Maybe we use custom events? just a 'get1876Events' and they are a bit more limited and old timey?
+      ALSO THE ACHIVEMENT ABOUT PLAYING ALL GAME MODES
+      UPDATE ALL ALL ALL
+            ALSO we should set a flag so we can update the context page
+
+    */
+    this.mapTitle = '1876 Election';
+    this.neededToWin = 185;
+    this.Alaska = null;
+    this.Arizona = null;
+    this.Idaho = null;
+    this.Montana = null;
+    this.NorthDakota = null;
+    this.SouthDakota = null;
+    this.Utah = null;
+    this.Oklahoma = null;
+    this.NewMexico = null;
+    this.Wyoming = null;
+    this.Washington = null;
+    this.Hawaii = null;
+
+    this.Alabama = new State('Alabama','AL',10, 59,40);
+    this.Arkansas = new State('Arkansas','AR',6,60,40);
+    this.California = new State('California','CA',6,45,46);
+    this.Colorado = new State('Colorado','CO',3,50,51);
+    this.Connecticut = new State('Connecticut','CT',6,50,48);
+    this.Delaware = new State('Delaware','DE',3,55,45);
+    this.Florida = new State('Florida','FL',4,49,51);
+    this.Georgia = new State('Georgia','GA',11,65,12);
+    this.Illinois = new State('Illinois','IL',21,47,50);
+    this.Indiana = new State('Indiana','IN',15,48,47);
+    this.Iowa = new State('Iowa','IA',11,38,58);
+    this.Kansas = new State('Kansas','KS',5,31,63);
+    this.Kentucky = new State('Kentucky','KY',12,61,47);
+    this.Louisiana = new State('Louisiana','LA',8,48,51);
+    this.Maine = new State('Maine','ME',7,42,56);
+    this.Maryland = new State('Maryland','MD',8,55,44);
+    this.Massachusetts = new State('Massachusetts','MA',13,37,50);
+    this.Michigan = new State('Michigan','MI',11,44,52);
+    this.Minnesota = new State('Minnesota','MN',5,32,46);
+    this.Mississippi = new State('Mississippi','MS',8,68,32);
+    this.Missouri = new State('Missouri','MO',15,57,41);
+    this.Nebraska = new State('Nebraska','NE',3,35,64);
+    this.Nevada = new State('Nevada','NV',3,47,52);
+    this.NewHampshire = new State('New Hampshire','NH',5,48,51);
+    this.NewJersey = new State('New Jersey','NJ',9,52,47);
+    this.NewYork = new State('New York','NY',35,51,48);
+    this.NorthCarolina = new State('North Carolina','NC',10,53,46);
+    this.Ohio = new State('Ohio','OH',22,49,50);
+    this.Oregon = new State('Oregon','OR',3,45,48);
+    this.Pennsylvania = new State('Pennsylvania','PA',29,40,42);
+    this.RhodeIsland = new State('Rhode Island','RI',4,40,57);
+    this.SouthCarolina = new State('South Carolina','SC',7,49,50);
+    this.Tennessee = new State('Tennessee','TN',12,59,42);
+    this.Texas = new State('Texas','TX',8,68,30);
+    this.Vermont = new State('Vermont','VT',5,35,62);
+    this.Virginia = new State('Virginia','VA',11,55,39);
+    this.WestVirginia = new State('West Virginia','WV',5,53,39);
+    this.Wisconsin = new State('Wisconsin','WI',10,48,51);
+    this.states = [
+      this.Alabama,
+      this.Arkansas,
+      this.California,
+      this.Colorado,
+      this.Connecticut,
+      this.Delaware,
+      this.Florida,
+      this.Georgia,
+      this.Illinois,
+      this.Indiana,
+      this.Iowa,
+      this.Kansas,
+      this.Kentucky,
+      this.Louisiana,
+      this.Maine,
+      this.Maryland,
+      this.Massachusetts,
+      this.Michigan,
+      this.Minnesota,
+      this.Mississippi,
+      this.Missouri,
+      this.Nebraska,
+      this.Nevada,
+      this.NewHampshire,
+      this.NewJersey,
+      this.NewYork,
+      this.NorthCarolina,
+      this.Ohio,
+      this.Oregon,
+      this.Pennsylvania,
+      this.RhodeIsland,
+      this.SouthCarolina,
+      this.Tennessee,
+      this.Texas,
+      this.Vermont,
+      this.Virginia,
+      this.WestVirginia,
+      this.Wisconsin,
+    ];
+  }
+
+  setElectionOf1976() {
+    //JERMY 1976 issus:
+    /*
+      Maybe we use custom events? just a 'get1976Events' and they are a bit more limited and old timey?
+      ALSO THE ACHIVEMENT ABOUT PLAYING ALL GAME MODES
+      UPDATE ALL STATES
+            ALSO we should set a flag so we can update the context page
+
+      */
     this.neededToWin = 270;
+    this.mapTitle = '1976 Election';
+
+    this.Alabama = new State('Alabama','AL',9, 54,43);
+    this.Alaska = new State('Alaska','AK',3, 39,56);
+    this.Arizona = new State('Arizona','AZ',6,40,54);
+    this.Arkansas = new State('Arkansas','AR',6,60,35);
+    this.California = new State('California','CA',45,47,49);
+    this.Colorado = new State('Colorado','CO',7,42,54);
+    this.Connecticut = new State('Connecticut','CT',8,46,52);
+    this.Delaware = new State('Delaware','DE',3,51,46);
+    this.DC = new State('DC','DC',3, 70, 20);
+    this.Florida = new State('Florida','FL',17,51,46);
+    this.Georgia = new State('Georgia','GA',12,65,32);
+    this.Hawaii = new State('Hawaii','HI',4,50,48);
+    this.Idaho = new State('Idaho','ID',4,37,59);
+    this.Illinois = new State('Illinois','IL',26,48,50);
+    this.Indiana = new State('Indiana','IN',13,46,53);
+    this.Iowa = new State('Iowa','IA',8,48,49);
+    this.Kansas = new State('Kansas','KS',7,44,52);
+    this.Kentucky = new State('Kentucky','KY',9,51,46);
+    this.Louisiana = new State('Louisiana','LA',10,51,46);
+    this.Maine = new State('Maine','ME',4,48,49);
+    this.Maryland = new State('Maryland','MD',10,51,44);
+    this.Massachusetts = new State('Massachusetts','MA',14,56,40);
+    this.Michigan = new State('Michigan','MI',21,46,52);
+    this.Minnesota = new State('Minnesota','MN',10,54,42);
+    this.Mississippi = new State('Mississippi','MS',7,49,47);
+    this.Missouri = new State('Missouri','MO',12,50,47);
+    this.Montana = new State('Montana','MT',4,45,52);
+    this.Nebraska = new State('Nebraska','NE',5,45,50);
+    this.Nevada = new State('Nevada','NV',3,50,41);
+    this.NewHampshire = new State('New Hampshire','NH',4,44,54);
+    this.NewJersey = new State('New Jersey','NJ',17,47,50);
+    this.NewMexico = new State('New Mexico','NM',4,45,47);
+    this.NewYork = new State('New York','NY',41,51,47);
+    this.NorthCarolina = new State('North Carolina','NC',13,55,44);
+    this.NorthDakota = new State('North Dakota','ND',3,46,51);
+    this.Ohio = new State('Ohio','OH',25,51,50);
+    this.Oklahoma = new State('Oklahoma','OK',8,44,45);
+    this.Oregon = new State('Oregon','OR',6,47,48);
+    this.Pennsylvania = new State('Pennsylvania','PA',27,50,47);
+    this.RhodeIsland = new State('Rhode Island','RI',4,54,44);
+    this.SouthCarolina = new State('South Carolina','SC',8,55,43);
+    this.SouthDakota = new State('South Dakota','SD',4,48,50);
+    this.Tennessee = new State('Tennessee','TN',10,54,42);
+    this.Texas = new State('Texas','TX',26,51,48);
+    this.Utah = new State('Utah','UT',4,34,59);
+    this.Vermont = new State('Vermont','VT',3,43,54);
+    this.Virginia = new State('Virginia','VA',12,48,49);
+    this.Washington = new State('Washington','WA',9,46,50);
+    this.WestVirginia = new State('West Virginia','WV',6,57,42);
+    this.Wisconsin = new State('Wisconsin','WI',11,49,47);
+    this.Wyoming = new State('Wyoming','WY',3,40,59);
+    this.states = [
+      this.Alabama,
+      this.Alaska,
+      this.Arizona,
+      this.Arkansas,
+      this.California,
+      this.Colorado,
+      this.Connecticut,
+      this.Delaware,
+      this.DC,
+      this.Florida,
+      this.Georgia,
+      this.Hawaii,
+      this.Idaho,
+      this.Illinois,
+      this.Indiana,
+      this.Iowa,
+      this.Kansas,
+      this.Kentucky,
+      this.Louisiana,
+      this.Maine,
+      this.Maryland,
+      this.Massachusetts,
+      this.Michigan,
+      this.Minnesota,
+      this.Mississippi,
+      this.Missouri,
+      this.Montana,
+      this.Nebraska,
+      this.Nevada,
+      this.NewHampshire,
+      this.NewJersey,
+      this.NewMexico,
+      this.NewYork,
+      this.NorthCarolina,
+      this.NorthDakota,
+      this.Ohio,
+      this.Oklahoma,
+      this.Oregon,
+      this.Pennsylvania,
+      this.RhodeIsland,
+      this.SouthCarolina,
+      this.SouthDakota,
+      this.Tennessee,
+      this.Texas,
+      this.Utah,
+      this.Vermont,
+      this.Virginia,
+      this.Washington,
+      this.WestVirginia,
+      this.Wisconsin,
+      this.Wyoming
+    ];
+  }
+
+  reset() {
+    //CALL THIS TO RESET THE GAME TO 2024 ELECTION
+    this.mapTitle = '';
     this.scandals = 0;
     this.gameLength = 16;
     this.unlockedOccuredThisRound = false;

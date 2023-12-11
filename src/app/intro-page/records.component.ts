@@ -54,7 +54,6 @@ export class RecordsPage implements OnInit {
       {title: 'Ivory Tower', description: 'Win without visiting a single state', id: 'record4'},
       {title: 'State Resident', description: 'Visit the same state 5 times in a single Classic Mode game', id: 'record9'},
       {title: 'Not Fit For Office', description: 'Draw 2 scandal events in 1 game', id: 'record5'},
-      {title: 'Seasoned Campaigner', description: 'Play all the game modes', id: 'record6'},
       {title: 'Bellweather State?', description: 'Win without Ohio', id: 'record7'},
       {title: 'Don\'t mess with Texas', description: 'Win Texas as a Democrat', id: 'record10'},
       {title: 'Is this possible?', description: 'Win California as a Republican', id: 'record17'},
