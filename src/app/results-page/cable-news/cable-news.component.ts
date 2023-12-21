@@ -13,7 +13,7 @@ export class CableNewsPage implements OnInit {
   tickTime = 100;
   tickCount = 12;
   restTime = 3000;
-  statesToDisplay = 8;
+  statesToDisplay = 6;
 
   //Displayed
   resultStates: State[] = [];
@@ -46,6 +46,7 @@ export class CableNewsPage implements OnInit {
     this.allStates = this.votes.getSortedStates(51);
     this.resultStates = this.allStates.slice(0, this.statesToDisplay);
     this.mapStates = this.allStates.slice(this.statesToDisplay, 51);
+    this.mapStates.sort((a,b) => a.order - b.order);
   }
 
   addStateToMap(state: State) {

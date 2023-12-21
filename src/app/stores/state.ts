@@ -8,10 +8,11 @@ export class State {
   repPercent: number;
   leansDem: number;
   leansRep: number;
-  decided: boolean;
+  order: number;
+  pollingError: number;
   constructor(name: string, abbreviation: string,
               electoralVotes: number, demPercentage: number,
-              repPercentage: number, decided?: boolean) {
+              repPercentage: number, order?: number) {
     this.name = name;
     this.protected = '';
     this.thirdPercent = -1;
@@ -21,7 +22,8 @@ export class State {
     this.repPercent = repPercentage;
     this.leansDem = demPercentage-repPercentage;
     this.leansRep = repPercentage-demPercentage;
-    this.decided = decided || false;
+    this.order = order || 0;
+    this.pollingError = 0;
   }
 }
 

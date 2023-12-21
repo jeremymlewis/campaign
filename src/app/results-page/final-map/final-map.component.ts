@@ -14,6 +14,10 @@ export class FinalMapPage implements OnInit, AfterViewInit {
   allStates: State[] = [];
   electoralLeft = 0;
   electoralRight = 0;
+  popularLeft = 0;
+  popularRight = 0;
+  popularLeftString = '';
+  popularRightString = '';
   isDemocrat: boolean;
 
   constructor(private router: Router, public votes: VotesStore) {}
@@ -44,10 +48,14 @@ export class FinalMapPage implements OnInit, AfterViewInit {
         document.getElementById('fUS-' + state.abbreviation).style.fill = '#ff3030';
         this.electoralRight += state.college;
       }
+      const trueLeftVal = state.leansDem/2 + 50;
+      const trueRightVal = state.leansRep/2 + 50;
+
+      this.popularLeft += (264000 + Math.floor(Math.random() * 12000)) * state.college * trueLeftVal/100;
+      this.popularRight += (264000 + Math.floor(Math.random() * 12000)) * state.college * trueRightVal/100;
     }
-    console.log((this.electoralRight * 75 / (this.votes.neededToWin*2-2)) + '%');
-    console.log((this.electoralRight));
-    console.log((this.votes.neededToWin*2-2));
+    this.popularLeftString = Math.floor(this.popularLeft).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    this.popularRightString = Math.floor(this.popularRight).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
     document.getElementById('fredbar').style.width = (this.electoralRight * 75 / (this.votes.neededToWin*2-2)) + '%';
     document.getElementById('fbluebar').style.width = (this.electoralLeft * 75 / (this.votes.neededToWin*2-2)) + '%';

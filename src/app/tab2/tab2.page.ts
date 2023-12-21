@@ -108,19 +108,7 @@ export class Tab2Page implements OnInit, AfterViewInit {
     this.sky = 0;
     this.pink = 0;
     this.allStates = this.store.getAllStates();
-    this.decidedStates = this.store.getDecidedStates();
     this.national = this.store.NationalClimate;
-    for (const state of this.decidedStates) {
-      if (state.leansDem > 0) {
-        this.decidedStatesLeft.push(state);
-        document.getElementById('US-' + state.abbreviation).style.fill = 'blue';
-        this.decidedBlue += state.college;
-      } else {
-        this.decidedStatesRight.push(state);
-        document.getElementById('US-' + state.abbreviation).style.fill = 'red';
-        this.decidedRed += state.college;
-      }
-    }
     this.safeStates = this.store.getSafeStates();
 
     for (const state of this.safeStates) {

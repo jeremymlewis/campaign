@@ -51,13 +51,17 @@
     <h1 style="margin-top: 6px;"><strong>You Lost</strong></h1>
   </div>
   <div class="scorebox">
+    <div class="center" style="margin-top: 0px; padding-top: 0px">
+      <strong>{{this.votes.neededToWin}} votes needed to win</strong>
+    </div>
     <div class="center" style="margin-top: 2px; margin-bottom: 0px; padding-bottom: 0px">
-      Current Electoral Vote Count:
+      Final Electoral Vote Count:
     </div>
     <h1 class="center" style="margin-top: 1px; padding-top: 1px; margin-bottom: 1px; padding-bottom: 1px;"><span class="blue"> Dem: {{electoralLeft}} </span> <span style="color: white;">----</span> <span class="red"> Rep: {{electoralRight}} </span></h1>
-    <div class="center" style="margin-top: 0px; padding-top: 0px">
-      {{this.votes.neededToWin}} Votes are Needed to Win
+    <div class="center" style="margin-top: 2px; margin-bottom: 0px; padding-bottom: 0px">
+      Final Popular Vote:
     </div>
+    <h1 class="center" style="font-size: medium; margin-top: 1px; padding-top: 1px; margin-bottom: 1px; padding-bottom: 1px;"><span class="blue"> Dem: {{popularLeftString}} </span> <span style="color: white;">----</span> <span class="red"> Rep: {{popularRightString}} </span></h1>
   </div>
   <div class="center">
   <p style="margin-top: 0; margin-bottom: 0; padding-top:0; padding-bottom:0;">|</p>
@@ -186,7 +190,13 @@
         <p style="margin-top: 0; margin-bottom: 0; color: red;">{{(state.leansRep/2 + 50).toFixed(1)}}%</p>
         <p style="margin-top: 0; margin-bottom: 0; color: white;">--</p>
         <p style="margin-top: 0; margin-bottom: 0; color: blue;">{{(state.leansDem/2 + 50).toFixed(1)}}%</p>
+        <br>
+
       </div>
+      <div style="margin-top: 0; margin-bottom: 0;" class="center">
+
+      <p style="font-size: small; margin-top: 0; margin-bottom: 0; color: black;">({{(state.pollingError).toFixed(1)}}% polling error)</p>
+</div>
     </div>
     <div class="center">
     <ion-button class="button43" style="position: fixed; bottom: 20px;" (click)="mainMenu()">Return to Main Menu</ion-button>

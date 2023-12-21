@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController, ToastController } from '@ionic/angular';
 import { VotesStore } from '../../stores/votes.store';
@@ -14,6 +14,7 @@ export class CampaignPage implements OnInit {
   chosenState: State = null;
   isDemocrat: boolean;
   isThird: boolean;
+  effective = true;
 
   canBack = true;
   states: State[];
@@ -27,6 +28,15 @@ export class CampaignPage implements OnInit {
     this.isDemocrat = this.votes.getUserIsDem();
     this.isThird = this.votes.getUserIsThird();
     this.states = this.votes.getSortedStates();
+  }
+
+  inputChange() {
+    console.log("On Changes")
+    if (this.chosenState?.protected) {
+      this.effective = false;
+    } else {
+      this.effective = true;
+    }
   }
 
   rollStarted() {

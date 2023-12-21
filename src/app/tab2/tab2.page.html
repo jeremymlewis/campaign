@@ -273,7 +273,7 @@
   <div class="center-border">
 
     <ul>
-      <li class='lightblue' *ngFor="let state of tossUpStatesLeft">{{state.abbreviation}} ({{state.college}}): +{{state.leansDem}} L</li>
+      <li class='lightblue' *ngFor="let state of tossUpStatesLeft">{{state.abbreviation}} ({{state.college}}): +{{state.leansDem}} D</li>
     </ul>
     <ul>    <li *ngFor="let state of tossUpStates">{{state.abbreviation}} ({{state.college}}): +/-0</li>
     </ul>
@@ -290,7 +290,7 @@
   </div>
   <div class="center-border">
     <ul>
-      <li class='lightblue' *ngFor="let state of leftLeanStates">{{state.abbreviation}} ({{state.college}}): +{{state.leansDem}} L</li>
+      <li class='lightblue' *ngFor="let state of leftLeanStates">{{state.abbreviation}} ({{state.college}}): +{{state.leansDem}} D</li>
     </ul>
     <ul>
       <li class='lightred' *ngFor="let state of rightLeanStates">{{state.abbreviation}} ({{state.college}}): +{{state.leansRep}} R</li>

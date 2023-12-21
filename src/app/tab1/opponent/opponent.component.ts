@@ -65,7 +65,7 @@ export class OpponentPage implements OnInit {
       //fundraise
     } else if (value <= 4) {
       //advertise (or fundraise if needed)
-      if (this.votes.opponentFunds === 0) {
+      if (this.votes.opponentFunds === 0 && (this.votes.round < this.votes.gameLength - 2)) {
         this.votes.opponentFunds += 2;
         return 'Your opponent ran fundraising and earned $2 million';
       } else {
