@@ -14,3 +14,4 @@ Workflow for Pull Requests: clone repo, make a new branch, and check it out. Mak
 clone/download repo command: 'git clone https://github.com/jeremymlewis/campaign.git'
 
 This can be done with 'git checkout -b "NAME_OF_YOUR_BRANCH"' to get a new branch. 'git add .' 'git commit -m "message"' 'git push' to get the changed posted to the repo
+Then go to github and press the green "open a pull request" button
