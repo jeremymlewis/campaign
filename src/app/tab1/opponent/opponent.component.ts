@@ -33,7 +33,7 @@ export class OpponentPage implements OnInit {
     //4 - campaign wisely (draw the top 10 closest states and pick one)
     //5 - advertise wisely (draw the top 10 closest states and pick one's group)
     const value = Math.floor(Math.random() * 6) + 1;
-    if (value <= 2) {
+    if (value <= 2 && (this.votes.round < this.votes.gameLength - 2)) {
       if (this.votes.opponentFunds < 3) {
         this.votes.opponentFunds += 1;
         return 'Your opponent ran fundraising and earned $1 million';
@@ -65,7 +65,7 @@ export class OpponentPage implements OnInit {
       //fundraise
     } else if (value <= 4) {
       //advertise (or fundraise if needed)
-      if (this.votes.opponentFunds === 0) {
+      if (this.votes.opponentFunds === 0 && (this.votes.round < this.votes.gameLength - 2)) {
         this.votes.opponentFunds += 2;
         return 'Your opponent ran fundraising and earned $2 million';
       } else {
@@ -88,10 +88,31 @@ export class OpponentPage implements OnInit {
         return 'Your opponent ran advertising in' + statesString + ' where they made a difference of 1 point';
      }
     } else {
+      const isSuccess = Math.floor(Math.random() * 10);
       //campaign (draw the top 10 closest states and pick one)
+      if (Math.floor(Math.random() * 4) === 1) {
+        //GIVE A SMALL CHANCE THAT THE AI WILL TARGET THE MOST VALUABLE STATE
+        const stateGroup = this.votes.getSortedStates(6);
+        let maxVotes = 0;
+        let currentPos = 0;
+        let maxPos = 0;
+        for (const state of stateGroup) {
+          if (state.college > maxVotes) {
+            maxVotes = state.college;
+            maxPos = currentPos;
+          }
+          currentPos++;
+        }
+        if (isSuccess > 4) {
+          this.handleGroupScoreUpdate([stateGroup[maxPos].abbreviation], 2);
+          return 'Your opponent campaigned in ' + stateGroup[maxPos].name + ' where they made a difference of 2 point';
+        } else {
+          this.handleGroupScoreUpdate([stateGroup[maxPos].abbreviation], 1);
+          return 'Your opponent campaigned in ' + stateGroup[maxPos].name + ' where they made a difference of 1 point';
+        }
+      }
       const statePos = Math.floor(Math.random() * 10);
       const states = this.votes.getSortedStates(10);
-      const isSuccess = Math.floor(Math.random() * 10);
       if (isSuccess > 2) {
           this.handleGroupScoreUpdate([states[statePos].abbreviation], 2);
         return 'Your opponent campaigned in ' + states[statePos].name + ' where they made a difference of 2 points';
@@ -142,14 +163,14 @@ export class OpponentPage implements OnInit {
     this.moveProgressBar();
     if (this.votes.round % 2 === 0) {
       this.votes.round++;
-      if (this.votes.round > 16) {
+      if (this.votes.round > this.votes.gameLength) {
         this.goToResults();
       } else {
         this.goToEvent();
       }
     } else {
       this.votes.round++;
-      if (this.votes.round > 16) {
+      if (this.votes.round > this.votes.gameLength) {
         this.goToResults();
       } else {
         this.goToTab1();
@@ -160,7 +181,8 @@ export class OpponentPage implements OnInit {
 
 
   moveProgressBar() {
-    if (this.votes.progress > 15) {
+    document.getElementById('greenbar').style.backgroundImage = 'linear-gradient(to left, rgb(255, 255, 255), #38ff80)';
+    if (this.votes.progress > this.votes.gameLength - 1) {
       document.getElementById('finish-icon').style.left = '100%';
       document.getElementById('greenbar').style.backgroundColor = '#30ff30';
       document.getElementById('greenbar').style.backgroundImage = 'none';
@@ -168,17 +190,16 @@ export class OpponentPage implements OnInit {
     } else {
       this.votes.progress++;
     }
-    document.getElementById('greenbar').style.width = ((this.votes.progress) / 16) * 100 + '%';
-    document.getElementById('whitebar').style.width = ((16-this.votes.progress) / 16) * 100+ '%';
-    document.getElementById('progress-icon').style.left = ((this.votes.progress) / 16) * 100 - 4 + '%';
-    if (this.votes.progress > 13) {
+    document.getElementById('greenbar').style.width = ((this.votes.progress) / this.votes.gameLength) * 100 + '%';
+    document.getElementById('whitebar').style.width = ((this.votes.gameLength-this.votes.progress) / this.votes.gameLength) * 100+ '%';
+    document.getElementById('progress-icon').style.left = ((this.votes.progress) / this.votes.gameLength) * 100 - 4 + '%';
+    if (this.votes.progress > (this.votes.gameLength - 3)) {
       document.getElementById('greenbar').style.backgroundImage = 'linear-gradient(to left, rgb(255, 255, 255), rgb(255, 40, 40))';
       this.votes.progressMessage = 'ELECTION DAY SOON';
     }
-    if (this.votes.progress > 14) {
+    if (this.votes.progress > (this.votes.gameLength - 2)) {
       document.getElementById('finish-icon').style.left = '100%';
     }
-
 }
 
   handleGroupScoreUpdate(group: string[], sway: number) {

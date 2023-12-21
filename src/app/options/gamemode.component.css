@@ -40,6 +40,11 @@ h1 {
   font-size: 40px;
 }
 
+.medium {
+  height: 60px;
+  font-size: 28px;
+}
+
 .short {
   height: 40px;
   font-size: 20px;
@@ -60,4 +65,13 @@ h1 {
 
 p {
   text-shadow: 2px 2px 4px white, 0 0 1em white, 0 0 0.2em white;
+}
+.hr {
+  border-bottom: 1px solid #ccc;
+  margin: 10px 0;
+  width: 100%;
+}
+
+.hr h3 {
+  margin-left: 8px;
 }

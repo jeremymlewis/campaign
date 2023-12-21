@@ -8,6 +8,7 @@ import { ExploreContainerComponentModule } from '../explore-container/explore-co
 import { IntroRoutingModule } from './intro-routing.module';
 import { WelcomePage } from './welcome.component';
 import { RecordsPage } from './records.component';
+import { Records2Page } from './records2.component';
 
 @NgModule({
   imports: [
@@ -17,6 +18,6 @@ import { RecordsPage } from './records.component';
     ExploreContainerComponentModule,
     IntroRoutingModule
   ],
-  declarations: [IntroPage, WelcomePage, RecordsPage]
+  declarations: [IntroPage, WelcomePage, RecordsPage, Records2Page]
 })
 export class IntroModule {}

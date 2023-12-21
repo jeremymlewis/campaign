@@ -20,10 +20,4 @@ export class ResultsPage implements OnInit {
       //   this.votes.addGameStats(this.votes.getUserWon(),false,this.votes.getFinalRed());
       // }
   }
-
-
-  mainMenu() {
-    this.votes.reset();
-    this.router.navigateByUrl('/');
-  }
 }

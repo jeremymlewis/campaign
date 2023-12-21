@@ -54,11 +54,11 @@ export class Tab2Page implements OnInit, AfterViewInit {
     this.isDemocrat = this.store.isDemocrat;
     this.isThird = this.store.getUserIsThird();
     this.partyName = this.store.thirdPartyName;
-    this.calculateScaleOfMap();
   }
 
   ionViewWillEnter(){
     this.isDemocrat = this.store.isDemocrat;
+    this.calculateScaleOfMap();
   }
 
   ngAfterViewInit() {
@@ -70,7 +70,10 @@ export class Tab2Page implements OnInit, AfterViewInit {
   calculateScaleOfMap() {
     const w = window.innerWidth;
     this.scale = w * .9 /1150;
-    const height = w * 0.6;
+    let height = w * 0.6;
+    if (!this.store.Alaska) {
+      height = w * 0.5;
+    }
     document.getElementById('svg-container').style.height = height + 'px';
   }
 
@@ -105,19 +108,7 @@ export class Tab2Page implements OnInit, AfterViewInit {
     this.sky = 0;
     this.pink = 0;
     this.allStates = this.store.getAllStates();
-    this.decidedStates = this.store.getDecidedStates();
     this.national = this.store.NationalClimate;
-    for (const state of this.decidedStates) {
-      if (state.leansDem > 0) {
-        this.decidedStatesLeft.push(state);
-        document.getElementById('US-' + state.abbreviation).style.fill = 'blue';
-        this.decidedBlue += state.college;
-      } else {
-        this.decidedStatesRight.push(state);
-        document.getElementById('US-' + state.abbreviation).style.fill = 'red';
-        this.decidedRed += state.college;
-      }
-    }
     this.safeStates = this.store.getSafeStates();
 
     for (const state of this.safeStates) {
@@ -158,17 +149,17 @@ export class Tab2Page implements OnInit, AfterViewInit {
       document.getElementById('US-' + state.abbreviation).style.fill = '#ffffe0';
       this.tossUp += state.college;
     }
-    document.getElementById('redbar').style.width = (this.safeRed * 75 / 538) + '%';
-    document.getElementById('bluebar').style.width = (this.safeBlue * 75 / 538) + '%';
-    document.getElementById('lightredbar').style.width = (this.leanRed * 75 / 538) + '%';
-    document.getElementById('lightbluebar').style.width = (this.leanBlue * 75 / 538) + '%';
-    document.getElementById('pinkbar').style.width = (this.pink * 75 / 538) + '%';
-    document.getElementById('skybar').style.width = (this.sky * 75 / 538) + '%';
-    document.getElementById('graybar').style.width = ((this.tossUp) * 75 / 538) + '%';
+    document.getElementById('redbar').style.width = (this.safeRed * 75 / (this.store.neededToWin*2-2)) + '%';
+    document.getElementById('bluebar').style.width = (this.safeBlue * 75 / (this.store.neededToWin*2-2)) + '%';
+    document.getElementById('lightredbar').style.width = (this.leanRed * 75 / (this.store.neededToWin*2-2)) + '%';
+    document.getElementById('lightbluebar').style.width = (this.leanBlue * 75 / (this.store.neededToWin*2-2)) + '%';
+    document.getElementById('pinkbar').style.width = (this.pink * 75 / (this.store.neededToWin*2-2)) + '%';
+    document.getElementById('skybar').style.width = (this.sky * 75 / (this.store.neededToWin*2-2)) + '%';
+    document.getElementById('graybar').style.width = ((this.tossUp) * 75 / (this.store.neededToWin*2-2)) + '%';
 
     //AFTER DECIDED CHANGE TO THIS? maybe
-    //document.getElementById('redbar').style.width = (this.decidedRed * 75 / 538) + '%';
-    //document.getElementById('bluebar').style.width = (this.decidedBlue * 75 / 538) + '%';
+    //document.getElementById('redbar').style.width = (this.decidedRed * 75 / (this.votes.neededToWin*2-2)) + '%';
+    //document.getElementById('bluebar').style.width = (this.decidedBlue * 75 / (this.votes.neededToWin*2-2)) + '%';
   }
 
   toggleView() {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController, ToastController } from '@ionic/angular';
 import { VotesStore } from '../../stores/votes.store';
@@ -14,6 +14,7 @@ export class CampaignPage implements OnInit {
   chosenState: State = null;
   isDemocrat: boolean;
   isThird: boolean;
+  effective = true;
 
   canBack = true;
   states: State[];
@@ -29,8 +30,21 @@ export class CampaignPage implements OnInit {
     this.states = this.votes.getSortedStates();
   }
 
+  inputChange() {
+    console.log("On Changes")
+    if (this.chosenState?.protected) {
+      this.effective = false;
+    } else {
+      this.effective = true;
+    }
+  }
+
   rollStarted() {
     this.canBack = false;
+  }
+
+  checkRecordCompletion() {
+    //set false to if they made it thorugh a whole game without visiting a state.
   }
 
   async handleRoll(roll: number) {
@@ -47,6 +61,7 @@ export class CampaignPage implements OnInit {
     const originalRoll = roll;
     roll = Math.floor(roll / 2) + modifier;
 
+    this.votes.stateVisited(this.chosenState);
     if (this.chosenState) {
       if (this.isDemocrat) {
         this.votes.changeStateClimate(stateId, roll, 0);

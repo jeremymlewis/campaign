@@ -32,7 +32,7 @@
   </div>
   <ion-list [inset]="true" style="width: 80%; margin-left:10%; border: 1px black solid;">
     <ion-item>
-      <ion-select [(ngModel)]="chosenState" placeholder="Select a state...">
+      <ion-select (ionChange)="inputChange()" [(ngModel)]="chosenState" placeholder="Select a state...">
         <ion-select-option *ngFor="let state of states" [value]="state">{{state.protected}}{{state.name}} ({{state | scoreDisplay}}) ({{state.college}} votes)</ion-select-option>
       </ion-select>
     </ion-item>
@@ -55,6 +55,8 @@
 
   <br>
 
-  <app-dice [slot0]='[1]' val0="+0%" [slot1]="[2, 3]" val1="+1%" [slot2]='[4, 5]' val2="+2%" [slot3]="[6]" val3="+3%" [canClick]="!!chosenState" (rollStarted)="rollStarted()" (diceRolled)="handleRoll($event)"></app-dice>
+  <app-dice *ngIf="effective" [slot0]='[1]' val0="+0%" [slot1]="[2, 3]" val1="+1%" [slot2]='[4, 5]' val2="+2%" [slot3]="[6]" val3="+3%" [canClick]="!!chosenState" (rollStarted)="rollStarted()" (diceRolled)="handleRoll($event)"></app-dice>
+  <div *ngIf="!effective" class="center"><p style="color: red;">Visiting this state will be less effective</p></div>
+  <app-dice *ngIf="!effective" [slot0]='[1]' val0="-1%" [slot1]="[2, 3]" val1="+0%" [slot2]='[4, 5]' val2="+1%" [slot3]="[6]" val3="+2%" [canClick]="!!chosenState" (rollStarted)="rollStarted()" (diceRolled)="handleRoll($event)"></app-dice>
 
 </ion-content>

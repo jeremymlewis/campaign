@@ -1,0 +1,61 @@
+<!-- JERMY MAKE SURE THIS IS MATCHING WITH RECORDS 1 -->
+<ion-header [translucent]="false">
+  <ion-toolbar>
+    <ion-title class="ion-text-center">
+      Achievements
+    </ion-title>
+    <ion-button fill="clear" id="click-triggerGH"><ion-icon name="help-circle-outline"></ion-icon></ion-button>
+    <ion-popover trigger="click-triggerGH" triggerAction="click">
+      <ng-template>
+        <ion-content class="ion-padding">Check up here on how many games you have played, and how many times you have won!</ion-content>
+      </ng-template>
+    </ion-popover>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+  <ion-grid class="ion-no-padding bg-image">
+    <div class="title">
+      <h1>Game History:</h1>
+    </div>
+
+    <p style="margin-left: 20%;">Games Played: {{plays || 0}}</p>
+
+    <p style="margin-left: 20%;">Games won: {{wins  || 0}}</p>
+
+    <p style="margin-left: 20%;">Wins as Republican: {{repWins || 0}}</p>
+
+    <p style="margin-left: 20%;">Wins as Democrat: {{demWins || 0}}</p>
+
+    <p style="margin-left: 20%;">Most Electoral Votes Won: {{highVotes || 0}}</p>
+    <div class="title">
+
+      <h1>Achievements:</h1>
+      </div>
+      <div *ngFor="let unlocked of unlockedRecords" style="margin-top: 4px; margin-left: 6%; display: flex; height: 72px; width: 88%;">
+        <div style="width: 64px; border-radius: 10px 0px 0px 10px; border: black 2px solid; background-color: #606060 ;">
+          <ion-icon style="color: #FFD700; font-size: 48px; margin-left: 3px; margin-right: 3px; margin-top: 8px; margin-bottom: 8px;" name="trophy"></ion-icon>
+        </div>
+        <div style="border-radius: 0px 10px 10px 0px; border: black 2px solid; width: 100%; overflow: hidden; background-image: linear-gradient(to right, #ffffff 0%, #ffffff 50%, #c9cd9b 100%);">
+          <p style="margin-top: 0; margin-bottom: 0; margin-left: 3px;"><strong>{{unlocked.title}}</strong></p>
+          <p style="margin-top: 0; margin-bottom: 0; margin-left: 3px;">{{unlocked.description}}</p>
+        </div>
+      </div>
+
+      <div *ngFor="let locked of lockedRecords" style="margin-top: 4px; margin-left: 6%; display: flex; height: 72px; width: 88%;">
+        <div style="width: 64px; border-radius: 10px 0px 0px 10px; border: black 2px solid; background-color: #606060;">
+          <ion-icon style="font-size: 48px; margin-left: 3px; margin-right: 3px; margin-top: 3px; margin-bottom: 3px;" name="lock-closed"></ion-icon>
+        </div>
+        <div style="border-radius: 0px 10px 10px 0px; border: black 2px solid; width: 100%; overflow: hidden;  background-image: linear-gradient(to right, #a2a2a2 0%, #a2a2a2 50%, #606060 100%);">
+          <p style="margin-top: 0; margin-bottom: 0; margin-left: 3px;"><strong>???</strong></p>
+          <p style="margin-top: 0; margin-bottom: 0; margin-left: 3px;">{{locked.description}}</p>
+        </div>
+      </div>
+      <br>      <br>      <br>      <br>      <br>
+    <div class="fix-center">
+      <ion-button class="button43" (click)="continue()"><ion-icon name="arrow-back-circle-outline"></ion-icon>Back To Election Results</ion-button>
+    </div>
+
+  </ion-grid>
+</ion-content>

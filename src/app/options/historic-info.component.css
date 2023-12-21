@@ -1,0 +1,15 @@
+.center {
+  font-size: large;
+  text-align: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 50%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+p {
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
