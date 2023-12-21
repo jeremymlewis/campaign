@@ -11,4 +11,6 @@ Code for the app pages is found in the src/app folder and is organized by which 
 
 Workflow for Pull Requests: clone repo, make a new branch, and check it out. Commit and push changes to the branch. 
 
+clone repo command: 'git clone https://github.com/jeremymlewis/campaign.git'
+
 This can be done with 'git checkout -b "NAME_OF_YOUR_BRANCH"' to get a new branch. 'git add .' 'git commit -m "message"' 'git push' to get the changed posted to the repo
