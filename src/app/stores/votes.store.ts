@@ -1006,7 +1006,7 @@ export class VotesStore {
     this.isThird = false;
     this.funds = 0;
     this.opponentFunds = 0;
-    this.round = 15;//jermy game end testing only
+    //this.round = 15;//jermy game end testing only
     this.turn = 0;
     this.NationalClimate = 0;
     this.progressMessage = '';

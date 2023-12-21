@@ -23,6 +23,7 @@ export class IntroPage implements AfterViewInit {
 
   toTabs() {
     this.route.navigateByUrl('/options'); //TODO was selcome but I changed it
+    this.votes.round = 1;
   }
 
   toTabsTestEnd() {

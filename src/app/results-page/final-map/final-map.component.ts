@@ -48,8 +48,8 @@ export class FinalMapPage implements OnInit, AfterViewInit {
         document.getElementById('fUS-' + state.abbreviation).style.fill = '#ff3030';
         this.electoralRight += state.college;
       }
-      const trueLeftVal = state.leansDem/2 + 50;
-      const trueRightVal = state.leansRep/2 + 50;
+      const trueLeftVal = state.leansRep/2 + 50;
+      const trueRightVal = state.leansDem/2 + 50;
 
       this.popularLeft += (264000 + Math.floor(Math.random() * 12000)) * state.college * trueLeftVal/100;
       this.popularRight += (264000 + Math.floor(Math.random() * 12000)) * state.college * trueRightVal/100;
