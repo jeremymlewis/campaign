@@ -41,9 +41,9 @@ export class RecordsPage implements OnInit {
     this.unlockedRecords = [];
     this.lockedRecords = [];
     const records = [
-      {title: 'President!', description: 'Win an Election', id: 'record1'},
-      {title: 'Not the President...', description: 'Lose an Election', id: 'record2'},
-      {title: 'Party Switch', description: 'Win an Election with Both Parties', id: 'record3'},
+      {title: 'President!', description: 'Win an election', id: 'record1'},
+      {title: 'Not the President...', description: 'Lose an election', id: 'record2'},
+      {title: 'Party Switch', description: 'Win an election with both parties', id: 'record3'},
       {title: 'Political Dynasty', description: 'Win 10 elections', id: 'record8'},
       {title: 'Time to Retire?', description: 'Lose 10 elections', id: 'record15'},
       {title: 'Close one!', description: 'Win an election with exactly 270 votes', id: 'record11'},
