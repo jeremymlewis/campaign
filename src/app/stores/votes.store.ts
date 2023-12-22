@@ -75,7 +75,7 @@ export class VotesStore {
   Utah: State = new State('Utah','UT',6,30,50,45);
   Vermont: State = new State('Vermont','VT',3,54,25,5);
   Virginia: State = new State('Virginia','VA',13,43,36,6);
-  Washington: State = new State('Washington','WA',12,37,32,48);
+  Washington: State = new State('Washington','WA',12,47,32,48);
   WestVirginia: State = new State('West Virginia','WV',4,26,53,9);
   Wisconsin: State = new State('Wisconsin','WI',10,40,40,36);
   Wyoming: State = new State('Wyoming','WY',3,24,55,41);
