@@ -1058,7 +1058,7 @@ export class VotesStore {
     this.Utah = new State('Utah','UT',6,30,50,45);
     this.Vermont = new State('Vermont','VT',3,54,25,5);
     this.Virginia = new State('Virginia','VA',13,43,36,6);
-    this.Washington = new State('Washington','WA',12,37,32,48);
+    this.Washington = new State('Washington','WA',12,47,32,48);
     this.WestVirginia = new State('West Virginia','WV',4,26,53,9);
     this.Wisconsin = new State('Wisconsin','WI',10,40,40,36);
     this.Wyoming = new State('Wyoming','WY',3,24,55,41);
