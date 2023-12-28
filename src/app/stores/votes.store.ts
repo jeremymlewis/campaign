@@ -33,7 +33,7 @@ export class VotesStore {
   Arizona: State = new State('Arizona','AZ',11,39,41,37);
   Arkansas: State = new State('Arkansas','AR',6,30,49,31);
   California: State = new State('California','CA',54,52,27,49);
-  Colorado: State = new State('Colorado','CO',10,44,35,38);
+  Colorado: State = new State('Colorado','CO',10,43,36,38);
   Connecticut: State = new State('Connecticut','CT',7,47,32,11);
   Delaware: State = new State('Delaware','DE',3,47,32,13);
   DC: State = new State('DC','DC',3, 75, 7,12);
@@ -63,7 +63,7 @@ export class VotesStore {
   NewYork: State = new State('New York','NY',28,50,29,32);
   NorthCarolina: State = new State('North Carolina','NC',16,39,41,7);
   NorthDakota: State = new State('North Dakota','ND',3,29,50,42);
-  Ohio: State = new State('Ohio','OH',17,38,42,8);
+  Ohio: State = new State('Ohio','OH',17,37,42,8);
   Oklahoma: State = new State('Oklahoma','OK',7,26,53,28);
   Oregon: State = new State('Oregon','OR',8,46,34,47);
   Pennsylvania: State = new State('Pennsylvania','PA',19,40,39,20);
