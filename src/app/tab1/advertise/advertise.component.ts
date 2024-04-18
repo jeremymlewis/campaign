@@ -13,6 +13,7 @@ import { ModalToastComponent } from 'src/app/modal-toast/modal-toast.component';
 export class AdvertisePage implements OnInit {
   selectedStates: string[];
   isDemocrat: boolean;
+  attackAd: boolean = false;
   isThird: boolean;
   choosenGroup: string;
   diceEnabled = false;
@@ -72,6 +73,44 @@ export class AdvertisePage implements OnInit {
     this.canBack = false;
   }
 
+  async handleAttackRoll(roll: number) {
+    this.canBack = false;
+    this.getGroup();
+
+    if (roll === 1) {
+      this.openModal('You rolled a ' + roll + ', Your advertising backfired, losing you 1% support!');
+      for (const state in this.selectedStates) {
+        if (this.isDemocrat) {
+          this.votes.changeStateClimate(this.selectedStates[state], -1, 0);
+        } else {
+          this.votes.changeStateClimate(this.selectedStates[state], 0, -1);
+        }
+      }
+    } else if (roll < 4) {
+      this.openModal('You rolled a ' + roll + ', Your advertising made no difference.');
+    } else if (roll < 6) {
+      this.openModal('You rolled a ' + roll + ', Your advertising made a difference of 2% in your selected states!');
+      for (const state in this.selectedStates) {
+        if (this.isDemocrat) {
+          this.votes.changeStateClimate(this.selectedStates[state], 2, 0);
+        } else {
+          this.votes.changeStateClimate(this.selectedStates[state], 0, 2);
+        }
+      }
+    } else {
+      this.openModal('You rolled a ' + roll + ', Your advertising made a difference of 3% in your selected states!');
+      for (const state in this.selectedStates) {
+        if (this.isDemocrat) {
+          this.votes.changeStateClimate(this.selectedStates[state], 3, 0);
+        } else {
+          this.votes.changeStateClimate(this.selectedStates[state], 0, 3);
+        }
+      }
+      // await new Promise(f => setTimeout(f, 3200));
+      // this.toNextTurn();
+    }
+  }
+
   async handleRoll(roll: number) {
     this.canBack = false;
     this.getGroup();
@@ -88,7 +127,7 @@ export class AdvertisePage implements OnInit {
       // await new Promise(f => setTimeout(f, 3200));
       // this.toNextTurn();
     } else if (roll < 6) {
-      this.openModal('You rolled a ' + roll + ', Your advertising made a difference of 1 in your selected states!');
+      this.openModal('You rolled a ' + roll + ', Your advertising made a difference of 1% in your selected states!');
       for (const state in this.selectedStates) {
         if (this.isDemocrat) {
           this.votes.changeStateClimate(this.selectedStates[state], 1, 0);
@@ -99,7 +138,7 @@ export class AdvertisePage implements OnInit {
       // await new Promise(f => setTimeout(f, 3200));
       // this.toNextTurn();
     } else {
-      this.openModal('You rolled a ' + roll + ', Your advertising made a difference of 2 in your selected states!');
+      this.openModal('You rolled a ' + roll + ', Your advertising made a difference of 2% in your selected states!');
       for (const state in this.selectedStates) {
         if (this.isDemocrat) {
           this.votes.changeStateClimate(this.selectedStates[state], 2, 0);

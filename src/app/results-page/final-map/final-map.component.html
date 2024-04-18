@@ -195,7 +195,8 @@
       </div>
       <div style="margin-top: 0; margin-bottom: 0;" class="center">
 
-      <p style="font-size: small; margin-top: 0; margin-bottom: 0; color: black;">({{(state.pollingError).toFixed(1)}}% polling error)</p>
+      <p *ngIf="state.pollingError >= 0" style="font-size: small; margin-top: 0; margin-bottom: 0; color: black;">(You got {{(state.pollingError/2).toFixed(1)}}% more than projected)</p>
+      <p *ngIf="state.pollingError < 0" style="font-size: small; margin-top: 0; margin-bottom: 0; color: black;">(You got {{(-state.pollingError/2).toFixed(1)}}% less than projected)</p>
 </div>
     </div>
     <div class="center">

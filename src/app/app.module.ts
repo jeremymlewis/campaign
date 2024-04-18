@@ -8,6 +8,7 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { IonicStorageModule } from '@ionic/storage-angular';
+import { InAppPurchase2 } from '@awesome-cordova-plugins/in-app-purchase-2/ngx';
 
 
 @NgModule({

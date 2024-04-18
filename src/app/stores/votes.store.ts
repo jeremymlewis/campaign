@@ -142,6 +142,39 @@ export class VotesStore {
   }
 
   async init() {
+    console.log("Votes init for some reason")
+    let less4 = 0;
+    let less3 = 0;
+    let less2 = 0;
+    let less1 = 0;
+    let more1 = 0;
+    let more2 = 0;
+    let more3 = 0;
+    let more4 = 0;
+    let noChange = 0;
+    for (let i = 0; i < 10000; i++) {
+      let num = this.randn_bm(-4.5, 4.5);
+      if (num < -4) {
+        less4++;
+      } else if (num < -3) {
+        less3++;
+      }else if (num < -2) {
+        less2++;
+      }else if (num < -1) {
+        less1++;
+      }else if (num < 1) {
+        noChange++;
+      }else if (num < 2) {
+        more1++;
+      }else if (num < 3) {
+        more2++;
+      }else if (num < 4) {
+        more3++;
+      }else {
+        more4++;
+      }
+    }
+    console.log((less4/100).toFixed(2), " ", (less3/100).toFixed(2), " ", (less2/100).toFixed(2), " ", (less1/100).toFixed(2), " . ", (noChange/100).toFixed(2), " . ", (more1/100).toFixed(2), " ",(more2/100).toFixed(2), " ",(more3/100).toFixed(2), " ",(more4/100).toFixed(2));
     // If using, define drivers here: await this.storage.defineDriver(/*...*/);
     const storage = await this.storage.create();
     // eslint-disable-next-line no-underscore-dangle
@@ -265,36 +298,62 @@ export class VotesStore {
     }
   }
 
-
+  // https://stackoverflow.com/questions/25582882/javascript-math-random-normal-distribution-gaussian-bell-curve
+  randn_bm(min, max) {
+    let u = 0;
+    let v = 0;
+    while(u === 0) {
+      u = Math.random(); //Converting [0,1) to (0,1)
+    }
+    while(v === 0) {
+      v = Math.random();
+    }
+    let num = Math.sqrt( -12.0 * Math.log( u ) ) * Math.cos( 12.0 * Math.PI * v );
+    num = num / 10.0 + 0.5; // Translate to 0 -> 1
+    if (num > 1 || num < 0) {
+      num = this.randn_bm(min, max);
+    } // resample between 0 and 1 if out of range
+    else{
+      num *= max - min; // Stretch to fill range
+      num += min; // offset to min
+    }
+    return Math.round(num * 10) / 10;
+  }
 
   finalizeVotes() {
     for (const state of this.states) {
-      // Calculate value between .1% and ~4%
-      let value = Math.floor(Math.random() * 15) + 1;
-      const value2 = Math.floor(Math.random() * 100) + 1;
-      let coinFlipToDouble = Math.floor(Math.random() * 4);
-      let doubleCount = 0;
-      while (coinFlipToDouble <= 1) {
-        value += Math.floor(Math.random() * 5) + 1;
-        doubleCount++;
-        coinFlipToDouble = Math.floor(Math.random() * 3);
-        if (doubleCount > 15) {
-          coinFlipToDouble = 2;
-        }
-      }
-      let adjustment = 0;
-      if (value2 > 42) { //give a boost to the player
-        adjustment += (value/10);
-      } else { //give boost to opponent
-        adjustment -= (value/10);
-      }
-      state.pollingError = value/10;
+
+      // OLD BAD ERROR METHOD
+
+      // // Calculate value between .1% and ~4%
+      // let value = Math.floor(Math.random() * 15) + 1;
+      // const value2 = Math.floor(Math.random() * 100) + 1;
+      // let coinFlipToDouble = Math.floor(Math.random() * 4);
+      // let doubleCount = 0;
+      // while (coinFlipToDouble <= 1) {
+      //   value += Math.floor(Math.random() * 5) + 1;
+      //   doubleCount++;
+      //   coinFlipToDouble = Math.floor(Math.random() * 3);
+      //   if (doubleCount > 15) {
+      //     coinFlipToDouble = 2;
+      //   }
+      // }
+      // let adjustment = ;
+      // if (value2 > 42) { //give a boost to the player
+      //   adjustment += (value/10);
+      // } else { //give boost to opponent
+      //   adjustment -= (value/10);
+      // }
+      const adjustment = this.randn_bm(-4.5,4.5);
+      state.pollingError = adjustment;
+      console.log(state.name, " : ", state.demPercent, " : ", state.leansDem, " : ", state.pollingError)
       if (this.isDemocrat) {
         this.changeStateClimate(state.abbreviation, adjustment, 0);
       } else {
         this.changeStateClimate(state.abbreviation, 0, adjustment);
       }
       if (state.leansDem === state.leansRep) {
+        state.pollingError *= 2;
         if (this.isDemocrat) {
           this.changeStateClimate(state.abbreviation, adjustment, 0);
         } else {

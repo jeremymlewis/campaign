@@ -36,7 +36,7 @@ export class OpponentPage implements OnInit {
     if (value <= 2 && (this.votes.round < this.votes.gameLength - 2)) {
       if (this.votes.opponentFunds < 3) {
         this.votes.opponentFunds += 1;
-        return 'Your opponent ran fundraising and earned $1 million';
+        return 'Your opponent ran fundraising and earned $10 million';
       } else {
         this.votes.opponentFunds -= 1;
         const statePos = Math.floor(Math.random() * 12);
@@ -67,7 +67,7 @@ export class OpponentPage implements OnInit {
       //advertise (or fundraise if needed)
       if (this.votes.opponentFunds === 0 && (this.votes.round < this.votes.gameLength - 2)) {
         this.votes.opponentFunds += 2;
-        return 'Your opponent ran fundraising and earned $2 million';
+        return 'Your opponent ran fundraising and earned $20 million';
       } else {
         this.votes.opponentFunds -= 1;
         const statePos = Math.floor(Math.random() * 10);

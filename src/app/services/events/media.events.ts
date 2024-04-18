@@ -10,7 +10,7 @@ export class MediaTourEvents {
     const results: Event[] = [
       {
         title:'Media Tour',
-        description:'A National TV show covers you story',
+        description:'A National TV show invites you on for an interview',
         points: 1,
         imageSrc:'/assets/images/presidents/32-roosevelt.jpg',
         history: 'Franklin D Roosevelt was the first president to appear on TV during the 1939 World\'s Fair',
@@ -23,7 +23,7 @@ export class MediaTourEvents {
       },
       {
         title:'Media Tour',
-        description:'A National Radio show covers your story',
+        description:'A national Radio Show/Podcast Network invites you on for an interview',
         points: 1,
         imageSrc:'/assets/images/presidents/29-harding.jpg',
         history: 'Warren G Harding was the first president to talk over the radio, giving a speech at the dedication of the Lincoln monument',

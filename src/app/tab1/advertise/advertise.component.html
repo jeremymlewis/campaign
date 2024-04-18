@@ -13,6 +13,8 @@
           <p>Ads here are run on regional TV channels, so you can pick any of the 8 available regions.</p>
           <p>Ads are great for influencing multiple states in 1 turn.</p>
           <p>Sometimes, the ads will have no effect on the people in these regions. Your roll will determine how effective they are!</p>
+          <p>Select whether to run Attack ads or Positive ads.</p>
+          <p>Attack ads are risky. They can backfire, as some people will view you unfavorably for attacking your opponent, but sometimes are very effective.</p>
         </ion-content>
       </ng-template>
     </ion-popover>
@@ -25,14 +27,14 @@
     <ion-button class="backbutton" size="small" [disabled]="!canBack" (click)="back()"><ion-icon name="arrow-back-circle-outline"></ion-icon><em>Back</em></ion-button>
   </div>
 <div class="center">
-<h3 style="margin-top: 14px; max-width: 65%;">Choose where to run advertisements:</h3>
+<h5 style="margin-top: 14px; max-width: 65%;">Choose where to run advertisements:</h5>
 </div>
 
 <!-- Have an icon for each of the state blocks -->
 <div class="row">
   <div [formGroup]="myGroup">
-    <div class="column left">
-    <input (click)="enableDice()" type="radio" name="buttonGroup" formControlName="buttonGroup" value="one" id="one">
+    <div class="column left align-items-center">
+    <input class="align-items-center" (click)="enableDice()" type="radio" name="buttonGroup" formControlName="buttonGroup" value="one" id="one">
     <label *ngIf="this.votes.Hawaii" for="one">
       <img class="state-icon" src="../../../assets/images/states/HI-Hawaii.png">
       <img class="state-icon" src="../../../assets/images/states/CA-California.png">
@@ -116,7 +118,27 @@
   </div>
 </div>
 <div class="center">
-<p>Click 'roll' to see how well the ads work.</p>
-</div>
-<app-dice [slot0]='[1]' val0="No Effect" [slot1]="[2, 3, 4, 5]" val1="+1%" [slot2]='[6]' val2="+2%" [canClick]="diceEnabled"  (rollStarted)="rollStarted()"  (diceRolled)="handleRoll($event)"></app-dice>
+  <h5 style="margin-top: 4px; max-width: 80%;">Select what type of ad to run:</h5>
+  </div>
+<div style="border: 2px black solid; box-shadow: 1px 1px 4px 4px #888888; border-radius: 6px; margin-left: 24px; margin-right: 24px; margin-top: 8px; margin-bottom: 6px;">
+  <div class="center">
+    <ion-item style="margin-top: 2px; margin-bottom: 2px;">
+      <div class="d-flex align-items-center">
+        <span class="mr-10"><p *ngIf="attackAd">Positive</p><p *ngIf="!attackAd"><strong style="font-size: large;">Positive</strong></p></span>
+        <ion-toggle [(ngModel)]="attackAd" slot="end" color="light"></ion-toggle>
+        <span class="mr-10"><p *ngIf="!attackAd">Attack</p><p *ngIf="attackAd"><strong style="font-size: large;">Attack</strong></p></span>
+      </div>
+    </ion-item>
+    </div>
+  </div>
+
+<div *ngIf="attackAd" class="center"><p style="color: red; margin-top: 0px; margin-bottom: 0px;">Running attack ads may backfire</p></div>
+<app-dice *ngIf="attackAd" [slot0]='[1]' val0="-1%" [slot1]="[2,3]" val1="No Effect" [slot2]='[4,5]' val2="+2%" [slot3]='[6]' val3="+3%" [canClick]="diceEnabled"  (rollStarted)="rollStarted()"  (diceRolled)="handleAttackRoll($event)"></app-dice>
+<app-dice *ngIf="!attackAd" [slot0]='[1]' val0="No Effect" [slot1]="[2, 3, 4, 5]" val1="+1%" [slot2]='[6]' val2="+2%" [canClick]="diceEnabled"  (rollStarted)="rollStarted()"  (diceRolled)="handleRoll($event)"></app-dice>
+<div class="center">
+  <h5 style="margin-top: 2px; max-width: 90%;">Tap 'Roll' to see how your ads do!</h5>
+  </div>
+
+
+
 </ion-content>

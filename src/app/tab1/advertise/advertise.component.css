@@ -1,6 +1,5 @@
 input[type='radio'][name='buttonGroup'] { display:none; }
 label {
-  display:inline-block;
   padding:3px;
   border:1px solid #000000;
   border-radius:3px;
@@ -17,10 +16,13 @@ input[type='radio'][name='buttonGroup']:checked + label { background-color:#bbbb
 
 .left {
   width: 50%;
+  justify-content: end;
+  display: grid;
 }
 
 .right {
   width: 50%;
+  display: grid;
 }
 
 /* Clear floats after the columns */
@@ -58,4 +60,18 @@ input[type='radio'][name='buttonGroup']:checked + label { background-color:#bbbb
   right: 10px;
   max-height: 30px;
   z-index: 199999;
+}
+.ml-10{
+  margin-left: 5px;
+}
+.mr-10{
+  margin-left: 5px;
+}
+
+.d-flex{
+  display: flex;
+}
+
+.align-items-center{
+  align-items: center;
 }

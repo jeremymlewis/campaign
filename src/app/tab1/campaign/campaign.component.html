@@ -13,7 +13,8 @@
           <p>One of the best ways to get people to vote for you is meeting them in person!</p>
           <p>Pick a state, and visit to show people who you are.</p>
           <p>Then roll to see how effective your visit was.</p>
-          <p>Some states are marked with a * and these are harder to influence.</p>
+          <p>You can visit any state but be mindful that your efforts will be less successful in states that are less receptive to your party's positions.</p><p> For example, it willl be harder for a Republican campaigning in CA to win over voters than if they visit a swing state like Florida or a red state like Indiana.</p>
+          <p>The states marked with a * and the ones where it is harder to influence.</p>
         </ion-content>
       </ng-template>
     </ion-popover>
@@ -39,13 +40,13 @@
   </ion-list>
 
   <div *ngIf="!chosenState"  class="center">
-    <div style="height: 160px; border-radius: 8px; border: 2px black solid; width: 80%; left: 10%;">
+    <div style="box-shadow: 1px 1px 4px 4px #888888; height: 160px; border-radius: 8px; border: 2px black solid; width: 80%; left: 10%;">
       <img style="height: 156px;" src="../../../assets/images/USmystery.png">
     </div>
   </div>
 
   <div *ngIf="chosenState"  class="center">
-    <div style="height: 160px; border-radius: 8px; border: 2px black solid; width: 80%; left: 10%;">
+    <div style="box-shadow: 1px 1px 4px 4px #888888; height: 160px; border-radius: 8px; border: 2px black solid; width: 80%; left: 10%;">
       <img style="height: 100px;" src="../../../assets/images/states/{{chosenState.abbreviation}}-{{chosenState.name.replace(' ', '-')}}.png">
       <p style="font-size: 18px;">Leans: {{chosenState | scoreDisplay}}</p>
       <p style="font-size: 18px;">Electoral Votes: {{chosenState.college}}</p>
