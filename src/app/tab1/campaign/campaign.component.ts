@@ -1,9 +1,9 @@
 import { Component, OnChanges, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController, ToastController } from '@ionic/angular';
-import { VotesStore } from '../../stores/votes.store';
-import { State } from 'src/app/stores/state';
-import { ModalToastComponent } from 'src/app/modal-toast/modal-toast.component';
+import { VotesStore } from '../../data-store/votes.store';
+import { State } from 'src/app/data-store/state';
+import { ModalToastComponent } from 'src/app/general-components/modal-toast/modal-toast.component';
 
 @Component({
   selector: 'app-campaign',
@@ -28,6 +28,13 @@ export class CampaignPage implements OnInit {
     this.isDemocrat = this.votes.getUserIsDem();
     this.isThird = this.votes.getUserIsThird();
     this.states = this.votes.getSortedStates();
+  }
+
+  ngAfterViewInit() {
+    if (!this.votes.hasSeenCampaignPopup()) {
+      this.openInfoModal("You can visit any state but be mindful that your efforts will be less successful in states that are less receptive to your party's positions. For example, it willl be harder for a Republican campaigning in CA to win over voters than if they visit a swing state like Florida or a red state like Indiana.", "Welcome to the campaign trail!");
+      this.votes.campaignPopup = false;
+    }
   }
 
   inputChange() {
@@ -82,10 +89,21 @@ export class CampaignPage implements OnInit {
   }
 
 
+  async openInfoModal(message, title = 'Results') {
+    const modal = await this.modalCtrl.create({
+      component: ModalToastComponent,
+      componentProps: { message, title },
+      cssClass: "large-modal"
+    });
+    modal.present();
+    const { data, role } = await modal.onWillDismiss();
+  }
+
   async openModal(message, title = 'Results') {
     const modal = await this.modalCtrl.create({
       component: ModalToastComponent,
-      componentProps: { message, title }
+      componentProps: { message, title },
+      cssClass: "small-modal"
     });
 
     modal.onDidDismiss().then( () => {

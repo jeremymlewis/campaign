@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PartySelectPage } from './partyselect.component';
-import { ThirdIntroPage } from './third-intro.component';
-import { BackgroundInfoPage } from './background-info.component';
-import { GameModePage } from './gamemode.component';
-import { PurchasePage } from './purchase.component';
-import { HistoricInfoPage } from './historic-info.component';
+import { PartySelectPage } from './party-select/partyselect.component';
+import { ThirdIntroPage } from './third-intro/third-intro.component';
+import { BackgroundInfoPage } from './background-info/background-info.component';
+import { GameModePage } from './gamemode/gamemode.component';
+import { PurchasePage } from './purchase/purchase.component';
+import { HistoricInfoPage } from './historic-info/historic-info.component';
 
 const routes: Routes = [
   {

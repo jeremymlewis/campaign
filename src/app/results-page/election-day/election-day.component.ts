@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { VotesStore } from '../../stores/votes.store';
+import { VotesStore } from '../../data-store/votes.store';
 
 @Component({
   selector: 'app-election-day-page',

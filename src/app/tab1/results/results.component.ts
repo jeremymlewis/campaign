@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { TextService } from 'src/app/services/text.services';
-import { VotesStore } from 'src/app/stores/votes.store';
+import { VotesStore } from 'src/app/data-store/votes.store';
 
 @Component({
   selector: 'app-results',

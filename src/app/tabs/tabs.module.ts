@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { TabsPageRoutingModule } from './tabs-routing.module';
 
 import { TabsPage } from './tabs.page';
-import { DiceComponent } from '../dice/dice.component';
+import { DiceComponent } from '../general-components/dice/dice.component';
 
 @NgModule({
   imports: [

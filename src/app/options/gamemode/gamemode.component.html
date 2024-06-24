@@ -1,0 +1,86 @@
+<ion-header [translucent]="false">
+  <ion-toolbar>
+    <ion-title>
+      Game Mode
+    </ion-title>
+    <ion-button fill="clear" id="click-triggerChoosemode"><ion-icon name="help-circle-outline"></ion-icon></ion-button>
+    <ion-popover trigger="click-triggerChoosemode" triggerAction="click">
+      <ng-template>
+        <ion-content class="ion-padding">
+          <h3>Game Mode Selection</h3>
+          <p>Decide if you want to play the basic game, or a special game mode.</p>
+        </ion-content>
+      </ng-template>
+    </ion-popover>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content [fullscreen]="true">
+  <div class="fix-center">
+    <ion-button class="button43" (click)="back()"><ion-icon name="arrow-back-circle-outline"></ion-icon>Back To Main Menu</ion-button>
+  </div>
+
+  <h1>Select a game mode</h1>
+
+  <!-- <div class="hr">
+    <h3>Classic</h3>
+  </div> -->
+  <div class="center">
+    <button color="clear" class="party-button button43 extra tall" (click)="continue('')" style="background: url(../../assets/ClassicBackground.png) no-repeat center/cover fixed;"><br><p>CLASSIC <br>(2024 election)<br><span style="font-size: small;">Recommended for 1st time players</span></p></button>
+  </div>
+  <!-- LOCKED -->
+  <div class="hr"><h3>Special</h3> </div>
+  <div class="center" *ngIf="!locked">
+    <button color="clear" class="party-button button43 extra medium" (click)="continue('multiplayer')" style="background: url(../../assets/EmptyBackground.png) no-repeat center/cover fixed;"><br><p>Online Multiplayer</p></button>
+  </div>
+  <div class="center locked" *ngIf="locked">
+    <button color="clear" class="party-button button43 extra short" (click)="continue('extra')" style="background: url(../../assets/PlainBackground.png) no-repeat center/cover fixed;"><br><p>32 Round Mode</p><ion-icon name="lock-closed"></ion-icon></button>
+  </div>
+  <div class="center locked" *ngIf="locked">
+    <button color="clear" class="party-button button43 extra short" (click)="continue('extra')" style="background: url(../../assets/PlainBackground.png) no-repeat center/cover fixed;"><br><p>Randomized States</p><ion-icon name="lock-closed"></ion-icon></button>
+  </div>
+  <div class="center" *ngIf="!locked">
+    <button color="clear" class="party-button button43 extra medium" (click)="continue('long')" style="background: url(../../assets/EmptyBackground.png) no-repeat center/cover fixed;"><br><p>32 Round Mode</p></button>
+  </div>
+  <div class="center" *ngIf="!locked">
+    <button color="clear" class="party-button button43 extra medium" (click)="continue('random')" style="background: url(../../assets/RandomBackground.png) no-repeat center/cover fixed;"><br><p>Randomized States</p></button>
+  </div>
+
+
+  <div class="hr">
+    <h3>Historic Elections</h3>
+  </div>
+  <div class="center locked" *ngIf="locked">
+    <button color="clear" class="party-button button43 extra short" (click)="continue('extra')" style="background: url(../../assets/PlainBackground.png) no-repeat center/cover fixed;"><br><p>Election Of 1876</p><ion-icon name="lock-closed"></ion-icon></button>
+  </div>
+  <div class="center locked" *ngIf="locked">
+    <button color="clear" class="party-button button43 extra short" (click)="continue('extra')" style="background: url(../../assets/PlainBackground.png) no-repeat center/cover fixed;"><br><p>Election Of 1916</p><ion-icon name="lock-closed"></ion-icon></button>
+  </div>
+  <div class="center locked" *ngIf="locked">
+    <button color="clear" class="party-button button43 extra short" (click)="continue('extra')" style="background: url(../../assets/PlainBackground.png) no-repeat center/cover fixed;"><br><p>Election Of 1976</p><ion-icon name="lock-closed"></ion-icon></button>
+  </div>
+  <div class="center locked" *ngIf="locked">
+    <button color="clear" class="party-button button43 extra short" (click)="continue('extra')" style="background: url(../../assets/PlainBackground.png) no-repeat center/cover fixed;"><br><p>Election Of 2008</p><ion-icon name="lock-closed"></ion-icon></button>
+  </div>
+  <div class="center" *ngIf="!locked">
+    <button color="clear" class="party-button button43 extra medium" (click)="continue('e1876')" style="background: url(../../assets/Background186.png) no-repeat center/cover fixed;"><br><p>Election Of 1876</p></button>
+  </div>
+  <div class="center" *ngIf="!locked">
+    <button color="clear" class="party-button button43 extra medium" (click)="continue('e1916')" style="background: url(../../assets/Background1916.png) no-repeat center/cover fixed;"><br><p>Election Of 1916</p></button>
+  </div>
+  <div class="center" *ngIf="!locked">
+    <button color="clear" class="party-button button43 extra medium" (click)="continue('e1976')" style="background: url(../../assets/Background1976.png) no-repeat center/cover fixed;"><br><p>Election Of 1976</p></button>
+  </div>
+  <div class="center" *ngIf="!locked">
+    <button color="clear" class="party-button button43 extra medium" (click)="continue('e2008')" style="background: url(../../assets/Background2008.png) no-repeat center/cover fixed;"><br><p>Election Of 2008</p></button>
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
+
+</ion-content>

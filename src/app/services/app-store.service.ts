@@ -2,7 +2,7 @@ import 'cordova-plugin-purchase';
 import { Injectable } from '@angular/core';
 
 import { Platform } from '@ionic/angular';
-import { VotesStore } from '../stores/votes.store';
+import { VotesStore } from '../data-store/votes.store';
 
 @Injectable()
 export class AppStoreService {

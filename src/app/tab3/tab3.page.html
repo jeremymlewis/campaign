@@ -9,6 +9,7 @@
     <ion-popover trigger="click-trigger3" triggerAction="click">
       <ng-template>
         <ion-content class="ion-padding">
+          <!-- Dropdown for more info -->
           <h3>Instructions:</h3>
           <p>You can click on any of these options to view more instructions!</p>
           <p><strong>This is also where you can drop out of the race!</strong></p>
@@ -19,41 +20,26 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <!-- <div class="centervert"> -->
   <div class="center">
-  <h1>Campaign Resources</h1>
+    <h1>Campaign Resources</h1>
   </div>
-    <div class="center">
+  <div class="center">
     <ion-button class="button43" (click)='turn()'  >What to do on my turn?</ion-button>
-    </div>
-    <div class="center">
-
-
+  </div>
+  <div class="center">
     <ion-button class="button43" (click)='advertise()'  >Fundraising/Advertizing</ion-button>
   </div>
   <div class="center">
-
     <ion-button class="button43" (click)='campaign()'  >Visiting a State</ion-button>
-    </div>
-
-    <div class="center">
-
+  </div>
+  <div class="center">
     <ion-button class="button43" (click)='event()'  >Info on Special Events?</ion-button>
-    </div>
-    <div class="center">
-
-      <ion-button class="button43" (click)='fundraise()'  >List of State Abbreviations</ion-button>
-      </div>
-
-    <div class="center">
-
+  </div>
+  <div class="center">
+    <ion-button class="button43" (click)='fundraise()'  >List of State Abbreviations</ion-button>
+  </div>
+  <!-- This is the only important thing that happens on this tab  -->
+  <div class="center">
     <ion-button class="button43 "  color="danger" (click)="reset()" style="background-color: #ff6060;">Forfeit the race</ion-button>
-    </div>
-
-        <!-- <div class="center">
-    <ion-button class="button43" (click)='debate()'  >Info on Debates?</button>
-    </div> -->
-
-
-
+  </div>
 </ion-content>

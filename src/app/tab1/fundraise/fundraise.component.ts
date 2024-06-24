@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ModalToastComponent } from 'src/app/modal-toast/modal-toast.component';
-import { VotesStore } from 'src/app/stores/votes.store';
+import { ModalToastComponent } from 'src/app/general-components/modal-toast/modal-toast.component';
+import { VotesStore } from 'src/app/data-store/votes.store';
 import { ModalController } from '@ionic/angular';
 import { TextService } from 'src/app/services/text.services';
 
@@ -74,7 +74,8 @@ export class FundraisePage implements OnInit{
   async openModal(message, title = 'Results') {
     const modal = await this.modalCtrl.create({
       component: ModalToastComponent,
-      componentProps: { message, title }
+      componentProps: { message, title },
+      cssClass: "small-modal"
     });
 
     modal.onDidDismiss().then( () => {

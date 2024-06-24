@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AudioService } from '../services/audio.service';
-import { VotesStore } from '../stores/votes.store';
+// import { AudioService } from '../services/audio.service';
+import { VotesStore } from '../data-store/votes.store';
 
 @Component({
   selector: 'app-results-page',

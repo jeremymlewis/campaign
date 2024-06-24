@@ -8,6 +8,7 @@
     <ion-button fill="clear" id="click-trigger2"><ion-icon name="help-circle-outline"></ion-icon></ion-button>
     <ion-popover trigger="click-trigger2" triggerAction="click">
       <ng-template>
+        <!-- Dropdown information -->
         <ion-content class="ion-padding">
           <h3>The Election Map:</h3>
           <p>To help predict election results, polls are taken of people in each state.</p>
@@ -30,6 +31,8 @@
   <div *ngIf="this.store.mapTitle" class="center">
     <h3 style="margin-top: 0; margin-bottom: 0; padding-top:0; padding-bottom:0;">{{this.store.mapTitle}}</h3>
   </div>
+
+  <!-- This is the score board and progress bar -->
   <div class="scorebox">
     <div class="center" style="margin-top: 2px; margin-bottom: 0px; padding-bottom: 0px">
       Current Projected Election Results*
@@ -53,7 +56,7 @@
   </div>
 
 
-
+  <!-- This is the Map -->
   <div id="svg-container">
   <svg>
     <g attr.transform="matrix({{scale}} 0 0 {{scale}} 0 0)">
@@ -211,54 +214,21 @@
     <text *ngIf="!showVotes && this.store.Wyoming" style="font-size: xx-large;" id="WY-TITLE" x="420" y="230">WY</text>
     <text *ngIf="showVotes" style="font-size: xx-large;" id="WV-VOTES" x="887" y="325">{{this.store.WestVirginia.college}}</text>
     <text *ngIf="!showVotes" style="font-size: x-large;" id="WV-TITLE" x="881" y="325">WV</text>
-    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
-    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
-    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
-    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
-    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
-    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
-    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
-    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
-    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
-    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
-    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
-    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
-    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
-    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
-    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
-    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
-    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
-    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
-    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
-    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
-    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
-    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
-    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
-    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
-    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
-    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
-    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
-    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
-    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
-    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
-    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
-    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
-    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
-    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
-    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
-    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
-    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
-    <text style="font-size: xx-large;" id="-TITLE" x="0" y="0"></text>
   </g>
 </g>
 </svg>
 </div>
+
+<!-- buttons for map legend -->
 <div class="center" *ngIf="!showVotes">
   <ion-button class="button43" (click)="toggleView()">Show Electoral College</ion-button>
 </div>
 <div class="center" *ngIf="showVotes">
   <ion-button class="button43" (click)="toggleView()">Show State Labels</ion-button>
 </div>
+
+
+<!-- Display data for each states leaning -->
 <div *ngIf="!isThird">
 
   <div class="center-border">

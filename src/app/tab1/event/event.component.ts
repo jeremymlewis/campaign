@@ -3,9 +3,9 @@ import { OnInit, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController, ToastController } from '@ionic/angular';
 import { TextService } from 'src/app/services/text.services';
-import { VotesStore } from 'src/app/stores/votes.store';
-import { Event } from '../../stores/state';
-import { ModalToastComponent } from 'src/app/modal-toast/modal-toast.component';
+import { VotesStore } from 'src/app/data-store/votes.store';
+import { Event } from '../../data-store/state';
+import { ModalToastComponent } from 'src/app/general-components/modal-toast/modal-toast.component';
 
 @Component({
   selector: 'app-event',
@@ -193,7 +193,8 @@ export class EventPage implements OnInit {
   async openModal(message, title = 'Results') {
     const modal = await this.modalCtrl.create({
       component: ModalToastComponent,
-      componentProps: { message, title }
+      componentProps: { message, title },
+      cssClass: "small-modal"
     });
 
     modal.onDidDismiss().then( () => {

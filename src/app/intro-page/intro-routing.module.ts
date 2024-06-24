@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { IntroPage } from './intro-page.component';
-import { WelcomePage } from './welcome.component';
-import { RecordsPage } from './records.component';
-import { Records2Page } from './records2.component';
-
+import { IntroPage } from './intro-page/intro-page.component';
+import { WelcomePage } from './welcome-page/welcome.component';
+import { RecordsPage } from './records-pages/records.component';
+import { Records2Page } from './records-pages/records2.component';
+import { HostJoinPage } from './multiplayer/host-join.component';
 const routes: Routes = [
   {
     path: '',
@@ -13,6 +13,10 @@ const routes: Routes = [
   {
     path: 'welcome',
     component: WelcomePage
+  },
+  {
+    path: 'host-join',
+    component: HostJoinPage
   },
   {
     path: 'records',

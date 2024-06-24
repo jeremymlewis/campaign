@@ -19,6 +19,13 @@ h3 {
   text-shadow: 1px 0 0 #fff, 0 -1px 0 #fff, 0 1px 0 #fff, -1px 0 0 #fff;
 } */
 
+.large-modal{
+  ion-modal {
+    --height: 420px !important;
+  }
+}
+
+
 p {
   margin-top: 2px;
   margin-bottom: 2px;

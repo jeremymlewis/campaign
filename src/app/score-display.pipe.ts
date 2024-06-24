@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { State } from './stores/state';
+import { State } from './data-store/state';
 
 @Pipe({
   name: 'scoreDisplay'

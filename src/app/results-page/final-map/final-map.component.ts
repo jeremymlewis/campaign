@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { VotesStore } from '../../stores/votes.store';
-import { State } from 'src/app/stores/state';
+import { VotesStore } from '../../data-store/votes.store';
+import { State } from 'src/app/data-store/state';
 
 @Component({
   selector: 'app-final-map-page',

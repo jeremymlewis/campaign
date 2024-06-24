@@ -26,9 +26,16 @@
 @import "~@ionic/angular/css/flex-utils.css";
 
 
-ion-modal {
+.small-modal {
   --width: 90%;
   --height: 200px;
+  --border-radius: 16px;
+  --box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+.large-modal{
+  --width: 90%;
+  --height: 420px;
   --border-radius: 16px;
   --box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }

@@ -2,8 +2,8 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TextService } from '../services/text.services';
 import { ToastController } from '@ionic/angular';
-import { VotesStore } from '../stores/votes.store';
-import { AudioService } from '../services/audio.service';
+import { VotesStore } from '../data-store/votes.store';
+// import { AudioService } from '../services/audio.service';
 
 @Component({
   selector: 'app-tab1',
@@ -19,7 +19,7 @@ export class Tab1Page implements OnInit, AfterViewInit {
   isThird: boolean;
   partyName = '';
   constructor(
-    private audio: AudioService,
+    //private audio: AudioService,
     private route: Router,
     private textService: TextService,
     private toastController: ToastController,
@@ -63,19 +63,19 @@ export class Tab1Page implements OnInit, AfterViewInit {
 
 
   fundraise() {
-    this.audio.play('a8');
+    //this.audio.play('a8');
     this.takeTurn();
     this.route.navigateByUrl('tabs/tab1/fundraise');
   }
 
   campaign() {
-    this.audio.play('a3');
+    //this.audio.play('a3');
     this.takeTurn();
     this.route.navigateByUrl('tabs/tab1/campaign');
   }
 
   advertising() {
-    this.audio.play('a5');
+   // this.audio.play('a5');
     if (this.votes.funds > 0) {
       this.votes.funds--;
       this.takeTurn();

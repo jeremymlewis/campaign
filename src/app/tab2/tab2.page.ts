@@ -1,8 +1,8 @@
 import { AfterViewInit, Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Router, Event, NavigationStart, NavigationEnd, NavigationError} from '@angular/router';
-import { AudioService } from '../services/audio.service';
-import { State } from '../stores/State';
-import { VotesStore } from '../stores/votes.store';
+// import { AudioService } from '../services/audio.service';
+import { State } from '../data-store/State';
+import { VotesStore } from '../data-store/votes.store';
 
 @Component({
   selector: 'app-tab2',
@@ -40,7 +40,9 @@ export class Tab2Page implements OnInit, AfterViewInit {
   showVotes = false;
   scale = 0.3;
 
-  constructor(public store: VotesStore, private router: Router, private audio: AudioService) {
+  constructor(public store: VotesStore, private router: Router,
+    //private audio: AudioService
+    ) {
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd) {
         if (event.url === '/tabs/tab2') {
@@ -62,7 +64,7 @@ export class Tab2Page implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.audio.preload('america', 'assets/audio/america.mp3');
+    //this.audio.preload('america', 'assets/audio/america.mp3');
     this.updateStateLists();
   }
 

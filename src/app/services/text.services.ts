@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import { Injectable } from '@angular/core';
-import { Event } from '../stores/state';
+import { Event } from '../data-store/state';
 import { BoonEvents } from './events/boon.events';
 import { EndorsementEvents } from './events/endorsement.events';
 import { GaffeEvents } from './events/gaffe.events';
