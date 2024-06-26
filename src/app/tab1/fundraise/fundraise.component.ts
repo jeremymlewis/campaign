@@ -4,6 +4,7 @@ import { ModalToastComponent } from 'src/app/general-components/modal-toast/moda
 import { VotesStore } from 'src/app/data-store/votes.store';
 import { ModalController } from '@ionic/angular';
 import { TextService } from 'src/app/services/text.services';
+import { MultiPlayerService } from 'src/app/services/multiplayer.service';
 
 @Component({
   selector: 'app-fundraise',
@@ -16,7 +17,8 @@ export class FundraisePage implements OnInit{
   presidentIcon = '';
   eventHistory = '';
 
-  constructor(private router: Router, private modalCtrl: ModalController, private votes: VotesStore, private textService: TextService) {}
+  constructor(private router: Router, private modalCtrl: ModalController, private votes: VotesStore,
+     private textService: TextService, private multiplayer: MultiPlayerService) {}
 
   ngOnInit(): void {
       this.isDemocrat = this.votes.isDemocrat;
@@ -54,7 +56,18 @@ export class FundraisePage implements OnInit{
 
   toNextTurn() {
     this.canBack = true;
-    this.router.navigateByUrl('/tabs/tab1/opponent', { replaceUrl: true });
+    if (this.votes.isMultiplayer) {
+      if (this.votes.isHost) {
+        this.multiplayer.sendHostMove("fundraise", [], this.votes.funds);
+        this.router.navigateByUrl('/tabs/tab1/wait-turn')
+      } else {
+        this.multiplayer.sendGuestMove("fundraise", [], this.votes.funds);
+        this.router.navigateByUrl('/tabs/tab1/wait-turn')
+      }
+      //MAKE THIS EMIT TO MULTIPLAYER FOR ALL THREE MOVE OPTIONS
+    } else {
+      this.router.navigateByUrl('/tabs/tab1/opponent', { replaceUrl: true });
+    }
   }
 
   back() {

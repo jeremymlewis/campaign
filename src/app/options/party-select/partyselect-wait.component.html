@@ -1,0 +1,26 @@
+<ion-header [translucent]="false">
+  <ion-toolbar>
+    <ion-title class="ion-text-center">
+      Party Selection
+    </ion-title>
+    <ion-button fill="clear" id="click-triggerOp"><ion-icon name="help-circle-outline"></ion-icon></ion-button>
+    <ion-popover trigger="click-triggerOp" triggerAction="click">
+      <ng-template>
+        <ion-content class="ion-padding">
+          <h3>Party</h3>
+          <p>Since your opponent is the host, they get to choose which party they will be playing as.</p>
+        </ion-content>
+      </ng-template>
+    </ion-popover>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="center">
+    <h1>Your opponent is choosing their party...</h1>
+  </div>
+  <div class="center">
+    <p>The game will start as soon as they have made a selection.</p>
+  </div>
+
+</ion-content>

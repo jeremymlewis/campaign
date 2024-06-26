@@ -6,6 +6,7 @@ import { BackgroundInfoPage } from './background-info/background-info.component'
 import { GameModePage } from './gamemode/gamemode.component';
 import { PurchasePage } from './purchase/purchase.component';
 import { HistoricInfoPage } from './historic-info/historic-info.component';
+import { PartySelectWaitPage } from './party-select/partyselect-wait.component';
 
 const routes: Routes = [
   {
@@ -15,6 +16,10 @@ const routes: Routes = [
   {
     path: 'party',
     component: PartySelectPage,
+  },
+  {
+    path: 'party-wait',
+    component: PartySelectWaitPage,
   },
   {
     path: 'third',

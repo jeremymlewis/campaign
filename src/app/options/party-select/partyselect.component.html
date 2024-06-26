@@ -19,7 +19,7 @@
 
 
 <ion-content [fullscreen]="true">
-  <div class="fix-center">
+  <div *ngIf="!votes.isMultiplayer" class="fix-center">
     <ion-button class="button43" (click)="back()"><ion-icon name="arrow-back-circle-outline"></ion-icon>Back To Game Mode</ion-button>
   </div>
 <br>

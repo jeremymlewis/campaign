@@ -4,7 +4,7 @@
   </div>
   <ion-grid class="ion-no-padding">
     <div class="background">
-      <div *ngIf="!loading" class="center">
+      <div  class="center">
         <div class="centerwhite">
           <h1 class="titleText"><em>MULTIPLAYER</em></h1>
         </div>
@@ -28,7 +28,7 @@
           </div>
           <div class="centerdark ">
             <h1>Code:&nbsp;</h1>
-            <input maxlength='4'
+            <input id="codeJoinInput" maxlength='4'
             (keyup)="verifyJoin()"
             [(ngModel)]='joinCode'
             />
@@ -42,17 +42,14 @@
 
         <ion-button *ngIf="!hostSelected" class="button43 skinny" (click)="host()"><em>Host a game</em></ion-button>
         <ion-button *ngIf="!joinSelected"  class="button43 skinny" (click)="join()"><em>Join a game</em></ion-button>
-        <span [class.selected]='docId === multiplayer.currentDoc' *ngFor='let docId of multiplayer.documents | async'>
-          {{ docId }}
-        </span>
-        <p>{{multiplayer?.document?.gameState}}</p>
-        <ion-button *ngIf="multiplayer.gameLinked" class="button43 skinny" (click)="next()"><em>Begin Game</em></ion-button>
       </div>
-      <div *ngIf="loading" class="center">
+
+
+      <!-- <div *ngIf="loading" class="center">
         <div class="centerwhite">
           <h1 class="titleText"><em>Waiting for server to connect{{loadingDots}}</em></h1>
         </div>
-      </div>
+      </div> -->
     </div>
   </ion-grid>
   <div class="fix-center">

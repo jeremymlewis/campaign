@@ -4,14 +4,19 @@ This is an ionic/angular app, made using the ionic tabs default.
 
 Can be displayed as a web app using the command 'ionic serve' in a terminal pointed to the campaign folder
 
-Based on an idea from Jonas Linde, Copyright 2022 all rights reserved.
+Alternately, a live demo is available at [Live Demo](jeremymlewis.github.io)
+Please note that the live demo is best viewed on a mobile device, or simulating one through dev tools.
 
-Code for the app pages is found in the src/app folder and is organized by which page it belonngs to. main gameplay is sorted by which tab it belongs to, and others by the name of the page. The votes store (a ts file) is where data about game state/score is held and populated. Text service (also ts file) also serves up some of that. each type of event also has its own file where the events are stored. most other text Is stored in the HTML files. 
 
+Code for the app pages is found in the src/app folder and is organized primarily by which page it belongs to. 
+Main gameplay is sorted by which tab it belongs to, and other page types (intro, achievements, results page) are in their own folders.
+The votes store (a ts file) is where data about game state/score is held and populated. 
 
-Workflow for Pull Requests: clone repo, make a new branch, and check it out. Make your edits, then Commit and push changes to the branch. 
+The data-store folder contains the votesStore -- where the game state is stored so it can be shared across many pages.
 
-clone/download repo command: 'git clone https://github.com/jeremymlewis/campaign.git'
-
-This can be done with 'git checkout -b "NAME_OF_YOUR_BRANCH"' to get a new branch. 'git add .' 'git commit -m "message"' 'git push' to get the changed posted to the repo
-Then go to github and press the green "open a pull request" button
+The services folder contains:
+* Text service that is responsible for most of the text-based content of the app
+* Multiplayer service that deals with connecting the game to a simple socket (via a simple node.js express server) that allows for real-time multiplayer
+* Appstore service that will facilitate in-app purchases (future development)
+* Audio service that is completely commented-out for now since the sounds were too annoying/distracting
+* API folder that contains some old code for logging in to save progress (removed in favor of someday adding 'Apple Game Center' authentication instead.)

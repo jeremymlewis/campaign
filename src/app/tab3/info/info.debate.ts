@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-campaign',
+  selector: 'app-info-debate',
   templateUrl: 'info.debate.html',
   styleUrls: ['info.css']
 })

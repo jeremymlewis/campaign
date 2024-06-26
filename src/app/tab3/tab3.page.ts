@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { VotesStore } from '../data-store/votes.store';
+import { MultiPlayerService } from '../services/multiplayer.service';
 
 @Component({
   selector: 'app-tab3',
@@ -15,7 +16,7 @@ export class Tab3Page implements OnInit {
   slot1 = [3];
   slot2 = [4];
   slot3 = [5,6];
-  constructor(private votes: VotesStore, private router: Router) {}
+  constructor(private votes: VotesStore, private router: Router, private multiplayer: MultiPlayerService) {}
 
   ngOnInit() {
     this.isDemocrat = this.votes.getUserIsDem();
@@ -81,6 +82,9 @@ export class Tab3Page implements OnInit {
   reset() {
     if (window.confirm('Do you want to drop out of the race? All progress will be lost')) {
       this.dropOutAcheievment();
+      if (this.votes.isMultiplayer) {
+        this.multiplayer.leave();
+      }
       this.router.navigateByUrl('/');
     }
   }

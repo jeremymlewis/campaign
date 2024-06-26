@@ -9,7 +9,7 @@ import { BackgroundInfoPage } from './background-info/background-info.component'
 import { GameModePage } from './gamemode/gamemode.component';
 import { PurchasePage } from './purchase/purchase.component';
 import { HistoricInfoPage } from './historic-info/historic-info.component';
-
+import { PartySelectWaitPage } from './party-select/partyselect-wait.component';
 @NgModule({
   imports: [
     IonicModule,
@@ -17,6 +17,6 @@ import { HistoricInfoPage } from './historic-info/historic-info.component';
     FormsModule,
     OptionsRoutingModule
   ],
-  declarations: [GameModePage, PartySelectPage, ThirdIntroPage, BackgroundInfoPage, PurchasePage, HistoricInfoPage]
+  declarations: [GameModePage, PartySelectPage,PartySelectWaitPage, ThirdIntroPage, BackgroundInfoPage, PurchasePage, HistoricInfoPage]
 })
 export class OptionsModule {}

@@ -3,8 +3,8 @@
     <ion-title class="ion-text-center">
       Your Opponent's Turn
     </ion-title>
-    <ion-button fill="clear" id="click-triggerOp"><ion-icon name="help-circle-outline"></ion-icon></ion-button>
-    <ion-popover trigger="click-triggerOp" triggerAction="click">
+    <ion-button fill="clear" id="click-triggerOpp"><ion-icon name="help-circle-outline"></ion-icon></ion-button>
+    <ion-popover trigger="click-triggerOpp" triggerAction="click">
       <ng-template>
         <ion-content class="ion-padding">
           <h3>Your Opponents</h3>
@@ -26,8 +26,11 @@
   </div>
   <div class="center" *ngFor="let state of actionIcons">
     <img style="max-height: 28px;" [src]='state.path'>
-    <h3 *ngIf="state.isTowardBlue" style="color:blue">+ {{state.change}}</h3>
-    <h3 *ngIf="!state.isTowardBlue" style="color:red">+ {{state.change}}</h3>
+    <h3 *ngIf="state.isTowardBlue && state.change > -1" style="color:blue">+ {{state.change}}</h3>
+    <h3 *ngIf="state.isTowardBlue && state.change <= -1" style="color: blue">{{state.change}}</h3>
+
+    <h3 *ngIf="!state.isTowardBlue && state.change > -1" style="color:red">+ {{state.change}}</h3>
+    <h3 *ngIf="!state.isTowardBlue && state.change <= -1" style="color:red">{{state.change}}</h3>
 
     <!-- change isTowardBlue -->
   </div>

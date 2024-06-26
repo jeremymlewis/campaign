@@ -13,6 +13,7 @@ import { AdvertisePage } from './advertise/advertise.component';
 import { DiceComponent } from '../general-components/dice/dice.component';
 import { RollTableComponent } from '../general-components/roll-table/rolltable.component';
 import { OpponentPage } from './opponent/opponent.component';
+import { OpponentWaitPage } from './opponent/wait-screen.component';
 import { ResultsPage } from './results/results.component';
 import { ScoreDisplayPipe } from '../score-display.pipe';
 import { ModalToastComponent } from '../general-components/modal-toast/modal-toast.component';
@@ -34,6 +35,7 @@ import { ModalToastComponent } from '../general-components/modal-toast/modal-toa
     DiceComponent,
     RollTableComponent,
     OpponentPage,
+    OpponentWaitPage,
     ResultsPage,
     ScoreDisplayPipe,
     ModalToastComponent,

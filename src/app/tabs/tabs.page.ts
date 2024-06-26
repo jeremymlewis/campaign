@@ -22,6 +22,15 @@ export class TabsPage {
   //   this.actionPending = false;
   // }
 
+
+  isOpponent(): boolean {
+    if (this.router.url.includes('opponent')) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   isTab1(): boolean {
     if (this.router.url.includes('tab1')) {
       return true;

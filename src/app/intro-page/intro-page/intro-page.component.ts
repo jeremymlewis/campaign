@@ -14,6 +14,8 @@ export class IntroPage implements AfterViewInit {
   constructor(private route: Router, public votes: VotesStore) {}
 
   ngAfterViewInit() {
+    this.votes.isMultiplayer = false;
+    this.votes.isHost = false;
    // this.audio.preload('chief', 'assets/audio/chief.mp3');
   }
 

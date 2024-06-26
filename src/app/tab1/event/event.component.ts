@@ -6,6 +6,7 @@ import { TextService } from 'src/app/services/text.services';
 import { VotesStore } from 'src/app/data-store/votes.store';
 import { Event } from '../../data-store/state';
 import { ModalToastComponent } from 'src/app/general-components/modal-toast/modal-toast.component';
+import { MultiPlayerService } from 'src/app/services/multiplayer.service';
 
 @Component({
   selector: 'app-event',
@@ -35,7 +36,12 @@ export class EventPage implements OnInit {
   statesInvolvedString: string;
   normalFactDisplay: boolean;
   isDemocrat: boolean;
-  constructor(private modalCtrl: ModalController, private router: Router, public votes: VotesStore, private toastController: ToastController, public textService: TextService) {}
+  constructor(
+    private modalCtrl: ModalController,
+    private router: Router,
+    public votes: VotesStore,
+    private multiplayer: MultiPlayerService,
+    public textService: TextService) {}
 //TODO3 all this page
 
   ngOnInit() {
@@ -184,13 +190,13 @@ export class EventPage implements OnInit {
       }
     }
     if (message) {
-      this.openModal(message, title);
+      this.openModal(message, title, states, roll);
     } else {
-      this.endEvent();
+      this.endEvent(states, roll);
     }
   }
 
-  async openModal(message, title = 'Results') {
+  async openModal(message, title = 'Results', states, roll) {
     const modal = await this.modalCtrl.create({
       component: ModalToastComponent,
       componentProps: { message, title },
@@ -198,7 +204,7 @@ export class EventPage implements OnInit {
     });
 
     modal.onDidDismiss().then( () => {
-      this.endEvent();
+      this.endEvent(states, roll);
     });
 
     modal.present();
@@ -210,7 +216,7 @@ export class EventPage implements OnInit {
   }
 
 
-  endEvent() {
+  endEvent(states, roll) {
     // this.currentIndex++;
     // if (this.currentIndex < 10) {
     //   this.currentEvent = this.allEvents[this.currentIndex];
@@ -236,6 +242,18 @@ export class EventPage implements OnInit {
     // this.eventDescription = this.currentEvent.description;
    // this.eventRollsL = this.currentEvent.rollMapDescription1;
     //this.eventRollsR = this.currentEvent.rollMapDescription2;
-    this.router.navigateByUrl('/tabs/tab1', { replaceUrl: true });
+
+    if (this.votes.isMultiplayer) {
+      if (this.votes.isHost) {
+        this.multiplayer.sendHostSpecial(this.eventTitle, states, roll);
+        this.router.navigateByUrl('/tabs/tab1/wait-turn', { replaceUrl: true });
+      } else {
+        this.multiplayer.sendGuestSpecial(this.eventTitle, states, roll);
+        this.router.navigateByUrl('/tabs/tab1/wait-turn', { replaceUrl: true });
+      }
+    } else {
+      this.router.navigateByUrl('/tabs/tab1', { replaceUrl: true });
+    }
+
   }
 }

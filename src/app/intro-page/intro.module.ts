@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IntroPage } from './intro-page/intro-page.component';
 import { HostJoinPage } from './multiplayer/host-join.component';
+import { HostJoinFailPage } from './multiplayer/host-join-fail.component';
 
 import { IntroRoutingModule } from './intro-routing.module';
 import { WelcomePage } from './welcome-page/welcome.component';
@@ -17,6 +18,6 @@ import { Records2Page } from './records-pages/records2.component';
     FormsModule,
     IntroRoutingModule
   ],
-  declarations: [IntroPage, WelcomePage, RecordsPage, Records2Page, HostJoinPage]
+  declarations: [IntroPage, WelcomePage, RecordsPage, Records2Page, HostJoinPage,HostJoinFailPage]
 })
 export class IntroModule {}

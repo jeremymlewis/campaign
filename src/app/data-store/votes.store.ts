@@ -8,6 +8,11 @@ import { Storage } from '@ionic/storage-angular';
 
 @Injectable({providedIn: 'root'})
 export class VotesStore {
+  isMultiplayer = false;
+  isHost = false;
+  lastMultiPlayerMove: any = {};
+  lastMoveIsEvent = false;
+
   neededToWin = 270;
   mapTitle = '';
   actionPending = false;

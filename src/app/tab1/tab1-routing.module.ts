@@ -7,6 +7,7 @@ import { EventWelcomePage } from './event/event.welcome';
 import { FundraisePage } from './fundraise/fundraise.component';
 import { OpponentPage } from './opponent/opponent.component';
 import { Tab1Page } from './tab1.page';
+import { OpponentWaitPage } from './opponent/wait-screen.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,10 @@ const routes: Routes = [
   {
     path: 'opponent',
     component: OpponentPage,
+  },
+  {
+    path: 'wait-turn',
+    component: OpponentWaitPage,
   },
   {
     path: 'firstevent',
@@ -36,7 +41,7 @@ const routes: Routes = [
   {
     path: 'event',
     component: EventPage,
-  },
+  }
 ];
 
 @NgModule({

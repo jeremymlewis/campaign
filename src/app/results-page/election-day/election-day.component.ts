@@ -16,7 +16,9 @@ export class ElectionDayPage implements OnInit {
   ngOnInit() {
     this.isDemocrat = this.votes.isDemocrat;
 
-    this.votes.finalizeVotes();
+    if (!this.votes.isMultiplayer) {
+      this.votes.finalizeVotes();
+    }
 
   }
 

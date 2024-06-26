@@ -1,0 +1,29 @@
+<ion-header [translucent]="false">
+  <ion-toolbar>
+    <ion-title class="ion-text-center">
+      Your Opponent's Turn
+    </ion-title>
+    <ion-button fill="clear" id="click-triggerOp"><ion-icon name="help-circle-outline"></ion-icon></ion-button>
+    <ion-popover trigger="click-triggerOp" triggerAction="click">
+      <ng-template>
+        <ion-content class="ion-padding">
+          <h3>Your Opponents</h3>
+          <p>You are working hard to win, but so is your opponent.</p>
+          <p>Every time that you make a move, your opponent will as well.</p>
+          <p>Pay attention to the moves your opponent makes, since you might need to fight back.</p>
+        </ion-content>
+      </ng-template>
+    </ion-popover>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <!-- <div class="center">
+    <p><strong>Round {{votes.round}} out of {{votes.gameLength}}</strong></p>
+  </div> -->
+  <div class="center">
+    <h1>Waiting for your opponent...</h1>
+  </div>
+
+
+</ion-content>

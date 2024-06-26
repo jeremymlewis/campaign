@@ -1,114 +1,190 @@
 import { Injectable } from '@angular/core';
 import { Socket } from 'ngx-socket-io';
 import { Subscription, startWith } from 'rxjs';
-
-export class Document {
-  id: string;
-  gameState: string;
-}
+import { VotesStore } from '../data-store/votes.store';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MultiPlayerService {
-  currentDocument = this.socket.fromEvent<Document>('document');
-  documents = this.socket.fromEvent<string[]>('documents');
-  document: Document;
-  private _docSub: Subscription;
-  currentDoc: string;
-  addGuestId = false;
+  //Create fromevents here... access them inside of regular components (listen there)
+  //there can be one for each type of event
 
-  gameLinked = false;
-  hostId = "";
-  guestId = "";
+  //connect
+  //disconnect
+  //settings/party selection
+  //move
+  //event
+  //final
+
+  connectionId: string = "";
+  pendingId: string = "";
+
+  createSuccessEvent = this.socket.fromEvent('createSuccess');
+  joinSuccessEvent = this.socket.fromEvent('joinSuccess');
+  joinFailureEvent = this.socket.fromEvent('joinFailure');
+  partySelectEvent = this.socket.fromEvent('partySelect');
+  guestMoveEvent = this.socket.fromEvent('guestMove');
+  hostMoveEvent = this.socket.fromEvent('hostMove');
+  guestSpecialEvent = this.socket.fromEvent('guestSpecial');
+  hostSpecialEvent = this.socket.fromEvent('hostSpecial');
+  finalEvent = this.socket.fromEvent('final');
+  leaveEvent = this.socket.fromEvent('partnerLeft');
 
 
-  private _docSubList: Subscription;
-  constructor(private socket: Socket) { }
-
-
-  ngOnInit() {
-    //Create a clientId you can sign changes with.
-
-    this._docSubList = this.currentDocument.subscribe(doc => this.currentDoc = doc.id);
-
-    this._docSub = this.currentDocument.pipe(
-      startWith({ id: '', gameState: '{game}' })
-    ).subscribe(document => {
-      // this.hostId = document.hostId;
-      // this.guestId = document.guestId;
-      this.document = document;
-      this.checkReady();
-    });
-  }
+  constructor(private socket: Socket, private votes: VotesStore, private route: Router) { }
 
   ngOnDestroy() {
-    console.log("We destroyed the Multiplayer store?")
-    this._docSubList.unsubscribe();
-    this._docSub.unsubscribe();
+
   }
 
-  checkReady() {
-    if (this.document) {
-      let data: any = JSON.parse(this.document?.gameState);
-      console.log(data)
-      if (this.addGuestId) {
-        this.guestId = this.docId();
-        data.guestId = this.guestId;
-        //this.document.guestId = this.guestId;
-        this.socket.emit('editDoc', JSON.stringify(data));
-        this.addGuestId = false;
-      }
+  createGame() {
+    let id = this.gameId();
+    this.socket.emit("createGame", id);
+    this.connectionId = id;
+    this.votes.isHost = true;
+    this.votes.isMultiplayer = true;
+    return id;
+  }
 
-      if (data.hostId && data.guestId) {
-        this.gameLinked = true;
-      }
+  joinGame(id: string) {
+    this.pendingId = id;
+    this.votes.isHost = false;
+    this.votes.isMultiplayer = true;
+    this.socket.emit("joinGame", id);
+  }
+
+
+  handleCreateSuccess(arg1: any) {
+    console.log(arg1);
+  }
+
+  handleJoinFailure(arg1: any) {
+    console.log(arg1)
+    console.log(this.pendingId);
+    console.log("handle join fail")
+    if (this.pendingId && arg1 === this.pendingId) {
+      this.route.navigateByUrl('/host-join/fail');//TODO this is not what we want
     }
-
   }
 
-  editDoc() {
-    this.editDocument(this.document);
+  handleJoinSuccess(arg1: any) {
+    console.log("A join succeeded to " + arg1)
+    this.connectionId = arg1;
+    if (this.votes.isHost) {
+      this.route.navigateByUrl('/options/party');
+      this.votes.round = 1;//jermy change test length here
+    } else {
+      this.pendingId = "";
+      this.route.navigateByUrl('/options/party-wait');
+      this.votes.round = 1;
+    }
+    //move to party selection page
   }
 
-  join(joinCode: string) {
-    if (joinCode.length == 4) {
-      this.loadDoc(joinCode);
+  partySelect(selection: any) {
+    this.socket.emit("hostPartySelect", this.connectionId, selection);
+    this.votes.lastMoveIsEvent = true;
+  }
+
+  handlePartySelect(arg: any) {
+    if (this.votes.isHost) {
+      console.log(arg)
+    } else {
+      this.votes.isDemocrat = !arg;
+      this.route.navigateByUrl('/tabs/tab1');
+    }
+    //move to tab/tab1 for guest, "Wait screen" for host
+  }
+
+  sendHostMove(move: any, states: any[], pollingChange) {
+    this.socket.emit("hostMove", this.connectionId, move, states, pollingChange);
+  }
+
+  handleHostMove(arg) {
+    console.log(arg)
+    if (this.votes.isHost) {
+      this.route.navigateByUrl('/tabs/tab1/wait-turn');
+    } else {
+      this.votes.lastMultiPlayerMove = arg;
+       //use arg to update store, and prep the opponent screen
+      this.route.navigateByUrl('/tabs/tab1/opponent');
     }
   }
 
-  loadDoc(id: string) {
-    this.getDocument(id);
+  sendGuestMove(move: any, states: any[], pollingChange) {
+    this.socket.emit("guestMove", this.connectionId, move, states, pollingChange);
   }
 
-  newDoc() {
-    this.newDocument();
-  }
-
-
-
-  //mark these private
-  getDocument(id: string) {
-    this.socket.emit('getDoc', id);
-    this.addGuestId = true;
-    this.checkReady();
-  }
-
-  newDocument() {
-    let newID = this.docId();
-    this.hostId = this.docId();
-    this.socket.emit('addDoc', { id: newID, gameState: '{}'});
-    this.currentDoc = newID;
-  }
-
-  editDocument(document: Document) {
-    if (!document) {
-      document = {id: "abc", gameState: "{}" }
+  handleGuestMove(arg) {
+    console.log(arg)
+    if (this.votes.isHost) {
+      this.votes.lastMultiPlayerMove = arg;
+      //use arg to update store, and prep the opponent screen
+      this.route.navigateByUrl('/tabs/tab1/opponent');
+    } else {
+      this.route.navigateByUrl('/tabs/tab1/wait-turn');
     }
-    this.socket.emit('editDoc', document);
   }
 
-  private docId() {
+  sendHostSpecial(special: any, states, roll) {
+    this.votes.lastMoveIsEvent = true;
+    this.socket.emit("hostSpecial", this.connectionId, special, states, roll);
+  }
+
+  handleHostSpecial(arg) {
+    console.log(arg)
+    if (this.votes.isHost) {
+      this.route.navigateByUrl('/tabs/tab1/wait-turn');
+    } else {
+      this.votes.lastMultiPlayerMove = arg;
+      //use arg to update store, and prep the opponent screen
+      this.route.navigateByUrl('/tabs/tab1/opponent');
+    }
+  }
+
+  sendGuestSpecial(special: any, states, roll) {
+    this.votes.lastMoveIsEvent = true;
+    this.socket.emit("guestSpecial", this.connectionId, special, states, roll);
+  }
+
+  handleGuestSpecial(arg) {
+    console.log(arg)
+    if (this.votes.isHost) {
+      this.votes.lastMultiPlayerMove = arg;
+      //use arg to update store, and prep the opponent screen
+      this.route.navigateByUrl('/tabs/tab1/opponent');
+    } else {
+      this.route.navigateByUrl('/tabs/tab1/wait-turn');
+    }
+  }
+
+  sendFinal() {
+    this.socket.emit("final", this.connectionId);
+  }
+
+  handleFinal(arg: any) {
+    console.log(arg)
+    this.leave();
+    if (this.votes.isHost) {
+      this.route.navigateByUrl('/results');
+    } else {
+      this.route.navigateByUrl('/results');
+    }
+  }
+
+  leave() {
+    this.socket.emit("leave", this.connectionId);
+    this.connectionId = "";
+  }
+
+  handleLeave(arg: any) {
+    this.route.navigateByUrl('/host-join/fail');
+  }
+
+
+  private gameId() {
     let text = '';
     const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 

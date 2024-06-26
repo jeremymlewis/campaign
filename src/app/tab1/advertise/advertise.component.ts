@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ModalController, ToastController } from '@ionic/angular';
 import { VotesStore } from '../../data-store/votes.store';
 import { ModalToastComponent } from 'src/app/general-components/modal-toast/modal-toast.component';
+import { MultiPlayerService } from 'src/app/services/multiplayer.service';
 
 @Component({
   selector: 'app-advertise',
@@ -15,13 +16,17 @@ export class AdvertisePage implements OnInit {
   isDemocrat: boolean;
   attackAd: boolean = false;
   isThird: boolean;
+  changeMade = 0;
   choosenGroup: string;
   diceEnabled = false;
   canBack = true;
   myGroup = new FormGroup({
     buttonGroup: new FormControl()
   });
-  constructor(private router: Router, private modalCtrl: ModalController, public votes: VotesStore) {}
+  constructor(private router: Router,
+    private modalCtrl: ModalController,
+    private multiplayer: MultiPlayerService,
+    public votes: VotesStore) {}
 
   ngOnInit() {
     this.isDemocrat = this.votes.getUserIsDem();
@@ -78,6 +83,7 @@ export class AdvertisePage implements OnInit {
     this.getGroup();
 
     if (roll === 1) {
+      this.changeMade = -1;
       this.openModal('You rolled a ' + roll + ', Your advertising backfired, losing you 1% support!');
       for (const state in this.selectedStates) {
         if (this.isDemocrat) {
@@ -87,8 +93,10 @@ export class AdvertisePage implements OnInit {
         }
       }
     } else if (roll < 4) {
+      this.changeMade = 0;
       this.openModal('You rolled a ' + roll + ', Your advertising made no difference.');
     } else if (roll < 6) {
+      this.changeMade = 2;
       this.openModal('You rolled a ' + roll + ', Your advertising made a difference of 2% in your selected states!');
       for (const state in this.selectedStates) {
         if (this.isDemocrat) {
@@ -98,6 +106,7 @@ export class AdvertisePage implements OnInit {
         }
       }
     } else {
+      this.changeMade = 3;
       this.openModal('You rolled a ' + roll + ', Your advertising made a difference of 3% in your selected states!');
       for (const state in this.selectedStates) {
         if (this.isDemocrat) {
@@ -123,10 +132,12 @@ export class AdvertisePage implements OnInit {
 
 
     if (roll === 1) {
+      this.changeMade = 0;
       this.openModal('You rolled a ' + roll + ', Your advertising made no difference!');
       // await new Promise(f => setTimeout(f, 3200));
       // this.toNextTurn();
     } else if (roll < 6) {
+      this.changeMade = 1;
       this.openModal('You rolled a ' + roll + ', Your advertising made a difference of 1% in your selected states!');
       for (const state in this.selectedStates) {
         if (this.isDemocrat) {
@@ -138,6 +149,7 @@ export class AdvertisePage implements OnInit {
       // await new Promise(f => setTimeout(f, 3200));
       // this.toNextTurn();
     } else {
+      this.changeMade = 2;
       this.openModal('You rolled a ' + roll + ', Your advertising made a difference of 2% in your selected states!');
       for (const state in this.selectedStates) {
         if (this.isDemocrat) {
@@ -152,7 +164,18 @@ export class AdvertisePage implements OnInit {
   }
 
   toNextTurn() {
-    this.router.navigateByUrl('/tabs/tab1/opponent', { replaceUrl: true });
+    if (this.votes.isMultiplayer) {
+      if (this.votes.isHost) {
+        this.multiplayer.sendHostMove("advertise", this.selectedStates, this.changeMade);
+        this.router.navigateByUrl('/tabs/tab1/wait-turn')
+      } else {
+        this.multiplayer.sendGuestMove("advertise", this.selectedStates, this.changeMade);
+        this.router.navigateByUrl('/tabs/tab1/wait-turn')
+      }
+      //MAKE THIS EMIT TO MULTIPLAYER FOR ALL THREE MOVE OPTIONS
+    } else {
+      this.router.navigateByUrl('/tabs/tab1/opponent', { replaceUrl: true });
+    }
   }
 
   back() {

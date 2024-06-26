@@ -5,6 +5,8 @@ import { WelcomePage } from './welcome-page/welcome.component';
 import { RecordsPage } from './records-pages/records.component';
 import { Records2Page } from './records-pages/records2.component';
 import { HostJoinPage } from './multiplayer/host-join.component';
+import { HostJoinFailPage } from './multiplayer/host-join-fail.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -19,13 +21,17 @@ const routes: Routes = [
     component: HostJoinPage
   },
   {
+    path: 'host-join/fail',
+    component: HostJoinFailPage
+  },
+  {
     path: 'records',
     component: RecordsPage
   },
   {
     path: 'records2',
     component: Records2Page
-  },
+  }
 ];
 
 @NgModule({

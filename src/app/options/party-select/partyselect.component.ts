@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { VotesStore } from '../../data-store/votes.store';
+import { MultiPlayerService } from 'src/app/services/multiplayer.service';
 
 @Component({
   selector: 'app-partyselect-page',
@@ -8,7 +9,7 @@ import { VotesStore } from '../../data-store/votes.store';
   styleUrls: ['partyselect.component.css']
 })
 export class PartySelectPage {
-  constructor(private route: Router, private votes: VotesStore) {}
+  constructor(private route: Router, private multiplayer: MultiPlayerService, public votes: VotesStore) {}
 
   continue(party: string) {
       let isDemocrat = false;
@@ -16,12 +17,11 @@ export class PartySelectPage {
         isDemocrat = true;
       }
       this.votes.setUserIsDem(isDemocrat);
-      if (party === 'three') {
-        this.votes.setUserIsThird(true);
-        this.route.navigateByUrl('/options/third');
+      if (this.votes.isMultiplayer) {
+        this.multiplayer.partySelect(isDemocrat);
+        this.route.navigateByUrl('/tabs/tab1/wait-turn');
       } else {
         this.route.navigateByUrl('/tabs');
-        // this.route.navigateByUrl('/options/background');TODO add options here
       }
   }
 
