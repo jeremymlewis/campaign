@@ -5,7 +5,7 @@ In this 'Presidential Election Simulation Game', play as a presidential hopeful 
 ![overview](src/assets/GameLoopSample.png)
 
 Outside of the main gameplay loop, there are also other game modes to try, and tasks you can try to complete.
-![gamemodes](src/assets/Bonus.png)
+![gamemodes](src/assets/Bonus2.png)
 
 This is an ionic/angular app, made using the ionic tabs default.  
 
