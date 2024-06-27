@@ -1,12 +1,15 @@
 # Campaign Game
 
+In this 'Presidential Election Simulation Game', play as a presidential hopeful on the campaign trail. Look at real time polling data/map of projected voter outcome, and focus your time and resources on swaying voters in key states.   
+
+![overview](src\assets\GameLoopSample.png)
+
+![gamemodes](src\assets\Bonus.png)
+
 This is an ionic/angular app, made using the ionic tabs default.  
 
-Can be displayed as a web app using the command 'ionic serve' in a terminal pointed to the campaign folder
-
-Alternately, a live demo is available at [Live Demo](jeremymlewis.github.io)
+A live demo is available at [Live Demo](https://jeremymlewis.github.io)
 Please note that the live demo is best viewed on a mobile device, or simulating one through dev tools.
-
 
 Code for the app pages is found in the src/app folder and is organized primarily by which page it belongs to. 
 Main gameplay is sorted by which tab it belongs to, and other page types (intro, achievements, results page) are in their own folders.
