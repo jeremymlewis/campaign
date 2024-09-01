@@ -61,7 +61,7 @@ export class OpponentPage {
             this.votes.changeNationalClimate(this.votes.lastMultiPlayerMove.change/2, -this.votes.lastMultiPlayerMove.change/2);
           }
           this.actionIcons = [];
-          return 'Your opponent drew the following event card: ' + this.votes.lastMultiPlayerMove.type + '. ' + 'This made a difference of ' + this.votes.lastMultiPlayerMove.change + ' in the national climate.';
+          return 'Your opponent drew the following event card: ' + this.votes.lastMultiPlayerMove.type + '. ' + 'This made a difference of ' + this.votes.lastMultiPlayerMove.change + ' in every state.';
         } else {
           this.handleGroupScoreUpdate(this.votes.lastMultiPlayerMove.states, this.votes.lastMultiPlayerMove.change);
           let group = this.votes.lastMultiPlayerMove.states;

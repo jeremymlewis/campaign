@@ -161,11 +161,11 @@ export class EventPage implements OnInit {
         statesInvolved = statesInvolved.slice(0, statesInvolved.length - 3) + ' and' + statesInvolved.slice(statesInvolved.length - 3);
       }
       if (roll < 0) {
-        toastString = 'This moves the Climate ' + (-roll) +  ' points toward your opponent in ' + statesInvolved;
+        toastString = 'This moves the polls ' + (-roll) +  ' points toward your opponent in ' + statesInvolved;
         toastTitle = 'Tough luck...';
       }  else {
         toastTitle = 'Smart Choice!';
-        toastString = 'This moves the Climate ' + roll +  ' points in your favor in ' + statesInvolved;
+        toastString = 'This moves the polls ' + roll +  ' points in your favor in ' + statesInvolved;
       }
     }
     this.handleRoll(roll, states, toastString, toastTitle);

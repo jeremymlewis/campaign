@@ -810,6 +810,17 @@ export class VotesStore {
     return array;
   };
 
+  async setFiftyFifty() {
+    this.mapTitle = 'Battle Ground Mode!';
+    let tempStates = this.states;
+    for (const state of tempStates) {
+      state.repPercent = 40;
+      state.leansRep = 0;
+      state.demPercent = 40;
+      state.leansDem = 0;
+    }
+  }
+
   async randomizeStates() {
     this.mapTitle = 'Randomized Game Mode!';
     let tempStates = this.states;
@@ -842,6 +853,7 @@ export class VotesStore {
   }
 
   async setLongGameLength() {
+    this.mapTitle = '32 Round Game Mode';
     this.gameLength = 32;
   }
 

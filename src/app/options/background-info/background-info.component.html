@@ -1,65 +1,57 @@
-<!-- TODO NOT IN USE -->
-<!-- <ion-content [fullscreen]="true">
-  <ion-grid class="ion-no-padding bg-image">
-  <div class="background">
-    <div class="center">
-      <h1 id="title">You have just won the Republican Nomination!</h1>
-    </div>
-    <div class="center">
-      <p id="info1">A general election will be held in 16 weeks to decide the next President of The United States</p>
-    </div>
-    <div class="center">
-    <p id="info2">To win the presidency you need 270 Electoral Votes (INSERT SOME BASIC INTRO TO ELECTORAL COLLEGE)</p>
-    </div>
-    <div class="center">
-    <p id="info3">Before you begin, you need to choose some campaign promises:</p>
-    </div>
+<ion-header [translucent]="false">
+  <ion-toolbar>
+    <ion-title>
+      Special Election Mode
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
 
-      <ion-item>
-        <ion-label position="floating">
-          Financial Promise
-       </ion-label>
-        <ion-select label="Financial Promise" placeholder="Make A Promise">
-          <ion-select-option value="apple">Help Small Businesses</ion-select-option>
-          <ion-select-option value="apple2">Boost the Stock Market</ion-select-option>
-          <ion-select-option value="banana">Give people jobs</ion-select-option>
-          <ion-select-option value="orange">Help the Poor</ion-select-option>
-          <ion-select-option value="orange2">Help the Rich</ion-select-option>
-
-        </ion-select>
-      </ion-item>
-
-      <ion-item>
-        <ion-label position="floating">
-          Personal Values
-        </ion-label>
-        <ion-select label="Campaign Slogan" placeholder="Choose A Value">
-          <ion-select-option value="banana">I Am Honest</ion-select-option>
-          <ion-select-option value="banana3">I Am Famous</ion-select-option>
-          <ion-select-option value="banana2">I Am Handsome</ion-select-option>
-          <ion-select-option value="orange2">I Am Qualified</ion-select-option>
-          <ion-select-option value="apple2">I Am Not That Bad</ion-select-option>
-        </ion-select>
-      </ion-item>
-
-      <ion-item>
-        <ion-label position="floating">
-          Your Political Background
-        </ion-label>
-        <ion-select label="Campaign Slogan" placeholder="Choose Political Background">
-          <ion-select-option value="banana">Former Senator</ion-select-option>
-          <ion-select-option value="orange">Former Governor</ion-select-option>
-          <ion-select-option value="orange2">Former Vice President</ion-select-option>
-          <ion-select-option value="orange3">Former Military Leader</ion-select-option>
-          <ion-select-option value="apple">No Prior Experience</ion-select-option>
-        </ion-select>
-      </ion-item>
-
-      <br>
-      <div class="center">
-        <ion-button class="button43" [disabled]="false" (click)="submitBackground()">Start The Race</ion-button>
-      </div>
-
+<ion-content [fullscreen]="true">
+  <div class="center" style="text-align: center;">
+    <p><strong>You are playing a Special Mode!</strong></p>
   </div>
-  </ion-grid>
-</ion-content> -->
+  <div *ngIf="this.votes.mapTitle === 'Battle Ground Mode!'">
+    <div class="center">
+      <h1>Battle Ground Mode</h1>
+    </div>
+    <div class="center">
+      <p>In this mode, every state starts out tied. Scrabble to secure as many states as possible in 16 moves!</p>
+    </div>
+    <div class="center">
+      <p>Remember that votes can change by as much as 3% on election day, so don't give up even if things look bleak.</p>
+    </div>
+  </div>
+
+  <div *ngIf="this.votes.mapTitle === '32 Round Game Mode'">
+    <div class="center">
+      <h1>32 Round Mode</h1>
+    </div>
+    <div class="center">
+      <p>This mode works the same as a standard game, but the game lasts for 32 rounds instead of 16 rounds.</p>
+    </div>
+    <div class="center">
+      <p>See if the extra time can help you win big!</p>
+    </div>
+  </div>
+
+  <div *ngIf="this.votes.mapTitle === 'Randomized Game Mode!'">
+    <div class="center">
+      <h1>Randomized States Mode</h1>
+    </div>
+    <div class="center">
+      <p>In this mode, every state starts out with a random political preference. Try playing this mode a few times to see lots of interesting maps.</p>
+    </div>
+    <div class="center">
+      <p>This is a great way to play with new strategies, as you will need to focus on different states each time you play.</p>
+    </div>
+  </div>
+
+  <div class="center">
+    <ion-button class="button43" (click)="continue()">Continue</ion-button>
+  </div>
+  <div class="center">
+    <ion-button class="button43" (click)="back()">Back to Options</ion-button>
+  </div>
+  <br>
+  <br>
+</ion-content>

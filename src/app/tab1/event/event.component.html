@@ -33,15 +33,15 @@
   </div>
   <div *ngIf="!currentEvent?.choiceEvent && !currentEvent?.diceEvent">
       <div class="center" *ngIf="statesInvolved.length === 0">
-      <p *ngIf="eventPoints < 0">This moves the National Climate {{-eventPoints}} points toward your opponent</p>
-      <p *ngIf="eventPoints === 0">The National Climate is unaffected</p>
-      <p *ngIf="eventPoints > 0">This moves the National Climate {{eventPoints}} points in your favor</p>
+      <p *ngIf="eventPoints < 0">This moves every state {{-eventPoints}} points toward your opponent</p>
+      <p *ngIf="eventPoints === 0">The states are unaffected</p>
+      <p *ngIf="eventPoints > 0">This moves every state {{eventPoints}} points in your favor</p>
       <!-- Or to the right... calculate that on the ts side of this. -->
       </div>
       <div class="center" *ngIf="statesInvolved.length !== 0">
-        <p *ngIf="eventPoints < 0">This moves the Climate {{-eventPoints}} points toward your opponent in {{statesInvolvedString}}</p>
+        <p *ngIf="eventPoints < 0">This moves the polls {{-eventPoints}} points toward your opponent in {{statesInvolvedString}}</p>
         <p *ngIf="eventPoints === 0">This state is now polling EVEN for Republican and Democrat</p>
-        <p *ngIf="eventPoints > 0">This moves the Climate {{eventPoints}} points in your favor in {{statesInvolvedString}}</p>
+        <p *ngIf="eventPoints > 0">This moves the polls {{eventPoints}} points in your favor in {{statesInvolvedString}}</p>
         <!-- Or to the right... calculate that on the ts side of this. -->
         </div>
 

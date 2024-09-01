@@ -32,9 +32,9 @@
   </div>
   <!-- LOCKED -->
   <div class="hr"><h3>Special</h3> </div>
-  <div class="center" *ngIf="!locked">
+  <!-- <div class="center" *ngIf="!locked">
     <button color="clear" class="party-button button43 extra medium" (click)="continue('multiplayer')" style="background: url(../../assets/EmptyBackground.png) no-repeat center/cover fixed;"><br><p>Online Multiplayer</p></button>
-  </div>
+  </div> -->
   <div class="center locked" *ngIf="locked">
     <button color="clear" class="party-button button43 extra short" (click)="continue('extra')" style="background: url(../../assets/PlainBackground.png) no-repeat center/cover fixed;"><br><p>32 Round Mode</p><ion-icon name="lock-closed"></ion-icon></button>
   </div>
@@ -46,6 +46,9 @@
   </div>
   <div class="center" *ngIf="!locked">
     <button color="clear" class="party-button button43 extra medium" (click)="continue('random')" style="background: url(../../assets/RandomBackground.png) no-repeat center/cover fixed;"><br><p>Randomized States</p></button>
+  </div>
+  <div class="center" *ngIf="!locked">
+    <button color="clear" class="party-button button43 extra medium" (click)="continue('fifty')" style="background: url(../../assets/EmptyBackground.png) no-repeat center/cover fixed;"><br><p>Battle Ground Mode</p></button>
   </div>
 
 
@@ -61,9 +64,9 @@
   <div class="center locked" *ngIf="locked">
     <button color="clear" class="party-button button43 extra short" (click)="continue('extra')" style="background: url(../../assets/PlainBackground.png) no-repeat center/cover fixed;"><br><p>Election Of 1976</p><ion-icon name="lock-closed"></ion-icon></button>
   </div>
-  <div class="center locked" *ngIf="locked">
+  <!-- <div class="center locked" *ngIf="locked">
     <button color="clear" class="party-button button43 extra short" (click)="continue('extra')" style="background: url(../../assets/PlainBackground.png) no-repeat center/cover fixed;"><br><p>Election Of 2008</p><ion-icon name="lock-closed"></ion-icon></button>
-  </div>
+  </div> -->
   <div class="center" *ngIf="!locked">
     <button color="clear" class="party-button button43 extra medium" (click)="continue('e1876')" style="background: url(../../assets/Background186.png) no-repeat center/cover fixed;"><br><p>Election Of 1876</p></button>
   </div>
@@ -73,9 +76,9 @@
   <div class="center" *ngIf="!locked">
     <button color="clear" class="party-button button43 extra medium" (click)="continue('e1976')" style="background: url(../../assets/Background1976.png) no-repeat center/cover fixed;"><br><p>Election Of 1976</p></button>
   </div>
-  <div class="center" *ngIf="!locked">
+  <!-- <div class="center" *ngIf="!locked">
     <button color="clear" class="party-button button43 extra medium" (click)="continue('e2008')" style="background: url(../../assets/Background2008.png) no-repeat center/cover fixed;"><br><p>Election Of 2008</p></button>
-  </div>
+  </div> -->
   <br>
   <br>
   <br>

@@ -13,5 +13,7 @@ export class HistoricInfoPage {
   continue() {
     this.router.navigateByUrl('/options/party');
   }
-
+  back() {
+    this.router.navigateByUrl('/options');
+  }
 }
