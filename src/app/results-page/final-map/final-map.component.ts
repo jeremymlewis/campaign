@@ -2,6 +2,7 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { VotesStore } from '../../data-store/votes.store';
 import { State } from 'src/app/data-store/state';
+import { MobileAdsService } from 'src/app/services/admob.service';
 
 @Component({
   selector: 'app-final-map-page',
@@ -19,8 +20,9 @@ export class FinalMapPage implements OnInit, AfterViewInit {
   popularLeftString = '';
   popularRightString = '';
   isDemocrat: boolean;
+  adsEnabled = true; //jermy this is where to enable ads lol
 
-  constructor(private router: Router, public votes: VotesStore) {}
+  constructor(private router: Router, public votes: VotesStore, public mobileAdsService: MobileAdsService) {}
   //FINAL MAP PAGE (each state has its own row with 49% - 51% display)
 
   ngOnInit() {
@@ -84,7 +86,11 @@ export class FinalMapPage implements OnInit, AfterViewInit {
 
   mainMenu() {
     if (window.confirm('Finished with current game?')) {
-      this.router.navigateByUrl('/');
+      if (this.adsEnabled) {
+        this.mobileAdsService.interstitial();
+      } else {
+        this.router.navigateByUrl('/');
+      }
     }
   }
 

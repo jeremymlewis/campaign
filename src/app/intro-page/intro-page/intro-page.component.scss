@@ -76,6 +76,22 @@ ion-button {
   transform: translate(-50%, -50%);
 }
 
+.low {
+  width: 95%;
+  position: absolute;
+  display: grid;
+  bottom:0px;
+  left: 50%;
+
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.background1 {
+  background-color: #0d2904;
+  border-radius: 6px;
+}
+
 .img-wrapper{
   position: relative;
   overflow:hidden;

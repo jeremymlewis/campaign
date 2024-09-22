@@ -41,4 +41,8 @@ export class IntroPage implements AfterViewInit {
     this.route.navigateByUrl('/records');
   }
 
+  privacy() {
+    window.open("https://www.electionmobilegame.com/privacy", '_system');
+  }
+
 }
